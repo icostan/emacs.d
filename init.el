@@ -1,11 +1,31 @@
+;; Config directory
+(setq user-emacs-directory "~/.vanilla.d/")
+
 ;; Minimal UI
 (scroll-bar-mode -1)
 (tool-bar-mode   -1)
-(tooltip-mode    -1)
 (menu-bar-mode   -1)
+(tooltip-mode    -1)
+
+;; y/n instead of yes/no
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Hide splash-screen and startup-message
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
+
+;; Display continuous lines
+(setq-default truncate-lines nil)
+(setq-default truncate-partial-width-windows nil)
+
+;; Line and column #
+(setq display-line-numbers-type 'relative)
+(global-display-line-numbers-mode t)
+(line-number-mode t)
+(column-number-mode t)
 
 ;; Font and frame size
-(add-to-list 'default-frame-alist '(font . "mononoki-12"))
+;; (add-to-list 'default-frame-alist '(font . "mononoki-12"))
 (add-to-list 'default-frame-alist '(height . 24))
 (add-to-list 'default-frame-alist '(width . 80))
 
@@ -20,8 +40,11 @@
 ;; Bootstrap `use-package`
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
-  (package-install 'use-package))
+  (package-install 'use-package)
+  (package-install 'use-package-ensure))
 (require 'use-package)
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
 
 ;; Vim mode
 (use-package evil
@@ -34,24 +57,12 @@
   (setq-default evil-escape-key-sequence "fd")
   :config
   (evil-escape-mode 1))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (evil-escape evil use-package))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
 ;; Theme
-(use-package doom-themes
+(use-package monokai-theme
   :ensure t
   :config
-  (load-theme 'doom-one t))
+  (load-theme 'monokai t))
 
 ;; Helm
 (use-package helm
@@ -72,7 +83,8 @@
         helm-autoresize-max-height 0
         helm-autoresize-min-height 20)
   :config
-  (helm-mode 1))
+  (helm-mode 1)
+  :bind (("C-c j f" . helm-semantic-or-imenu)))
 
 ;; Which Key
 (use-package which-key
@@ -93,19 +105,31 @@
            ;; "/"   '(counsel-rg :which-key "ripgrep") ; You'll need counsel package for this
            "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
            "SPC" '(helm-M-x :which-key "M-x")
-           "pf"  '(helm-find-files :which-key "find files")
+           ;; Files
+           "ff"  '(helm-find-files :which-key "find files")
+           "fj"  '(dired-jump :which-key "find directory")
+           "fs"  '(save-buffer :which-key "save file")
+           ;; Project
+           "pf"  '(projectile-find-file :which-key "find files in project")
+           "pp"  '(projectile-switch-project :which-key "switch project")
            ;; Buffers
            "bb"  '(helm-buffers-list :which-key "buffers list")
-           ;; Window
+           "bs"  '(save-buffer :which-key "save buffer")
+           ;; Windows
            "wl"  '(windmove-right :which-key "move right")
            "wh"  '(windmove-left :which-key "move left")
            "wk"  '(windmove-up :which-key "move up")
            "wj"  '(windmove-down :which-key "move bottom")
            "w/"  '(split-window-right :which-key "split right")
            "w-"  '(split-window-below :which-key "split bottom")
-           "wx"  '(delete-window :which-key "delete window")
+           "wd"  '(delete-window :which-key "delete window")
+           "wx"  '(delete-other-windows :which-key "delete other window")
+           "ww"  '(other-window :which-key "next window")
            ;; Others
            "at"  '(ansi-term :which-key "open terminal")
+           ;; Quit
+           "qr" '(restart-emacs :which-key "restart emacs")
+           "qq" '(kill-emacs :which-key "quit emacs")
            ))
 
 ;; Fancy titlebar for MacOS
@@ -119,7 +143,13 @@
   :ensure t
   :init
   ;; (setq projectile-require-project-root nil)
+  :bind
+  ;; (("C-p p" . projectile-switch-project-action))
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
   :config
+  ;; (define-key projectile-mode-map (kbd "SPC-p") 'projectile-command-map)
+  ;; (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (projectile-mode 1))
 
 ;; NeoTree
@@ -127,16 +157,43 @@
   :ensure t
   :init
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
-(use-package all-the-icons :ensure t)
+;; (use-package all-the-icons :ensure t)
+
+;; Programming languages
+(use-package ruby-mode
+  :mode "\\.rb\\'"
+  :interpreter "ruby")
 
 ;;
 ;; Optional
 ;;
 
 ;; Show matching parens
-;; (setq show-paren-delay 0)
-;; (show-paren-mode 1)
+(setq show-paren-delay 0)
+(show-paren-mode 1)
 
 ;; Disable backup files
-;; (setq make-backup-files nil) ; stop creating backup~ files
-;; (setq auto-save-default nil) ; stop creating #autosave# files
+(setq make-backup-files nil) ; stop creating backup~ files
+(setq auto-save-default nil) ; stop creating #autosave# files
+
+;; Move
+(use-package ace-jump-mode
+  :bind (("C-c m c" . ace-jump-char-mode)
+         ("C-c m w" . ace-jump-word-mode)
+         ("C-c m l" . ace-jump-line-mode)))
+;; (use-package avy
+;;   :bind (("C-c j l" . avy-goto-line)
+;;          ("C-c j a" . avy-goto-char-timer))
+
+;; Presentation
+(use-package demo-it
+  :config
+  (use-package org-tree-slide))
+
+;; Screencasting
+(use-package camcorder
+  :bind (("C-c r w" . camcorder-mode)
+	 ("C-c r f" . camcorder-record)
+	 ("C-c r c" . camcorder-convert-to-gif)))
+
+(use-package command-log-mode)
