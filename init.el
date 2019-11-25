@@ -102,20 +102,25 @@
            :states '(normal visual insert emacs)
            :prefix "SPC"
            :non-normal-prefix "M-SPC"
+           :keymaps 'override
            ;; "/"   '(counsel-rg :which-key "ripgrep") ; You'll need counsel package for this
            "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
            "SPC" '(helm-M-x :which-key "M-x")
            ;; Files
+           "f"   '(nil :which-key "files")
            "ff"  '(helm-find-files :which-key "find files")
            "fj"  '(dired-jump :which-key "find directory")
            "fs"  '(save-buffer :which-key "save file")
            ;; Project
+           "p"   '(nil :which-key "projects")
            "pf"  '(projectile-find-file :which-key "find files in project")
            "pp"  '(projectile-switch-project :which-key "switch project")
            ;; Buffers
+           "b"   '(nil :which-key "buffers")
            "bb"  '(helm-buffers-list :which-key "buffers list")
            "bs"  '(save-buffer :which-key "save buffer")
            ;; Windows
+           "w"   '(nil :which-key "windows")
            "wl"  '(windmove-right :which-key "move right")
            "wh"  '(windmove-left :which-key "move left")
            "wk"  '(windmove-up :which-key "move up")
@@ -126,8 +131,10 @@
            "wx"  '(delete-other-windows :which-key "delete other window")
            "ww"  '(other-window :which-key "next window")
            ;; Others
+           "a"   '(nil :which-key "apps")
            "at"  '(ansi-term :which-key "open terminal")
            ;; Quit
+           "q"   '(nil :which-key "quits")
            "qr" '(restart-emacs :which-key "restart emacs")
            "qq" '(kill-emacs :which-key "quit emacs")
            ))
@@ -164,6 +171,24 @@
   :mode "\\.rb\\'"
   :interpreter "ruby")
 
+;; Flycheck
+(use-package flycheck
+  :init (global-flycheck-mode))
+
+;; Orgmode
+(use-package org
+  :init (setq org-confirm-babel-evaluate nil)
+  :config
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (haskell . nil)
+     (ledger . t)
+     (python . t)
+     (ruby . t)
+     ;; (sh . t)
+     (sql . nil))))
+
 ;;
 ;; Optional
 ;;
@@ -197,3 +222,7 @@
 	 ("C-c r c" . camcorder-convert-to-gif)))
 
 (use-package command-log-mode)
+
+;; Ledger
+(use-package ledger-mode
+  :config (use-package flycheck-ledger))
