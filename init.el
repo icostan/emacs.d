@@ -85,6 +85,14 @@
   :config
   (helm-mode 1)
   :bind (("C-c j f" . helm-semantic-or-imenu)))
+(use-package helm-swoop
+  :after helm
+  :init
+  (setq helm-swoop-pre-input-function
+        (lambda ()
+          (if mark-active
+              (buffer-substring-no-properties (mark) (point))
+            ""))))
 
 ;; Which Key
 (use-package which-key
@@ -106,19 +114,34 @@
            ;; "/"   '(counsel-rg :which-key "ripgrep") ; You'll need counsel package for this
            "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
            "SPC" '(helm-M-x :which-key "M-x")
+           ;; Buffers
+           "b"   '(nil :which-key "buffers")
+           "bb"  '(helm-buffers-list :which-key "buffers list")
+           "bs"  '(save-buffer :which-key "save buffer")
            ;; Files
            "f"   '(nil :which-key "files")
            "ff"  '(helm-find-files :which-key "find files")
            "fj"  '(dired-jump :which-key "find directory")
            "fs"  '(save-buffer :which-key "save file")
+           ;; Git
+           "g"   '(nil :which-key "git")
+           "gs"  '(magit-status :which-key "status")
+           ;; Jump
+           "j"   '(nil :which-key "jump")
+           "jf"  '(helm-semantic-or-imenu :which-key "function in file")
+           "jF"  '(helm-imenu-in-all-buffers :which-key "function in buffers")
            ;; Project
            "p"   '(nil :which-key "projects")
            "pf"  '(projectile-find-file :which-key "find files in project")
            "pp"  '(projectile-switch-project :which-key "switch project")
-           ;; Buffers
-           "b"   '(nil :which-key "buffers")
-           "bb"  '(helm-buffers-list :which-key "buffers list")
-           "bs"  '(save-buffer :which-key "save buffer")
+           ;; Search
+           "s"   '(nil :which-key "search")
+           "sf"  '(helm-swoop :which-key "in file")
+           "sB"  '(helm-multi-swoop-all :which-key "in all buffers")
+           "sb"  '(helm-multi-swoop-projectile :which-key "in project buffers")
+           "sm"  '(helm-multi-swoop-current-mode :which-key "in mode buffers")
+           "so"  '(helm-multi-swoop-org :which-key "in org buffers")
+           "sp"  '(helm-do-grep-ag :which-key "in project")
            ;; Windows
            "w"   '(nil :which-key "windows")
            "wl"  '(windmove-right :which-key "move right")
@@ -147,9 +170,7 @@
 
 ;; Projectile
 (use-package projectile
-  :ensure t
   :init
-  ;; (setq projectile-require-project-root nil)
   :bind
   ;; (("C-p p" . projectile-switch-project-action))
   :bind-keymap
@@ -189,6 +210,17 @@
      ;; (sh . t)
      (sql . nil))))
 
+;; Company mode for Completion
+(use-package company
+  :defer t
+  :diminish company-mode
+  :init (global-company-mode))
+
+;; Git
+(use-package magit)
+(use-package evil-magit
+  :after magit)
+
 ;;
 ;; Optional
 ;;
@@ -225,4 +257,20 @@
 
 ;; Ledger
 (use-package ledger-mode
-  :config (use-package flycheck-ledger))
+  :config
+  (setq ledger-post-amount-alignment-column 62)
+  (setq ledger-accounts-file "accounts.ledger"))
+(use-package flycheck-ledger
+  :after ledger-mode)
+(use-package evil-ledger
+  :after ledger-mode
+  :config
+  (setq evil-ledger-sort-key "S")
+  (add-hook 'ledger-mode-hook #'evil-ledger-mode))
+;; (use-package company-ledger
+;;   :load-path "~/Projects/emacs.d/lisp/"
+;;   :ensure company
+;;   :after ledger-mode
+;;   :init
+;;   (with-eval-after-load 'company
+;;     (add-to-list 'company-backends 'company-ledger-backend)))

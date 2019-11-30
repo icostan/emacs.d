@@ -1,10 +1,14 @@
 * TODOs
-** DONE integrate ledger-mode
+** DONE ledger-mode
    CLOSED: [2019-11-25 Mon 17:52]
-** setup orgmode
+** orgmode
 ** start to use vanilla to build vanilla
-** integrate sagemath
+** sagemath
 ** journal
 ** agenda
-** git
-** search/replace
+** DONE git
+   CLOSED: [2019-11-30 Sat 15:10]
+** DONE search
+   CLOSED: [2019-11-30 Sat 16:56]
+** replace
+** keybindings
