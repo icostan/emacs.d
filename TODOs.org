@@ -4,7 +4,8 @@
 ** orgmode
 ** start to use vanilla to build vanilla
 ** sagemath
-** journal
+** DONE journal
+   CLOSED: [2019-12-01 Sun 21:48]
 ** agenda
 ** DONE git
    CLOSED: [2019-11-30 Sat 15:10]

@@ -104,6 +104,9 @@
   (which-key-mode 1))
 
 ;; General keybindings
+(defun org-projectile/goto-todos ()
+  (interactive)
+  (org-projectile-goto-location-for-project (projectile-project-name)))
 (use-package general
   :ensure t
   :config (general-define-key
@@ -130,10 +133,21 @@
            "j"   '(nil :which-key "jump")
            "jf"  '(helm-semantic-or-imenu :which-key "function in file")
            "jF"  '(helm-imenu-in-all-buffers :which-key "function in buffers")
+           ;; Ledger
+           "l"   '(nil :which-key "ledger")
+           "la"  '(ledger-add-transaction :which-key "add transaction")
+           "lf"  '(ledger-mode-clean-buffer :which-key "format")
+           ;; Org
+           "o"   '(nil :which-key "org")
+           "oe"  '(org-babel-execute-maybe :which-key "execute block")
+           "ot"  '(org-todo :which-key "todo")
+           "oj"  '(org-journal-new-entry :which-key "new journal entry")
+           "oc"  '(org-toggle-checkbox :which-key "toggle checkbox")
            ;; Project
            "p"   '(nil :which-key "projects")
-           "pf"  '(projectile-find-file :which-key "find files in project")
+           "pf"  '(projectile-find-file :which-key "find files")
            "pp"  '(projectile-switch-project :which-key "switch project")
+           "po"  '(org-projectile/goto-todos :which-key "todos")
            ;; Search
            "s"   '(nil :which-key "search")
            "sf"  '(helm-swoop :which-key "in file")
@@ -179,10 +193,14 @@
   ;; (define-key projectile-mode-map (kbd "SPC-p") 'projectile-command-map)
   ;; (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (projectile-mode 1))
+(use-package org-projectile
+  :config
+  (setq org-projectile-projects-file "TODOs.org")
+  (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
+  (push (org-projectile-project-todo-entry) org-capture-templates))
 
 ;; NeoTree
 (use-package neotree
-  :ensure t
   :init
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 ;; (use-package all-the-icons :ensure t)
@@ -209,6 +227,15 @@
      (ruby . t)
      ;; (sh . t)
      (sql . nil))))
+(use-package org-journal
+  :after org
+  :init
+  (setq org-journal-dir "~/Projects/org.d/journal")
+  :config
+  (setq org-journal-date-format "%A, %x")
+  (setq org-journal-time-format "")
+  (setq org-journal-time-prefix "  - [ ] ")
+  (setq org-journal-file-type "monthly"))
 
 ;; Company mode for Completion
 (use-package company
@@ -217,7 +244,9 @@
   :init (global-company-mode))
 
 ;; Git
-(use-package magit)
+(use-package magit
+  :config
+  (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1))
 (use-package evil-magit
   :after magit)
 
