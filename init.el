@@ -57,6 +57,13 @@
   (setq-default evil-escape-key-sequence "fd")
   :config
   (evil-escape-mode 1))
+(use-package evil-unimpaired
+  :load-path "~/Projects/emacs.d/lisp"
+  :config
+  (evil-unimpaired-mode))
+(use-package evil-nerd-commenter
+  :config
+  (evilnc-default-hotkeys))
 
 ;; Theme
 (use-package monokai-theme
@@ -121,6 +128,11 @@
            "b"   '(nil :which-key "buffers")
            "bb"  '(helm-buffers-list :which-key "buffers list")
            "bs"  '(save-buffer :which-key "save buffer")
+           ;; Comments
+           "c"   '(nil :which-key "comments")
+           "cc"  '(evilnc-copy-and-comment-lines :which-key "copy")
+           "ci"  '(evilnc-comment-or-uncomment-lines :which-key "lines")
+           "cp"  '(evilnc-comment-or-uncomment-paragraphs :which-key "paragraphs")
            ;; Files
            "f"   '(nil :which-key "files")
            "ff"  '(helm-find-files :which-key "find files")
@@ -231,11 +243,11 @@
   :after org
   :init
   (setq org-journal-dir "~/Projects/org.d/journal")
+  (setq org-journal-file-type 'monthly)
   :config
   (setq org-journal-date-format "%A, %x")
   (setq org-journal-time-format "")
-  (setq org-journal-time-prefix "  - [ ] ")
-  (setq org-journal-file-type "monthly"))
+  (setq org-journal-time-prefix "  - [ ] "))
 
 ;; Company mode for Completion
 (use-package company
@@ -282,6 +294,7 @@
 	 ("C-c r f" . camcorder-record)
 	 ("C-c r c" . camcorder-convert-to-gif)))
 
+;; display typed commands
 (use-package command-log-mode)
 
 ;; Ledger
@@ -296,10 +309,3 @@
   :config
   (setq evil-ledger-sort-key "S")
   (add-hook 'ledger-mode-hook #'evil-ledger-mode))
-;; (use-package company-ledger
-;;   :load-path "~/Projects/emacs.d/lisp/"
-;;   :ensure company
-;;   :after ledger-mode
-;;   :init
-;;   (with-eval-after-load 'company
-;;     (add-to-list 'company-backends 'company-ledger-backend)))
