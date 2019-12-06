@@ -141,6 +141,13 @@
            ;; Git
            "g"   '(nil :which-key "git")
            "gs"  '(magit-status :which-key "status")
+           ;; Help
+           "h"   '(nil :which-key "help")
+           "hv"  '(describe-variable :which-key "describe variable")
+           "hf"  '(describe-function :which-key "describe function")
+           "hk"  '(describe-key :which-key "describe key")
+           "hK"  '(describe-keymap :which-key "describe keymap")
+           "hb"  '(describe-bindings :which-key "describe bindings")
            ;; Jump
            "j"   '(nil :which-key "jump")
            "jf"  '(helm-semantic-or-imenu :which-key "function in file")
@@ -155,6 +162,7 @@
            "ot"  '(org-todo :which-key "todo")
            "oj"  '(org-journal-new-entry :which-key "new journal entry")
            "oc"  '(org-toggle-checkbox :which-key "toggle checkbox")
+           "oa"  '(org-agenda-list :which-key "agenda")
            ;; Project
            "p"   '(nil :which-key "projects")
            "pf"  '(projectile-find-file :which-key "find files")
@@ -179,11 +187,11 @@
            "wd"  '(delete-window :which-key "delete window")
            "wx"  '(delete-other-windows :which-key "delete other window")
            "ww"  '(other-window :which-key "next window")
-           ;; Others
+           ;; Apps
            "a"   '(nil :which-key "apps")
            "at"  '(ansi-term :which-key "open terminal")
            ;; Quit
-           "q"   '(nil :which-key "quits")
+           "q"   '(nil :which-key "quit")
            "qr" '(restart-emacs :which-key "restart emacs")
            "qq" '(kill-emacs :which-key "quit emacs")
            ))
@@ -228,7 +236,9 @@
 
 ;; Orgmode
 (use-package org
-  :init (setq org-confirm-babel-evaluate nil)
+  :init
+  (setq org-confirm-babel-evaluate nil)
+  (setq org-agenda-files (directory-files-recursively "~/Projects" "TODOs\\.org"))
   :config
   (org-babel-do-load-languages
    'org-babel-load-languages

@@ -6,7 +6,8 @@
 ** sagemath
 ** DONE journal
    CLOSED: [2019-12-01 Sun 21:48]
-** agenda
+** DONE agenda
+   CLOSED: [2019-12-05 Thu 22:29]
 ** DONE git
    CLOSED: [2019-11-30 Sat 15:10]
 ** DONE search
@@ -17,3 +18,5 @@
    CLOSED: [2019-12-04 Wed 00:04]
 ** DONE unimpaired
    CLOSED: [2019-12-04 Wed 00:04]
+** org: anniversaries
+** windows golden ratio
