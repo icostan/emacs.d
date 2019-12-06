@@ -152,6 +152,9 @@
            "j"   '(nil :which-key "jump")
            "jf"  '(helm-semantic-or-imenu :which-key "function in file")
            "jF"  '(helm-imenu-in-all-buffers :which-key "function in buffers")
+           "jc"  '(ace-jump-char-mode :which-key "to chat")
+           "jw"  '(ace-jump-word-mode :which-key "to word")
+           "jl"  '(ace-jump-line-mode :which-key "to line")
            ;; Ledger
            "l"   '(nil :which-key "ledger")
            "la"  '(ledger-add-transaction :which-key "add transaction")
@@ -165,9 +168,14 @@
            "oa"  '(org-agenda-list :which-key "agenda")
            ;; Project
            "p"   '(nil :which-key "projects")
-           "pf"  '(projectile-find-file :which-key "find files")
-           "pp"  '(projectile-switch-project :which-key "switch project")
+           "pf"  '(helm-projectile-find-file :which-key "find files")
+           "pp"  '(helm-projectile-switch-project :which-key "switch project")
            "po"  '(org-projectile/goto-todos :which-key "todos")
+           ;; Recording
+           "r"   '(nil :which-key "record")
+           "rt"  '(camcorder-mode :which-key "toggle")
+           "rr"  '(camcorder-record :which-key "record")
+           "rc"  '(camcorder-convert-to-gif :which-key "convert")
            ;; Search
            "s"   '(nil :which-key "search")
            "sf"  '(helm-swoop :which-key "in file")
@@ -204,11 +212,11 @@
 
 ;; Projectile
 (use-package projectile
-  :init
-  :bind
+  ;; :init
+  ;; :bind
   ;; (("C-p p" . projectile-switch-project-action))
-  :bind-keymap
-  ("C-c p" . projectile-command-map)
+  ;; :bind-keymap
+  ;; ("C-c p" . projectile-command-map)
   :config
   ;; (define-key projectile-mode-map (kbd "SPC-p") 'projectile-command-map)
   ;; (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
@@ -218,6 +226,9 @@
   (setq org-projectile-projects-file "TODOs.org")
   (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
   (push (org-projectile-project-todo-entry) org-capture-templates))
+(use-package helm-projectile
+  :config
+  (helm-projectile-on))
 
 ;; NeoTree
 (use-package neotree
@@ -285,10 +296,7 @@
 (setq auto-save-default nil) ; stop creating #autosave# files
 
 ;; Move
-(use-package ace-jump-mode
-  :bind (("C-c m c" . ace-jump-char-mode)
-         ("C-c m w" . ace-jump-word-mode)
-         ("C-c m l" . ace-jump-line-mode)))
+(use-package ace-jump-mode)
 ;; (use-package avy
 ;;   :bind (("C-c j l" . avy-goto-line)
 ;;          ("C-c j a" . avy-goto-char-timer))
@@ -299,10 +307,7 @@
   (use-package org-tree-slide))
 
 ;; Screencasting
-(use-package camcorder
-  :bind (("C-c r w" . camcorder-mode)
-	 ("C-c r f" . camcorder-record)
-	 ("C-c r c" . camcorder-convert-to-gif)))
+(use-package camcorder)
 
 ;; display typed commands
 (use-package command-log-mode)
