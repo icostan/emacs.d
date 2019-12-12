@@ -2,8 +2,10 @@
 (setq user-emacs-directory "~/.vanilla.d/")
 
 ;; Minimal UI
-(scroll-bar-mode -1)
-(tool-bar-mode   -1)
+(if (fboundp 'scroll-bar-mode)
+    (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode)
+    (tool-bar-mode -1))
 (menu-bar-mode   -1)
 (tooltip-mode    -1)
 
@@ -90,8 +92,7 @@
         helm-autoresize-max-height 0
         helm-autoresize-min-height 20)
   :config
-  (helm-mode 1)
-  :bind (("C-c j f" . helm-semantic-or-imenu)))
+  (helm-mode 1))
 (use-package helm-swoop
   :after helm
   :init
@@ -124,6 +125,9 @@
            ;; "/"   '(counsel-rg :which-key "ripgrep") ; You'll need counsel package for this
            "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
            "SPC" '(helm-M-x :which-key "M-x")
+           ;; Apps
+           "a"   '(nil :which-key "apps")
+           "at"  '(ansi-term :which-key "open terminal")
            ;; Buffers
            "b"   '(nil :which-key "buffers")
            "bb"  '(helm-buffers-list :which-key "buffers list")
@@ -141,6 +145,8 @@
            ;; Git
            "g"   '(nil :which-key "git")
            "gs"  '(magit-status :which-key "status")
+           "gf"  '(with-editor-finish :which-key "finish")
+           "gc"  '(with-editor-cancel :which-key "cancel")
            ;; Help
            "h"   '(nil :which-key "help")
            "hv"  '(describe-variable :which-key "describe variable")
@@ -164,8 +170,12 @@
            "oe"  '(org-babel-execute-maybe :which-key "execute block")
            "ot"  '(org-todo :which-key "todo")
            "oj"  '(org-journal-new-entry :which-key "new journal entry")
-           "oc"  '(org-toggle-checkbox :which-key "toggle checkbox")
+           "oc"  '(org-toggle-checkbox :which-key "checkbox")
            "oa"  '(org-agenda-list :which-key "agenda")
+           "og"  '(org-set-tags-command :which-key "tag")
+           "op"  '(org-priority :which-key "priority")
+           "o>"  '(org-demote-subtree :which-key "demote")
+           "o<"  '(org-promote-subtree :which-key "promote")
            ;; Project
            "p"   '(nil :which-key "projects")
            "pf"  '(helm-projectile-find-file :which-key "find files")
@@ -184,6 +194,9 @@
            "sm"  '(helm-multi-swoop-current-mode :which-key "in mode buffers")
            "so"  '(helm-multi-swoop-org :which-key "in org buffers")
            "sp"  '(helm-do-grep-ag :which-key "in project")
+           "sr"  '(query-replace :which-key "replace")
+	   ;; Text
+	   "ts"  '(sort-lines :which-key "sort line")
            ;; Windows
            "w"   '(nil :which-key "windows")
            "wl"  '(windmove-right :which-key "move right")
@@ -195,9 +208,7 @@
            "wd"  '(delete-window :which-key "delete window")
            "wx"  '(delete-other-windows :which-key "delete other window")
            "ww"  '(other-window :which-key "next window")
-           ;; Apps
-           "a"   '(nil :which-key "apps")
-           "at"  '(ansi-term :which-key "open terminal")
+           "wg"  '(golden-ratio-toggle-widescreen :which-key "golden ratio")
            ;; Quit
            "q"   '(nil :which-key "quit")
            "qr" '(restart-emacs :which-key "restart emacs")
@@ -283,10 +294,6 @@
 (use-package evil-magit
   :after magit)
 
-;;
-;; Optional
-;;
-
 ;; Show matching parens
 (setq show-paren-delay 0)
 (show-paren-mode 1)
@@ -308,6 +315,8 @@
 
 ;; Screencasting
 (use-package camcorder)
+;; https://gitlab.com/ambrevar/emacs-gif-screencast
+;; https://gitlab.com/marcowahl/emacsshot
 
 ;; display typed commands
 (use-package command-log-mode)
@@ -324,3 +333,11 @@
   :config
   (setq evil-ledger-sort-key "S")
   (add-hook 'ledger-mode-hook #'evil-ledger-mode))
+
+;; Hooks
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; Windows
+(use-package golden-ratio
+  :config
+  (golden-ratio-mode 1))

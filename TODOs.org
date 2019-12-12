@@ -1,23 +1,36 @@
-* TODOs
+* [[elisp:(org-projectile-open-project%20"emacs.d")][emacs.d]] [9/12]
+  :PROPERTIES:
+  :CATEGORY: emacs.d
+  :END:
+** TODO start to use vanilla to build vanilla
 ** DONE ledger-mode
    CLOSED: [2019-11-25 Mon 17:52]
-** orgmode
-** start to use vanilla to build vanilla
+** TODO orgmode [4/5]
+*** DONE journal
+    CLOSED: [2019-12-01 Sun 21:48]
+*** DONE agenda
+    CLOSED: [2019-12-05 Thu 22:29]
+*** DONE tags, priority
+    CLOSED: [2019-12-12 Thu 10:31]
+*** TODO evil keybindings
+*** anniversaries
+** DONE text sorting
 ** sagemath
-** DONE journal
-   CLOSED: [2019-12-01 Sun 21:48]
-** DONE agenda
-   CLOSED: [2019-12-05 Thu 22:29]
-** DONE git
+** TODO git [1/2]
    CLOSED: [2019-11-30 Sat 15:10]
+*** TODO evil keybindings
+*** DONE magit
+*** forge
 ** DONE search
    CLOSED: [2019-11-30 Sat 16:56]
-** replace
-** keybindings
+** DONE replace
+** DONE general keybindings
 ** DONE comments
    CLOSED: [2019-12-04 Wed 00:04]
 ** DONE unimpaired
    CLOSED: [2019-12-04 Wed 00:04]
-** org: anniversaries
-** windows golden ratio
-** try remacs
+** DONE windows golden ratio
+** DONE try remacs
+** emacs-lisp
+*** autocompletion
+*** documentation
