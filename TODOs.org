@@ -1,26 +1,29 @@
-* [[elisp:(org-projectile-open-project%20"emacs.d")][emacs.d]] [9/12]
+* [[elisp:(org-projectile-open-project%20"emacs.d")][emacs.d]] [9/10]
   :PROPERTIES:
   :CATEGORY: emacs.d
   :END:
-** TODO start to use vanilla to build vanilla
+** TODO Vanilla Emacs
+   SCHEDULED: <2019-12-20 Fri +1w>
+   :PROPERTIES:
+   :LAST_REPEAT: [2019-12-13 Fri 22:38]
+   :END:
+   - State "DONE"       from "TODO"       [2019-12-13 Fri 22:38]
 ** DONE ledger-mode
    CLOSED: [2019-11-25 Mon 17:52]
-** TODO orgmode [4/5]
-*** DONE journal
-    CLOSED: [2019-12-01 Sun 21:48]
-*** DONE agenda
-    CLOSED: [2019-12-05 Thu 22:29]
-*** DONE tags, priority
-    CLOSED: [2019-12-12 Thu 10:31]
-*** TODO evil keybindings
-*** anniversaries
+** orgmode [3/6]
+   - [X] journal
+   - [X] agenda
+   - [X] tags, priority
+   - [ ] evil keybindings
+   - [ ] anniversaries
+   - [ ] schedule
+   - [ ] FIX new item formatting
 ** DONE text sorting
 ** sagemath
-** TODO git [1/2]
-   CLOSED: [2019-11-30 Sat 15:10]
-*** TODO evil keybindings
-*** DONE magit
-*** forge
+** git [1/3]
+   - [ ] evil keybindings
+   - [X] magit
+   - [ ] forge
 ** DONE search
    CLOSED: [2019-11-30 Sat 16:56]
 ** DONE replace
@@ -34,3 +37,4 @@
 ** emacs-lisp
 *** autocompletion
 *** documentation
+** home page with agenda, tasks, projects

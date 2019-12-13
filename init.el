@@ -27,7 +27,8 @@
 (column-number-mode t)
 
 ;; Font and frame size
-;; (add-to-list 'default-frame-alist '(font . "mononoki-12"))
+(set-face-attribute 'default t :font "Source Code Pro-7" )
+(add-to-list 'default-frame-alist '(font . "Source Code Pro-7"))
 (add-to-list 'default-frame-alist '(height . 24))
 (add-to-list 'default-frame-alist '(width . 80))
 
@@ -56,7 +57,7 @@
 (use-package evil-escape
   :ensure t
   :init
-  (setq-default evil-escape-key-sequence "fd")
+  (setq-default evil-escape-key-sequence "jk")
   :config
   (evil-escape-mode 1))
 (use-package evil-unimpaired
@@ -130,8 +131,10 @@
            "at"  '(ansi-term :which-key "open terminal")
            ;; Buffers
            "b"   '(nil :which-key "buffers")
-           "bb"  '(helm-buffers-list :which-key "buffers list")
-           "bs"  '(save-buffer :which-key "save buffer")
+           "bb"  '(helm-buffers-list :which-key "list")
+           "bd"  '(kill-buffer :which-key "delete")
+           "bs"  '(save-buffer :which-key "save")
+           "be"  '(eval-buffer :which-key "eval")
            ;; Comments
            "c"   '(nil :which-key "comments")
            "cc"  '(evilnc-copy-and-comment-lines :which-key "copy")
@@ -176,6 +179,7 @@
            "op"  '(org-priority :which-key "priority")
            "o>"  '(org-demote-subtree :which-key "demote")
            "o<"  '(org-promote-subtree :which-key "promote")
+           "os"  '(org-schedule :which-key "schedule")
            ;; Project
            "p"   '(nil :which-key "projects")
            "pf"  '(helm-projectile-find-file :which-key "find files")
