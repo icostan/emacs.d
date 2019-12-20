@@ -113,7 +113,7 @@
   (which-key-mode 1))
 
 ;; General keybindings
-(defun org-projectile/goto-todos ()
+(defun vanilla/projectile-goto-todos ()
   (interactive)
   (org-projectile-goto-location-for-project (projectile-project-name)))
 (use-package general
@@ -157,6 +157,7 @@
            "hk"  '(describe-key :which-key "describe key")
            "hK"  '(describe-keymap :which-key "describe keymap")
            "hb"  '(describe-bindings :which-key "describe bindings")
+           "hp"  '(describe-package :which-key "describe package")
            ;; Jump
            "j"   '(nil :which-key "jump")
            "jf"  '(helm-semantic-or-imenu :which-key "function in file")
@@ -180,11 +181,13 @@
            "o>"  '(org-demote-subtree :which-key "demote")
            "o<"  '(org-promote-subtree :which-key "promote")
            "os"  '(org-schedule :which-key "schedule")
+           "oi"  '(org-insert-structure-template :which-key "insert")
            ;; Project
            "p"   '(nil :which-key "projects")
            "pf"  '(helm-projectile-find-file :which-key "find files")
            "pp"  '(helm-projectile-switch-project :which-key "switch project")
-           "po"  '(org-projectile/goto-todos :which-key "todos")
+           "po"  '(vanilla/projectile-goto-todos :which-key "todos")
+           "pb"  '(helm-projectile-switch-to-buffer :which-key "switch buffer")
            ;; Recording
            "r"   '(nil :which-key "record")
            "rt"  '(camcorder-mode :which-key "toggle")
@@ -237,8 +240,10 @@
   ;; (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (projectile-mode 1))
 (use-package org-projectile
+  :init
   :config
-  (setq org-projectile-projects-file "TODOs.org")
+  (org-projectile-per-project)
+  (setq org-projectile-per-project-filepath "TODOs.org")
   (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
   (push (org-projectile-project-todo-entry) org-capture-templates))
 (use-package helm-projectile
@@ -251,29 +256,49 @@
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 ;; (use-package all-the-icons :ensure t)
 
+;; Code Snippets
+(use-package yasnippet
+  :init (yas-global-mode 1))
+(use-package yasnippet-snippets
+  :after yasnippet)
+
 ;; Programming languages
 (use-package ruby-mode
   :mode "\\.rb\\'"
   :interpreter "ruby")
+(use-package rspec-mode
+  :after ruby-mode
+  :config (rspec-install-snippets))
+(use-package bundler
+  :after ruby-mode)
 
 ;; Flycheck
 (use-package flycheck
   :init (global-flycheck-mode))
 
+;; Coverage
+(use-package cov
+  :config
+  (setq gcov-coverage-file-paths '("." "../coverage/lcov" "../../coverage/lcov"))
+  (setq gcov-coverage-alist '((".lcov" . lcov))))
+
 ;; Orgmode
 (use-package org
+  :ensure org-plus-contrib
   :init
   (setq org-confirm-babel-evaluate nil)
   (setq org-agenda-files (directory-files-recursively "~/Projects" "TODOs\\.org"))
+  (setq org-agenda-window-setup 'other-window)
+  (setq org-agenda-restore-windows-after-quit t)
   :config
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
-     (haskell . nil)
+     (haskell . t)
      (ledger . t)
      (python . t)
      (ruby . t)
-     ;; (sh . t)
+     (shell . t)
      (sql . nil))))
 (use-package org-journal
   :after org
@@ -345,3 +370,13 @@
 (use-package golden-ratio
   :config
   (golden-ratio-mode 1))
+
+;; Sagemath
+(use-package sage-shell-mode)
+(use-package ob-sagemath
+  :after sage-shell-mode
+  :config
+ (setq org-babel-default-header-args:sage '((:session . t)
+                                           (:results . "both"))))
+
+(org-agenda-list)

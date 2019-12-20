@@ -1,25 +1,29 @@
-* [[elisp:(org-projectile-open-project%20"emacs.d")][emacs.d]] [9/10]
+* [[elisp:(org-projectile-open-project%20"emacs.d")][emacs.d]] [12/13]
   :PROPERTIES:
   :CATEGORY: emacs.d
   :END:
 ** TODO Vanilla Emacs
-   SCHEDULED: <2019-12-20 Fri +1w>
+   SCHEDULED: <2019-12-27 Fri +1w>
    :PROPERTIES:
-   :LAST_REPEAT: [2019-12-13 Fri 22:38]
+   :LAST_REPEAT: [2019-12-20 Fri 22:54]
    :END:
+   - State "DONE"       from "TODO"       [2019-12-20 Fri 22:54]
    - State "DONE"       from "TODO"       [2019-12-13 Fri 22:38]
 ** DONE ledger-mode
    CLOSED: [2019-11-25 Mon 17:52]
-** orgmode [3/6]
+** orgmode [5/10]
    - [X] journal
    - [X] agenda
    - [X] tags, priority
    - [ ] evil keybindings
    - [ ] anniversaries
-   - [ ] schedule
+   - [ ] FIX schedule
    - [ ] FIX new item formatting
+   - [ ] capture and templates
+   - [X] babel
+   - [X] FIX goto TODOs, project/category properties
 ** DONE text sorting
-** sagemath
+** DONE sagemath
 ** git [1/3]
    - [ ] evil keybindings
    - [X] magit
@@ -38,3 +42,9 @@
 *** autocompletion
 *** documentation
 ** home page with agenda, tasks, projects
+** DONE yasnippets
+** DONE rspec-mode, bundler
+** FIX general keybindings in special buffers, *warnings* or *rspec-compilation*
+** context keybindings for major/minor modes
+** cov and inline coverage
+** FIX magit SSL commit

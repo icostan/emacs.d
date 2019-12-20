@@ -4,5 +4,5 @@ Vanilla Emacs configuration
 
 Start isolated Emacs instance
 #+begin_src sh
-  emacs -q -l ~/Projects/emacs.d/init.el ~/Projects/ledger.d
+  emacs -q -l ~/Projects/emacs.d/init.el ~/Projects/emacs.d/init.el
 #+end_src
