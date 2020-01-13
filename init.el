@@ -152,6 +152,7 @@
            "gc"  '(with-editor-cancel :which-key "cancel")
            ;; Help
            "h"   '(nil :which-key "help")
+           "ha"  '(apropos-command :which-key "apropos")
            "hv"  '(describe-variable :which-key "describe variable")
            "hf"  '(describe-function :which-key "describe function")
            "hk"  '(describe-key :which-key "describe key")
@@ -182,6 +183,7 @@
            "o<"  '(org-promote-subtree :which-key "promote")
            "os"  '(org-schedule :which-key "schedule")
            "oi"  '(org-insert-structure-template :which-key "insert")
+           "on"  '(org-next-visible-heading :which-key "next")
            ;; Project
            "p"   '(nil :which-key "projects")
            "pf"  '(helm-projectile-find-file :which-key "find files")
@@ -271,6 +273,9 @@
   :config (rspec-install-snippets))
 (use-package bundler
   :after ruby-mode)
+(use-package rbenv
+  :after ruby-mode
+  :config (global-rbenv-mode))
 
 ;; Flycheck
 (use-package flycheck
@@ -365,6 +370,7 @@
 
 ;; Hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (add-hook 'after-init-hook 'org-agenda-list)
 
 ;; Windows
 (use-package golden-ratio
@@ -379,4 +385,5 @@
  (setq org-babel-default-header-args:sage '((:session . t)
                                            (:results . "both"))))
 
+;; Startup home page
 (org-agenda-list)
