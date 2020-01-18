@@ -170,8 +170,11 @@
            "jc"  '(ace-jump-char-mode :which-key "to chat")
            "jw"  '(ace-jump-word-mode :which-key "to word")
            "jl"  '(ace-jump-line-mode :which-key "to line")
-           "jd"  '(lsp-goto-type-definition :which-key "to definition")
+           "jd"  '(lsp-find-declaration :which-key "to declaration")
+           "jD"  '(lsp-goto-type-definition :which-key "to definition")
            "ji"  '(lsp-goto-implementation :which-key "to implementation")
+           "jr"  '(lsp-find-references :which-key "to references")
+           "js"  '(helm-lsp-workspace-symbol :which-key "to symbol")
            ;; Ledger
            "l"   '(nil :which-key "ledger")
            "la"  '(ledger-add-transaction :which-key "add transaction")
@@ -190,6 +193,7 @@
            "os"  '(org-schedule :which-key "schedule")
            "oi"  '(org-insert-structure-template :which-key "insert")
            "on"  '(org-next-visible-heading :which-key "next")
+           "ol"  '(org-insert-link :which-key "link")
            ;; Project
            "p"   '(nil :which-key "projects")
            "pf"  '(helm-projectile-find-file :which-key "find files")
@@ -222,11 +226,13 @@
            "wh"  '(windmove-left :which-key "move left")
            "wk"  '(windmove-up :which-key "move up")
            "wj"  '(windmove-down :which-key "move bottom")
-           "w/"  '(split-window-right :which-key "split right")
+           "ws"  '(ace-select-window :which-key "move to any")
+           "w|"  '(split-window-right :which-key "split right")
            "w-"  '(split-window-below :which-key "split bottom")
-           "wd"  '(delete-window :which-key "delete window")
+           "wd"  '(delete-window :which-key "delete any")
+           "wD"  '(ace-delete-window :which-key "delete window")
            "wx"  '(delete-other-windows :which-key "delete other window")
-           "ww"  '(other-window :which-key "next window")
+           ;; "ww"  '(other-window :which-key "next window")
            "wg"  '(golden-ratio-toggle-widescreen :which-key "golden ratio")
            ;; Quit
            "q"   '(nil :which-key "quit")
@@ -394,6 +400,7 @@
 (use-package golden-ratio
   :config
   (golden-ratio-mode 1))
+(use-package ace-window)
 
 ;; Sagemath
 (use-package sage-shell-mode)
@@ -407,7 +414,9 @@
 (use-package lsp-mode
   :hook (prog-mode . lsp)
   :commands lsp
-  :config (setq lsp-prefer-flymake nil))
+  :config
+  (setq lsp-prefer-flymake nil)
+  (setq lsp-solargraph-use-bundler t))
 (use-package lsp-ui :commands lsp-ui-mode)
 (use-package company-lsp :commands company-lsp)
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
@@ -493,7 +502,10 @@
 (use-package treemacs-magit
   :after treemacs magit)
 
-;; Startup home page
-;; (org-agenda-list)
+;; Dashboard
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
 
 ;;; init.el ends here
