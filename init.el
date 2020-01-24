@@ -144,6 +144,10 @@
            "cc"  '(evilnc-copy-and-comment-lines :which-key "copy")
            "ci"  '(evilnc-comment-or-uncomment-lines :which-key "lines")
            "cp"  '(evilnc-comment-or-uncomment-paragraphs :which-key "paragraphs")
+           "cc"  '(compile :which-key "compile")
+           ;; Debug
+           "d"   '(nil :which-key "debug")
+           "dd"  '(disaster :which-key "disassemble")
            ;; Files
            "f"   '(nil :which-key "files")
            "ff"  '(helm-find-files :which-key "find files")
@@ -163,6 +167,10 @@
            "hK"  '(describe-keymap :which-key "describe keymap")
            "hb"  '(describe-bindings :which-key "describe bindings")
            "hp"  '(describe-package :which-key "describe package")
+	   ;; Insert
+	   "i"   '(nil :which-key "insert")
+	   "is"   '(yas-insert-snippet :which-key "snippet")
+	   "il"   '(lorem-ipsum-insert-sentences :which-key "lorem ipsum")
            ;; Jump
            "j"   '(nil :which-key "jump")
            "jf"  '(helm-semantic-or-imenu :which-key "function in file")
@@ -276,7 +284,7 @@
 
 ;; Code Snippets
 (use-package yasnippet
-  :init (yas-global-mode 1))
+  :config (yas-global-mode 1))
 (use-package yasnippet-snippets
   :after yasnippet)
 
@@ -300,6 +308,8 @@
 ;;; Go
 (use-package go-mode
   :mode "\\.go\\'")
+;;; Assembler
+(use-package disaster)
 
 ;; Flycheck
 (use-package flycheck
@@ -418,7 +428,9 @@
   (setq lsp-prefer-flymake nil)
   (setq lsp-solargraph-use-bundler t))
 (use-package lsp-ui :commands lsp-ui-mode)
-(use-package company-lsp :commands company-lsp)
+(use-package company-lsp
+  :commands company-lsp
+  :config (setq company-lsp-enable-snippet t))
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 ;; (use-package dap-mode)
@@ -506,6 +518,13 @@
 (use-package dashboard
   :ensure t
   :config
+  (setq dashboard-items '((agenda . 10)
+			  (projects . 5))
+	dashboard-center-content t
+	dashboard-startup-banner 'logo)
   (dashboard-setup-startup-hook))
+
+;;; Lorem
+(use-package lorem-ipsum)
 
 ;;; init.el ends here
