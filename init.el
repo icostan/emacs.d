@@ -139,6 +139,7 @@
            "bs"  '(save-buffer :which-key "save")
            "be"  '(eval-buffer :which-key "eval")
            "bf"  '(lsp-format-buffer :which-key "format")
+           "bh"  '(dashboard :which-key "format")
            ;; Comments
            "c"   '(nil :which-key "comments")
            "cc"  '(evilnc-copy-and-comment-lines :which-key "copy")
@@ -147,7 +148,11 @@
            "cc"  '(compile :which-key "compile")
            ;; Debug
            "d"   '(nil :which-key "debug")
-           "dd"  '(disaster :which-key "disassemble")
+           "dd"  '(dap-debug :which-key "debug")
+           "ds"  '(disaster :which-key "disassemble")
+	   ;; Editing
+           "e"   '(nil :which-key "editing")
+	   "es"  '(sort-lines :which-key "sort line")
            ;; Files
            "f"   '(nil :which-key "files")
            "ff"  '(helm-find-files :which-key "find files")
@@ -155,11 +160,13 @@
            "fs"  '(save-buffer :which-key "save file")
            ;; Git
            "g"   '(nil :which-key "git")
+           "gg"  '(magit-status :which-key "default (status)")
            "gs"  '(magit-status :which-key "status")
            "gf"  '(with-editor-finish :which-key "finish")
            "gc"  '(with-editor-cancel :which-key "cancel")
            ;; Help
            "h"   '(nil :which-key "help")
+           "hh"  '(which-key-show-top-level :which-key "default (apropos)")
            "ha"  '(apropos-command :which-key "apropos")
            "hv"  '(describe-variable :which-key "describe variable")
            "hf"  '(describe-function :which-key "describe function")
@@ -167,24 +174,28 @@
            "hK"  '(describe-keymap :which-key "describe keymap")
            "hb"  '(describe-bindings :which-key "describe bindings")
            "hp"  '(describe-package :which-key "describe package")
+           "hi"  '(info :which-key "info")
 	   ;; Insert
 	   "i"   '(nil :which-key "insert")
+	   "ii"   '(yas-insert-snippet :which-key "default (snippet)")
 	   "is"   '(yas-insert-snippet :which-key "snippet")
 	   "il"   '(lorem-ipsum-insert-sentences :which-key "lorem ipsum")
            ;; Jump
            "j"   '(nil :which-key "jump")
+           "jj"  '(helm-lsp-workspace-symbol :which-key "default (to symbol)")
            "jf"  '(helm-semantic-or-imenu :which-key "function in file")
            "jF"  '(helm-imenu-in-all-buffers :which-key "function in buffers")
-           "jc"  '(ace-jump-char-mode :which-key "to chat")
+           "jc"  '(ace-jump-char-mode :which-key "to char")
            "jw"  '(ace-jump-word-mode :which-key "to word")
            "jl"  '(ace-jump-line-mode :which-key "to line")
            "jd"  '(lsp-find-declaration :which-key "to declaration")
            "jD"  '(lsp-goto-type-definition :which-key "to definition")
            "ji"  '(lsp-goto-implementation :which-key "to implementation")
-           "jr"  '(lsp-find-references :which-key "to references")
            "js"  '(helm-lsp-workspace-symbol :which-key "to symbol")
+           "jS"  '(helm-lsp-global-workspace-symbol :which-key "to all symbols")
            ;; Ledger
            "l"   '(nil :which-key "ledger")
+           "ll"  '(ledger-add-transaction :which-key "default (add transaction)")
            "la"  '(ledger-add-transaction :which-key "add transaction")
            "lf"  '(ledger-mode-clean-buffer :which-key "format")
            ;; Org
@@ -208,21 +219,30 @@
            "pp"  '(helm-projectile-switch-project :which-key "switch project")
            "po"  '(vanilla/projectile-goto-todos :which-key "todos")
            "pb"  '(helm-projectile-switch-to-buffer :which-key "switch buffer")
+           ;; Replace
+           "r"   '(nil :which-key "replace")
+           "rr"  '(query-replace :which-key "default (in file)")
+           "rf"  '(query-replace :which-key "in file")
            ;; Recording
-           "r"   '(nil :which-key "record")
-           "rt"  '(camcorder-mode :which-key "toggle")
-           "rr"  '(camcorder-record :which-key "record")
-           "rc"  '(camcorder-convert-to-gif :which-key "convert")
+           "R"   '(nil :which-key "record")
+           "Rt"  '(camcorder-mode :which-key "toggle")
+           "Rr"  '(camcorder-record :which-key "record")
+           "Rc"  '(camcorder-convert-to-gif :which-key "convert")
            ;; Search
            "s"   '(nil :which-key "search")
+           "ss"  '(helm-swoop :which-key "default (in file)")
            "sf"  '(helm-swoop :which-key "in file")
            "sB"  '(helm-multi-swoop-all :which-key "in all buffers")
            "sb"  '(helm-multi-swoop-projectile :which-key "in project buffers")
            "sm"  '(helm-multi-swoop-current-mode :which-key "in mode buffers")
            "so"  '(helm-multi-swoop-org :which-key "in org buffers")
            "sp"  '(helm-do-grep-ag :which-key "in project")
-           "sr"  '(query-replace :which-key "replace")
-	   ;; Text
+           "sr"  '(lsp-find-references :which-key "references")
+           "sR"  '(lsp-ui-peek-find-references :which-key "references (peek)")
+           ;; "ss"  '(lsp-ui-find-workspace-symbol :which-key "symbols")
+           "sS"  '(lsp-ui-peek-find-workspace-symbol :which-key "symbols (peek)")
+	   ;; Treemacs
+           "t"   '(nil :which-key "treemacs")
 	   "ts"  '(sort-lines :which-key "sort line")
            "te"  '(lsp-treemacs-errors-list :which-key "errors")
            "tr"  '(lsp-treemacs-references :which-key "references")
@@ -422,18 +442,33 @@
 
 ;; Language Server Protocol
 (use-package lsp-mode
+  ;; :init (setq lsp-keymap-prefix "C-c s")
   :hook (prog-mode . lsp)
   :commands lsp
   :config
+  ;; (setq lsp-log-io t)
   (setq lsp-prefer-flymake nil)
+  ;; (setq lsp-signature-auto-activate t)
+  ;; (setq lsp-signature-render-documentation t)
   (setq lsp-solargraph-use-bundler t))
-(use-package lsp-ui :commands lsp-ui-mode)
+(use-package lsp-ui
+  :commands lsp-ui-mode
+  :config
+  (setq lsp-ui-doc-position 'top))
 (use-package company-lsp
   :commands company-lsp
   :config (setq company-lsp-enable-snippet t))
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
-;; (use-package dap-mode)
+
+;; Debug Adapter Protocol
+(use-package dap-mode
+  :config
+  (dap-mode 1)
+  (dap-ui-mode 1)
+  (dap-tooltip-mode 1))
+;; (use-package dap-gdb-lldb
+;;   :after dap-mode)
 
 (use-package open-junk-file)
 
@@ -521,6 +556,7 @@
   (setq dashboard-items '((agenda . 10)
 			  (projects . 5))
 	dashboard-center-content t
+	show-week-agenda t
 	dashboard-startup-banner 'logo)
   (dashboard-setup-startup-hook))
 
