@@ -38,9 +38,9 @@
 ;; Package config
 (require 'package)
 (setq package-enable-at-startup nil)
-(setq package-archives '(("org"   . "http://orgmode.org/elpa/")
-                         ("gnu"   . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")))
+(setq package-archives '(("gnu"   . "http://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")
+			 ("org"   . "http://orgmode.org/elpa/")))
 (package-initialize)
 
 ;; Bootstrap `use-package`
@@ -117,8 +117,19 @@
 
 ;; General keybindings
 (defun vanilla/projectile-goto-todos ()
+  "Go to project's TODOs file."
   (interactive)
   (org-projectile-goto-location-for-project (projectile-project-name)))
+(defun vanilla/disaster-with-gcc ()
+  "Compile with GCC."
+  (interactive)
+  (setq disaster-cc "gcc")
+  (disaster))
+(defun vanilla/disaster-with-clang ()
+  "Compile with CLang."
+  (interactive)
+  (setq disaster-cc "clang")
+  (disaster))
 (use-package general
   :ensure t
   :config (general-define-key
@@ -126,7 +137,7 @@
            :prefix "SPC"
            :non-normal-prefix "M-SPC"
            :keymaps 'override
-           ;; "/"   '(counsel-rg :which-key "ripgrep") ; You'll need counsel package for this
+           "/"   '(counsel-rg :which-key "ripgrep") ; You'll need counsel package for this
            "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
            "SPC" '(helm-M-x :which-key "M-x")
            ;; Apps
@@ -148,8 +159,10 @@
            "cc"  '(compile :which-key "compile")
            ;; Debug
            "d"   '(nil :which-key "debug")
-           "dd"  '(dap-debug :which-key "debug")
-           "ds"  '(disaster :which-key "disassemble")
+           "dg"  '(dap-debug :which-key "debug")
+           "dd"  '(nil :which-key "disassembly")
+           "ddg"  '(vanilla/disaster-with-gcc :which-key "with gcc")
+           "ddc"  '(vanilla/disaster-with-clang :which-key "with clang")
 	   ;; Editing
            "e"   '(nil :which-key "editing")
 	   "es"  '(sort-lines :which-key "sort line")
@@ -203,7 +216,8 @@
            "oe"  '(org-babel-execute-maybe :which-key "execute block")
            "ot"  '(org-todo :which-key "todo")
            "oj"  '(org-journal-new-entry :which-key "new journal entry")
-           "oc"  '(org-toggle-checkbox :which-key "checkbox")
+           "oc"  '(org-capture :which-key "capture")
+           "oC"  '(org-toggle-checkbox :which-key "checkbox")
            "oa"  '(org-agenda-list :which-key "agenda")
            "og"  '(org-set-tags-command :which-key "tag")
            "op"  '(org-priority :which-key "priority")
@@ -329,7 +343,10 @@
 (use-package go-mode
   :mode "\\.go\\'")
 ;;; Assembler
-(use-package disaster)
+(use-package disaster
+  :config
+  (setq disaster-objdump "objdump -d -M intel")
+  (setq disaster-project-root-files (list (list "setup.py" "package.json"))))
 
 ;; Flycheck
 (use-package flycheck
@@ -342,6 +359,9 @@
   (setq gcov-coverage-alist '((".lcov" . lcov))))
 
 ;; Orgmode
+(defun icostan/capture_template (name)
+  "Return template file for NAME."
+  `(file concat("templates/" name)))
 (use-package org
   :ensure org-plus-contrib
   :init
@@ -350,6 +370,9 @@
   (setq org-agenda-window-setup 'other-window)
   (setq org-agenda-restore-windows-after-quit t)
   :config
+  (push '("e" "emacs.d" entry (file+headline "~/Projects/emacs.d/TODOs.org" "Tasks") (file "templates/emacs.d-todo.org")) org-capture-templates)
+  (push '("a" "arch.d" entry (file+headline "~/Projects/arch.d/TODOs.org" "Tasks") (file "templates/arch.d-todo.org")) org-capture-templates)
+  (setq org-default-notes-file (concat org-directory "/notes.org"))
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
@@ -559,6 +582,14 @@
 	show-week-agenda t
 	dashboard-startup-banner 'logo)
   (dashboard-setup-startup-hook))
+
+;; Wakatime
+(use-package wakatime-mode
+  :init
+  (setq wakatime-api-key "978b706c-dcd2-4d83-955b-25ed115813b9")
+  ;; (setq wakatime-api-key (getenv "WAKATIME_KEY"))
+  :config
+  (global-wakatime-mode))
 
 ;;; Lorem
 (use-package lorem-ipsum)
