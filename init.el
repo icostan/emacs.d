@@ -213,11 +213,13 @@
            "lf"  '(ledger-mode-clean-buffer :which-key "format")
            ;; Org
            "o"   '(nil :which-key "org")
-           "oe"  '(org-babel-execute-maybe :which-key "execute block")
+           "oe"  '(org-babel-execute-src-block :which-key "execute block")
+           "oE"  '(org-babel-execute-maybe :which-key "execute all blocks")
+           "oT"  '(org-babel-tangle :which-key "tangle blocks")
            "ot"  '(org-todo :which-key "todo")
            "oj"  '(org-journal-new-entry :which-key "new journal entry")
-           "oc"  '(org-capture :which-key "capture")
-           "oC"  '(org-toggle-checkbox :which-key "checkbox")
+           "oC"  '(org-capture :which-key "capture")
+           "oc"  '(org-toggle-checkbox :which-key "checkbox")
            "oa"  '(org-agenda-list :which-key "agenda")
            "og"  '(org-set-tags-command :which-key "tag")
            "op"  '(org-priority :which-key "priority")
@@ -577,7 +579,7 @@
   :ensure t
   :config
   (setq dashboard-items '((agenda . 10)
-			  (projects . 5))
+			  (projects . 10))
 	dashboard-center-content t
 	show-week-agenda t
 	dashboard-startup-banner 'logo)
@@ -590,6 +592,9 @@
   ;; (setq wakatime-api-key (getenv "WAKATIME_KEY"))
   :config
   (global-wakatime-mode))
+
+;; enable electric parens
+(electric-pair-mode)
 
 ;;; Lorem
 (use-package lorem-ipsum)

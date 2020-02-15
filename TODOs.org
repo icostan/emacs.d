@@ -2,12 +2,16 @@
   :PROPERTIES:
   :CATEGORY: emacs.d
   :END:
-** Recurring
+** Research
+*** emmet.io for web development
+*** lispy edititing
+** Tasks
 *** TODO Vanilla Emacs
-    SCHEDULED: <2020-02-14 Fri +1w>
+    SCHEDULED: <2020-02-21 Fri +1w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-02-08 Sat 13:53]
+    :LAST_REPEAT: [2020-02-15 Sat 10:51]
     :END:
+    - State "DONE"       from "TODO"       [2020-02-15 Sat 10:51]
     - State "DONE"       from "TODO"       [2020-02-08 Sat 13:53]
     - State "DONE"       from "TODO"       [2020-01-31 Fri 17:02]
     - State "DONE"       from "TODO"       [2020-01-25 Sat 08:49]
@@ -17,10 +21,9 @@
     - State "DONE"       from "TODO"       [2020-01-06 Mon 12:07]
     - State "DONE"       from "TODO"       [2019-12-20 Fri 22:54]
     - State "DONE"       from "TODO"       [2019-12-13 Fri 22:38]
-** Tasks
 *** DONE ledger-mode
     CLOSED: [2019-11-25 Mon 17:52]
-*** orgmode [5/10]
+*** orgmode [6/13]
     - [X] journal
     - [X] agenda
     - [X] tags, priority
@@ -28,11 +31,12 @@
     - [ ] anniversaries
     - [ ] FIX schedule, missing CREATED
     - [ ] FIX new item formatting
-    - [ ] capture and templates
+    - [X] capture and templates
     - [X] babel
     - [X] FIX goto TODOs, project/category properties
     - [ ] task management from within agenda view
     - [ ] schedule on weekdays only
+    - [ ] fix keywords completions
 *** DONE text sorting
 *** DONE sagemath
 *** git [1/3]
@@ -91,8 +95,12 @@
 *** DONE dap-mode
 *** DONE treemacs
 *** call-graph
-*** try lispy edititing
 *** DONE fix Yasnippets completion, keybindings
-*** try emmet.io for web development
 *** understand general.el
 *** understand use-package.el
+*** lsp-mode for bash/zsh/sh
+   :PROPETIES:
+   :CREATED:  <2020-02-11 Tue>
+   :REFERRER:   [[file:~/Projects/blog/content/post/2020-02-10-bitcoin-native-segwit-address-derivation.org]]
+   :PROPETIES:
+*** DONE electric-pairs
