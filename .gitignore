@@ -1,3 +1,6 @@
 /elpa/
 /.vanilla.d/
 /*.el~
+projectile-bookmarks.eld
+auto-save-list
+files
