@@ -7,10 +7,11 @@
 *** lispy edititing
 ** Tasks
 *** TODO Vanilla Emacs
-    SCHEDULED: <2020-02-21 Fri +1w>
+    SCHEDULED: <2020-02-28 Fri +1w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-02-15 Sat 10:51]
+    :LAST_REPEAT: [2020-02-24 Mon 09:32]
     :END:
+    - State "DONE"       from "TODO"       [2020-02-24 Mon 09:32]
     - State "DONE"       from "TODO"       [2020-02-15 Sat 10:51]
     - State "DONE"       from "TODO"       [2020-02-08 Sat 13:53]
     - State "DONE"       from "TODO"       [2020-01-31 Fri 17:02]
@@ -56,7 +57,7 @@
 *** emacs-lisp
 **** autocompletion
 **** documentation
-*** dashboard with agenda, tasks, projects
+*** DONE dashboard with agenda, tasks, projects
 *** DONE yasnippets
 *** DONE rspec-mode, bundler
 *** FIX general keybindings in special buffers, *warnings* or *rspec-compilation*
@@ -104,3 +105,4 @@
    :REFERRER:   [[file:~/Projects/blog/content/post/2020-02-10-bitcoin-native-segwit-address-derivation.org]]
    :PROPETIES:
 *** DONE electric-pairs
+*** buffers: reuse goto buffer function

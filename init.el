@@ -130,6 +130,10 @@
   (interactive)
   (setq disaster-cc "clang")
   (disaster))
+(defun vanilla/buffers-dashboard ()
+  "Show dashboard."
+  (interactive)
+  (switch-to-buffer "*dashboard*"))
 (use-package general
   :ensure t
   :config (general-define-key
@@ -145,12 +149,14 @@
            "at"  '(ansi-term :which-key "open terminal")
            ;; Buffers
            "b"   '(nil :which-key "buffers")
-           "bb"  '(helm-buffers-list :which-key "list")
+           "bb"  '(helm-buffers-list :which-key "buffer")
            "bd"  '(kill-buffer :which-key "delete")
            "bs"  '(save-buffer :which-key "save")
            "be"  '(eval-buffer :which-key "eval")
            "bf"  '(lsp-format-buffer :which-key "format")
-           "bh"  '(dashboard :which-key "format")
+           "bg"  '(nil :which-key "goto")
+           "bgd"  '(vanilla/buffers-dashboard :which-key "dashboard")
+           "bgm"  '(view-echo-area-messages :which-key "messages")
            ;; Comments
            "c"   '(nil :which-key "comments")
            "cc"  '(evilnc-copy-and-comment-lines :which-key "copy")
