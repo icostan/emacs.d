@@ -30,8 +30,18 @@
 (column-number-mode t)
 
 ;; Font and frame size
-(set-face-attribute 'default t :font "Source Code Pro-7" )
-(add-to-list 'default-frame-alist '(font . "Source Code Pro-7"))
+;; (set-face-attribute 'default t :font "Monospace-7")
+;; (set-face-attribute 'default t :font "Source Code Pro-7")
+;; (set-face-attribute 'default t :font "Monaco-7")
+;; (set-face-attribute 'default t :font "Consolas-7")
+;; (set-face-attribute 'default t :font "Inconsolata-8")
+;; (set-face-attribute 'default t :font "Anonymous Pro-8")
+;; (set-face-attribute 'default t :font "DejaVu Sans Mono-7")
+;; (set-face-attribute 'default t :font "xos4 Terminus")
+(set-face-attribute 'default t :font "Source Code Pro:demibold")
+;; (set-face-attribute 'default t :font "Bitstream Vera Sans Mono-7:style=Roman")
+
+(add-to-list 'default-frame-alist '(font . "Source Code Pro:demibold"))
 (add-to-list 'default-frame-alist '(height . 24))
 (add-to-list 'default-frame-alist '(width . 80))
 
@@ -75,6 +85,27 @@
 (use-package monokai-theme
   :ensure t
   :config
+  (setq
+      ;; foreground and background
+      monokai-foreground     "#F8F8FF"
+      ;; monokai-background     "#282C34"
+      ;; highlights and comments
+      monokai-comments       "#75715E"
+      ;; monokai-emphasis       "#282C34"
+      ;; monokai-highlight      "#FFB269"
+      ;; monokai-highlight-alt  "#66D9EF"
+      ;; monokai-highlight-line "#1B1D1E"
+      ;; monokai-line-number    "#F8F8F0"
+      ;; colours
+      ;; monokai-blue           "#61AFEF"
+      ;; monokai-cyan           "#56B6C2"
+      ;; monokai-green          "#98C379"
+      ;; monokai-gray           "#3E4451"
+      ;; monokai-violet         "#C678DD"
+      ;; monokai-red            "#E06C75"
+      ;; monokai-orange         "#D19A66"
+      ;; monokai-yellow         "#E5C07B"
+   )
   (load-theme 'monokai t))
 
 ;; Helm
@@ -136,6 +167,7 @@
   (switch-to-buffer "*dashboard*"))
 (use-package general
   :ensure t
+  :init (general-evil-setup)
   :config (general-define-key
            :states '(normal visual insert emacs)
            :prefix "SPC"
@@ -185,8 +217,12 @@
            "gc"  '(with-editor-cancel :which-key "cancel")
            ;; Help
            "h"   '(nil :which-key "help")
-           "hh"  '(which-key-show-top-level :which-key "default (apropos)")
-           "ha"  '(apropos-command :which-key "apropos")
+           "hh"  '(which-key-show-top-level :which-key "top level")
+           "ha"  '(nil :which-key "apropos")
+           "haa"  '(apropos-all-words :which-key "all")
+           "hac"  '(apropos-command :which-key "command")
+           "haf"  '(apropos-function :which-key "function")
+           "hav"  '(apropos-variable :which-key "variable")
            "hv"  '(describe-variable :which-key "describe variable")
            "hf"  '(describe-function :which-key "describe function")
            "hk"  '(describe-key :which-key "describe key")
@@ -194,6 +230,7 @@
            "hb"  '(describe-bindings :which-key "describe bindings")
            "hp"  '(describe-package :which-key "describe package")
            "hi"  '(info :which-key "info")
+           "hr"  '(repeat-complex-command :which-key "repeat")
 	   ;; Insert
 	   "i"   '(nil :which-key "insert")
 	   "ii"   '(yas-insert-snippet :which-key "default (snippet)")
@@ -473,7 +510,8 @@
 
 ;; Language Server Protocol
 (use-package lsp-mode
-  ;; :init (setq lsp-keymap-prefix "C-c s")
+  :general
+  (general-nmap ", f" '(lsp-format-buffer :wk "format"))
   :hook (prog-mode . lsp)
   :commands lsp
   :config
@@ -601,6 +639,9 @@
 
 ;; enable electric parens
 (electric-pair-mode)
+
+;; enable flyspell
+(flyspell-mode)
 
 ;;; Lorem
 (use-package lorem-ipsum)

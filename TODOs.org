@@ -2,15 +2,18 @@
   :PROPERTIES:
   :CATEGORY: emacs.d
   :END:
+** Emacs Manual
+    - [X] 49.3 Customization - Key bindings
 ** Research
 *** emmet.io for web development
 *** lispy edititing
 ** Tasks
 *** TODO Vanilla Emacs
-    SCHEDULED: <2020-02-28 Fri +1w>
+    SCHEDULED: <2020-03-06 Fri +1w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-02-24 Mon 09:32]
+    :LAST_REPEAT: [2020-03-01 Sun 11:12]
     :END:
+    - State "DONE"       from "TODO"       [2020-03-01 Sun 11:12]
     - State "DONE"       from "TODO"       [2020-02-24 Mon 09:32]
     - State "DONE"       from "TODO"       [2020-02-15 Sat 10:51]
     - State "DONE"       from "TODO"       [2020-02-08 Sat 13:53]
@@ -65,7 +68,7 @@
 *** cov and inline coverage
 *** DONE FIX magit SSL commit
 *** TODO lsp-mode [1/1]
-**** DONE close c-lang
+**** DONE c-lang
     |-----------------------------+------+--------+---+----+------+--------+------------+------+-----|
     | lsp-mode                    | Ruby | Python | C | Go | Bash | Elixir | Javascript | Html | Css |
     |-----------------------------+------+--------+---+----+------+--------+------------+------+-----|
@@ -97,7 +100,8 @@
 *** DONE treemacs
 *** call-graph
 *** DONE fix Yasnippets completion, keybindings
-*** understand general.el
+*** DONE understand general.el
+    SCHEDULED: <2020-02-28 Fri>
 *** understand use-package.el
 *** lsp-mode for bash/zsh/sh
    :PROPETIES:
@@ -106,3 +110,14 @@
    :PROPETIES:
 *** DONE electric-pairs
 *** buffers: reuse goto buffer function
+*** DONE try new fonts (Info pages)
+    SCHEDULED: <2020-02-28 Fri>
+   :PROPETIES:
+   :CREATED:  <2020-02-27 Thu>
+   :REFERRER:   [[file:~/Projects/emacs.d/init.el::(add-to-list 'default-frame-alist '(font . "Source Code Pro-7"))]]
+   :PROPETIES:
+*** display sage session is required message
+   :PROPETIES:
+   :CREATED:  <2020-02-27 Thu>
+   :REFERRER:   [[file:~/Projects/blog/content/post/2020-02-25-commitment-schemes.org::*Homomorphic commitment on elliptic curve][Homomorphic commitment on elliptic curve]]
+   :PROPETIES:
