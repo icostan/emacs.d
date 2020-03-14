@@ -406,6 +406,9 @@
   :config
   (setq disaster-objdump "objdump -d -M intel")
   (setq disaster-project-root-files (list (list "setup.py" "package.json"))))
+;;; Pine Script
+(use-package pine-script-mode
+  :mode (("\\.pine" . pine-script-mode)))
 
 ;; Flycheck
 (use-package flycheck
