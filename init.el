@@ -139,6 +139,8 @@
           (if mark-active
               (buffer-substring-no-properties (mark) (point))
             ""))))
+(use-package helm-ag
+  :after helm)
 
 ;; Which Key
 (use-package which-key
@@ -204,13 +206,16 @@
            "dd"  '(nil :wk "disassembly")
            "ddg"  '(vanilla/disaster-with-gcc :wk "with gcc")
            "ddc"  '(vanilla/disaster-with-clang :wk "with clang")
+           "dh"  '(hexl-find-file :wk "file in HEX")
 	   ;; Editing
            "e"   '(nil :wk "editing")
 	   "es"  '(sort-lines :wk "sort lines")
 	   "el"  '(flycheck-list-errors :wk "list errors")
            ;; Files
            "f"   '(nil :wk "files")
-           "ff"  '(helm-find-files :wk "find files")
+           "ff"  '(helm-projectile-find-file :wk "find file")
+           "fF"  '(helm-find-files :wk "find file globally")
+           "fe"  '(helm-projectile-find-other-file :wk "find extension")
            "fj"  '(dired-jump :wk "find directory")
            "fs"  '(save-buffer :wk "save file")
            ;; Git
@@ -287,6 +292,7 @@
            "r"   '(nil :wk "replace")
            "rr"  '(query-replace :wk "default (in file)")
            "rf"  '(query-replace :wk "in file")
+           "rp"  '(helm-projectile-ag :wk "in project")
            ;; Recording
            "R"   '(nil :wk "record")
            "Rt"  '(camcorder-mode :wk "toggle")
@@ -302,7 +308,7 @@
            "so"  '(helm-multi-swoop-org :wk "in org buffers")
            "sd"  '(helm-do-grep-ag :wk "in directory")
            "sP"  '(helm-do-pdfgrep-1 :wk "in PDFs")
-           "sp"  '(projectile-grep :wk "in project")
+           "sp"  '(helm-projectile-ag :wk "in project")
            "sr"  '(lsp-find-references :wk "references")
            "sR"  '(lsp-ui-peek-find-references :wk "references (peek)")
 	   ;; Spelling
@@ -311,6 +317,7 @@
 	   "Sn"   '(flyspell-correct-next :wk "next")
 	   "Sb"   '(flyspell-buffer :wk "buffer")
 	   "St"   '(flyspell-mode :wk "toggle")
+	   "Si"   '(ispell-buffer :wk "interactive buffer")
            ;; "ss"  '(lsp-ui-find-workspace-symbol :wk "symbols")
            "sS"  '(lsp-ui-peek-find-workspace-symbol :wk "symbols (peek)")
            "sg"  '(find-grep :wk "with grep")
@@ -664,10 +671,15 @@
 (electric-pair-mode)
 
 ;; enable flyspell
-(flyspell-mode 1)
-(use-package flyspell-correct)
+(flyspell-prog-mode)
+;; (use-package flyspell-correct)
 
 ;;; Lorem
 (use-package lorem-ipsum)
+
+;;; Call graph
+(use-package ggtags)
+(use-package call-graph
+  :after ggtags)
 
 ;;; init.el ends here
