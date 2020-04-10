@@ -170,6 +170,16 @@
   "Show dashboard."
   (interactive)
   (switch-to-buffer "*dashboard*"))
+(defun vanilla/record-video ()
+  "Print DEMO START message and start video recording."
+  (interactive)
+  (camcorder-mode 'toggle)
+  (message " *** DEMO START - DEMO START - DEMO START *** "))
+(defun vanilla/record-gif ()
+  "Print DEMO START message and start GIF recording."
+  (interactive)
+  (gif-screencast-start-or-stop)
+  (message " *** DEMO START - DEMO START - DEMO START *** "))
 (use-package general
   :ensure t
   :init (general-evil-setup)
@@ -186,7 +196,8 @@
            "at"  '(ansi-term :wk "open terminal")
            ;; Buffers
            "b"   '(nil :wk "buffers")
-           "bb"  '(helm-buffers-list :wk "buffer")
+           "bb"  '(helm-buffers-list :wk "any buffer")
+           "bp"  '(helm-projectile-switch-to-buffer :wk "project buffer")
            "bd"  '(kill-buffer :wk "delete")
            "bs"  '(save-buffer :wk "save")
            "be"  '(eval-buffer :wk "eval")
@@ -213,10 +224,14 @@
 	   "el"  '(flycheck-list-errors :wk "list errors")
            ;; Files
            "f"   '(nil :wk "files")
-           "ff"  '(helm-projectile-find-file :wk "find file")
-           "fF"  '(helm-find-files :wk "find file globally")
+           "ff"  '(helm-projectile-find-file :wk "find file (default)")
+           "fo"  '(projectile-find-file-other-window :wk "file in other window")
+           "fG"  '(helm-locate :wk "file/directory globally")
+           "fp"  '(helm-projectile-find-file :wk "find in project")
+           "fP"  '(helm-projectile-find-file-in-known-projects :wk "file in known projects")
            "fe"  '(helm-projectile-find-other-file :wk "find extension")
-           "fj"  '(dired-jump :wk "find directory")
+           "fj"  '(dired-jump :wk "find current directory")
+           "fd"  '(helm-projectile-find-dir :wk "find directory in project")
            "fs"  '(save-buffer :wk "save file")
            ;; Git
            "g"   '(nil :wk "git")
@@ -281,6 +296,7 @@
            "oi"  '(org-insert-structure-template :wk "insert")
            "on"  '(org-next-visible-heading :wk "next")
            "ol"  '(org-insert-link :wk "link")
+           "oI"  '(org-toggle-inline-images :wk "toggle images")
            ;; Project
            "p"   '(nil :wk "projects")
            "pf"  '(helm-projectile-find-file :wk "find files")
@@ -295,9 +311,11 @@
            "rp"  '(helm-projectile-ag :wk "in project")
            ;; Recording
            "R"   '(nil :wk "record")
-           "Rt"  '(camcorder-mode :wk "toggle")
-           "Rr"  '(camcorder-record :wk "record")
-           "Rc"  '(camcorder-convert-to-gif :wk "convert")
+           "Rv"  '(vanilla/record-video :wk "video cast")
+           "Rc"  '(camcorder-convert-to-gif :wk "convert video-to-gif")
+           "Rg"  '(vanilla/record-gif :wk "gif cast")
+           "Rl"  '(clm/toggle-command-log-buffer :wk "toggle command log")
+	   "Rk"  '(keycast-mode :wk "toggle keycast log")
            ;; Search
            "s"   '(nil :wk "search")
            "ss"  '(helm-swoop :wk "default (in file)")
@@ -334,7 +352,7 @@
            "wh"  '(windmove-left :wk "move left")
            "wk"  '(windmove-up :wk "move up")
            "wj"  '(windmove-down :wk "move bottom")
-           "ws"  '(ace-select-window :wk "move to any")
+           "ww"  '(ace-select-window :wk "move to any")
            "w|"  '(split-window-right :wk "split right")
            "w-"  '(split-window-below :wk "split bottom")
            "wd"  '(delete-window :wk "delete any")
@@ -342,10 +360,14 @@
            "wx"  '(delete-other-windows :wk "delete other window")
            ;; "ww"  '(other-window :wk "next window")
            "wg"  '(golden-ratio-toggle-widescreen :wk "golden ratio")
+           "ws"  '(ace-swap-window :wk "swap")
            ;; Quit
-           "q"   '(nil :wk "quit")
+           "q"  '(nil :wk "quit")
            "qr" '(restart-emacs :wk "restart emacs")
            "qq" '(kill-emacs :wk "quit emacs")
+           "qm" '(make-frame :wk "make frame")
+           "qd" '(delete-frame :wk "delete frame")
+           "qf" '(toggle-frame-fullscreen :wk "fullscreen")
            ))
 
 ;; Fancy titlebar for MacOS
@@ -499,13 +521,14 @@
   :config
   (use-package org-tree-slide))
 
-;; Screencasting
-(use-package camcorder)
-;; https://gitlab.com/ambrevar/emacs-gif-screencast
+;; Screen casting
 ;; https://gitlab.com/marcowahl/emacsshot
+(use-package camcorder)
+(use-package gif-screencast)
 
-;; display typed commands
+;; Display typed commands
 (use-package command-log-mode)
+(use-package keycast)
 
 ;; Ledger
 (use-package ledger-mode
@@ -525,6 +548,7 @@
 ;; (add-hook 'after-init-hook 'org-agenda-list)
 
 ;; Windows
+;; try evil-window: "C-w"
 (use-package golden-ratio
   :config
   (golden-ratio-mode 1))
