@@ -247,14 +247,26 @@
            "hac"  '(apropos-command :wk "command")
            "haf"  '(apropos-function :wk "function")
            "hav"  '(apropos-variable :wk "variable")
-           "hv"  '(describe-variable :wk "describe variable")
-           "hf"  '(describe-function :wk "describe function")
-           "hk"  '(describe-key :wk "describe key")
-           "hK"  '(describe-keymap :wk "describe keymap")
-           "hb"  '(describe-bindings :wk "describe bindings")
-           "hp"  '(describe-package :wk "describe package")
+           "hd"  '(nil :wk "describe")
+           "hdd"  '(helpful-at-point :wk "token at point")
+           "hdv"  '(helpful-variable :wk "variable")
+           "hdc"  '(helpful-command :wk "command")
+           ;; "hdf"  '(helpful-callable :wk "function or macro")
+           "hdf"  '(helpful-function :wk "function only")
+           "hdm"  '(describe-mode :wk "mode")
+           "hdk"  '(helpful-key :wk "key")
+           "hdK"  '(counsel-describe-map :wk "keymap")
+           "hdb"  '(counsel-descbinds :wk "bindings")
+           "hda"  '(counsel-describe-face :wk "face")
+           "hdF"  '(describe-font :wk "font")
+           "hdt"  '(describe-theme :wk "theme")
+           "hdp"  '(describe-package :wk "package")
+           "hdC"  '(describe-char :wk "char")
            "hi"  '(info :wk "info")
            "hr"  '(repeat-complex-command :wk "repeat")
+           "he"  '(view-echo-area-messages :wk "view echo")
+           "ho"  '(nil :wk "online")
+           "hod"  '(devdocs-search :wk "devdocs")
 	   ;; Insert
 	   "i"   '(nil :wk "insert")
 	   "ii"   '(yas-insert-snippet :wk "default (snippet)")
@@ -358,6 +370,7 @@
            "wd"  '(delete-window :wk "delete any")
            "wD"  '(ace-delete-window :wk "delete window")
            "wx"  '(delete-other-windows :wk "delete other window")
+           "wm"  '(minimap-mode :wk "toggle minimap")
            ;; "ww"  '(other-window :wk "next window")
            "wg"  '(golden-ratio-toggle-widescreen :wk "golden ratio")
            "ws"  '(ace-swap-window :wk "swap")
@@ -413,11 +426,17 @@
 ;; Programming languages
 ;;; Ruby
 (use-package ruby-mode
+  :general
+  (general-nmap ", s" '(minitest-verify-single :wk "test single")
+                ", a" '(minitest-verify-all :wk "test all"))
   :mode "\\.rb\\'"
   :interpreter "ruby")
 (use-package rspec-mode
   :after ruby-mode
   :config (rspec-install-snippets))
+(use-package minitest
+  :after ruby-mode
+  :config (minitest-install-snippets))
 (use-package bundler
   :after ruby-mode)
 (use-package rbenv
@@ -565,14 +584,15 @@
 ;; Language Server Protocol
 (use-package lsp-mode
   :general
-  (general-nmap ", f" '(lsp-format-buffer :wk "format"))
+  (general-nmap ", f" '(lsp-format-buffer :wk "format")
+                ", o" '(switch-to-buffer("*ruby-ls*") :wk "output"))
   :hook (prog-mode . lsp)
   :commands lsp
   :config
   ;; (setq lsp-log-io t)
   (setq lsp-prefer-flymake nil)
-  ;; (setq lsp-signature-auto-activate t)
-  ;; (setq lsp-signature-render-documentation t)
+  (setq lsp-signature-auto-activate t)
+  (setq lsp-signature-render-documentation t)
   (setq lsp-solargraph-use-bundler t))
 (use-package lsp-ui
   :commands lsp-ui-mode
@@ -705,5 +725,15 @@
 (use-package ggtags)
 (use-package call-graph
   :after ggtags)
+
+(use-package helpful)
+;; (use-package lookup)
+(use-package counsel)
+(use-package minimap
+  :config
+  (setq minimap-width-fraction 0.05))
+
+;;; devdocs
+(use-package devdocs)
 
 ;;; init.el ends here

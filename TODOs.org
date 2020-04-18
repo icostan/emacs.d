@@ -9,10 +9,11 @@
 *** lispy edititing
 ** Tasks
 *** TODO Vanilla Emacs
-    SCHEDULED: <2020-04-17 Fri +1w>
+    SCHEDULED: <2020-04-24 Fri +1w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-04-10 Fri 10:51]
+    :LAST_REPEAT: [2020-04-18 Sat 06:47]
     :END:
+    - State "DONE"       from "TODO"       [2020-04-18 Sat 06:47]
     - State "DONE"       from "TODO"       [2020-04-10 Fri 10:51]
     - State "DONE"       from "TODO"       [2020-04-05 Sun 13:41]
     - State "DONE"       from "TODO"       [2020-03-30 Mon 12:05]
@@ -137,4 +138,9 @@
    :PROPETIES:
    :CREATED:  <2020-03-04 Wed>
    :REFERRER:   [[file:~/Repos/linux/drivers/net/wireless/realtek/rtw88/mac.c][file:~/Repos/linux/drivers/net/wireless/realtek/rtw88/mac.c]]
+   :PROPETIES:
+*** , o/e bindings for lsp output/error
+   :PROPETIES:
+   :CREATED:  <2020-04-11 Sat>
+   :REFERRER:   [[file:~/Projects/deribit-api-ruby/lib/deribit/client.rb::MAINNET_URL = 'www.deribit.com']]
    :PROPETIES:
