@@ -9,10 +9,11 @@
 *** lispy edititing
 ** Tasks
 *** TODO Vanilla Emacs
-    SCHEDULED: <2020-04-24 Fri +1w>
+    SCHEDULED: <2020-05-01 Fri +1w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-04-18 Sat 06:47]
+    :LAST_REPEAT: [2020-04-27 Mon 13:15]
     :END:
+    - State "DONE"       from "TODO"       [2020-04-27 Mon 13:15]
     - State "DONE"       from "TODO"       [2020-04-18 Sat 06:47]
     - State "DONE"       from "TODO"       [2020-04-10 Fri 10:51]
     - State "DONE"       from "TODO"       [2020-04-05 Sun 13:41]

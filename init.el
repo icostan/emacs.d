@@ -458,6 +458,13 @@
 (use-package pine-script-mode
   :mode (("\\.pine" . pine-script-mode)))
 
+;; Markup
+;;; Yaml
+;;;; npm install -g yaml-language-server
+(use-package yaml-mode)
+;;; HTML
+;;;; npm install -g vscode-html-languageserver-bin
+
 ;; Flycheck
 (use-package flycheck
   :init (global-flycheck-mode))
