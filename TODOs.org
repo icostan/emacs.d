@@ -145,3 +145,4 @@
    :CREATED:  <2020-04-11 Sat>
    :REFERRER:   [[file:~/Projects/deribit-api-ruby/lib/deribit/client.rb::MAINNET_URL = 'www.deribit.com']]
    :PROPETIES:
+*** play with ivy/swiper

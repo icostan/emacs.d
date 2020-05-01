@@ -60,7 +60,20 @@
   (package-install 'use-package-ensure))
 (require 'use-package)
 (require 'use-package-ensure)
-(setq use-package-always-ensure t)
+(setq use-package-always-ensure t
+      use-package-compute-statistics t)
+
+;; other use-package' goodies
+(use-package use-package-ensure-system-package
+  :ensure t)
+(use-package auto-package-update
+  :config
+  (setq auto-package-update-delete-old-versions t)
+  ;; (setq auto-package-update-hide-results t)
+  (auto-package-update-maybe))
+(use-package use-package-chords
+  :ensure t
+  :config (key-chord-mode 1))
 
 ;; Bootstrap Straight
 ;;; https://github.com/raxod502/straight.el
@@ -138,7 +151,9 @@
         (lambda ()
           (if mark-active
               (buffer-substring-no-properties (mark) (point))
-            ""))))
+            "")))
+  :general
+  (general-nmap "g /" '(helm-swoop :wk "search")))
 (use-package helm-ag
   :after helm)
 
@@ -242,6 +257,7 @@
            ;; Help
            "h"   '(nil :wk "help")
            "hh"  '(which-key-show-top-level :wk "top level")
+           "hs"  '(use-package-report :wk "use-package report")
            "ha"  '(nil :wk "apropos")
            "haa"  '(apropos-all-words :wk "all")
            "hac"  '(apropos-command :wk "command")
@@ -460,8 +476,8 @@
 
 ;; Markup
 ;;; Yaml
-;;;; npm install -g yaml-language-server
-(use-package yaml-mode)
+(use-package yaml-mode
+  :ensure-system-package (yaml-language-server . "npm i -g yaml-language-server"))
 ;;; HTML
 ;;;; npm install -g vscode-html-languageserver-bin
 
@@ -488,6 +504,8 @@
 (use-package org
   :ensure org-plus-contrib
   :init
+  (setq org-todo-keyword-faces
+	'(("CANCELED" . "yellow") ("DONE" . "green") ("FAIL" . "red")))
   (setq org-confirm-babel-evaluate nil)
   (setq org-agenda-files (directory-files-recursively "~/Projects" "TODOs\\.org"))
   (setq org-agenda-window-setup 'other-window)
@@ -527,6 +545,8 @@
   (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1))
 (use-package evil-magit
   :after magit)
+(use-package forge
+  :after magit)
 
 ;; Show matching parens
 (setq show-paren-delay 0)
@@ -537,7 +557,16 @@
 (setq auto-save-default nil) ; stop creating #autosave# files
 
 ;; Move
-(use-package ace-jump-mode)
+(use-package ace-jump-mode
+  :general
+  (general-nmap "g l" '(ace-jump-line-mode :wk "to line")
+                "g w" '(ace-jump-word-mode :wk "to word")
+                "g W" '(evil-fill :wk "evil-fill (unbound w)")
+                "g c" '(ace-jump-char-mode :wk "to char")))
+;; (use-package ace-jump-mode
+;;   :chords (("gc" . ace-jump-char-mode)
+;;            ("gw" . ace-jump-word-mode)
+;;            ("gl" . ace-jump-line-mode)))
 ;; (use-package avy
 ;;   :bind (("C-c j l" . avy-goto-line)
 ;;          ("C-c j a" . avy-goto-char-timer))
@@ -742,5 +771,10 @@
 
 ;;; devdocs
 (use-package devdocs)
+
+;;; rg
+(use-package rg
+  :ensure-system-package
+  (rg . ripgrep))
 
 ;;; init.el ends here
