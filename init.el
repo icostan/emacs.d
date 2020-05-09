@@ -64,15 +64,13 @@
       use-package-compute-statistics t)
 
 ;; other use-package' goodies
-(use-package use-package-ensure-system-package
-  :ensure t)
+(use-package use-package-ensure-system-package)
 (use-package auto-package-update
   :config
   (setq auto-package-update-delete-old-versions t)
   ;; (setq auto-package-update-hide-results t)
   (auto-package-update-maybe))
 (use-package use-package-chords
-  :ensure t
   :config (key-chord-mode 1))
 
 ;; Bootstrap Straight
@@ -80,11 +78,9 @@
 
 ;; Vim mode
 (use-package evil
-  :ensure t
   :config
   (evil-mode 1))
 (use-package evil-escape
-  :ensure t
   :init
   (setq-default evil-escape-key-sequence "jk")
   :config
@@ -99,7 +95,6 @@
 
 ;; Theme
 (use-package monokai-theme
-  :ensure t
   :config
   (setq
       ;; foreground and background
@@ -126,7 +121,6 @@
 
 ;; Helm
 (use-package helm
-  :ensure t
   :init
   (setq helm-M-x-fuzzy-match t
         helm-mode-fuzzy-match t
@@ -145,21 +139,20 @@
   :config
   (helm-mode 1))
 (use-package helm-swoop
+  :general
+  (general-nmap "g /" '(helm-swoop :wk "search"))
   :after helm
   :init
   (setq helm-swoop-pre-input-function
         (lambda ()
           (if mark-active
               (buffer-substring-no-properties (mark) (point))
-            "")))
-  :general
-  (general-nmap "g /" '(helm-swoop :wk "search")))
+            ""))))
 (use-package helm-ag
   :after helm)
 
 ;; Which Key
 (use-package which-key
-  :ensure t
   :init
   (setq which-key-separator " ")
   (setq which-key-prefix-prefix "+")
@@ -196,7 +189,6 @@
   (gif-screencast-start-or-stop)
   (message " *** DEMO START - DEMO START - DEMO START *** "))
 (use-package general
-  :ensure t
   :init (general-evil-setup)
   :config (general-define-key
            :states '(normal visual insert emacs)
@@ -228,15 +220,21 @@
            "cc"  '(compile :wk "compile")
            ;; Debug
            "d"   '(nil :wk "debug")
-           "dg"  '(dap-debug :wk "debug")
+           "dp"  '(dap-debug :wk "dap")
+           "de"  '(edebug-defun :wk "edebug-defun")
            "dd"  '(nil :wk "disassembly")
            "ddg"  '(vanilla/disaster-with-gcc :wk "with gcc")
            "ddc"  '(vanilla/disaster-with-clang :wk "with clang")
            "dh"  '(hexl-find-file :wk "file in HEX")
-	   ;; Editing
-           "e"   '(nil :wk "editing")
-	   "es"  '(sort-lines :wk "sort lines")
-	   "el"  '(flycheck-list-errors :wk "list errors")
+	   ;; Emacs
+           "e"   '(nil :wk "emacs")
+           "ee"  '(eval-last-sexp :wk "eval sexp")
+           "ed"  '(eval-defun :wk "eval defun")
+	   "eb"  '(backward-up-list :wk "backward up")
+	   "ei"  '(indent-pp-sexp :wk "indent sexp")
+           "E"   '(nil :wk "editing")
+	   "Es"  '(sort-lines :wk "sort lines")
+	   "El"  '(flycheck-list-errors :wk "list errors")
            ;; Files
            "f"   '(nil :wk "files")
            "ff"  '(helm-projectile-find-file :wk "find file (default)")
@@ -504,6 +502,7 @@
 (use-package org
   :ensure org-plus-contrib
   :init
+  (setq image-file-name-regexps (list (regexp-quote "svg")))
   (setq org-todo-keyword-faces
 	'(("CANCELED" . "yellow") ("DONE" . "green") ("FAIL" . "red")))
   (setq org-confirm-babel-evaluate nil)
@@ -528,6 +527,7 @@
   :init
   (setq org-journal-dir "~/Projects/org.d/journal")
   (setq org-journal-file-type 'monthly)
+  (setq org-read-date-popup-calendar nil)
   :config
   (setq org-journal-date-format "%A, %x")
   (setq org-journal-time-format "")
@@ -730,7 +730,6 @@
 
 ;; Dashboard
 (use-package dashboard
-  :ensure t
   :config
   (setq dashboard-items '((agenda . 10)
 			  (projects . 10))

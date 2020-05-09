@@ -3,16 +3,24 @@
   :CATEGORY: emacs.d
   :END:
 ** Emacs Manual
-    - [X] 49.3 Customization - Key bindings
+   - [X] 49.3 Customization - Key bindings
+** Intro to Emacs Lisp
+   - [X] 17. Debugging
+** Emacs Lisp
+   - [X] 18. Debugging Lisp Programs
 ** Research
 *** emmet.io for web development
 *** lispy edititing
+*** https://github.com/vutran1710/Ayu-Theme-Emacs
+*** play with ivy/swiper
 ** Tasks
 *** TODO Vanilla Emacs
-    SCHEDULED: <2020-05-01 Fri +1w>
+    SCHEDULED: <2020-05-15 Fri +1w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-04-27 Mon 13:15]
+    :LAST_REPEAT: [2020-05-09 Sat 10:49]
     :END:
+    - State "DONE"       from "TODO"       [2020-05-09 Sat 10:49]
+    - State "DONE"       from "TODO"       [2020-05-01 Fri 19:10]
     - State "DONE"       from "TODO"       [2020-04-27 Mon 13:15]
     - State "DONE"       from "TODO"       [2020-04-18 Sat 06:47]
     - State "DONE"       from "TODO"       [2020-04-10 Fri 10:51]
@@ -145,4 +153,9 @@
    :CREATED:  <2020-04-11 Sat>
    :REFERRER:   [[file:~/Projects/deribit-api-ruby/lib/deribit/client.rb::MAINNET_URL = 'www.deribit.com']]
    :PROPETIES:
-*** play with ivy/swiper
+*** literate emacs config with org-tanglesync
+*** read edebug and fix date/calendar issue
+   :PROPETIES:
+   :CREATED:  <2020-05-04 Mon>
+   :REFERRER:   [[file:~/Projects/ledger.d/202005.ledger::Expenses:Groceries 40 RON]]
+   :PROPETIES:
