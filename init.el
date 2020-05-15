@@ -4,6 +4,9 @@
 ;; Config directory
 (setq user-emacs-directory "~/.vanilla.d/")
 
+;;; load path
+(add-to-list 'load-path (expand-file-name "langs" "~/Projects/emacs.d"))
+
 ;; Minimal UI
 (if (fboundp 'scroll-bar-mode)
     (scroll-bar-mode -1))
@@ -67,9 +70,9 @@
 (use-package use-package-ensure-system-package)
 (use-package auto-package-update
   :config
-  (setq auto-package-update-delete-old-versions t)
-  ;; (setq auto-package-update-hide-results t)
-  (auto-package-update-maybe))
+  (setq auto-package-update-delete-old-versions t
+	auto-package-update-interval 7
+	auto-package-update-hide-results nil))
 (use-package use-package-chords
   :config (key-chord-mode 1))
 
@@ -154,8 +157,8 @@
 ;; Which Key
 (use-package which-key
   :init
-  (setq which-key-separator " ")
-  (setq which-key-prefix-prefix "+")
+  (setq which-key-separator " "
+	which-key-prefix-prefix "+")
   :config
   (which-key-mode 1))
 
@@ -228,6 +231,7 @@
            "dh"  '(hexl-find-file :wk "file in HEX")
 	   ;; Emacs
            "e"   '(nil :wk "emacs")
+           "eu"  '(auto-package-update-now :wk "update now")
            "ee"  '(eval-last-sexp :wk "eval sexp")
            "ed"  '(eval-defun :wk "eval defun")
 	   "eb"  '(backward-up-list :wk "backward up")
@@ -308,7 +312,8 @@
            "o"   '(nil :wk "org")
            "oe"  '(org-babel-execute-src-block :wk "execute block")
            "oE"  '(org-babel-execute-maybe :wk "execute all blocks")
-           "oT"  '(org-babel-tangle :wk "tangle blocks")
+           "oT"  '(org-babel-tangle :wk "Tangle blocks")
+           "oS"  '(org-tanglesync-process-buffer-automatic :wk "tangle Sync")
            "ot"  '(org-todo :wk "todo")
            "oj"  '(org-journal-new-entry :wk "new journal entry")
            "oC"  '(org-capture :wk "capture")
@@ -323,6 +328,7 @@
            "on"  '(org-next-visible-heading :wk "next")
            "ol"  '(org-insert-link :wk "link")
            "oI"  '(org-toggle-inline-images :wk "toggle images")
+           "oh"  '(org-preview-html-mode :wk "html preview")
            ;; Project
            "p"   '(nil :wk "projects")
            "pf"  '(helm-projectile-find-file :wk "find files")
@@ -438,39 +444,12 @@
   :after yasnippet)
 
 ;; Programming languages
-;;; Ruby
-(use-package ruby-mode
-  :general
-  (general-nmap ", s" '(minitest-verify-single :wk "test single")
-                ", a" '(minitest-verify-all :wk "test all"))
-  :mode "\\.rb\\'"
-  :interpreter "ruby")
-(use-package rspec-mode
-  :after ruby-mode
-  :config (rspec-install-snippets))
-(use-package minitest
-  :after ruby-mode
-  :config (minitest-install-snippets))
-(use-package bundler
-  :after ruby-mode)
-(use-package rbenv
-  :after ruby-mode
-  :config (global-rbenv-mode))
-;;; Python
-(use-package python
-  :mode ("\\.py\\'" . python-mode)
-  :interpreter ("python" . python-mode))
-;;; Go
-(use-package go-mode
-  :mode "\\.go\\'")
-;;; Assembler
-(use-package disaster
-  :config
-  (setq disaster-objdump "objdump -d -M intel")
-  (setq disaster-project-root-files (list (list "setup.py" "package.json"))))
-;;; Pine Script
-(use-package pine-script-mode
-  :mode (("\\.pine" . pine-script-mode)))
+(require 'asm)
+(require 'go)
+(require 'pine)
+(require 'python)
+(require 'ruby)
+;; (require 'elixir)
 
 ;; Markup
 ;;; Yaml
@@ -492,8 +471,8 @@
 ;; Coverage
 (use-package cov
   :config
-  (setq gcov-coverage-file-paths '("." "../coverage/lcov" "../../coverage/lcov"))
-  (setq gcov-coverage-alist '((".lcov" . lcov))))
+  (setq gcov-coverage-file-paths '("." "../coverage/lcov" "../../coverage/lcov")
+	gcov-coverage-alist '((".lcov" . lcov))))
 
 ;; Orgmode
 (defun icostan/capture_template (name)
@@ -502,13 +481,12 @@
 (use-package org
   :ensure org-plus-contrib
   :init
-  (setq image-file-name-regexps (list (regexp-quote "svg")))
-  (setq org-todo-keyword-faces
-	'(("CANCELED" . "yellow") ("DONE" . "green") ("FAIL" . "red")))
-  (setq org-confirm-babel-evaluate nil)
-  (setq org-agenda-files (directory-files-recursively "~/Projects" "TODOs\\.org"))
-  (setq org-agenda-window-setup 'other-window)
-  (setq org-agenda-restore-windows-after-quit t)
+  (setq image-file-name-regexps (list (regexp-quote "svg"))
+	org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "red"))
+	org-confirm-babel-evaluate nil
+	org-agenda-files (directory-files-recursively "~/Projects" "TODOs\\.org")
+	org-agenda-window-setup 'other-window
+	org-agenda-restore-windows-after-quit t)
   :config
   (push '("e" "emacs.d" entry (file+headline "~/Projects/emacs.d/TODOs.org" "Tasks") (file "templates/emacs.d-todo.org")) org-capture-templates)
   (push '("a" "arch.d" entry (file+headline "~/Projects/arch.d/TODOs.org" "Tasks") (file "templates/arch.d-todo.org")) org-capture-templates)
@@ -525,13 +503,25 @@
 (use-package org-journal
   :after org
   :init
-  (setq org-journal-dir "~/Projects/org.d/journal")
-  (setq org-journal-file-type 'monthly)
-  (setq org-read-date-popup-calendar nil)
+  (setq org-journal-dir "~/Projects/org.d/journal"
+	org-journal-file-type 'monthly
+	org-read-date-popup-calendar nil)
   :config
-  (setq org-journal-date-format "%A, %x")
-  (setq org-journal-time-format "")
-  (setq org-journal-time-prefix "  - [ ] "))
+  (setq org-journal-date-format "%A, %x"
+	org-journal-time-format ""
+	org-journal-time-prefix "  - [ ] "))
+(use-package org-tanglesync
+  :hook ((org-mode . org-tanglesync-mode)
+         ((prog-mode text-mode) . org-tanglesync-watch-mode))
+  ;; :custom
+  ;; (org-tanglesync-watch-files '("~/Projects/emacs.d/langs/README.org"))
+  ;; (org-tanglesync-default-diff-action :external)
+  ;; (org-tanglesync-watch-mode 1)
+  :config
+  (setq org-tanglesync-watch-files '("README.org")
+	org-tanglesync-watch-mode 1
+  	org-tanglesync-default-diff-action :external))
+(use-package org-preview-html)
 
 ;; Company mode for Completion
 (use-package company
@@ -625,22 +615,23 @@
   :hook (prog-mode . lsp)
   :commands lsp
   :config
-  ;; (setq lsp-log-io t)
-  (setq lsp-prefer-flymake nil)
-  (setq lsp-signature-auto-activate t)
-  (setq lsp-signature-render-documentation t)
-  (setq lsp-solargraph-use-bundler t))
+  (setq lsp-prefer-flymake nil
+	;; lsp-log-io t
+	lsp-signature-auto-activate t
+	lsp-signature-render-documentation t
+	lsp-solargraph-use-bundler t))
 (use-package lsp-ui
   :commands lsp-ui-mode
   :config
   (setq lsp-ui-doc-position 'top))
 (use-package company-lsp
   :commands company-lsp
-  :config (setq company-lsp-enable-snippet t))
+  :config
+  (setq company-lsp-enable-snippet t))
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 
-;; Debug Adapter Protocol
+;; Debugging
 (use-package dap-mode
   :config
   (dap-mode 1)
@@ -648,10 +639,11 @@
   (dap-tooltip-mode 1))
 ;; (use-package dap-gdb-lldb
 ;;   :after dap-mode)
-
+(use-package edebug-x)
 (use-package open-junk-file)
 
 ;; treemacs
+;; (use-package tree)
 (use-package treemacs
   :defer t
   :init

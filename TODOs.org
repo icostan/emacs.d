@@ -11,10 +11,11 @@
 ** Research
 *** emmet.io for web development
 *** lispy edititing
-*** https://github.com/vutran1710/Ayu-Theme-Emacs
+*** DONE https://github.com/vutran1710/Ayu-Theme-Emacs
 *** play with ivy/swiper
+*** https://github.com/quelpa/quelpa
 ** Tasks
-*** TODO Vanilla Emacs
+*** TODO Vanilla Emacs: improvements
     SCHEDULED: <2020-05-15 Fri +1w>
     :PROPERTIES:
     :LAST_REPEAT: [2020-05-09 Sat 10:49]
@@ -153,8 +154,8 @@
    :CREATED:  <2020-04-11 Sat>
    :REFERRER:   [[file:~/Projects/deribit-api-ruby/lib/deribit/client.rb::MAINNET_URL = 'www.deribit.com']]
    :PROPETIES:
-*** literate emacs config with org-tanglesync
-*** read edebug and fix date/calendar issue
+*** TODO literate emacs config with org-tanglesync
+*** DONE read edebug and fix date/calendar issue
    :PROPETIES:
    :CREATED:  <2020-05-04 Mon>
    :REFERRER:   [[file:~/Projects/ledger.d/202005.ledger::Expenses:Groceries 40 RON]]

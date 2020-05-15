@@ -1,8 +1,24 @@
 * emacs.d
 
-Vanilla Emacs configuration
+  Vanilla Emacs configuration
 
-Start isolated Emacs instance
-#+begin_src sh
-  emacs -q -l ~/Projects/emacs.d/init.el ~/Projects/emacs.d/init.el
-#+end_src
+** Programming languages
+
+   1. [[file:langs/README.org::*Asm][Asm]]
+   2. Go
+   3. Pine
+   4. Python
+   5. Ruby
+
+   See the entire [[file:langs/README.org][programming language section]].
+
+** Markups
+
+** Usage
+
+   Start isolated Emacs instance:
+
+   #+begin_src sh
+     git clone git@gitlab.com:icostan/emacs.d.git
+     emacs -q -l ~/Projects/emacs.d/init.el
+   #+end_src

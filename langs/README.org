@@ -1,0 +1,123 @@
+* Programming languages
+
+  Various programming languages
+
+** Asm
+
+   Plain old assembler
+
+   #+BEGIN_SRC emacs-lisp :tangle asm.el
+     ;;; asm.el --- Asm
+
+     ;;; Commentary:
+     ;;
+
+     ;;; Code:
+
+     (use-package disaster
+       :config
+       (setq disaster-objdump "objdump -d -M intel")
+       (setq disaster-project-root-files (list (list "setup.py" "package.json"))))
+
+     (provide 'asm)
+
+     ;;; asm.el ends here
+   #+END_SRC
+
+** Pine
+
+   Pine Script by TradingView
+
+   #+BEGIN_SRC emacs-lisp :tangle pine.el
+     ;;; pine.el --- Pine
+
+
+     ;;; Commentary:
+     ;;
+
+     ;;; Code:
+
+     (use-package pine-script-mode
+       :mode (("\\.pine" . pine-script-mode)))
+
+     (provide 'pine)
+
+     ;;; pine.el ends here
+   #+END_SRC
+
+** Go
+
+   Go lang
+
+   #+BEGIN_SRC emacs-lisp :tangle go.el
+     ;;; go.el --- Go
+
+
+     ;;; Commentary:
+     ;;
+
+     ;;; Code:
+
+     (use-package go-mode
+       :mode "\\.go\\'")
+
+     (provide 'go)
+
+     ;;; go.el ends here
+   #+END_SRC
+
+** Python
+
+   Python
+
+  #+BEGIN_SRC emacs-lisp :tangle python.el
+  ;;; python.el --- Python
+
+
+  ;;; Commentary:
+  ;;
+
+  ;;; Code:
+
+  (use-package python
+    :mode ("\\.py\\'" . python-mode)
+    :interpreter ("python" . python-mode))
+
+  (provide 'python)
+
+  ;;; python.el ends here
+  #+END_SRC
+
+** Ruby
+
+  Environment setup with Rbenv, Bundler package manager and testing with RSpec/Ministest.
+
+  #+BEGIN_SRC emacs-lisp :tangle ruby.el
+    ;;; ruby.el --- Ruby
+
+    ;;; Commentary:
+    ;;
+    ;;; Code:
+
+    (use-package ruby-mode
+      :general
+      (general-nmap ", s" '(minitest-verify-single :wk "test single")
+		    ", a" '(minitest-verify-all :wk "test all"))
+      :mode "\\.rb\\'"
+      :interpreter "ruby")
+    (use-package rspec-mode
+      :after ruby-mode
+      :config (rspec-install-snippets))
+    (use-package minitest
+      :after ruby-mode
+      :config (minitest-install-snippets))
+    (use-package bundler
+      :after ruby-mode)
+    (use-package rbenv
+      :after ruby-mode
+      :config (global-rbenv-mode))
+
+    (provide 'ruby)
+
+    ;;; ruby.el ends here
+  #+END_SRC
