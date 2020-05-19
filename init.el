@@ -1,90 +1,87 @@
-;;; init.el --- Init
+;;; init.el --- Init file -*- lexical-binding: t; -*-
+
+;;; Commentary:
+;;
 
 ;;; Code:
 
 (setq user-emacs-directory "~/.vanilla.d/")
 
-;;; load path
-(add-to-list 'load-path (expand-file-name "langs" "~/Projects/emacs.d"))
-(add-to-list 'load-path (expand-file-name "markups" "~/Projects/emacs.d"))
-
-;; Minimal UI
-(if (fboundp 'scroll-bar-mode)
-    (scroll-bar-mode -1))
-(if (fboundp 'tool-bar-mode)
-    (tool-bar-mode -1))
-(menu-bar-mode   -1)
-(tooltip-mode    -1)
-
-;; y/n instead of yes/no
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-;; Hide splash-screen and startup-message
-(setq inhibit-splash-screen t)
-(setq inhibit-startup-message t)
-
-;; Display continuous lines
-(setq-default truncate-lines nil)
-(setq-default truncate-partial-width-windows nil)
-
-;; Line and column #
-(setq display-line-numbers-type 'relative)
-(global-display-line-numbers-mode t)
-(line-number-mode t)
-(column-number-mode t)
-
-;; Font and frame size
-;; (set-face-attribute 'default t :font "Monospace-7")
-;; (set-face-attribute 'default t :font "Source Code Pro-7")
-;; (set-face-attribute 'default t :font "Monaco-7")
-;; (set-face-attribute 'default t :font "Consolas-7")
-;; (set-face-attribute 'default t :font "Inconsolata-8")
-;; (set-face-attribute 'default t :font "Anonymous Pro-8")
-;; (set-face-attribute 'default t :font "DejaVu Sans Mono-7")
-;; (set-face-attribute 'default t :font "xos4 Terminus")
-(set-face-attribute 'default t :font "Source Code Pro-7:bold")
-;; (set-face-attribute 'default t :font "Bitstream Vera Sans Mono-7:style=Roman")
-
-(add-to-list 'default-frame-alist '(font . "Source Code Pro-7:bold"))
-(add-to-list 'default-frame-alist '(height . 24))
-(add-to-list 'default-frame-alist '(width . 80))
-
-;; Package config
-
-;;; Commentary:
-;;
-
+;; package setup
 (require 'package)
 (setq package-enable-at-startup nil)
 (setq package-archives '(("gnu"   . "http://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")
-			 ("org"   . "http://orgmode.org/elpa/")))
+                         ("org"   . "http://orgmode.org/elpa/")))
 (package-initialize)
 
-;; Bootstrap `use-package`
+;; use-package setup
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package)
   (package-install 'use-package-ensure))
-(require 'use-package)
-(require 'use-package-ensure)
-(setq use-package-always-ensure t
-      use-package-compute-statistics t)
+(eval-when-compile
+  (require 'use-package)
+  (require 'use-package-ensure)
+  (setq use-package-always-ensure t)
+  (setq use-package-verbose nil)
+  (setq use-package-compute-statistics t))
 
-;; other use-package' goodies
 (use-package use-package-ensure-system-package)
 (use-package auto-package-update
-  :config
-  (setq auto-package-update-delete-old-versions t
-	auto-package-update-interval 7
-	auto-package-update-hide-results nil))
+  :custom
+  (auto-package-update-delete-old-versions t)
+  (auto-package-update-interval 7)
+  (auto-package-update-hide-results nil))
 (use-package use-package-chords
-  :config (key-chord-mode 1))
+  :custom (key-chord-mode 1))
 
-;; Bootstrap Straight
-;;; https://github.com/raxod502/straight.el
+;; Emacs setup
+(use-package emacs
+  :custom
+  (line-number-mode t "shot line number in mode line")
+  (column-number-mode t "show column number in mode line")
+  (display-line-numbers-type 'relative "relative line number in fringe")
+  (truncate-lines nil)
+  (truncate-partial-width-windows nil)
+  (indent-tabs-mode nil)
+  (tab-width 4)
+  (inhibit-splash-screen t)
+  (inhibit-startup-message t)
+  (menu-bar-mode nil)
+  (tooltip-mode nil)
+  (scroll-bar-mode nil)
+  (tool-bar-mode nil)
+  (make-backup-files nil "stop creating backup~ files")
+  (auto-save-default nil "stop creating #autosave# files")
+  (initial-frame-alist '((height . 24)
+                         (width . 80)))
+  (default-frame-alist '((font . "Source Code Pro-7:bold")))
+  :custom-face
+  (default ((t (nil :font "Source Code Pro-7:bold"))))
+  ;; "Monospace-7
+  ;; "Source Code Pro-7"
+  ;; "Monaco-7"
+  ;; "Consolas-7"
+  ;; "Inconsolata-8"
+  ;; "Anonymous Pro-8"
+  ;; "DejaVu Sans Mono-7"
+  ;; "xos4 Terminus"
+  ;; "Source Code Pro-7:bold"
+  ;; "Bitstream Vera Sans Mono-7:style=Roman"
+  :config
+  (global-display-line-numbers-mode t))
 
-;; Vim mode
+;; TODO make it declarative
+;; y/n instead of yes/no
+(defalias 'yes-or-no-p 'y-or-n-p)
+;; Minimal UI in terminal as well
+;; (if (fboundp 'scroll-bar-mode)
+;;     (scroll-bar-mode -1))
+;; (if (fboundp 'tool-bar-mode)
+;;     (tool-bar-mode -1))
+
+;; Evil
 (use-package evil
   :config
   (evil-mode 1))
@@ -234,16 +231,16 @@
            "ddg"  '(vanilla/disaster-with-gcc :wk "with gcc")
            "ddc"  '(vanilla/disaster-with-clang :wk "with clang")
            "dh"  '(hexl-find-file :wk "file in HEX")
-	   ;; Emacs
+           ;; Emacs
            "e"   '(nil :wk "emacs")
            "eu"  '(auto-package-update-now :wk "update now")
            "ee"  '(eval-last-sexp :wk "eval sexp")
            "ed"  '(eval-defun :wk "eval defun")
-	   "eb"  '(backward-up-list :wk "backward up")
-	   "ei"  '(indent-pp-sexp :wk "indent sexp")
+           "eb"  '(backward-up-list :wk "backward up")
+           "ei"  '(indent-pp-sexp :wk "indent sexp")
            "E"   '(nil :wk "editing")
-	   "Es"  '(sort-lines :wk "sort lines")
-	   "El"  '(flycheck-list-errors :wk "list errors")
+           "Es"  '(sort-lines :wk "sort lines")
+           "El"  '(flycheck-list-errors :wk "list errors")
            ;; Files
            "f"   '(nil :wk "files")
            "ff"  '(helm-projectile-find-file :wk "find file (default)")
@@ -290,11 +287,11 @@
            "he"  '(view-echo-area-messages :wk "view echo")
            "ho"  '(nil :wk "online")
            "hod"  '(devdocs-search :wk "devdocs")
-	   ;; Insert
-	   "i"   '(nil :wk "insert")
-	   "ii"   '(yas-insert-snippet :wk "default (snippet)")
-	   "is"   '(yas-insert-snippet :wk "snippet")
-	   "il"   '(lorem-ipsum-insert-sentences :wk "lorem ipsum")
+           ;; Insert
+           "i"   '(nil :wk "insert")
+           "ii"   '(yas-insert-snippet :wk "default (snippet)")
+           "is"   '(yas-insert-snippet :wk "snippet")
+           "il"   '(lorem-ipsum-insert-sentences :wk "lorem ipsum")
            ;; Jump
            "j"   '(nil :wk "jump")
            "jj"  '(helm-lsp-workspace-symbol :wk "default (to symbol)")
@@ -352,7 +349,7 @@
            "Rc"  '(camcorder-convert-to-gif :wk "convert video-to-gif")
            "Rg"  '(vanilla/record-gif :wk "gif cast")
            "Rl"  '(clm/toggle-command-log-buffer :wk "toggle command log")
-	   "Rk"  '(keycast-mode :wk "toggle keycast log")
+           "Rk"  '(keycast-mode :wk "toggle keycast log")
            ;; Search
            "s"   '(nil :wk "search")
            "ss"  '(helm-swoop :wk "default (in file)")
@@ -366,23 +363,23 @@
            "sp"  '(helm-projectile-ag :wk "in project")
            "sr"  '(lsp-find-references :wk "references")
            "sR"  '(lsp-ui-peek-find-references :wk "references (peek)")
-	   ;; Spelling
-	   "S"    '(nil :wk "spell")
-	   "Sw"   '(flyspell-correct-at-point :wk "word")
-	   "Sn"   '(flyspell-correct-next :wk "next")
-	   "Sb"   '(flyspell-buffer :wk "buffer")
-	   "St"   '(flyspell-mode :wk "toggle")
-	   "Si"   '(ispell-buffer :wk "interactive buffer")
+           ;; Spelling
+           "S"    '(nil :wk "spell")
+           "Sw"   '(flyspell-correct-at-point :wk "word")
+           "Sn"   '(flyspell-correct-next :wk "next")
+           "Sb"   '(flyspell-buffer :wk "buffer")
+           "St"   '(flyspell-mode :wk "toggle")
+           "Si"   '(ispell-buffer :wk "interactive buffer")
            ;; "ss"  '(lsp-ui-find-workspace-symbol :wk "symbols")
            "sS"  '(lsp-ui-peek-find-workspace-symbol :wk "symbols (peek)")
            "sg"  '(find-grep :wk "with grep")
-	   ;; Treemacs
+           ;; Treemacs
            "t"   '(nil :wk "treemacs")
-	   "ts"  '(sort-lines :wk "sort line")
+           "ts"  '(sort-lines :wk "sort line")
            "te"  '(lsp-treemacs-errors-list :wk "errors")
            "tr"  '(lsp-treemacs-references :wk "references")
            "ts"  '(lsp-treemacs-symbols :wk "symbols")
-	   "tt"  '(treemacs :wk "treemacs")
+           "tt"  '(treemacs :wk "treemacs")
            ;; Windows
            "w"   '(nil :wk "windows")
            "wl"  '(windmove-right :wk "move right")
@@ -408,22 +405,9 @@
            "qf" '(toggle-frame-fullscreen :wk "fullscreen")
            ))
 
-;; Fancy titlebar for MacOS
-;; (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-;; (add-to-list 'default-frame-alist '(ns-appearance . dark))
-;; (setq ns-use-proxy-icon  nil)
-;; (setq frame-title-format nil)
-
 ;; Projectile
 (use-package projectile
-  ;; :init
-  ;; :bind
-  ;; (("C-p p" . projectile-switch-project-action))
-  ;; :bind-keymap
-  ;; ("C-c p" . projectile-command-map)
   :config
-  ;; (define-key projectile-mode-map (kbd "SPC-p") 'projectile-command-map)
-  ;; (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (projectile-mode 1))
 (use-package org-projectile
   :init
@@ -440,7 +424,7 @@
 (use-package neotree
   :init
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
-;; (use-package all-the-icons :ensure t)
+(use-package all-the-icons :ensure t)
 
 ;; Code Snippets
 (use-package yasnippet
@@ -458,6 +442,7 @@
   (add-to-list 'flycheck-checkers 'tex-aspell-dynamic))
 
 ;; Programming languages
+(add-to-list 'load-path (expand-file-name "langs" "~/Projects/emacs.d"))
 (require 'asm)
 (require 'go)
 (require 'pine)
@@ -465,7 +450,8 @@
 (require 'ruby)
 (require 'emacs-lisp)
 
-;; Markups
+;; Markup languages
+(add-to-list 'load-path (expand-file-name "markups" "~/Projects/emacs.d"))
 (require 'yaml)
 (require 'html)
 (require 'orgmode)
@@ -486,12 +472,11 @@
   :after magit)
 
 ;; Show matching parens
-(setq show-paren-delay 0)
-(show-paren-mode 1)
+(use-package paren
+  :custom
+  (show-paren-delay 0)
+  (show-paren-mode 1))
 
-;; Disable backup files
-(setq make-backup-files nil) ; stop creating backup~ files
-(setq auto-save-default nil) ; stop creating #autosave# files
 
 ;; Move
 (use-package ace-jump-mode
@@ -530,7 +515,7 @@
 (use-package flycheck-ledger
   :after ledger-mode)
 (use-package evil-ledger
-  :after ledger-mode
+  :after (evil ledger-mode)
   :config
   (setq evil-ledger-sort-key "S")
   (add-hook 'ledger-mode-hook #'evil-ledger-mode))
@@ -671,7 +656,7 @@
 (use-package dashboard
   :config
   (setq dashboard-items '((agenda . 10)
-			  (projects . 10))
+                          (projects . 10))
 	dashboard-center-content t
 	show-week-agenda t
 	dashboard-startup-banner 'logo)
@@ -686,10 +671,14 @@
   (global-wakatime-mode))
 
 ;; enable electric parens
-(electric-pair-mode)
+(use-package elec-pair
+  :config
+  (electric-pair-mode))
 
-;; enable flyspell
-(flyspell-prog-mode)
+;; Spell checking / Writing
+(use-package flyspell
+  :config
+  (flyspell-prog-mode))
 ;; (use-package flyspell-correct)
 
 ;;; Lorem
@@ -700,19 +689,46 @@
 ;; (use-package call-graph
 ;;   :after ggtags)
 
+;; Help
 (use-package helpful)
-;; (use-package lookup)
+(use-package info-colors
+  :hook
+  (Info-selection #'info-colors-fontify-node))
+
 (use-package counsel)
 (use-package minimap
   :config
-  (setq minimap-width-fraction 0.05))
+  (setq minimap-width-fraction 0.1))
 
 ;;; devdocs
 (use-package devdocs)
 
-;;; rg
+;; completion framework
+(use-package ivy
+  ;; :custom
+  ;; (ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
+  ;; (ivy-count-format "%d/%d " "Show anzu-like counter")
+  ;; (ivy-use-selectable-prompt t "Make the prompt line selectable")
+  ;; :custom-face
+  ;; (ivy-current-match ((t (:inherit 'hl-line))))
+  :config
+  (ivy-mode t))
+
+;;; Searching
 (use-package rg
-  :ensure-system-package
-  (rg . ripgrep))
+  :defer t
+  :ensure-system-package (rg . ripgrep))
+(use-package ag
+  :defer t
+  :ensure-system-package (ag . the_silger_searcher)
+  :custom
+  (ag-highlight-search t "Highlight the current search term."))
+(use-package dumb-jump
+  :general
+  (general-nmap "g D" '(dumb-jump-go :wk "dumb-goto-definition"))
+  :defer t
+  :custom
+  (dumb-jump-selector 'helm)
+  (dumb-jump-prefer-searcher 'ag))
 
 ;;; init.el ends here
