@@ -24,34 +24,12 @@
      ;;; asm.el ends here
    #+END_SRC
 
-** Pine
-
-   Pine Script by TradingView
-
-   #+BEGIN_SRC emacs-lisp :tangle pine.el
-     ;;; pine.el --- Pine
-
-
-     ;;; Commentary:
-     ;;
-
-     ;;; Code:
-
-     (use-package pine-script-mode
-       :mode (("\\.pine" . pine-script-mode)))
-
-     (provide 'pine)
-
-     ;;; pine.el ends here
-   #+END_SRC
-
 ** Go
 
    Go lang
 
    #+BEGIN_SRC emacs-lisp :tangle go.el
      ;;; go.el --- Go
-
 
      ;;; Commentary:
      ;;
@@ -66,40 +44,90 @@
      ;;; go.el ends here
    #+END_SRC
 
+** Lisp
+
+   Mostly Emacs Lisp stuff
+
+  #+BEGIN_SRC emacs-lisp :tangle lisp.el
+    ;;; lisp.el --- Lisp
+
+    ;;; Commentary:
+    ;;
+
+    ;;; Code:
+
+    (use-package package-lint)
+    (use-package flycheck-package
+      :after (flycheck package-lint)
+      :config
+      (flycheck-package-setup))
+
+    (use-package cov
+      :config
+      (setq gcov-coverage-file-paths '("." "../coverage/lcov" "../../coverage/lcov")
+	    gcov-coverage-alist '((".lcov" . lcov))))
+
+    (provide 'lisp)
+
+    ;;; lisp.el ends here
+   #+END_SRC
 ** Python
 
    Python
 
   #+BEGIN_SRC emacs-lisp :tangle python.el
-  ;;; python.el --- Python
+    ;;; python.el --- Python
 
+    ;;; Commentary:
+    ;;
 
-  ;;; Commentary:
-  ;;
+    ;;; Code:
 
-  ;;; Code:
+    (use-package python
+      :mode ("\\.py\\'" . python-mode)
+      :interpreter ("python" . python-mode))
 
-  (use-package python
-    :mode ("\\.py\\'" . python-mode)
-    :interpreter ("python" . python-mode))
+    (provide 'python)
 
-  (provide 'python)
-
-  ;;; python.el ends here
+    ;;; python.el ends here
   #+END_SRC
+
+** Pine
+
+   Pine Script by TradingView
+
+   #+BEGIN_SRC emacs-lisp :tangle pine.el
+     ;;; pine.el --- Pine
+
+     ;;; Commentary:
+     ;;
+
+     ;;; Code:
+
+     (use-package pine-script-mode
+       :mode (("\\.pine" . pine-script-mode)))
+
+     (provide 'pine)
+
+     ;;; pine.el ends here
+   #+END_SRC
 
 ** Ruby
 
   Environment setup with Rbenv, Bundler package manager and testing with RSpec/Ministest.
 
   #+BEGIN_SRC emacs-lisp :tangle ruby.el
-    ;;; ruby.el --- Ruby
+    ;;; ruby.el --- https://www.ruby-lang.org/en/
 
     ;;; Commentary:
     ;;
     ;;; Code:
 
     (use-package ruby-mode
+      :ensure-system-package
+      ((rubocop     . "gem install rubocop")
+       (ruby-lint   . "gem install ruby-lint")
+       (pry         . "gem install pry")))
       :general
       (general-nmap ", s" '(minitest-verify-single :wk "test single")
 		    ", a" '(minitest-verify-all :wk "test all"))

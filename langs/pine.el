@@ -1,6 +1,5 @@
 ;;; pine.el --- Pine
 
-
 ;;; Commentary:
 ;;
 

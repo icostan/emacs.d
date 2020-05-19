@@ -1,6 +1,5 @@
 ;;; python.el --- Python
 
-
 ;;; Commentary:
 ;;
 

@@ -1,6 +1,5 @@
 ;;; go.el --- Go
 
-
 ;;; Commentary:
 ;;
 

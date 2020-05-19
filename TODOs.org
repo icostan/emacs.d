@@ -14,12 +14,14 @@
 *** DONE https://github.com/vutran1710/Ayu-Theme-Emacs
 *** play with ivy/swiper
 *** https://github.com/quelpa/quelpa
+*** https://github.com/a13/emacs.d
 ** Tasks
 *** TODO Vanilla Emacs: improvements
-    SCHEDULED: <2020-05-15 Fri +1w>
+    SCHEDULED: <2020-05-22 Fri +1w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-05-09 Sat 10:49]
+    :LAST_REPEAT: [2020-05-16 Sat 07:40]
     :END:
+    - State "DONE"       from "TODO"       [2020-05-16 Sat 07:40]
     - State "DONE"       from "TODO"       [2020-05-09 Sat 10:49]
     - State "DONE"       from "TODO"       [2020-05-01 Fri 19:10]
     - State "DONE"       from "TODO"       [2020-04-27 Mon 13:15]
@@ -154,7 +156,7 @@
    :CREATED:  <2020-04-11 Sat>
    :REFERRER:   [[file:~/Projects/deribit-api-ruby/lib/deribit/client.rb::MAINNET_URL = 'www.deribit.com']]
    :PROPETIES:
-*** TODO literate emacs config with org-tanglesync
+*** DONE literate emacs config with org-tanglesync
 *** DONE read edebug and fix date/calendar issue
    :PROPETIES:
    :CREATED:  <2020-05-04 Mon>

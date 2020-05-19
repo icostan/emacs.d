@@ -1,7 +1,7 @@
-;;; package --- Summary
-;;; Commentary:
+;;; init.el --- Init
 
-;; Config directory
+;;; Code:
+
 (setq user-emacs-directory "~/.vanilla.d/")
 
 ;;; load path
@@ -49,6 +49,10 @@
 (add-to-list 'default-frame-alist '(width . 80))
 
 ;; Package config
+
+;;; Commentary:
+;;
+
 (require 'package)
 (setq package-enable-at-startup nil)
 (setq package-archives '(("gnu"   . "http://elpa.gnu.org/packages/")
@@ -443,21 +447,6 @@
 (use-package yasnippet-snippets
   :after yasnippet)
 
-;; Programming languages
-(require 'asm)
-(require 'go)
-(require 'pine)
-(require 'python)
-(require 'ruby)
-;; (require 'elixir)
-
-;; Markup
-;;; Yaml
-(use-package yaml-mode
-  :ensure-system-package (yaml-language-server . "npm i -g yaml-language-server"))
-;;; HTML
-;;;; npm install -g vscode-html-languageserver-bin
-
 ;; Flycheck
 (use-package flycheck
   :init (global-flycheck-mode))
@@ -467,12 +456,21 @@
   :config
   (add-to-list 'flycheck-checkers 'tex-aspell-dynamic))
 
+;; Programming languages
+(require 'asm)
+(require 'go)
+(require 'pine)
+(require 'python)
+(require 'ruby)
+(require 'lisp)
 
-;; Coverage
-(use-package cov
-  :config
-  (setq gcov-coverage-file-paths '("." "../coverage/lcov" "../../coverage/lcov")
-	gcov-coverage-alist '((".lcov" . lcov))))
+;; Markup
+;;; Yaml
+(use-package yaml-mode
+  :ensure-system-package (yaml-language-server . "npm i -g yaml-language-server"))
+;;; HTML
+;;;; npm install -g vscode-html-languageserver-bin
+
 
 ;; Orgmode
 (defun icostan/capture_template (name)
