@@ -8,7 +8,7 @@
   :ensure-system-package
   ((rubocop     . "gem install rubocop")
    (ruby-lint   . "gem install ruby-lint")
-   (pry         . "gem install pry")))
+   (pry         . "gem install pry"))
   :general
   (general-nmap ", s" '(minitest-verify-single :wk "test single")
 		", a" '(minitest-verify-all :wk "test all"))

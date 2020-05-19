@@ -6,6 +6,7 @@
 
 ;;; load path
 (add-to-list 'load-path (expand-file-name "langs" "~/Projects/emacs.d"))
+(add-to-list 'load-path (expand-file-name "markups" "~/Projects/emacs.d"))
 
 ;; Minimal UI
 (if (fboundp 'scroll-bar-mode)
@@ -146,8 +147,8 @@
   :config
   (helm-mode 1))
 (use-package helm-swoop
-  :general
-  (general-nmap "g /" '(helm-swoop :wk "search"))
+  ;; :general
+  ;; (general-nmap "g /" '(helm-swoop :wk "search"))
   :after helm
   :init
   (setq helm-swoop-pre-input-function
@@ -462,64 +463,12 @@
 (require 'pine)
 (require 'python)
 (require 'ruby)
-(require 'lisp)
+(require 'emacs-lisp)
 
-;; Markup
-;;; Yaml
-(use-package yaml-mode
-  :ensure-system-package (yaml-language-server . "npm i -g yaml-language-server"))
-;;; HTML
-;;;; npm install -g vscode-html-languageserver-bin
-
-
-;; Orgmode
-(defun icostan/capture_template (name)
-  "Return template file for NAME."
-  `(file concat("templates/" name)))
-(use-package org
-  :ensure org-plus-contrib
-  :init
-  (setq image-file-name-regexps (list (regexp-quote "svg"))
-	org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "red"))
-	org-confirm-babel-evaluate nil
-	org-agenda-files (directory-files-recursively "~/Projects" "TODOs\\.org")
-	org-agenda-window-setup 'other-window
-	org-agenda-restore-windows-after-quit t)
-  :config
-  (push '("e" "emacs.d" entry (file+headline "~/Projects/emacs.d/TODOs.org" "Tasks") (file "templates/emacs.d-todo.org")) org-capture-templates)
-  (push '("a" "arch.d" entry (file+headline "~/Projects/arch.d/TODOs.org" "Tasks") (file "templates/arch.d-todo.org")) org-capture-templates)
-  (setq org-default-notes-file (concat org-directory "/notes.org"))
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((emacs-lisp . t)
-     (haskell . t)
-     (ledger . t)
-     (python . t)
-     (ruby . t)
-     (shell . t)
-     (sql . nil))))
-(use-package org-journal
-  :after org
-  :init
-  (setq org-journal-dir "~/Projects/org.d/journal"
-	org-journal-file-type 'monthly
-	org-read-date-popup-calendar nil)
-  :config
-  (setq org-journal-date-format "%A, %x"
-	org-journal-time-format ""
-	org-journal-time-prefix "  - [ ] "))
-(use-package org-tanglesync
-  :hook ((org-mode . org-tanglesync-mode)
-         ((prog-mode text-mode) . org-tanglesync-watch-mode))
-  ;; :custom
-  ;; (org-tanglesync-watch-files '("~/Projects/emacs.d/langs/README.org"))
-  ;; (org-tanglesync-default-diff-action :external)
-  ;; (org-tanglesync-watch-mode 1)
-  :config
-  (setq org-tanglesync-watch-files '("README.org")
-	org-tanglesync-watch-mode 1
-  	org-tanglesync-default-diff-action :external))
-(use-package org-preview-html)
+;; Markups
+(require 'yaml)
+(require 'html)
+(require 'orgmode)
 
 ;; Company mode for Completion
 (use-package company
@@ -748,8 +697,8 @@
 
 ;;; Call graph
 (use-package ggtags)
-(use-package call-graph
-  :after ggtags)
+;; (use-package call-graph
+;;   :after ggtags)
 
 (use-package helpful)
 ;; (use-package lookup)

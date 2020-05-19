@@ -1,6 +1,12 @@
 * emacs.d
 
-  Vanilla Emacs configuration
+** Highlights
+
+   - declarative - uses [[
+https://github.com/jwiegley/use-package][use-package]] package only (tongue twister huh? :))
+   - literate - sync between Lisp and Org files with [[
+https://github.com/mtekman/org-tanglesync.el][org-tanglesync]]
+   - structured - programing languages go under *./langs* dir, markups under *./markups* and so on
 
 ** Programming languages
 
@@ -19,6 +25,6 @@
    Start isolated Emacs instance:
 
    #+begin_src sh
-     git clone git@gitlab.com:icostan/emacs.d.git
+     git clone git@gitlab.com:icostan/emacs.d.git ~/Projects/emacs.d
      emacs -q -l ~/Projects/emacs.d/init.el
    #+end_src

@@ -1,9 +1,13 @@
-;;; lisp.el --- Lisp
+;;; emacs-lisp.el --- Emacs Lisp
 
 ;;; Commentary:
 ;;
 
 ;;; Code:
+
+;; (use-package lisp
+;;   :hook
+;;   (after-save . check-parens))
 
 (use-package package-lint)
 (use-package flycheck-package
@@ -16,6 +20,6 @@
   (setq gcov-coverage-file-paths '("." "../coverage/lcov" "../../coverage/lcov")
 	gcov-coverage-alist '((".lcov" . lcov))))
 
-(provide 'lisp)
+(provide 'emacs-lisp)
 
-;;; lisp.el ends here
+;;; emacs-lisp.el ends here
