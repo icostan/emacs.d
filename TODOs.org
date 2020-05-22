@@ -17,10 +17,11 @@
 *** https://github.com/raxod502/straight.el
 ** Tasks
 *** TODO Vanilla Emacs: improvements
-    SCHEDULED: <2020-05-22 Fri +1w>
+    SCHEDULED: <2020-05-29 Fri +1w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-05-16 Sat 07:40]
+    :LAST_REPEAT: [2020-05-22 Fri 19:44]
     :END:
+    - State "DONE"       from "TODO"       [2020-05-22 Fri 19:44]
     - State "DONE"       from "TODO"       [2020-05-16 Sat 07:40]
     - State "DONE"       from "TODO"       [2020-05-09 Sat 10:49]
     - State "DONE"       from "TODO"       [2020-05-01 Fri 19:10]
@@ -162,7 +163,7 @@
    :CREATED:  <2020-05-04 Mon>
    :REFERRER:   [[file:~/Projects/ledger.d/202005.ledger::Expenses:Groceries 40 RON]]
    :PROPETIES:
-*** TODO create Makefile https://nullprogram.com/blog/2020/01/22/
+*** DONE create Makefile https://nullprogram.com/blog/2020/01/22/
     SCHEDULED: <2020-05-22 Fri>
 ** Configs
 *** DONE https://github.com/a13/emacs.d

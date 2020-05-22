@@ -4,4 +4,4 @@
 projectile-bookmarks.eld
 auto-save-list
 files
-/*.elc
+**/*.elc

@@ -26,8 +26,7 @@
 ;; use-package setup
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
-  (package-install 'use-package)
-  (package-install 'use-package-ensure))
+  (package-install 'use-package))
 (eval-when-compile
   (require 'use-package)
   (require 'use-package-ensure)
