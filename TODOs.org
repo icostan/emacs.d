@@ -14,7 +14,6 @@
 *** DONE https://github.com/vutran1710/Ayu-Theme-Emacs
 *** play with ivy/swiper
 *** https://github.com/quelpa/quelpa
-*** DONE https://github.com/a13/emacs.d
 *** https://github.com/raxod502/straight.el
 ** Tasks
 *** TODO Vanilla Emacs: improvements
@@ -163,4 +162,8 @@
    :CREATED:  <2020-05-04 Mon>
    :REFERRER:   [[file:~/Projects/ledger.d/202005.ledger::Expenses:Groceries 40 RON]]
    :PROPETIES:
-*** create Makefile https://nullprogram.com/blog/2020/01/22/
+*** TODO create Makefile https://nullprogram.com/blog/2020/01/22/
+    SCHEDULED: <2020-05-22 Fri>
+** Configs
+*** DONE https://github.com/a13/emacs.d
+*** https://github.com/EricCrosson/emacs.d

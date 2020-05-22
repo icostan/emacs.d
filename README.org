@@ -2,26 +2,22 @@
 
 ** Highlights
 
-   - declarative - with [[
-https://github.com/jwiegley/use-package][use-package]] package only (tongue twister huh? :))
-   - literate - sync between Lisp and Org files with [[
-https://github.com/mtekman/org-tanglesync.el][org-tanglesync]]
+   - declarative - with [[https://github.com/jwiegley/use-package][use-package]] macro only (tongue twister huh? :))
+   - literate - sync between Lisp and Org files with [[https://github.com/mtekman/org-tanglesync][org-tanglesync]]
    - structured - programing languages go under *langs* dir, markups under *markups* dir and so on
-   - keybindings
+   - keybindings - general
    - clean
-   -
 
 ** Programming languages
 
    Various programing languagtes...
 
-   1. [[file:langs/README.org::*Asm][Asm]]
+   1. Asm
    2. Go
    3. Pine
    4. Python
-   5. Ruby
-   6. lots more, see [[file:langs/README.org][programming language section]].
-
+   5. [[file:langs/README.org::*Ruby][Ruby]]
+   6. lots more, see [[file:langs/README.org][programming language section]]
 
 ** Markups
 
@@ -29,7 +25,7 @@ https://github.com/mtekman/org-tanglesync.el][org-tanglesync]]
 
    1. Html
    2. Yaml
-   3. etc, see [[markups][markup languages section]]
+   3. etc, see [[file:markups/README.org][markup languages section]]
 
 ** Usage
 

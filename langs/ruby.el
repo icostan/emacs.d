@@ -1,4 +1,4 @@
-;;; ruby.el --- https://www.ruby-lang.org/en/
+;;; ruby.el --- Ruby
 
 ;;; Commentary:
 ;;
@@ -25,6 +25,9 @@
 (use-package rbenv
   :after ruby-mode
   :config (global-rbenv-mode))
+(use-package feature-mode
+  :custom
+  (feature-use-docker-compose nil))
 
 (provide 'ruby)
 

@@ -1,11 +1,19 @@
 ;;; init.el --- Init file -*- lexical-binding: t; -*-
 
+;; Copyright (C) 2019 Iulian Costan
+
+;; Author: Iulian Costan
+;; Keywords: lisp dotemacs init
+;; URL: https://github.com/icostan/emacs.d
+;; Package-Version: 1.0
+;; Package-Requires: ((emacs "26.1"))
+
+;; SPDX-License-Identifier: MIT
+
 ;;; Commentary:
-;;
+;; Emacs configuration
 
 ;;; Code:
-
-(setq user-emacs-directory "~/.vanilla.d/")
 
 ;; package setup
 (require 'package)
@@ -74,7 +82,7 @@
 
 ;; TODO make it declarative
 ;; y/n instead of yes/no
-(defalias 'yes-or-no-p 'y-or-n-p)
+;; (defalias 'yes-or-no-p 'y-or-n-p)
 ;; Minimal UI in terminal as well
 ;; (if (fboundp 'scroll-bar-mode)
 ;;     (scroll-bar-mode -1))
@@ -98,37 +106,26 @@
   :config
   (evilnc-default-hotkeys))
 
-;; Theme
-(use-package monokai-theme
-  :config
-  (setq
-      ;; foreground and background
-      monokai-foreground     "#F8F8FF"
-      ;; monokai-background     "#282C34"
-      ;; highlights and comments
-      monokai-comments       "#75715E"
-      ;; monokai-emphasis       "#282C34"
-      ;; monokai-highlight      "#FFB269"
-      ;; monokai-highlight-alt  "#66D9EF"
-      ;; monokai-highlight-line "#1B1D1E"
-      ;; monokai-line-number    "#F8F8F0"
-      ;; colours
-      ;; monokai-blue           "#61AFEF"
-      ;; monokai-cyan           "#56B6C2"
-      ;; monokai-green          "#98C379"
-      ;; monokai-gray           "#3E4451"
-      ;; monokai-violet         "#C678DD"
-      ;; monokai-red            "#E06C75"
-      ;; monokai-orange         "#D19A66"
-      ;; monokai-yellow         "#E5C07B"
-   )
-  (load-theme 'monokai t))
+;; Themes
+;; (use-package monokai-theme
+;;   :custom
+;;   (monokai-foreground     "#F8F8FF")
+;;   (monokai-comments       "#75715E")
+;;   :config
+;;   (load-theme 'monokai t))
+;; (use-package ayu-theme
+;;   :load-path "~/Projects/Ayu-Theme-Emacs"
+;;   :init (setq custom-theme-directory "~/Projects/Ayu-Theme-Emacs")
+;;   :config (load-theme 'ayu-gray t))
+(use-package darkokai-theme
+  :custom (darkokai-mode-line-padding 1)
+  :config (load-theme 'darkokai t))
 
 ;; Helm
 (use-package helm
   :init
   (setq helm-M-x-fuzzy-match t
-        helm-mode-fuzzy-match t
+        helm-completion-style :helm-fuzzy
         helm-buffers-fuzzy-matching t
         helm-recentf-fuzzy-match t
         helm-locate-fuzzy-match t
@@ -136,7 +133,7 @@
         helm-imenu-fuzzy-match t
         helm-completion-in-region-fuzzy-match t
         helm-candidate-number-list 150
-        helm-split-window-in-side-p t
+        helm-split-window-inside-p t
         helm-move-to-line-cycle-in-source t
         helm-echo-input-in-header-line t
         helm-autoresize-max-height 0
@@ -547,7 +544,7 @@
   :hook (prog-mode . lsp)
   :commands lsp
   :config
-  (setq lsp-prefer-flymake nil
+  (setq lsp-diagnostic-package :flycheck
 	;; lsp-log-io t
 	lsp-signature-auto-activate t
 	lsp-signature-render-documentation t
@@ -730,5 +727,10 @@
   :custom
   (dumb-jump-selector 'helm)
   (dumb-jump-prefer-searcher 'ag))
+
+;; build status
+(use-package build-status)
+
+(provide 'init)
 
 ;;; init.el ends here
