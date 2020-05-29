@@ -1,8 +1,5 @@
 ;;; pine.el --- Pine
-
 ;;; Commentary:
-;;
-
 ;;; Code:
 
 (use-package pine-script-mode

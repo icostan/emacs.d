@@ -3,7 +3,7 @@ EMACS = emacs
 EMACSFLAGS = --batch --quick --load=init.el --directory=langs --directory=markups --file=init.el --debug-init
 
 EL   = langs/asm.el langs/emacs-lisp.el langs/go.el langs/pine.el langs/python.el langs/ruby.el \
-		markups/html.el markups/orgmode.el markups/yaml.el \
+		langs/html.el langs/orgmode.el langs/yaml.el \
 		init.el
 DOC  = README.org
 
@@ -24,7 +24,7 @@ run: compile
 	$(EMACS) -q -l init.el init.el
 
 clean:
-	rm -f init.elc langs/*.elc markups/*.elc
+	rm -f init.elc langs/*.elc langs/*.elc
 
 .SUFFIXES: .el .elc
 .el.elc:

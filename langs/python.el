@@ -1,8 +1,5 @@
 ;;; python.el --- Python
-
 ;;; Commentary:
-;;
-
 ;;; Code:
 
 (use-package python

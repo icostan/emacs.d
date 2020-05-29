@@ -1,8 +1,5 @@
 ;;; yaml.el --- Yaml
-
 ;;; Commentary:
-;; YAML Ain't Markup Language - maybe move it to data interchange section of something
-
 ;;; Code:
 
 (use-package yaml-mode

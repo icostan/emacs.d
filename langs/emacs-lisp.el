@@ -1,8 +1,5 @@
 ;;; emacs-lisp.el --- Emacs Lisp
-
 ;;; Commentary:
-;;
-
 ;;; Code:
 
 ;; (use-package lisp

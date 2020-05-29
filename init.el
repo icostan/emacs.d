@@ -42,10 +42,13 @@
   (auto-package-update-hide-results nil))
 (use-package use-package-chords
   :custom (key-chord-mode 1))
+(use-package gnu-elpa-keyring-update)
 
 ;; Emacs setup
 (use-package emacs
   :custom
+  (user-full-name "Iulian Costan")
+  (user-login-name "icostan")
   (line-number-mode t "shot line number in mode line")
   (column-number-mode t "show column number in mode line")
   (display-line-numbers-type 'relative "relative line number in fringe")
@@ -98,12 +101,21 @@
   :config
   (evil-escape-mode 1))
 (use-package evil-unimpaired
-  :load-path "~/Projects/emacs.d/lisp"
+  :load-path "lisp"
   :config
   (evil-unimpaired-mode))
 (use-package evil-nerd-commenter
   :config
   (evilnc-default-hotkeys))
+(use-package evil-surround
+  :config
+  (global-evil-surround-mode 1))
+;;; align operators
+;; (use-package evil-lion
+;;   :config
+;;   (evil-lion-mode))
+(use-package evil-matchit
+  :config (global-evil-matchit-mode 1))
 
 ;; Themes
 ;; (use-package monokai-theme
@@ -361,11 +373,14 @@
            "sR"  '(lsp-ui-peek-find-references :wk "references (peek)")
            ;; Spelling
            "S"    '(nil :wk "spell")
-           "Sw"   '(flyspell-correct-at-point :wk "word")
-           "Sn"   '(flyspell-correct-next :wk "next")
-           "Sb"   '(flyspell-buffer :wk "buffer")
-           "St"   '(flyspell-mode :wk "toggle")
-           "Si"   '(ispell-buffer :wk "interactive buffer")
+           "Sc"   '(flyspell-correct-wrapper :wk "flyspell-correct")
+           "Sw"   '(flyspell-correct-at-point :wk "flyspell-correct word")
+           "Sb"   '(flyspell-buffer :wk "flyspell buffer")
+           "St"   '(flyspell-mode :wk "flyspell toggle")
+           "SB"   '(ispell-buffer :wk "ispell buffer")
+           "Sg"   '(writegood-grade-level :wk "writegood grade")
+           "Se"   '(writegood-reading-ease :wk "writegood ease")
+           "Sr"   '(synosaurus-lookup :wk "synosaurus lookup")
            ;; "ss"  '(lsp-ui-find-workspace-symbol :wk "symbols")
            "sS"  '(lsp-ui-peek-find-workspace-symbol :wk "symbols (peek)")
            "sg"  '(find-grep :wk "with grep")
@@ -398,8 +413,7 @@
            "qq" '(kill-emacs :wk "quit emacs")
            "qm" '(make-frame :wk "make frame")
            "qd" '(delete-frame :wk "delete frame")
-           "qf" '(toggle-frame-fullscreen :wk "fullscreen")
-           ))
+           "qf" '(toggle-frame-fullscreen :wk "fullscreen")))
 
 ;; Projectile
 (use-package projectile
@@ -431,26 +445,18 @@
 ;; Flycheck
 (use-package flycheck
   :init (global-flycheck-mode))
-(use-package flycheck-aspell
-  :after flycheck
-  :load-path "~/Projects/emacs.d/lisp"
-  :config
-  (add-to-list 'flycheck-checkers 'tex-aspell-dynamic))
 
-;; Programming languages
-(add-to-list 'load-path (expand-file-name "langs" "~/Projects/emacs.d"))
-(require 'asm)
-(require 'go)
-(require 'pine)
-(require 'python)
-(require 'ruby)
-(require 'emacs-lisp)
-
-;; Markup languages
-(add-to-list 'load-path (expand-file-name "markups" "~/Projects/emacs.d"))
-(require 'yaml)
-(require 'html)
-(require 'orgmode)
+;; Programming/markup/etc languages
+(use-package asm :load-path "langs")
+(use-package emacs-lisp :load-path "langs")
+(use-package go :load-path "langs")
+(use-package pine :load-path "langs")
+(use-package python :load-path "langs")
+(use-package ruby :load-path "langs")
+(use-package rust :load-path "langs")
+(use-package yaml :load-path "langs")
+(use-package html :load-path "langs")
+(use-package orgmode :load-path "langs")
 
 ;; Company mode for Completion
 (use-package company
@@ -466,6 +472,9 @@
   :after magit)
 (use-package forge
   :after magit)
+(use-package gitattributes-mode)
+(use-package gitconfig-mode)
+(use-package gitignore-mode)
 
 ;; Show matching parens
 (use-package paren
@@ -674,8 +683,24 @@
 ;; Spell checking / Writing
 (use-package flyspell
   :config
-  (flyspell-prog-mode))
-;; (use-package flyspell-correct)
+  (flyspell-mode))
+(use-package flyspell-correct)
+;; (use-package flycheck-aspell
+;;   :after flycheck
+;;   :load-path "~/Projects/emacs.d/lisp"
+;;   :config
+;;   (add-to-list 'flycheck-checkers 'tex-aspell-dynamic))
+(use-package writegood-mode)
+(use-package synosaurus
+  ;; :ensure-system-package (wn . wordnet-cli))
+  :custom
+  (synosaurus-choose-method 'default)
+  :config
+  (synosaurus-mode))
+
+;; numbers
+;; (use-package highlight-numbers
+;;   :hook (prog-mode . highlight-numbers-mode))
 
 ;;; Lorem
 (use-package lorem-ipsum)
@@ -729,6 +754,9 @@
 
 ;; build status
 (use-package build-status)
+
+;; All Done!!!
+(message "All done, %s." (user-login-name))
 
 (provide 'init)
 

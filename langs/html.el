@@ -1,8 +1,5 @@
 ;;; html.el --- Html
-
 ;;; Commentary:
-;;
-
 ;;; Code:
 
 (use-package mhtml-mode

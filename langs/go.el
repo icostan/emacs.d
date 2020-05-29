@@ -1,8 +1,5 @@
 ;;; go.el --- Go
-
 ;;; Commentary:
-;;
-
 ;;; Code:
 
 (use-package go-mode

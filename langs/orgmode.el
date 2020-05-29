@@ -1,8 +1,5 @@
 ;;; orgmode.el --- Org Mode
-
 ;;; Commentary:
-;;
-
 ;;; Code:
 
 (defun icostan/capture_template (name)
@@ -16,6 +13,7 @@
 	org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "red"))
 	org-confirm-babel-evaluate nil
 	org-agenda-files (directory-files-recursively "~/Projects" "TODOs\\.org")
+    ;; org-agenda-files `()
 	org-agenda-window-setup 'other-window
 	org-agenda-restore-windows-after-quit t)
   :config

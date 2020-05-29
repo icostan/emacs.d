@@ -1,7 +1,5 @@
 ;;; ruby.el --- Ruby
-
 ;;; Commentary:
-;;
 ;;; Code:
 
 (use-package ruby-mode

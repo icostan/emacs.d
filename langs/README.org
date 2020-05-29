@@ -1,23 +1,18 @@
-* Programming languages
+* Programming/markup/data exchange languages
 
-  Various programming languages
+  Various programming/markup/... languages
 
 ** Asm
 
-   Plain old assembler
-
    #+BEGIN_SRC emacs-lisp :tangle asm.el
      ;;; asm.el --- Asm
-
      ;;; Commentary:
-     ;;
-
      ;;; Code:
 
      (use-package disaster
-       :config
-       (setq disaster-objdump "objdump -d -M intel")
-       (setq disaster-project-root-files (list (list "setup.py" "package.json"))))
+       :custom
+       (disaster-objdump "objdump -d -M intel")
+       (disaster-project-root-files (list (list "setup.py" "package.json"))))
 
      (provide 'asm)
 
@@ -26,14 +21,9 @@
 
 ** Go
 
-   Go lang
-
    #+BEGIN_SRC emacs-lisp :tangle go.el
      ;;; go.el --- Go
-
      ;;; Commentary:
-     ;;
-
      ;;; Code:
 
      (use-package go-mode
@@ -44,17 +34,16 @@
      ;;; go.el ends here
    #+END_SRC
 
-** Lisp
+** Emacs Lisp
 
-   Mostly Emacs Lisp stuff
-
-  #+BEGIN_SRC emacs-lisp :tangle lisp.el
-    ;;; lisp.el --- Lisp
-
+  #+BEGIN_SRC emacs-lisp :tangle emacs-lisp.el
+    ;;; emacs-lisp.el --- Emacs Lisp
     ;;; Commentary:
-    ;;
-
     ;;; Code:
+
+    ;; (use-package lisp
+    ;;   :hook
+    ;;   (after-save . check-parens))
 
     (use-package package-lint)
     (use-package flycheck-package
@@ -65,22 +54,99 @@
     (use-package cov
       :config
       (setq gcov-coverage-file-paths '("." "../coverage/lcov" "../../coverage/lcov")
-	    gcov-coverage-alist '((".lcov" . lcov))))
+        gcov-coverage-alist '((".lcov" . lcov))))
 
-    (provide 'lisp)
+    (provide 'emacs-lisp)
 
-    ;;; lisp.el ends here
+    ;;; emacs-lisp.el ends here
    #+END_SRC
-** Python
+** Org
 
-   Python
+   #+begin_src emacs-lisp :tangle orgmode.el
+     ;;; orgmode.el --- Org Mode
+     ;;; Commentary:
+     ;;; Code:
+
+     (defun icostan/capture_template (name)
+       "Return template file for NAME."
+       `(file concat("templates/" name)))
+
+     (use-package org
+       :ensure org-plus-contrib
+       :init
+       (setq image-file-name-regexps (list (regexp-quote "svg"))
+         org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "red"))
+         org-confirm-babel-evaluate nil
+         org-agenda-files (directory-files-recursively "~/Projects" "TODOs\\.org")
+         ;; org-agenda-files `()
+         org-agenda-window-setup 'other-window
+         org-agenda-restore-windows-after-quit t)
+       :config
+       (push '("e" "emacs.d" entry (file+headline "~/Projects/emacs.d/TODOs.org" "Tasks") (file "templates/emacs.d-todo.org")) org-capture-templates)
+       (push '("a" "arch.d" entry (file+headline "~/Projects/arch.d/TODOs.org" "Tasks") (file "templates/arch.d-todo.org")) org-capture-templates)
+       (setq org-default-notes-file (concat org-directory "/notes.org"))
+       (org-babel-do-load-languages
+        'org-babel-load-languages
+        '((emacs-lisp . t)
+          (haskell . t)
+          (ledger . t)
+          (python . t)
+          (ruby . t)
+          (shell . t)
+          (sql . nil))))
+
+     (use-package org-journal
+       :after org
+       :init
+       (setq org-journal-dir "~/Projects/org.d/journal"
+         org-journal-file-type 'monthly
+         org-read-date-popup-calendar nil)
+       :config
+       (setq org-journal-date-format "%A, %x"
+         org-journal-time-format ""
+         org-journal-time-prefix "  - [ ] "))
+
+     (use-package org-tanglesync
+       :hook ((org-mode . org-tanglesync-mode)
+              ((prog-mode text-mode) . org-tanglesync-watch-mode))
+       ;; :custom
+       ;; (org-tanglesync-watch-files '("~/Projects/emacs.d/langs/README.org"))
+       ;; (org-tanglesync-default-diff-action :external)
+       ;; (org-tanglesync-watch-mode 1)
+       :config
+       (setq org-tanglesync-watch-files '("README.org")
+         org-tanglesync-watch-mode 1
+         org-tanglesync-default-diff-action :external))
+
+     (use-package org-preview-html)
+
+     (provide 'orgmode)
+
+     ;;; orgmode.el ends here
+  #+end_src
+** Html
+
+   #+begin_src emacs-lisp :tangle html.el
+     ;;; html.el --- Html
+     ;;; Commentary:
+     ;;; Code:
+
+     (use-package mhtml-mode
+       :ensure-system-package (html-languageserver . "npm i -g vscode-html-languageserver-bin"))
+
+     (use-package html-check-frag
+       :hook (html-mode . (lambda () (html-check-frag-mode 1))))
+
+     (provide 'html)
+
+     ;;; html.el ends here
+  #+end_src
+
+** Python
 
   #+BEGIN_SRC emacs-lisp :tangle python.el
     ;;; python.el --- Python
-
     ;;; Commentary:
-    ;;
-
     ;;; Code:
 
     (use-package python
@@ -98,10 +164,7 @@
 
    #+BEGIN_SRC emacs-lisp :tangle pine.el
      ;;; pine.el --- Pine
-
      ;;; Commentary:
-     ;;
-
      ;;; Code:
 
      (use-package pine-script-mode
@@ -117,20 +180,18 @@
   Environment setup with Rbenv, Bundler package manager and testing with RSpec/Ministest.
 
   #+BEGIN_SRC emacs-lisp :tangle ruby.el
-    ;;; ruby.el --- https://www.ruby-lang.org/en/
-
+    ;;; ruby.el --- Ruby
     ;;; Commentary:
-    ;;
     ;;; Code:
 
     (use-package ruby-mode
       :ensure-system-package
       ((rubocop     . "gem install rubocop")
        (ruby-lint   . "gem install ruby-lint")
-       (pry         . "gem install pry")))
+       (pry         . "gem install pry"))
       :general
       (general-nmap ", s" '(minitest-verify-single :wk "test single")
-		    ", a" '(minitest-verify-all :wk "test all"))
+            ", a" '(minitest-verify-all :wk "test all"))
       :mode "\\.rb\\'"
       :interpreter "ruby")
     (use-package rspec-mode
@@ -144,8 +205,41 @@
     (use-package rbenv
       :after ruby-mode
       :config (global-rbenv-mode))
+    (use-package feature-mode
+      :custom
+      (feature-use-docker-compose nil))
 
     (provide 'ruby)
 
     ;;; ruby.el ends here
   #+END_SRC
+
+** Rust
+
+  #+BEGIN_SRC emacs-lisp :tangle rust.el
+    ;;; rust.el --- Rust
+    ;;; Commentary:
+    ;;; Code:
+
+    (use-package rustic
+      :custom
+      (rustic-format-trigger 'on-save))
+
+    (provide 'rust)
+
+    ;;; rust.el ends here
+ #+END_SRC
+** Yaml
+
+   #+begin_src emacs-lisp :tangle yaml.el
+     ;;; yaml.el --- Yaml
+     ;;; Commentary:
+     ;;; Code:
+
+     (use-package yaml-mode
+       :ensure-system-package (yaml-language-server . "npm i -g yaml-language-server"))
+
+     (provide 'yaml)
+
+     ;;; yaml.el ends here
+  #+end_src
