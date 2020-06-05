@@ -27,7 +27,6 @@
 
    #+begin_src sh
      git clone git@gitlab.com:icostan/emacs.d.git ~/Projects/emacs.d
-     emacs -q -l ~/Projects/emacs.d/init.el
-     # or just
+     cd ~/Projects/emacs.d
      make run
    #+end_src

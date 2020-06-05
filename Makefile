@@ -1,8 +1,8 @@
 .POSIX:
 EMACS = emacs
-EMACSFLAGS = --batch --quick --load=init.el --directory=langs --directory=markups --file=init.el --debug-init
+EMACSFLAGS = --batch --quick --load=init.el --directory=langs --file=init.el --debug-init
 
-EL   = langs/asm.el langs/emacs-lisp.el langs/go.el langs/pine.el langs/python.el langs/ruby.el \
+EL   = langs/asm.el langs/emacs-lisp.el langs/go.el langs/pine.el langs/python-lang.el langs/ruby.el \
 		langs/html.el langs/orgmode.el langs/yaml.el \
 		init.el
 DOC  = README.org

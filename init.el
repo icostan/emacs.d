@@ -42,14 +42,18 @@
   (auto-package-update-hide-results nil))
 (use-package use-package-chords
   :custom (key-chord-mode 1))
+
 (use-package gnu-elpa-keyring-update)
+(use-package exec-path-from-shell
+  :config
+  (exec-path-from-shell-initialize))
 
 ;; Emacs setup
 (use-package emacs
   :custom
   (user-full-name "Iulian Costan")
   (user-login-name "icostan")
-  (line-number-mode t "shot line number in mode line")
+  (line-number-mode t "show line number in mode line")
   (column-number-mode t "show column number in mode line")
   (display-line-numbers-type 'relative "relative line number in fringe")
   (truncate-lines nil)
@@ -105,8 +109,13 @@
   :config
   (evil-unimpaired-mode))
 (use-package evil-nerd-commenter
+  ;; :general
+  ;; (general-nmap ", l" '(nil :wk "unused comments"))
   :config
   (evilnc-default-hotkeys))
+;; (use-package evil-commentary
+;;   :config
+;;   (evil-commentary-mode))
 (use-package evil-surround
   :config
   (global-evil-surround-mode 1))
@@ -125,9 +134,7 @@
 ;;   :config
 ;;   (load-theme 'monokai t))
 ;; (use-package ayu-theme
-;;   :load-path "~/Projects/Ayu-Theme-Emacs"
-;;   :init (setq custom-theme-directory "~/Projects/Ayu-Theme-Emacs")
-;;   :config (load-theme 'ayu-gray t))
+;;   :config (load-theme 'ayu-grey t))
 (use-package darkokai-theme
   :custom (darkokai-mode-line-padding 1)
   :config (load-theme 'darkokai t))
@@ -213,23 +220,24 @@
            "SPC" '(helm-M-x :wk "M-x")
            ;; Apps
            "a"   '(nil :wk "apps")
-           "at"  '(ansi-term :wk "open terminal")
+           "at"  '(eshell :wk "terminal")
            ;; Buffers
            "b"   '(nil :wk "buffers")
-           "bb"  '(helm-buffers-list :wk "any buffer")
-           "bp"  '(helm-projectile-switch-to-buffer :wk "project buffer")
-           "bd"  '(kill-buffer :wk "delete")
+           "bb"  '(helm-buffers-list :wk "all")
+           "bp"  '(helm-projectile-switch-to-buffer :wk "project")
+           "bd"  '(kill-this-buffer :wk "kill this")
+           "bD"  '(kill-buffer :wk "kill any")
            "bs"  '(save-buffer :wk "save")
            "be"  '(eval-buffer :wk "eval")
            "bf"  '(lsp-format-buffer :wk "format")
            "bg"  '(nil :wk "goto")
            "bgd"  '(vanilla/buffers-dashboard :wk "dashboard")
            "bgm"  '(view-echo-area-messages :wk "messages")
-           ;; Comments
-           "c"   '(nil :wk "comments")
-           "cc"  '(evilnc-copy-and-comment-lines :wk "copy")
-           "ci"  '(evilnc-comment-or-uncomment-lines :wk "lines")
-           "cp"  '(evilnc-comment-or-uncomment-paragraphs :wk "paragraphs")
+           ;; Comments/compile
+           "c"   '(nil :wk "comments/compile")
+           ;; "cc"  '(evilnc-copy-and-comment-lines :wk "copy")
+           ;; "ci"  '(evilnc-comment-or-uncomment-lines :wk "lines")
+           ;; "cp"  '(evilnc-comment-or-uncomment-paragraphs :wk "paragraphs")
            "cc"  '(compile :wk "compile")
            ;; Debug
            "d"   '(nil :wk "debug")
@@ -404,6 +412,7 @@
            "wD"  '(ace-delete-window :wk "delete window")
            "wx"  '(delete-other-windows :wk "delete other window")
            "wm"  '(minimap-mode :wk "toggle minimap")
+           "wo"  '(scroll-other-window :wk "scroll other")
            ;; "ww"  '(other-window :wk "next window")
            "wg"  '(golden-ratio-toggle-widescreen :wk "golden ratio")
            "ws"  '(ace-swap-window :wk "swap")
@@ -451,7 +460,7 @@
 (use-package emacs-lisp :load-path "langs")
 (use-package go :load-path "langs")
 (use-package pine :load-path "langs")
-(use-package python :load-path "langs")
+(use-package python-lang :load-path "~/Projects/emacs.d/langs")
 (use-package ruby :load-path "langs")
 (use-package rust :load-path "langs")
 (use-package yaml :load-path "langs")
@@ -465,6 +474,7 @@
   :init (global-company-mode))
 
 ;; Git
+;; (use-package git :load-path "init")
 (use-package magit
   :config
   (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1))
@@ -488,8 +498,7 @@
   :general
   (general-nmap "g l" '(ace-jump-line-mode :wk "to line")
                 "g w" '(ace-jump-word-mode :wk "to word")
-                "g W" '(evil-fill :wk "evil-fill (unbound w)")
-                "g c" '(ace-jump-char-mode :wk "to char")))
+                "g W" '(evil-fill :wk "evil-fill (unbound w)")))
 ;; (use-package ace-jump-mode
 ;;   :chords (("gc" . ace-jump-char-mode)
 ;;            ("gw" . ace-jump-word-mode)
@@ -537,12 +546,14 @@
 (use-package ace-window)
 
 ;; Sagemath
-(use-package sage-shell-mode)
+(use-package sage-shell-mode
+  :config
+  (sage-shell:define-alias))
 (use-package ob-sagemath
   :after sage-shell-mode
-  :config
- (setq org-babel-default-header-args:sage '((:session . t)
-                                           (:results . "both"))))
+  :custom
+ (org-babel-default-header-args:sage '((:session . t)
+                                       (:results . "output"))))
 
 ;; Language Server Protocol
 (use-package lsp-mode
@@ -578,6 +589,10 @@
 ;;   :after dap-mode)
 (use-package edebug-x)
 (use-package open-junk-file)
+
+
+;; CI
+(use-package travis)
 
 ;; treemacs
 ;; (use-package tree)

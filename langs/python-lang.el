@@ -1,4 +1,4 @@
-;;; python.el --- Python
+;;; python-lang.el --- Python-Lang
 ;;; Commentary:
 ;;; Code:
 
@@ -6,6 +6,6 @@
   :mode ("\\.py\\'" . python-mode)
   :interpreter ("python" . python-mode))
 
-(provide 'python)
+(provide 'python-lang)
 
-;;; python.el ends here
+;;; python-lang.el ends here
