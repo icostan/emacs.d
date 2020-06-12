@@ -4,9 +4,10 @@
 
 (use-package ruby-mode
   :ensure-system-package
-  ((rubocop     . "gem install rubocop")
-   (ruby-lint   . "gem install ruby-lint")
-   (pry         . "gem install pry"))
+  ((rubocop     . "ruby-rubocop")
+   (ruby-lint   . "ruby-lint")
+   (solargraph  . "ruby-solargraph")
+   (pry         . "ruby-pry"))
   :general
   (general-nmap ", s" '(minitest-verify-single :wk "test single")
 		", a" '(minitest-verify-all :wk "test all"))

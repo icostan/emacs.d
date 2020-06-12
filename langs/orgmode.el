@@ -10,16 +10,18 @@
   :ensure org-plus-contrib
   :init
   (setq image-file-name-regexps (list (regexp-quote "svg"))
-	org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "red"))
-	org-confirm-babel-evaluate nil
-	org-agenda-files (directory-files-recursively "~/Projects" "TODOs\\.org")
-    ;; org-agenda-files `()
-	org-agenda-window-setup 'other-window
-	org-agenda-restore-windows-after-quit t)
+        org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "red"))
+        org-confirm-babel-evaluate nil
+        org-agenda-files (directory-files-recursively "~/Projects" "TODOs\\.org")
+        ;; org-agenda-files `()
+        org-agenda-window-setup 'other-window
+        org-agenda-restore-windows-after-quit t)
   :config
-  (push '("e" "emacs.d" entry (file+headline "~/Projects/emacs.d/TODOs.org" "Tasks") (file "templates/emacs.d-todo.org")) org-capture-templates)
-  (push '("a" "arch.d" entry (file+headline "~/Projects/arch.d/TODOs.org" "Tasks") (file "templates/arch.d-todo.org")) org-capture-templates)
-  (setq org-default-notes-file (concat org-directory "/notes.org"))
+  (setq org-default-notes-file (concat org-directory "/notes.org")
+        org-capture-templates
+        '(("e" "emacs.d" entry (file+headline "~/Projects/emacs.d/TODOs.org" "Tasks") (file "templates/emacs.d-todo.org"))
+          ("a" "arch.d" entry (file+headline "~/Projects/arch.d/TODOs.org" "Tasks") (file "templates/arch.d-todo.org"))
+          ("o" "org.d" checkitem (file+datetree "~/Projects/org.d/journal/20200601") (file "templates/org.d-todo.org"))))
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
@@ -34,12 +36,12 @@
   :after org
   :init
   (setq org-journal-dir "~/Projects/org.d/journal"
-	org-journal-file-type 'monthly
-	org-read-date-popup-calendar nil)
+        org-journal-file-type 'monthly
+        org-read-date-popup-calendar nil)
   :config
   (setq org-journal-date-format "%A, %x"
-	org-journal-time-format ""
-	org-journal-time-prefix "  - [ ] "))
+        org-journal-time-format ""
+        org-journal-time-prefix "  - [ ] "))
 
 (use-package org-tanglesync
   :hook ((org-mode . org-tanglesync-mode)
@@ -50,10 +52,24 @@
   ;; (org-tanglesync-watch-mode 1)
   :config
   (setq org-tanglesync-watch-files '("README.org")
-	org-tanglesync-watch-mode 1
-  	org-tanglesync-default-diff-action :external))
+        org-tanglesync-watch-mode 1
+        org-tanglesync-default-diff-action :external))
 
 (use-package org-preview-html)
+
+;; (use-package evil-org
+;;   :after (org evil)
+;;   :config
+;;   (add-hook 'org-mode-hook 'evil-org-mode)
+;;   (add-hook 'evil-org-mode-hook
+;;             (lambda ()
+;;               (evil-org-set-key-theme)))
+;;   (require 'evil-org-agenda)
+;;   (evil-org-agenda-set-keys))
+(use-package org-evil
+  :config
+  (org-evil-mode))
+
 
 (provide 'orgmode)
 

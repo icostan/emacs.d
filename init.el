@@ -97,6 +97,9 @@
 
 ;; Evil
 (use-package evil
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
   :config
   (evil-mode 1))
 (use-package evil-escape
@@ -125,6 +128,9 @@
 ;;   (evil-lion-mode))
 (use-package evil-matchit
   :config (global-evil-matchit-mode 1))
+(use-package evil-collection
+  :config
+  (evil-collection-init))
 
 ;; Themes
 ;; (use-package monokai-theme
@@ -175,7 +181,7 @@
 (use-package which-key
   :init
   (setq which-key-separator " "
-	which-key-prefix-prefix "+")
+        which-key-prefix-prefix "+")
   :config
   (which-key-mode 1))
 
@@ -229,7 +235,7 @@
            "bD"  '(kill-buffer :wk "kill any")
            "bs"  '(save-buffer :wk "save")
            "be"  '(eval-buffer :wk "eval")
-           "bf"  '(lsp-format-buffer :wk "format")
+           "bf"  '(format-all-buffer :wk "format")
            "bg"  '(nil :wk "goto")
            "bgd"  '(vanilla/buffers-dashboard :wk "dashboard")
            "bgm"  '(view-echo-area-messages :wk "messages")
@@ -287,8 +293,8 @@
            "hdd"  '(helpful-at-point :wk "token at point")
            "hdv"  '(helpful-variable :wk "variable")
            "hdc"  '(helpful-command :wk "command")
-           ;; "hdf"  '(helpful-callable :wk "function or macro")
-           "hdf"  '(helpful-function :wk "function only")
+           "hdf"  '(helpful-callable :wk "function or macro")
+           ;; "hdf"  '(helpful-function :wk "function only")
            "hdm"  '(describe-mode :wk "mode")
            "hdk"  '(helpful-key :wk "key")
            "hdK"  '(counsel-describe-map :wk "keymap")
@@ -308,6 +314,7 @@
            "ii"   '(yas-insert-snippet :wk "default (snippet)")
            "is"   '(yas-insert-snippet :wk "snippet")
            "il"   '(lorem-ipsum-insert-sentences :wk "lorem ipsum")
+           "ic"   '(insert-char :wk "char")
            ;; Jump
            "j"   '(nil :wk "jump")
            "jj"  '(helm-lsp-workspace-symbol :wk "default (to symbol)")
@@ -329,7 +336,8 @@
            ;; Org
            "o"   '(nil :wk "org")
            "oe"  '(org-babel-execute-src-block :wk "execute block")
-           "oE"  '(org-babel-execute-maybe :wk "execute all blocks")
+           "oE"  '(org-edit-special :wk "edit block")
+           "oA"  '(org-babel-execute-maybe :wk "execute all")
            "oT"  '(org-babel-tangle :wk "Tangle blocks")
            "oS"  '(org-tanglesync-process-buffer-automatic :wk "tangle Sync")
            "ot"  '(org-todo :wk "todo")
@@ -347,6 +355,8 @@
            "ol"  '(org-insert-link :wk "link")
            "oI"  '(org-toggle-inline-images :wk "toggle images")
            "oh"  '(org-preview-html-mode :wk "html preview")
+           "ou"  '(org-move-subtree-up :wk "move up")
+           "od"  '(org-move-subtree-down :wk "move down")
            ;; Project
            "p"   '(nil :wk "projects")
            "pf"  '(helm-projectile-find-file :wk "find files")
@@ -466,6 +476,9 @@
 (use-package yaml :load-path "langs")
 (use-package html :load-path "langs")
 (use-package orgmode :load-path "langs")
+(use-package sage :load-path "langs")
+(use-package json :load-path "langs")
+(use-package all :load-path "langs")
 
 ;; Company mode for Completion
 (use-package company
@@ -497,8 +510,8 @@
 (use-package ace-jump-mode
   :general
   (general-nmap "g l" '(ace-jump-line-mode :wk "to line")
-                "g w" '(ace-jump-word-mode :wk "to word")
-                "g W" '(evil-fill :wk "evil-fill (unbound w)")))
+    "g w" '(ace-jump-word-mode :wk "to word")
+    "g W" '(evil-fill :wk "evil-fill (unbound w)")))
 ;; (use-package ace-jump-mode
 ;;   :chords (("gc" . ace-jump-char-mode)
 ;;            ("gw" . ace-jump-word-mode)
@@ -545,29 +558,19 @@
   (golden-ratio-mode 1))
 (use-package ace-window)
 
-;; Sagemath
-(use-package sage-shell-mode
-  :config
-  (sage-shell:define-alias))
-(use-package ob-sagemath
-  :after sage-shell-mode
-  :custom
- (org-babel-default-header-args:sage '((:session . t)
-                                       (:results . "output"))))
-
 ;; Language Server Protocol
 (use-package lsp-mode
   :general
   (general-nmap ", f" '(lsp-format-buffer :wk "format")
-                ", o" '(switch-to-buffer("*ruby-ls*") :wk "output"))
+    ", o" '(switch-to-buffer("*ruby-ls*") :wk "output"))
   :hook (prog-mode . lsp)
   :commands lsp
   :config
   (setq lsp-diagnostic-package :flycheck
-	;; lsp-log-io t
-	lsp-signature-auto-activate t
-	lsp-signature-render-documentation t
-	lsp-solargraph-use-bundler t))
+        ;; lsp-log-io t
+        lsp-signature-auto-activate t
+        lsp-signature-render-documentation t
+        lsp-solargraph-use-bundler t))
 (use-package lsp-ui
   :commands lsp-ui-mode
   :config
@@ -677,9 +680,9 @@
   :config
   (setq dashboard-items '((agenda . 10)
                           (projects . 10))
-	dashboard-center-content t
-	show-week-agenda t
-	dashboard-startup-banner 'logo)
+        dashboard-center-content t
+        show-week-agenda t
+        dashboard-startup-banner 'logo)
   (dashboard-setup-startup-hook))
 
 ;; Wakatime

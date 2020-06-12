@@ -1,6 +1,25 @@
-* Programming/markup/data exchange languages
+* Programming, markup, etc languages
 
-  Various programming/markup/... languages
+  Various programming, markup, config, data exchange languages...
+
+** All
+
+   #+begin_src emacs-lisp :tangle all.el
+     ;;; all.el --- All langs
+     ;;; Commentary:
+     ;;
+     ;;; Code:
+
+     (use-package format-all
+       :ensure-system-package (prettier)
+       :ensure-system-package (tidy)
+       :ensure-system-package (black . "pip install black")
+       :ensure-system-package (rufo . "gem install rufo"))
+
+     (provide 'all)
+
+     ;;; all.el ends here
+  #+end_src
 
 ** Asm
 
@@ -17,21 +36,6 @@
      (provide 'asm)
 
      ;;; asm.el ends here
-   #+END_SRC
-
-** Go
-
-   #+BEGIN_SRC emacs-lisp :tangle go.el
-     ;;; go.el --- Go
-     ;;; Commentary:
-     ;;; Code:
-
-     (use-package go-mode
-       :mode "\\.go\\'")
-
-     (provide 'go)
-
-     ;;; go.el ends here
    #+END_SRC
 
 ** Emacs Lisp
@@ -60,70 +64,21 @@
 
     ;;; emacs-lisp.el ends here
    #+END_SRC
-** Org
+** Go
 
-   #+begin_src emacs-lisp :tangle orgmode.el
-     ;;; orgmode.el --- Org Mode
+   #+BEGIN_SRC emacs-lisp :tangle go.el
+     ;;; go.el --- Go
      ;;; Commentary:
      ;;; Code:
 
-     (defun icostan/capture_template (name)
-       "Return template file for NAME."
-       `(file concat("templates/" name)))
+     (use-package go-mode
+       :mode "\\.go\\'")
 
-     (use-package org
-       :ensure org-plus-contrib
-       :init
-       (setq image-file-name-regexps (list (regexp-quote "svg"))
-         org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "red"))
-         org-confirm-babel-evaluate nil
-         org-agenda-files (directory-files-recursively "~/Projects" "TODOs\\.org")
-         ;; org-agenda-files `()
-         org-agenda-window-setup 'other-window
-         org-agenda-restore-windows-after-quit t)
-       :config
-       (push '("e" "emacs.d" entry (file+headline "~/Projects/emacs.d/TODOs.org" "Tasks") (file "templates/emacs.d-todo.org")) org-capture-templates)
-       (push '("a" "arch.d" entry (file+headline "~/Projects/arch.d/TODOs.org" "Tasks") (file "templates/arch.d-todo.org")) org-capture-templates)
-       (setq org-default-notes-file (concat org-directory "/notes.org"))
-       (org-babel-do-load-languages
-        'org-babel-load-languages
-        '((emacs-lisp . t)
-          (haskell . t)
-          (ledger . t)
-          (python . t)
-          (ruby . t)
-          (shell . t)
-          (sql . nil))))
+     (provide 'go)
 
-     (use-package org-journal
-       :after org
-       :init
-       (setq org-journal-dir "~/Projects/org.d/journal"
-         org-journal-file-type 'monthly
-         org-read-date-popup-calendar nil)
-       :config
-       (setq org-journal-date-format "%A, %x"
-         org-journal-time-format ""
-         org-journal-time-prefix "  - [ ] "))
+     ;;; go.el ends here
+   #+END_SRC
 
-     (use-package org-tanglesync
-       :hook ((org-mode . org-tanglesync-mode)
-              ((prog-mode text-mode) . org-tanglesync-watch-mode))
-       ;; :custom
-       ;; (org-tanglesync-watch-files '("~/Projects/emacs.d/langs/README.org"))
-       ;; (org-tanglesync-default-diff-action :external)
-       ;; (org-tanglesync-watch-mode 1)
-       :config
-       (setq org-tanglesync-watch-files '("README.org")
-         org-tanglesync-watch-mode 1
-         org-tanglesync-default-diff-action :external))
-
-     (use-package org-preview-html)
-
-     (provide 'orgmode)
-
-     ;;; orgmode.el ends here
-  #+end_src
 ** Html
 
    #+begin_src emacs-lisp :tangle html.el
@@ -142,22 +97,100 @@
      ;;; html.el ends here
   #+end_src
 
-** Python
+** Json
 
-  #+BEGIN_SRC emacs-lisp :tangle python.el
-    ;;; python.el --- Python
+  #+begin_src emacs-lisp :tangle json.el
+    ;;; json.el --- JSON
     ;;; Commentary:
+    ;;
     ;;; Code:
 
-    (use-package python
-      :mode ("\\.py\\'" . python-mode)
-      :interpreter ("python" . python-mode))
+    (use-package json-mode)
 
-    (provide 'python)
+    (provide 'json)
 
-    ;;; python.el ends here
-  #+END_SRC
+    ;;; json.el ends here
+  #+end_src
+** Org
 
+   #+begin_src emacs-lisp :tangle orgmode.el
+     ;;; orgmode.el --- Org Mode
+     ;;; Commentary:
+     ;;; Code:
+
+     (defun icostan/capture_template (name)
+       "Return template file for NAME."
+       `(file concat("templates/" name)))
+
+     (use-package org
+       :ensure org-plus-contrib
+       :init
+       (setq image-file-name-regexps (list (regexp-quote "svg"))
+             org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "red"))
+             org-confirm-babel-evaluate nil
+             org-agenda-files (directory-files-recursively "~/Projects" "TODOs\\.org")
+             ;; org-agenda-files `()
+             org-agenda-window-setup 'other-window
+             org-agenda-restore-windows-after-quit t)
+       :config
+       (setq org-default-notes-file (concat org-directory "/notes.org")
+             org-capture-templates
+             '(("e" "emacs.d" entry (file+headline "~/Projects/emacs.d/TODOs.org" "Tasks") (file "templates/emacs.d-todo.org"))
+               ("a" "arch.d" entry (file+headline "~/Projects/arch.d/TODOs.org" "Tasks") (file "templates/arch.d-todo.org"))
+               ("o" "org.d" checkitem (file+datetree "~/Projects/org.d/journal/20200601") (file "templates/org.d-todo.org"))))
+       (org-babel-do-load-languages
+        'org-babel-load-languages
+        '((emacs-lisp . t)
+          (haskell . t)
+          (ledger . t)
+          (python . t)
+          (ruby . t)
+          (shell . t)
+          (sql . nil))))
+
+     (use-package org-journal
+       :after org
+       :init
+       (setq org-journal-dir "~/Projects/org.d/journal"
+             org-journal-file-type 'monthly
+             org-read-date-popup-calendar nil)
+       :config
+       (setq org-journal-date-format "%A, %x"
+             org-journal-time-format ""
+             org-journal-time-prefix "  - [ ] "))
+
+     (use-package org-tanglesync
+       :hook ((org-mode . org-tanglesync-mode)
+              ((prog-mode text-mode) . org-tanglesync-watch-mode))
+       ;; :custom
+       ;; (org-tanglesync-watch-files '("~/Projects/emacs.d/langs/README.org"))
+       ;; (org-tanglesync-default-diff-action :external)
+       ;; (org-tanglesync-watch-mode 1)
+       :config
+       (setq org-tanglesync-watch-files '("README.org")
+             org-tanglesync-watch-mode 1
+             org-tanglesync-default-diff-action :external))
+
+     (use-package org-preview-html)
+
+     ;; (use-package evil-org
+     ;;   :after (org evil)
+     ;;   :config
+     ;;   (add-hook 'org-mode-hook 'evil-org-mode)
+     ;;   (add-hook 'evil-org-mode-hook
+     ;;             (lambda ()
+     ;;               (evil-org-set-key-theme)))
+     ;;   (require 'evil-org-agenda)
+     ;;   (evil-org-agenda-set-keys))
+     (use-package org-evil
+       :config
+       (org-evil-mode))
+
+
+     (provide 'orgmode)
+
+     ;;; orgmode.el ends here
+  #+end_src
 ** Pine
 
    Pine Script by TradingView
@@ -175,6 +208,23 @@
      ;;; pine.el ends here
    #+END_SRC
 
+** Python
+
+  #+BEGIN_SRC emacs-lisp :tangle python-lang.el
+    ;;; python-lang.el --- Python-Lang
+    ;;; Commentary:
+    ;;; Code:
+
+    (use-package python
+      :ensure-system-package (pyls . python-language-server)
+      :mode ("\\.py\\'" . python-mode)
+      :interpreter ("python" . python-mode))
+
+    (provide 'python-lang)
+
+    ;;; python-lang.el ends here
+  #+END_SRC
+
 ** Ruby
 
   Environment setup with Rbenv, Bundler package manager and testing with RSpec/Ministest.
@@ -186,9 +236,10 @@
 
     (use-package ruby-mode
       :ensure-system-package
-      ((rubocop     . "gem install rubocop")
-       (ruby-lint   . "gem install ruby-lint")
-       (pry         . "gem install pry"))
+      ((rubocop     . "ruby-rubocop")
+       (ruby-lint   . "ruby-lint")
+       (solargraph  . "ruby-solargraph")
+       (pry         . "ruby-pry"))
       :general
       (general-nmap ", s" '(minitest-verify-single :wk "test single")
             ", a" '(minitest-verify-all :wk "test all"))
@@ -229,6 +280,38 @@
 
     ;;; rust.el ends here
  #+END_SRC
+** Sage
+
+  #+begin_src emacs-lisp :tangle sage.el
+    ;;; sage.el --- Sage
+    ;;; Commentary:
+    ;;
+    ;;; Code:
+
+    (use-package sage-shell-mode
+      :config
+      (sage-shell:define-alias))
+    (use-package ob-sagemath
+      :after sage-shell-mode
+      :custom
+     (org-babel-default-header-args:sage '((:session . t)
+                                           (:results . "output"))))
+    (use-package helm-sage
+      :after (helm sage-shell-mode)
+      :general
+      ;; TODO: create a definer
+      (general-define-key
+       :states '(normal visual insert emacs)
+       :prefix "SPC"
+       :non-normal-prefix "M-SPC"
+       :keymaps 'override
+       "m" '(nil :wk "math")
+       "mc" '(helm-sage-complete :wk "completion")))
+
+    (provide 'sage)
+
+    ;;; sage.el ends here
+ #+end_src
 ** Yaml
 
    #+begin_src emacs-lisp :tangle yaml.el
