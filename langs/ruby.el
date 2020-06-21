@@ -12,6 +12,10 @@
   (general-nmap ", s" '(minitest-verify-single :wk "test single")
 		", a" '(minitest-verify-all :wk "test all"))
   :mode "\\.rb\\'"
+  :mode "Rakefile\\'"
+  :mode "Gemfile\\'"
+  :mode "Berksfile\\'"
+  :mode "Vagrantfile\\'"
   :interpreter "ruby")
 (use-package rspec-mode
   :after ruby-mode

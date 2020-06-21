@@ -17,10 +17,12 @@
 *** https://github.com/raxod502/straight.el
 ** Tasks
 *** TODO Vanilla Emacs: improvements
-    SCHEDULED: <2020-06-12 Fri +1w>
+    SCHEDULED: <2020-06-26 Fri +1w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-06-07 Sun 11:30]
+    :LAST_REPEAT: [2020-06-21 Sun 10:32]
     :END:
+    - State "DONE"       from "TODO"       [2020-06-21 Sun 10:32]
+    - State "DONE"       from "TODO"       [2020-06-12 Fri 16:21]
     - State "DONE"       from "TODO"       [2020-06-07 Sun 11:30]
     - State "DONE"       from "TODO"       [2020-05-30 Sat 07:40]
     - State "DONE"       from "TODO"       [2020-05-22 Fri 19:44]
@@ -171,3 +173,4 @@
 *** DONE https://github.com/a13/emacs.d
 *** https://github.com/EricCrosson/emacs.d
 *** https://github.com/purcell/emacs.d
+*** [[https://github.com/howardabrams/dot-files]]
