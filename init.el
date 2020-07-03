@@ -214,6 +214,12 @@
   (interactive)
   (gif-screencast-start-or-stop)
   (message " *** DEMO START - DEMO START - DEMO START *** "))
+(defun vanilla/insert-task ()
+  (interactive)
+  (progn
+    (end-of-line)
+    (newline))
+  (yas-expand-snippet (yas-lookup-snippet "task")))
 (use-package general
   :init (general-evil-setup)
   :config (general-define-key
@@ -315,6 +321,7 @@
            "is"   '(yas-insert-snippet :wk "snippet")
            "il"   '(lorem-ipsum-insert-sentences :wk "lorem ipsum")
            "ic"   '(insert-char :wk "char")
+           "it"   '(vanilla/insert-task :wk "task")
            ;; Jump
            "j"   '(nil :wk "jump")
            "jj"  '(helm-lsp-workspace-symbol :wk "default (to symbol)")
