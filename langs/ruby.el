@@ -9,8 +9,8 @@
    (solargraph  . "ruby-solargraph")
    (pry         . "ruby-pry"))
   :general
-  (general-nmap ", s" '(minitest-verify-single :wk "test single")
-		", a" '(minitest-verify-all :wk "test all"))
+  (general-nmap
+        ", t" '(minitest-verify-single :wk "test ruby"))
   :mode "\\.rb\\'"
   :mode "Rakefile\\'"
   :mode "Gemfile\\'"

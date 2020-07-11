@@ -1,6 +1,5 @@
 ;;; sage.el --- Sage
 ;;; Commentary:
-;;
 ;;; Code:
 
 (use-package sage-shell-mode

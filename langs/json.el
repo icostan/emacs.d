@@ -1,6 +1,5 @@
 ;;; json.el --- JSON
 ;;; Commentary:
-;;
 ;;; Code:
 
 (use-package json-mode)
