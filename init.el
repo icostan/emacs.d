@@ -56,6 +56,7 @@
   (line-number-mode t "show line number in mode line")
   (column-number-mode t "show column number in mode line")
   (display-line-numbers-type 'relative "relative line number in fringe")
+  (custom-file null-device "Don't store customization")
   (truncate-lines nil)
   (truncate-partial-width-windows nil)
   (indent-tabs-mode nil)
@@ -358,7 +359,8 @@
            "o<"  '(org-promote-subtree :wk "promote")
            "os"  '(org-schedule :wk "schedule")
            "oi"  '(org-insert-structure-template :wk "insert")
-           "on"  '(org-next-visible-heading :wk "next")
+           "on"  '(org-next-visible-heading :wk "next heading")
+           "oN"  '(org-babel-next-src-block :wk "next block")
            "ol"  '(org-insert-link :wk "link")
            "oI"  '(org-toggle-inline-images :wk "toggle images")
            "oh"  '(org-preview-html-mode :wk "html preview")
@@ -590,11 +592,11 @@
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 
 ;; Debugging
-(use-package dap-mode
-  :config
-  (dap-mode 1)
-  (dap-ui-mode 1)
-  (dap-tooltip-mode 1))
+;; (use-package dap-mode
+;;   :config
+;;   (dap-mode 1)
+;;   (dap-ui-mode 1)
+;;   (dap-tooltip-mode 1))
 ;; (use-package dap-gdb-lldb
 ;;   :after dap-mode)
 (use-package edebug-x)
