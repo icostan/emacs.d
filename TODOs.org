@@ -16,11 +16,20 @@
 *** https://github.com/quelpa/quelpa
 *** https://github.com/raxod502/straight.el
 ** Tasks
-*** TODO Vanilla Emacs: improvements
-    SCHEDULED: <2020-07-17 Fri +1w>
+*** TODO Vanilla Emacs: monthly update
+    SCHEDULED: <2020-11-01 Sun +1m>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-07-11 Sat 08:07]
+    :LAST_REPEAT: [2020-10-01 Thu 17:45]
     :END:
+    - State "DONE"       from "TODO"       [2020-10-01 Thu 17:45]
+    - State "DONE"       from "TODO"       [2020-09-02 Wed 08:32]
+    - State "DONE"       from "TODO"       [2020-08-30 Sun 11:46]
+    - State "DONE"       from "TODO"       [2020-08-21 Fri 12:02]
+    - State "DONE"       from "TODO"       [2020-08-15 Sat 09:34]
+    - State "DONE"       from "TODO"       [2020-08-09 Sun 23:15]
+    - State "DONE"       from "TODO"       [2020-08-09 Sun 23:15]
+    - State "DONE"       from "TODO"       [2020-07-26 Sun 23:01]
+    - State "DONE"       from "TODO"       [2020-07-18 Sat 09:20]
     - State "DONE"       from "TODO"       [2020-07-11 Sat 08:07]
     - State "DONE"       from "TODO"       [2020-07-03 Fri 11:07]
     - State "DONE"       from "TODO"       [2020-06-26 Fri 13:49]

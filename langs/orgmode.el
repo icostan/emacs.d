@@ -10,7 +10,7 @@
   :ensure org-plus-contrib
   :init
   (setq image-file-name-regexps (list (regexp-quote "svg"))
-        org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "red"))
+        org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "gray") ("WIP" . "orange"))
         org-confirm-babel-evaluate nil
         org-agenda-files (directory-files-recursively "~/Projects" "TODOs\\.org")
         ;; org-agenda-files ()
@@ -30,6 +30,7 @@
      (python . t)
      (ruby . t)
      (shell . t)
+     (js . t)
      (sql . nil))))
 
 (use-package org-journal

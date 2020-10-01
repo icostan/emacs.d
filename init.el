@@ -407,7 +407,8 @@
            "SB"   '(ispell-buffer :wk "ispell buffer")
            "Sg"   '(writegood-grade-level :wk "writegood grade")
            "Se"   '(writegood-reading-ease :wk "writegood ease")
-           "Sr"   '(synosaurus-lookup :wk "synosaurus lookup")
+           "Sr"   '(synosaurus-lookup :wk "synonyms lookup")
+           "Sl"   '(xah-lookup-word-definition :wk "dictionary lookup")
            ;; "ss"  '(lsp-ui-find-workspace-symbol :wk "symbols")
            "sS"  '(lsp-ui-peek-find-workspace-symbol :wk "symbols (peek)")
            "sg"  '(find-grep :wk "with grep")
@@ -487,6 +488,7 @@
 (use-package orgmode :load-path "langs")
 (use-package sage :load-path "langs")
 (use-package json :load-path "langs")
+(use-package solidity :load-path "langs")
 (use-package all :load-path "langs")
 
 ;; Company mode for Completion
@@ -719,11 +721,14 @@
 ;;   (add-to-list 'flycheck-checkers 'tex-aspell-dynamic))
 (use-package writegood-mode)
 (use-package synosaurus
-  ;; :ensure-system-package (wn . wordnet-cli))
-  :custom
-  (synosaurus-choose-method 'default)
+  :ensure-system-package (wn . wordnet-cli)
+  ;; :custom
+  ;; (synosaurus-choose-method 'default)
   :config
   (synosaurus-mode))
+(use-package xah-lookup
+  :init
+  (setq xah-lookup-browser-function 'eww))
 
 ;; numbers
 ;; (use-package highlight-numbers
