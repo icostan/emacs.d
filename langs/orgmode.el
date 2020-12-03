@@ -10,12 +10,15 @@
   :ensure org-plus-contrib
   :init
   (setq image-file-name-regexps (list (regexp-quote "svg"))
-        org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "gray") ("WIP" . "orange"))
+        org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "gray") ("WIP" . "red"))
         org-confirm-babel-evaluate nil
+        org-export-use-babel nil
         org-agenda-files (directory-files-recursively "~/Projects" "TODOs\\.org")
         ;; org-agenda-files ()
         org-agenda-window-setup 'other-window
         org-agenda-restore-windows-after-quit t)
+  :custom
+        org-ditaa-jar-path "/usr/share/java/ditaa/ditaa-0.11.jar"
   :config
   (setq org-default-notes-file (concat org-directory "/notes.org")
         org-capture-templates
@@ -24,13 +27,16 @@
           ("o" "org.d" checkitem (file+datetree "~/Projects/org.d/journal/20200601") (file "templates/org.d-todo.org"))))
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((emacs-lisp . t)
+   '((ditaa . t)
+     (emacs-lisp . t)
+     (js . t)
      (haskell . t)
      (ledger . t)
+     (latex . t)
      (python . t)
      (ruby . t)
+     (sagemath . t)
      (shell . t)
-     (js . t)
      (sql . nil))))
 
 (use-package org-journal

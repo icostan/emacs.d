@@ -3,7 +3,7 @@ EMACS = emacs
 EMACSFLAGS = --batch --quick --load=init.el --directory=langs --file=init.el --debug-init
 
 EL   = langs/asm.el langs/emacs-lisp.el langs/go.el langs/pine.el langs/python-lang.el langs/ruby.el \
-		langs/html.el langs/orgmode.el langs/yaml.el \
+		langs/html.el langs/orgmode.el langs/yaml.el langs/shell.el langs/vyper.el langs/solidity.el \
 		init.el
 DOC  = README.org
 
@@ -21,7 +21,10 @@ check: compile
 	$(EMACS) $(EMACSFLAGS) --eval="(message (emacs-version))"
 
 run: compile
-	$(EMACS) -q -l init.el init.el
+	$(EMACS) --debug-init -q -l init.el init.el
+
+blank:
+	$(EMACS) --debug-init -q -l blank.el blank.el
 
 clean:
 	rm -f init.elc langs/*.elc langs/*.elc

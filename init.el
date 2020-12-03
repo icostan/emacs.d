@@ -485,10 +485,12 @@
 (use-package rust :load-path "langs")
 (use-package yaml :load-path "langs")
 (use-package html :load-path "langs")
-(use-package orgmode :load-path "langs")
 (use-package sage :load-path "langs")
+(use-package orgmode :load-path "langs")
 (use-package json :load-path "langs")
 (use-package solidity :load-path "langs")
+(use-package vyper :load-path "langs")
+(use-package configs :load-path "langs")
 (use-package all :load-path "langs")
 
 ;; Company mode for Completion
@@ -496,19 +498,24 @@
   :defer t
   :diminish company-mode
   :init (global-company-mode))
+(use-package company-quickhelp
+  :after company
+  :init
+  (company-quickhelp-mode))
 
 ;; Git
-;; (use-package git :load-path "init")
-(use-package magit
-  :config
-  (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1))
-(use-package evil-magit
-  :after magit)
-(use-package forge
-  :after magit)
-(use-package gitattributes-mode)
-(use-package gitconfig-mode)
-(use-package gitignore-mode)
+(use-package git)
+;; (use-package magit
+;;   :config
+;;   (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1))
+;; (use-package evil-magit
+;;   :after magit)
+;; (use-package forge
+;;   :after magit)
+;; (use-package gitattributes-mode)
+;; (use-package gitconfig-mode)
+;; (use-package gitignore-mode)
+;; (use-package posframe)
 
 ;; Show matching parens
 (use-package paren
@@ -698,6 +705,7 @@
 
 ;; Wakatime
 (use-package wakatime-mode
+  :ensure-system-package (wakatime)
   :init
   (setq wakatime-api-key "978b706c-dcd2-4d83-955b-25ed115813b9")
   ;; (setq wakatime-api-key (getenv "WAKATIME_KEY"))

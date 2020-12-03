@@ -3,13 +3,15 @@
 ;;; Code:
 
 (use-package sage-shell-mode
+  :mode "\\.sage\\'"
+  :custom
+  (sage-shell:use-prompt-toolkit nil)
   :config
   (sage-shell:define-alias))
 (use-package ob-sagemath
   :after sage-shell-mode
   :custom
- (org-babel-default-header-args:sage '((:session . t)
-                                       (:results . "output"))))
+  (org-babel-default-header-args:sage '((:results . "output"))))
 (use-package helm-sage
   :after (helm sage-shell-mode)
   :general

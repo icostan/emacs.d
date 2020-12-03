@@ -23,6 +23,8 @@
 (use-package minitest
   :after ruby-mode
   :config (minitest-install-snippets))
+(use-package ruby-test-mode
+  :after ruby-mode)
 (use-package bundler
   :after ruby-mode)
 (use-package rbenv
