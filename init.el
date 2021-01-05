@@ -478,6 +478,7 @@
 ;; Programming/markup/etc languages
 (use-package asm :load-path "langs")
 (use-package emacs-lisp :load-path "langs")
+(use-package orgmode :load-path "langs")
 (use-package go :load-path "langs")
 (use-package pine :load-path "langs")
 (use-package python-lang :load-path "~/Projects/emacs.d/langs")
@@ -486,7 +487,6 @@
 (use-package yaml :load-path "langs")
 (use-package html :load-path "langs")
 (use-package sage :load-path "langs")
-(use-package orgmode :load-path "langs")
 (use-package json :load-path "langs")
 (use-package solidity :load-path "langs")
 (use-package vyper :load-path "langs")

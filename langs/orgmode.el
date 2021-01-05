@@ -8,6 +8,7 @@
 
 (use-package org
   :ensure org-plus-contrib
+  :after rust
   :init
   (setq image-file-name-regexps (list (regexp-quote "svg"))
         org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "gray") ("WIP" . "red"))
@@ -35,6 +36,7 @@
      (latex . t)
      (python . t)
      (ruby . t)
+     (rust . t)
      (sagemath . t)
      (shell . t)
      (sql . nil))))
@@ -51,6 +53,7 @@
         org-journal-time-prefix "  - [ ] "))
 
 (use-package org-tanglesync
+  :after org
   :hook ((org-mode . org-tanglesync-mode)
          ((prog-mode text-mode) . org-tanglesync-watch-mode))
   ;; :custom
@@ -62,7 +65,8 @@
         org-tanglesync-watch-mode 1
         org-tanglesync-default-diff-action :external))
 
-(use-package org-preview-html)
+(use-package org-preview-html
+  :after org)
 
 ;; (use-package evil-org
 ;;   :after (org evil)
@@ -74,9 +78,9 @@
 ;;   (require 'evil-org-agenda)
 ;;   (evil-org-agenda-set-keys))
 (use-package org-evil
+  :after org
   :config
   (org-evil-mode))
-
 
 (provide 'orgmode)
 

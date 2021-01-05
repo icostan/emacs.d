@@ -1,0 +1,106 @@
+* Samples
+** modify output using :post
+#+NAME: strip
+#+BEGIN_SRC elisp :var text="\e[31mHello World\e[0m"
+(ansi-color-apply text)
+#+END_SRC
+
+#+RESULTS: strip
+: Hello World
+
+#+BEGIN_SRC bash :results output :post strip(*this*)
+  neofetch
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+                   -`
+                  .o+`
+                 `ooo/
+                `+oooo:
+               `+oooooo:
+               -+oooooo+:
+             `/:-:++oooo+:
+            `/++++/+++++++:
+           `/++++++++++++++:
+          `/+++ooooooooooooo/`
+         ./ooosssso++osssssso+`
+        .oossssso-````/ossssss+`
+       -osssssso.      :ssssssso.
+      :osssssss/        osssso+++.
+     /ossssssss/        +ssssooo/-
+   `/ossssso+/:-        -:/+osssso+-
+  `+sso+:-`                 `.-/+oso:
+ `++:.                           `-/+/
+ .`                                 `/
+icostan@drakarys
+----------------
+OS: Arch Linux x86_64
+Host: 81LF Lenovo Legion Y7000P-1060
+Kernel: 5.10.2-arch1-1
+Uptime: 11 days, 2 hours, 47 mins
+Packages: 1566 (pacman)
+Shell: zsh 5.8
+Resolution: 1920x1080
+WM: i3
+Theme: Arc-Dark [GTK2/3]
+Icons: Arc [GTK2/3]
+Terminal: emacs
+CPU: Intel i7-8750H (12) @ 4.100GHz
+GPU: NVIDIA GeForce GTX 1060 Mobile
+GPU: Intel UHD Graphics 630
+Memory: 5773MiB / 31983MiB
+
+
+
+
+#+end_example
+
+#+BEGIN_SRC bash :results output
+  neofetch
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+[?25l[?7l[0m[36m[1m                   -`
+                  .o+`
+                 `ooo/
+                `+oooo:
+               `+oooooo:
+               -+oooooo+:
+             `/:-:++oooo+:
+            `/++++/+++++++:
+           `/++++++++++++++:
+          `/+++o[0m[36m[1moooooooo[0m[36m[1moooo/`
+[0m[36m[1m         [0m[36m[1m./[0m[36m[1mooosssso++osssssso[0m[36m[1m+`
+[0m[36m[1m        .oossssso-````/ossssss+`
+       -osssssso.      :ssssssso.
+      :osssssss/        osssso+++.
+     /ossssssss/        +ssssooo/-
+   `/ossssso+/:-        -:/+osssso+-
+  `+sso+:-`                 `.-/+oso:
+ `++:.                           `-/+/
+ .`                                 `/[0m
+[19A[9999999D[41C[0m[1m[36m[1micostan[0m@[36m[1mdrakarys[0m
+[41C[0m----------------[0m
+[41C[0m[36m[1mOS[0m[0m:[0m Arch Linux x86_64[0m
+[41C[0m[36m[1mHost[0m[0m:[0m 81LF Lenovo Legion Y7000P-1060[0m
+[41C[0m[36m[1mKernel[0m[0m:[0m 5.10.2-arch1-1[0m
+[41C[0m[36m[1mUptime[0m[0m:[0m 11 days, 2 hours, 47 mins[0m
+[41C[0m[36m[1mPackages[0m[0m:[0m 1566 (pacman)[0m
+[41C[0m[36m[1mShell[0m[0m:[0m zsh 5.8[0m
+[41C[0m[36m[1mResolution[0m[0m:[0m 1920x1080[0m
+[41C[0m[36m[1mWM[0m[0m:[0m i3[0m
+[41C[0m[36m[1mTheme[0m[0m:[0m Arc-Dark [GTK2/3][0m
+[41C[0m[36m[1mIcons[0m[0m:[0m Arc [GTK2/3][0m
+[41C[0m[36m[1mTerminal[0m[0m:[0m emacs[0m
+[41C[0m[36m[1mCPU[0m[0m:[0m Intel i7-8750H (12) @ 4.100GHz[0m
+[41C[0m[36m[1mGPU[0m[0m:[0m NVIDIA GeForce GTX 1060 Mobile[0m
+[41C[0m[36m[1mGPU[0m[0m:[0m Intel UHD Graphics 630[0m
+[41C[0m[36m[1mMemory[0m[0m:[0m 5803MiB / 31983MiB[0m
+
+[41C[30m[40m   [31m[41m   [32m[42m   [33m[43m   [34m[44m   [35m[45m   [36m[46m   [37m[47m   [m
+
+
+[?25h[?7h
+#+end_example
