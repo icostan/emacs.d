@@ -104,3 +104,14 @@ Memory: 5773MiB / 31983MiB
 
 [?25h[?7h
 #+end_example
+
+** change faces of a src block
+#+begin_src elisp
+  (setq org-src-block-faces '(("emacs-lisp" (:background "#000000"))
+
+                              ("python" (:background "#E5FFB8"))))
+#+end_src
+
+#+RESULTS:
+| emacs-lisp | (:background #000000) |
+| python     | (:background #E5FFB8) |

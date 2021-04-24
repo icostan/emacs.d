@@ -63,6 +63,7 @@
   (tab-width 4)
   (inhibit-splash-screen t)
   (inhibit-startup-message t)
+  (visible-bell t)
   (menu-bar-mode nil)
   (tooltip-mode nil)
   (scroll-bar-mode nil)
@@ -366,6 +367,7 @@
            "oh"  '(org-preview-html-mode :wk "html preview")
            "ou"  '(org-move-subtree-up :wk "move up")
            "od"  '(org-move-subtree-down :wk "move down")
+           "ox"  '(org-ctrl-c-ctrl-c :wk "execute")
            ;; Project
            "p"   '(nil :wk "projects")
            "pf"  '(helm-projectile-find-file :wk "find files")
@@ -593,10 +595,10 @@
   :commands lsp-ui-mode
   :config
   (setq lsp-ui-doc-position 'top))
-(use-package company-lsp
-  :commands company-lsp
-  :config
-  (setq company-lsp-enable-snippet t))
+;; (use-package company-lsp
+;;   :commands company-lsp
+;;   :config
+;;   (setq company-lsp-enable-snippet t))
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 

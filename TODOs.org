@@ -17,10 +17,13 @@
 *** https://github.com/raxod502/straight.el
 ** Tasks
 *** TODO Vanilla Emacs: monthly update
-    SCHEDULED: <2021-02-02 Tue +1m>
+    SCHEDULED: <2021-05-02 Sun +1m>
     :PROPERTIES:
-    :LAST_REPEAT: [2021-01-04 Mon 23:52]
+    :LAST_REPEAT: [2021-04-03 Sat 10:34]
     :END:
+    - State "DONE"       from "TODO"       [2021-04-03 Sat 10:34]
+    - State "DONE"       from "TODO"       [2021-03-15 Mon 10:14]
+    - State "DONE"       from "TODO"       [2021-02-14 Sun 20:18]
     - State "DONE"       from "TODO"       [2021-01-04 Mon 23:52]
     - State "DONE"       from "TODO"       [2020-12-03 Thu 15:27]
     - State "DONE"       from "TODO"       [2020-11-06 Fri 21:22]
