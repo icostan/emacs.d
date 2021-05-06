@@ -38,7 +38,7 @@
 (use-package auto-package-update
   :custom
   (auto-package-update-delete-old-versions t)
-  (auto-package-update-interval 7)
+  (auto-package-update-interval 30)
   (auto-package-update-hide-results nil))
 (use-package use-package-chords
   :custom (key-chord-mode 1))
@@ -263,6 +263,7 @@
            "dh"  '(hexl-find-file :wk "file in HEX")
            ;; Emacs
            "e"   '(nil :wk "emacs")
+           "er"  '(package-refresh-contents :wk "refresh packages")
            "eu"  '(auto-package-update-now :wk "update now")
            "ee"  '(eval-last-sexp :wk "eval sexp")
            "ed"  '(eval-defun :wk "eval defun")
@@ -415,12 +416,12 @@
            "sS"  '(lsp-ui-peek-find-workspace-symbol :wk "symbols (peek)")
            "sg"  '(find-grep :wk "with grep")
            ;; Treemacs
-           "t"   '(nil :wk "treemacs")
-           "ts"  '(sort-lines :wk "sort line")
-           "te"  '(lsp-treemacs-errors-list :wk "errors")
-           "tr"  '(lsp-treemacs-references :wk "references")
-           "ts"  '(lsp-treemacs-symbols :wk "symbols")
-           "tt"  '(treemacs :wk "treemacs")
+           ;; "t"   '(nil :wk "treemacs")
+           ;; "ts"  '(sort-lines :wk "sort line")
+           ;; "te"  '(lsp-treemacs-errors-list :wk "errors")
+           ;; "tr"  '(lsp-treemacs-references :wk "references")
+           ;; "ts"  '(lsp-treemacs-symbols :wk "symbols")
+           ;; "tt"  '(treemacs :wk "treemacs")
            ;; Windows
            "w"   '(nil :wk "windows")
            "wl"  '(windmove-right :wk "move right")
@@ -461,12 +462,6 @@
   :config
   (helm-projectile-on))
 
-;; NeoTree
-(use-package neotree
-  :init
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
-(use-package all-the-icons :ensure t)
-
 ;; Code Snippets
 (use-package yasnippet
   :config (yas-global-mode 1))
@@ -505,19 +500,8 @@
   :init
   (company-quickhelp-mode))
 
-;; Git
+;; Git init
 (use-package git)
-;; (use-package magit
-;;   :config
-;;   (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1))
-;; (use-package evil-magit
-;;   :after magit)
-;; (use-package forge
-;;   :after magit)
-;; (use-package gitattributes-mode)
-;; (use-package gitconfig-mode)
-;; (use-package gitignore-mode)
-;; (use-package posframe)
 
 ;; Show matching parens
 (use-package paren
@@ -583,11 +567,13 @@
   :general
   (general-nmap ", f" '(lsp-format-buffer :wk "format")
     ", o" '(switch-to-buffer("*ruby-ls*") :wk "output"))
-  :hook (prog-mode . lsp)
+  :hook ((lsp-mode . lsp-enable-which-key-integration)
+         (python-mode . lsp)
+         (ruby-mode . lsp))
   :commands lsp
   :config
   (setq lsp-diagnostic-package :flycheck
-        ;; lsp-log-io t
+        lsp-log-io t
         lsp-signature-auto-activate t
         lsp-signature-render-documentation t
         lsp-solargraph-use-bundler t))
@@ -595,12 +581,12 @@
   :commands lsp-ui-mode
   :config
   (setq lsp-ui-doc-position 'top))
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 ;; (use-package company-lsp
 ;;   :commands company-lsp
 ;;   :config
 ;;   (setq company-lsp-enable-snippet t))
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
-(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 
 ;; Debugging
 ;; (use-package dap-mode
@@ -613,87 +599,11 @@
 (use-package edebug-x)
 (use-package open-junk-file)
 
-
 ;; CI
 (use-package travis)
 
-;; treemacs
-;; (use-package tree)
-(use-package treemacs
-  :defer t
-  :init
-  (with-eval-after-load 'winum
-    (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
-  :config
-  (progn
-    (setq treemacs-collapse-dirs                 (if treemacs-python-executable 3 0)
-          treemacs-deferred-git-apply-delay      0.5
-          treemacs-directory-name-transformer    #'identity
-          treemacs-display-in-side-window        t
-          treemacs-eldoc-display                 t
-          treemacs-file-event-delay              5000
-          treemacs-file-extension-regex          treemacs-last-period-regex-value
-          treemacs-file-follow-delay             0.2
-          treemacs-file-name-transformer         #'identity
-          treemacs-follow-after-init             t
-          treemacs-git-command-pipe              ""
-          treemacs-goto-tag-strategy             'refetch-index
-          treemacs-indentation                   2
-          treemacs-indentation-string            " "
-          treemacs-is-never-other-window         nil
-          treemacs-max-git-entries               5000
-          treemacs-missing-project-action        'ask
-          treemacs-no-png-images                 nil
-          treemacs-no-delete-other-windows       t
-          treemacs-project-follow-cleanup        nil
-          treemacs-persist-file                  (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
-          treemacs-position                      'left
-          treemacs-recenter-distance             0.1
-          treemacs-recenter-after-file-follow    nil
-          treemacs-recenter-after-tag-follow     nil
-          treemacs-recenter-after-project-jump   'always
-          treemacs-recenter-after-project-expand 'on-distance
-          treemacs-show-cursor                   nil
-          treemacs-show-hidden-files             t
-          treemacs-silent-filewatch              nil
-          treemacs-silent-refresh                nil
-          treemacs-sorting                       'alphabetic-asc
-          treemacs-space-between-root-nodes      t
-          treemacs-tag-follow-cleanup            t
-          treemacs-tag-follow-delay              1.5
-          treemacs-width                         35)
-
-    ;; The default width and height of the icons is 22 pixels. If you are
-    ;; using a Hi-DPI display, uncomment this to double the icon size.
-    ;;(treemacs-resize-icons 44)
-
-    (treemacs-follow-mode t)
-    (treemacs-filewatch-mode t)
-    (treemacs-fringe-indicator-mode t)
-    (pcase (cons (not (null (executable-find "git")))
-                 (not (null treemacs-python-executable)))
-      (`(t . t)
-       (treemacs-git-mode 'deferred))
-      (`(t . _)
-       (treemacs-git-mode 'simple))))
-  :bind
-  (:map global-map
-        ("M-0"       . treemacs-select-window)
-        ("C-x t 1"   . treemacs-delete-other-windows)
-        ("C-x t t"   . treemacs)
-        ("C-x t B"   . treemacs-bookmark)
-        ("C-x t C-t" . treemacs-find-file)
-        ("C-x t M-t" . treemacs-find-tag)))
-
-(use-package treemacs-evil
-  :after treemacs evil)
-(use-package treemacs-projectile
-  :after treemacs projectile)
-(use-package treemacs-icons-dired
-  :after treemacs dired
-  :config (treemacs-icons-dired-mode))
-(use-package treemacs-magit
-  :after treemacs magit)
+;; Trees init
+(use-package trees)
 
 ;; Dashboard
 (use-package dashboard
@@ -798,7 +708,7 @@
 (use-package build-status)
 
 ;; All Done!!!
-(message "All done, %s." (user-login-name))
+(message "==> ALL DONE, %s." (user-login-name))
 
 (provide 'init)
 

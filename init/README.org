@@ -1,0 +1,47 @@
+* Init
+
+** Langs
+
+   #+begin_src emacs-lisp :tangle langs.el
+     ;;; langs.el --- Init langs
+     ;;; Commentary:
+     ;;; Code:
+
+     (use-package asm :load-path "langs")
+     (use-package emacs-lisp :load-path "langs")
+     (use-package go :load-path "langs")
+     (use-package pine :load-path "langs")
+     (use-package python :load-path "langs")
+     (use-package ruby :load-path "langs")
+     (use-package rust :load-path "langs")
+     (use-package yaml :load-path "langs")
+     (use-package html :load-path "langs")
+     (use-package orgmode :load-path "langs")
+
+     (provide 'langs)
+
+     ;;; langs.el ends here
+  #+end_src
+
+** Git
+
+   #+begin_src emacs-lisp :tangle git.el
+     ;;; git.el --- Git
+     ;;; Commentary:
+     ;;; Code:
+
+     (use-package magit
+       :config
+       (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1))
+     (use-package evil-magit
+       :after magit)
+     (use-package forge
+       :after magit)
+     (use-package gitattributes-mode)
+     (use-package gitconfig-mode)
+     (use-package gitignore-mode)
+
+     (provide 'git)
+
+     ;;; git.el ends here
+  #+end_src

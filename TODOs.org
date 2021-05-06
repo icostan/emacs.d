@@ -3,6 +3,7 @@
   :CATEGORY: emacs.d
   :END:
 ** Emacs Manual
+   - [ ] 7.5 Properties and Columns - Column Ciew
    - [X] 49.3 Customization - Key bindings
 ** Intro to Emacs Lisp
    - [X] 17. Debugging
@@ -17,10 +18,11 @@
 *** https://github.com/raxod502/straight.el
 ** Tasks
 *** TODO Vanilla Emacs: monthly update
-    SCHEDULED: <2021-05-02 Sun +1m>
+    SCHEDULED: <2021-06-02 Wed +1m>
     :PROPERTIES:
-    :LAST_REPEAT: [2021-04-03 Sat 10:34]
+    :LAST_REPEAT: [2021-05-06 Thu 10:36]
     :END:
+    - State "DONE"       from "TODO"       [2021-05-06 Thu 10:36]
     - State "DONE"       from "TODO"       [2021-04-03 Sat 10:34]
     - State "DONE"       from "TODO"       [2021-03-15 Mon 10:14]
     - State "DONE"       from "TODO"       [2021-02-14 Sun 20:18]
@@ -69,13 +71,13 @@
     - State "DONE"       from "TODO"       [2019-12-13 Fri 22:38]
 *** DONE ledger-mode
     CLOSED: [2019-11-25 Mon 17:52]
-*** orgmode [6/13]
+*** orgmode [8/15]
     - [X] journal
     - [X] agenda
     - [X] tags, priority
     - [ ] evil keybindings
     - [ ] anniversaries
-    - [ ] FIX schedule, missing CREATED
+    - [X] FIX schedule, missing CREATED
     - [ ] FIX new item formatting
     - [X] capture and templates
     - [X] babel
@@ -84,6 +86,7 @@
     - [ ] schedule on weekdays only
     - [ ] fix keywords completions
     - [ ] uml diagrams with mermaid/plantumuml
+    - [X] columnview
 *** DONE text sorting
 *** DONE sagemath
 *** git [1/3]
@@ -187,6 +190,9 @@
    :PROPETIES:
 *** DONE create Makefile https://nullprogram.com/blog/2020/01/22/
     SCHEDULED: <2020-05-22 Fri>
+*** DONE columnview for podcasts, books, etc
+    - https://paul-nameless.com/emacs-org-mode-100-books.html
+    - https://orgmode.org/manual/Column-View.html
 ** Configs
 *** DONE https://github.com/a13/emacs.d
 *** https://github.com/EricCrosson/emacs.d
