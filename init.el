@@ -369,6 +369,7 @@
            "ou"  '(org-move-subtree-up :wk "move up")
            "od"  '(org-move-subtree-down :wk "move down")
            "ox"  '(org-ctrl-c-ctrl-c :wk "execute")
+           "ob"  '(org-dblock-update :wk "block")
            ;; Project
            "p"   '(nil :wk "projects")
            "pf"  '(helm-projectile-find-file :wk "find files")
@@ -603,7 +604,7 @@
 (use-package travis)
 
 ;; Trees init
-(use-package trees)
+;; (use-package trees)
 
 ;; Dashboard
 (use-package dashboard
