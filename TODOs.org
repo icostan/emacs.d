@@ -19,10 +19,12 @@
 *** ECB - Emacs Code Browse
 ** Tasks
 *** TODO Vanilla Emacs: monthly update
-    SCHEDULED: <2021-07-02 Fri +1m>
+    SCHEDULED: <2021-09-02 Thu +1m>
     :PROPERTIES:
-    :LAST_REPEAT: [2021-06-02 Wed 09:15]
+    :LAST_REPEAT: [2021-08-06 Fri 18:40]
     :END:
+    - State "DONE"       from "TODO"       [2021-08-06 Fri 18:40]
+    - State "DONE"       from "TODO"       [2021-08-06 Fri 18:38]
     - State "DONE"       from "TODO"       [2021-06-02 Wed 09:15]
     - State "DONE"       from "TODO"       [2021-05-06 Thu 10:36]
     - State "DONE"       from "TODO"       [2021-04-03 Sat 10:34]

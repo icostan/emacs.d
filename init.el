@@ -476,6 +476,7 @@
 ;; Programming/markup/etc languages
 (use-package asm :load-path "langs")
 (use-package emacs-lisp :load-path "langs")
+(use-package elixir :load-path "langs")
 (use-package orgmode :load-path "langs")
 (use-package go :load-path "langs")
 (use-package pine :load-path "langs")
