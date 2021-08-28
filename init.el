@@ -102,6 +102,7 @@
   :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
+  (setq evil-want-C-i-jump nil)
   :config
   (evil-mode 1))
 (use-package evil-escape

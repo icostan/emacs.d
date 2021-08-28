@@ -2,8 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package alchemist)
-;; (use-package exunit)
+(use-package alchemist
+  :general
+  (general-nmap
+        "g b" '(alchemist-goto-jump-back :wk "go back")))
 
 (provide 'elixir)
 
