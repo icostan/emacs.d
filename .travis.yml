@@ -1,8 +1,8 @@
 language: emacs-lisp
 
 env:
+  - EVM_EMACS=emacs-27.2-travis-linux-xenial
   - EVM_EMACS=emacs-26.3-travis-linux-xenial
-  - EVM_EMACS=emacs-25.3-travis
 
 install:
   - curl -fsSkL https://raw.github.com/rejeep/evm/master/go | bash
@@ -12,4 +12,4 @@ install:
 
 script:
   - emacs --version
-  - make check
+  - make version

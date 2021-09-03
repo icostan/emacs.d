@@ -1,6 +1,6 @@
 * emacs.d
 
-[[https://travis-ci.org/icostan/emacs.d][https://travis-ci.org/icostan/emacs.d.svg?branch=master]]
+[[https://app.travis-ci.com/icostan/emacs.d.svg?branch=master]]
 
 #+begin_quote
 While any text editor can save your files, only Emacs can save your soul.
