@@ -3,9 +3,12 @@
 ;;; Code:
 
 (use-package alchemist
+  :mode "\\.ex\\'"
   :general
   (general-nmap
-        "g b" '(alchemist-goto-jump-back :wk "go back")))
+    ", t" '(alchemist-mix-test-this-buffer :wk "alchemist test buffer")
+    ", s" '(alchemist-mix-test-at-point :wk "alchemist test single")
+    "g b" '(alchemist-goto-jump-back :wk "alchemist go back")))
 
 (provide 'elixir)
 

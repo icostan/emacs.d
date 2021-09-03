@@ -1,33 +1,40 @@
 .POSIX:
 EMACS = emacs
-EMACSFLAGS = --batch --quick --load=init.el --directory=langs --file=init.el --debug-init
-
-EL   = langs/asm.el langs/emacs-lisp.el langs/go.el langs/pine.el langs/python-lang.el langs/ruby.el \
-		langs/html.el langs/orgmode.el langs/yaml.el langs/shell.el langs/vyper.el langs/solidity.el \
-		init.el
 DOC  = README.org
+FILE = init.el
+EMACSD = local.el
+
+EMACSFLAGS = --quick --load=${EMACSD} --load=init.el --directory=langs --directory=init --file=${FILE} --debug-init
+BATCH = --batch
+
+EL   =  langs/elixir.el langs/solidity.el langs/json.el langs/html.el langs/pine.el langs/go.el langs/asm.el \
+		langs/all.el langs/emacs-lisp.el langs/ruby.el langs/yaml.el langs/python-lang.el langs/shell.el \
+		langs/rust.el langs/configs.el langs/orgmode.el langs/vyper.el langs/sage.el lisp/evil-unimpaired.el \
+		init.el git.el blank.el trees.el init/langs.el init/vanilla.el
+
+SEXP = "(message (emacs-version))"
 
 all: run
 
 compile: $(EL:.el=.elc)
 
 lint:
-	$(EMACS) $(EMACSFLAGS) --eval="(elint-directory \".\")"
+	$(EMACS) $(EMACSFLAGS) ${BATCH} --eval="(elint-directory \".\")"
 
 checkdoc:
-	$(EMACS) $(EMACSFLAGS) --eval="(checkdoc)"
+	$(EMACS) $(EMACSFLAGS) ${BATCH} --eval="(checkdoc)"
 
-check: compile
-	$(EMACS) $(EMACSFLAGS) --eval="(message (emacs-version))"
+version:
+	$(EMACS) $(EMACSFLAGS) ${BATCH} --eval=${SEXP}
 
-run: compile
-	$(EMACS) --debug-init -q -l init.el init.el
-
-blank:
-	$(EMACS) --debug-init -q -l blank.el blank.el
+run:
+	$(EMACS) ${EMACSFLAGS} --eval=${SEXP}
 
 clean:
-	rm -f init.elc langs/*.elc langs/*.elc
+	rm -f *.elc init/*.elc langs/*.elc lisp/*.elc
+
+purge:
+	rm -rf elpa/*
 
 .SUFFIXES: .el .elc
 .el.elc:

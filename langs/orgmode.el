@@ -8,7 +8,6 @@
 
 (use-package org
   :ensure org-plus-contrib
-  :after rust
   :init
   (setq image-file-name-regexps (list (regexp-quote "svg"))
         org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "gray") ("WIP" . "red"))
@@ -40,6 +39,7 @@
      (sagemath . t)
      (shell . t)
      (sql . nil))))
+(use-package ob-rust)
 
 (use-package org-journal
   :after org

@@ -2,13 +2,17 @@
 
 [[https://travis-ci.org/icostan/emacs.d][https://travis-ci.org/icostan/emacs.d.svg?branch=master]]
 
+#+begin_quote
+While any text editor can save your files, only Emacs can save your soul.
+#+end_quote
+
 ** Highlights
 
    - declarative - with [[https://github.com/jwiegley/use-package][use-package]] macro only, no orphan *setq* or *require* sexp
    - literate - sync between Lisp and Org files with [[https://github.com/mtekman/org-tanglesync][org-tanglesync]]
    - structured - programming/markup languages go under *langs* dir
    - keybindings - with general
-   - clean
+   - vim vs. emacs - no problem, I use evil
 
 ** Programming/markup/data exchange languages
 
@@ -23,10 +27,27 @@
 
 ** Usage
 
-   Start isolated Emacs instance:
+   Get the project:
 
    #+begin_src sh
      git clone git@gitlab.com:icostan/emacs.d.git ~/Projects/emacs.d
      cd ~/Projects/emacs.d
+   #+end_src
+
+   Emacs version:
+
+   #+begin_src sh
+     make version
+   #+end_src
+
+   Run isolated (load project files only) Emacs instance:
+
+   #+begin_src sh
      make run
+   #+end_src
+
+   Run emacs with ~/.emacs.d user directory:
+
+   #+begin_src sh
+     make run EMACSD=home.el
    #+end_src

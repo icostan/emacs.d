@@ -13,6 +13,8 @@
 (use-package html :load-path "langs")
 (use-package orgmode :load-path "langs")
 
+(message "==> INIT: langs.el")
+
 (provide 'langs)
 
 ;;; langs.el ends here

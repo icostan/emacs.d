@@ -97,132 +97,8 @@
 ;; (if (fboundp 'tool-bar-mode)
 ;;     (tool-bar-mode -1))
 
-;; Evil
-(use-package evil
-  :init
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  (setq evil-want-C-i-jump nil)
-  :config
-  (evil-mode 1))
-(use-package evil-escape
-  :init
-  (setq-default evil-escape-key-sequence "jk")
-  :config
-  (evil-escape-mode 1))
-(use-package evil-unimpaired
-  :load-path "lisp"
-  :config
-  (evil-unimpaired-mode))
-(use-package evil-nerd-commenter
-  ;; :general
-  ;; (general-nmap ", l" '(nil :wk "unused comments"))
-  :config
-  (evilnc-default-hotkeys))
-;; (use-package evil-commentary
-;;   :config
-;;   (evil-commentary-mode))
-(use-package evil-surround
-  :config
-  (global-evil-surround-mode 1))
-;;; align operators
-;; (use-package evil-lion
-;;   :config
-;;   (evil-lion-mode))
-(use-package evil-matchit
-  :config (global-evil-matchit-mode 1))
-(use-package evil-collection
-  :config
-  (evil-collection-init))
-
-;; Themes
-;; (use-package monokai-theme
-;;   :custom
-;;   (monokai-foreground     "#F8F8FF")
-;;   (monokai-comments       "#75715E")
-;;   :config
-;;   (load-theme 'monokai t))
-;; (use-package ayu-theme
-;;   :config (load-theme 'ayu-grey t))
-(use-package darkokai-theme
-  :custom (darkokai-mode-line-padding 1)
-  :config (load-theme 'darkokai t))
-
-;; Helm
-(use-package helm
-  :init
-  (setq helm-M-x-fuzzy-match t
-        helm-completion-style :helm-fuzzy
-        helm-buffers-fuzzy-matching t
-        helm-recentf-fuzzy-match t
-        helm-locate-fuzzy-match t
-        helm-semantic-fuzzy-match t
-        helm-imenu-fuzzy-match t
-        helm-completion-in-region-fuzzy-match t
-        helm-candidate-number-list 150
-        helm-split-window-inside-p t
-        helm-move-to-line-cycle-in-source t
-        helm-echo-input-in-header-line t
-        helm-autoresize-max-height 0
-        helm-autoresize-min-height 20)
-  :config
-  (helm-mode 1))
-(use-package helm-swoop
-  ;; :general
-  ;; (general-nmap "g /" '(helm-swoop :wk "search"))
-  :after helm
-  :init
-  (setq helm-swoop-pre-input-function
-        (lambda ()
-          (if mark-active
-              (buffer-substring-no-properties (mark) (point))
-            ""))))
-(use-package helm-ag
-  :after helm)
-
-;; Which Key
-(use-package which-key
-  :init
-  (setq which-key-separator " "
-        which-key-prefix-prefix "+")
-  :config
-  (which-key-mode 1))
-
 ;; General keybindings
-(defun vanilla/projectile-goto-todos ()
-  "Go to project's TODOs file."
-  (interactive)
-  (org-projectile-goto-location-for-project (projectile-project-name)))
-(defun vanilla/disaster-with-gcc ()
-  "Compile with GCC."
-  (interactive)
-  (setq disaster-cc "gcc")
-  (disaster))
-(defun vanilla/disaster-with-clang ()
-  "Compile with CLang."
-  (interactive)
-  (setq disaster-cc "clang")
-  (disaster))
-(defun vanilla/buffers-dashboard ()
-  "Show dashboard."
-  (interactive)
-  (switch-to-buffer "*dashboard*"))
-(defun vanilla/record-video ()
-  "Print DEMO START message and start video recording."
-  (interactive)
-  (camcorder-mode 'toggle)
-  (message " *** DEMO START - DEMO START - DEMO START *** "))
-(defun vanilla/record-gif ()
-  "Print DEMO START message and start GIF recording."
-  (interactive)
-  (gif-screencast-start-or-stop)
-  (message " *** DEMO START - DEMO START - DEMO START *** "))
-(defun vanilla/insert-task ()
-  (interactive)
-  (progn
-    (end-of-line)
-    (newline))
-  (yas-expand-snippet (yas-lookup-snippet "task")))
+(use-package vanilla :load-path "init")
 (use-package general
   :init (general-evil-setup)
   :config (general-define-key
@@ -448,6 +324,99 @@
            "qm" '(make-frame :wk "make frame")
            "qd" '(delete-frame :wk "delete frame")
            "qf" '(toggle-frame-fullscreen :wk "fullscreen")))
+(message "==> INIT: general keybindings")
+
+;; Evil setup
+(use-package evil
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  (setq evil-want-C-i-jump nil)
+  :config
+  (evil-mode 1))
+(use-package evil-escape
+  :init
+  (setq-default evil-escape-key-sequence "jk")
+  :config
+  (evil-escape-mode 1))
+(use-package evil-unimpaired
+  :load-path "lisp"
+  :config
+  (evil-unimpaired-mode))
+(use-package evil-nerd-commenter
+  ;; :general
+  ;; (general-nmap ", l" '(nil :wk "unused comments"))
+  :config
+  (evilnc-default-hotkeys))
+;; (use-package evil-commentary
+;;   :config
+;;   (evil-commentary-mode))
+(use-package evil-surround
+  :config
+  (global-evil-surround-mode 1))
+;;; align operators
+;; (use-package evil-lion
+;;   :config
+;;   (evil-lion-mode))
+(use-package evil-matchit
+  :config (global-evil-matchit-mode 1))
+(use-package evil-collection
+  :config
+  (evil-collection-init))
+
+;; Themes
+;; (use-package monokai-theme
+;;   :custom
+;;   (monokai-foreground     "#F8F8FF")
+;;   (monokai-comments       "#75715E")
+;;   :config
+;;   (load-theme 'monokai t))
+;; (use-package ayu-theme
+;;   :config (load-theme 'ayu-grey t))
+(use-package darkokai-theme
+  :custom (darkokai-mode-line-padding 1)
+  :config (load-theme 'darkokai t))
+
+;; Helm
+(use-package helm
+  :init
+  (setq helm-M-x-fuzzy-match t
+        helm-completion-style :helm-fuzzy
+        helm-buffers-fuzzy-matching t
+        helm-recentf-fuzzy-match t
+        helm-locate-fuzzy-match t
+        helm-semantic-fuzzy-match t
+        helm-imenu-fuzzy-match t
+        helm-completion-in-region-fuzzy-match t
+        helm-candidate-number-list 150
+        helm-split-window-inside-p t
+        helm-move-to-line-cycle-in-source t
+        helm-echo-input-in-header-line t
+        helm-autoresize-max-height 0
+        helm-autoresize-min-height 20)
+  :config
+  (helm-mode 1))
+(use-package helm-swoop
+  ;; :general
+  ;; (general-nmap "g /" '(helm-swoop :wk "search"))
+  :after helm
+  :init
+  (setq helm-swoop-pre-input-function
+        (lambda ()
+          (if mark-active
+              (buffer-substring-no-properties (mark) (point))
+            ""))))
+(use-package helm-ag
+  :after helm)
+
+;; Which Key
+(use-package which-key
+  :init
+  (setq which-key-separator " "
+        which-key-prefix-prefix "+")
+  :config
+  (which-key-mode 1))
+
 
 ;; Projectile
 (use-package projectile
@@ -473,6 +442,7 @@
 ;; Flycheck
 (use-package flycheck
   :init (global-flycheck-mode))
+(use-package flycheck-cask)
 
 ;; Programming/markup/etc languages
 (use-package asm :load-path "langs")
@@ -481,7 +451,7 @@
 (use-package orgmode :load-path "langs")
 (use-package go :load-path "langs")
 (use-package pine :load-path "langs")
-(use-package python-lang :load-path "~/Projects/emacs.d/langs")
+(use-package python-lang :load-path "langs")
 (use-package ruby :load-path "langs")
 (use-package rust :load-path "langs")
 (use-package yaml :load-path "langs")
@@ -534,7 +504,7 @@
 
 ;; Screen casting
 ;; https://gitlab.com/marcowahl/emacsshot
-(use-package camcorder)
+;; (use-package camcorder)
 (use-package gif-screencast)
 
 ;; Display typed commands
@@ -584,7 +554,7 @@
   :commands lsp-ui-mode
   :config
   (setq lsp-ui-doc-position 'top))
-(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+;; (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 ;; (use-package company-lsp
 ;;   :commands company-lsp
 ;;   :config
@@ -603,7 +573,7 @@
 (use-package open-junk-file)
 
 ;; CI
-(use-package travis)
+;; (use-package travis)
 
 ;; Trees init
 ;; (use-package trees)
@@ -637,11 +607,10 @@
   :config
   (flyspell-mode))
 (use-package flyspell-correct)
-;; (use-package flycheck-aspell
-;;   :after flycheck
-;;   :load-path "~/Projects/emacs.d/lisp"
-;;   :config
-;;   (add-to-list 'flycheck-checkers 'tex-aspell-dynamic))
+(use-package flycheck-aspell
+  :after flycheck
+  :config
+  (add-to-list 'flycheck-checkers 'tex-aspell-dynamic))
 (use-package writegood-mode)
 (use-package synosaurus
   :ensure-system-package (wn . wordnet-cli)
@@ -711,7 +680,8 @@
 (use-package build-status)
 
 ;; All Done!!!
-(message "==> ALL DONE, %s." (user-login-name))
+(message "==> INIT: ALL DONE, %s." (user-login-name))
+(message "")
 
 (provide 'init)
 
