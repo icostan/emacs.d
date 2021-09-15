@@ -3,7 +3,7 @@
 ;;; Code:
 
 (use-package alchemist
-  :mode "\\.ex\\'"
+  ;; :mode "\\.ex\\'"
   :general
   (general-nmap
     ", t" '(alchemist-mix-test-this-buffer :wk "alchemist test buffer")

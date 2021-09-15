@@ -122,7 +122,7 @@
            "be"  '(eval-buffer :wk "eval")
            "bf"  '(format-all-buffer :wk "format")
            "bg"  '(nil :wk "goto")
-           "bgd"  '(vanilla/buffers-dashboard :wk "dashboard")
+           "bgd"  '(vanilla-buffers-dashboard :wk "dashboard")
            "bgm"  '(view-echo-area-messages :wk "messages")
            ;; Comments/compile
            "c"   '(nil :wk "comments/compile")
@@ -135,8 +135,8 @@
            "dp"  '(dap-debug :wk "dap")
            "de"  '(edebug-defun :wk "edebug-defun")
            "dd"  '(nil :wk "disassembly")
-           "ddg"  '(vanilla/disaster-with-gcc :wk "with gcc")
-           "ddc"  '(vanilla/disaster-with-clang :wk "with clang")
+           "ddg"  '(vanilla-disaster-with-gcc :wk "with gcc")
+           "ddc"  '(vanilla-disaster-with-clang :wk "with clang")
            "dh"  '(hexl-find-file :wk "file in HEX")
            ;; Emacs
            "e"   '(nil :wk "emacs")
@@ -201,7 +201,7 @@
            "is"   '(yas-insert-snippet :wk "snippet")
            "il"   '(lorem-ipsum-insert-sentences :wk "lorem ipsum")
            "ic"   '(insert-char :wk "char")
-           "it"   '(vanilla/insert-task :wk "task")
+           "it"   '(vanilla-insert-task :wk "task")
            ;; Jump
            "j"   '(nil :wk "jump")
            "jj"  '(helm-lsp-workspace-symbol :wk "default (to symbol)")
@@ -251,7 +251,7 @@
            "p"   '(nil :wk "projects")
            "pf"  '(helm-projectile-find-file :wk "find files")
            "pp"  '(helm-projectile-switch-project :wk "switch project")
-           "po"  '(vanilla/projectile-goto-todos :wk "todos")
+           "po"  '(vanilla-projectile-goto-todos :wk "todos")
            "pb"  '(helm-projectile-switch-to-buffer :wk "switch buffer")
            "pr"  '(projectile-root-local :wk "root")
            ;; Replace
@@ -261,9 +261,9 @@
            "rp"  '(helm-projectile-ag :wk "in project")
            ;; Recording
            "R"   '(nil :wk "record")
-           "Rv"  '(vanilla/record-video :wk "video cast")
+           "Rv"  '(vanilla-record-video :wk "video cast")
            "Rc"  '(camcorder-convert-to-gif :wk "convert video-to-gif")
-           "Rg"  '(vanilla/record-gif :wk "gif cast")
+           "Rg"  '(vanilla-record-gif :wk "gif cast")
            "Rl"  '(clm/toggle-command-log-buffer :wk "toggle command log")
            "Rk"  '(keycast-mode :wk "toggle keycast log")
            ;; Search
