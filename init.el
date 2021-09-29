@@ -363,6 +363,7 @@
 (use-package evil-collection
   :config
   (evil-collection-init))
+(message "==> INIT: evil")
 
 ;; Themes
 ;; (use-package monokai-theme
@@ -376,6 +377,7 @@
 (use-package darkokai-theme
   :custom (darkokai-mode-line-padding 1)
   :config (load-theme 'darkokai t))
+(message "==> INIT: darkokai-theme")
 
 ;; Helm
 (use-package helm
@@ -408,6 +410,7 @@
             ""))))
 (use-package helm-ag
   :after helm)
+(message "==> INIT: helm")
 
 ;; Which Key
 (use-package which-key
@@ -432,17 +435,20 @@
 (use-package helm-projectile
   :config
   (helm-projectile-on))
+(message "==> INIT: projectile")
 
 ;; Code Snippets
 (use-package yasnippet
   :config (yas-global-mode 1))
 (use-package yasnippet-snippets
   :after yasnippet)
+(message "==> INIT: snippets")
 
 ;; Flycheck
 (use-package flycheck
   :init (global-flycheck-mode))
 (use-package flycheck-cask)
+(message "==> INIT: flycheck")
 
 ;; Programming/markup/etc languages
 (use-package asm :load-path "langs")
@@ -462,6 +468,7 @@
 (use-package vyper :load-path "langs")
 (use-package configs :load-path "langs")
 (use-package all :load-path "langs")
+(message "==> INIT: programming languages")
 
 ;; Company mode for Completion
 (use-package company
@@ -523,6 +530,7 @@
   :config
   (setq evil-ledger-sort-key "S")
   (add-hook 'ledger-mode-hook #'evil-ledger-mode))
+(message "==> INIT: ledger")
 
 ;; Hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -560,6 +568,8 @@
 ;;   :config
 ;;   (setq company-lsp-enable-snippet t))
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
+(message "==> INIT: lsp")
+
 
 ;; Debugging
 ;; (use-package dap-mode
@@ -639,6 +649,7 @@
 (use-package info-colors
   :hook
   (Info-selection #'info-colors-fontify-node))
+(message "==> INIT: help")
 
 (use-package counsel)
 (use-package minimap

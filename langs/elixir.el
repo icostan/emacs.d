@@ -2,8 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
+(use-package elixir-mode
+  :mode "\\.ex\\'")
 (use-package alchemist
-  ;; :mode "\\.ex\\'"
+  :after elixir-mode
   :general
   (general-nmap
     ", t" '(alchemist-mix-test-this-buffer :wk "alchemist test buffer")
