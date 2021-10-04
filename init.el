@@ -190,6 +190,8 @@
            "hdt"  '(describe-theme :wk "theme")
            "hdp"  '(describe-package :wk "package")
            "hdC"  '(describe-char :wk "char")
+           "hdG"  '(general-describe-keybindings :wk "General")
+           "hdP"  '(describe-personal-keybindings :wk "Personal")
            "hi"  '(info :wk "info")
            "hr"  '(repeat-complex-command :wk "repeat")
            "he"  '(view-echo-area-messages :wk "view echo")
@@ -451,6 +453,7 @@
 (message "==> INIT: flycheck")
 
 ;; Programming/markup/etc languages
+(use-package all :load-path "langs")
 (use-package asm :load-path "langs")
 (use-package emacs-lisp :load-path "langs")
 (use-package elixir :load-path "langs")
@@ -467,7 +470,6 @@
 (use-package solidity :load-path "langs")
 (use-package vyper :load-path "langs")
 (use-package configs :load-path "langs")
-(use-package all :load-path "langs")
 (message "==> INIT: programming languages")
 
 ;; Company mode for Completion
@@ -546,8 +548,7 @@
 ;; Language Server Protocol
 (use-package lsp-mode
   :general
-  (general-nmap ", f" '(lsp-format-buffer :wk "format")
-    ", o" '(switch-to-buffer("*ruby-ls*") :wk "output"))
+  (general-nmap ", f" '(lsp-format-buffer :wk "format"))
   :hook ((lsp-mode . lsp-enable-which-key-integration)
          (python-mode . lsp)
          (ruby-mode . lsp))

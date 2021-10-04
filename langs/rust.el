@@ -5,8 +5,9 @@
 (use-package rustic
   :general
   (general-nmap
-        ;; :predicate (derived-mode-p 'rustic-mode)
-        ", t" '(rustic-cargo-test :wk "test rust"))
+    ;; :predicate '(eq major-mode 'rustic-mode)
+    :major-modes t
+    ", t" '(rustic-cargo-test :wk "test Rust"))
   :custom
   (rustic-format-trigger 'on-save))
 
