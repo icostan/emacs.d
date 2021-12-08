@@ -6,3 +6,6 @@ auto-save-list
 files
 **/*.elc
 /.cask/
+*.sqlite
+/transient/
+/.last-package-update-day

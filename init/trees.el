@@ -87,7 +87,7 @@
 (use-package treemacs-magit
   :after treemacs magit)
 
-(message "==> TREES loaded")
+(message "==> INIT: trees.el")
 
 (provide 'trees)
 
