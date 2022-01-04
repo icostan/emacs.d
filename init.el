@@ -20,8 +20,7 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 (setq package-archives '(("gnu"   . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")
-                         ("org"   . "http://orgmode.org/elpa/")))
+                         ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 (message "==> INIT: packages")
 
@@ -69,25 +68,31 @@
   (inhibit-splash-screen t)
   (inhibit-startup-message t)
   (visible-bell t)
-  (menu-bar-mode nil)
-  (tooltip-mode nil)
-  (scroll-bar-mode nil)
-  (tool-bar-mode nil)
-  (make-backup-files nil "stop creating backup~ files")
-  (auto-save-default nil "stop creating #autosave# files")
+  (menu-bar-mode nil "Non-nil shows the menubar")
+  (tooltip-mode nil "Non-nil shows the tooltip")
+  (scroll-bar-mode nil "Non-nil shows the scrollbar")
+  (tool-bar-mode nil "Non-nil shows the toolbar")
+  (make-backup-files nil)
+  (auto-save-default nil)
+  (async-shell-command-buffer 'new-buffer)
   (initial-frame-alist '((height . 24)
                          (width . 80)))
-  (default-frame-alist '((font . "Source Code Pro-7:bold")))
+  (default-frame-alist '((font . "Fira Code-7:bold")))
   :custom-face
-  (default ((t (nil :font "Source Code Pro-7:bold"))))
+  (default ((t (nil :font "Fira Code-7:bold"))))
+  ;; "Source Code Pro-7"
   ;; "Monospace-7
   ;; "Monaco-7"
   ;; "Consolas-7"
   ;; "Inconsolata-8"
   ;; "Anonymous Pro-8"
   ;; "DejaVu Sans Mono-7"
+  ;; "Fira Code-7"
   :config
   (global-display-line-numbers-mode t))
+(use-package fira-code-mode
+  :custom (fira-code-mode-disabled-ligatures '("[]" "|>"))
+  :hook prog-mode)
 (message "==> INIT: emacs")
 
 (use-package themes :load-path "init")

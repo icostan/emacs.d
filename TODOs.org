@@ -20,10 +20,11 @@
 *** play with "try" package
 ** Tasks
 *** TODO Vanilla Emacs: monthly update
-    SCHEDULED: <2021-12-02 Thu +1m>
+    SCHEDULED: <2022-01-02 Sun +1m>
     :PROPERTIES:
-    :LAST_REPEAT: [2021-11-19 Fri 10:18]
+    :LAST_REPEAT: [2021-12-11 Sat 08:41]
     :END:
+    - State "DONE"       from "TODO"       [2021-12-11 Sat 08:41]
     - State "DONE"       from "TODO"       [2021-11-19 Fri 10:18]
     - State "DONE"       from "TODO"       [2021-10-06 Wed 09:40]
     - State "DONE"       from "TODO"       [2021-09-04 Sat 10:11]
