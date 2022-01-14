@@ -202,8 +202,12 @@
 *** DONE columnview for podcasts, books, etc
     - https://paul-nameless.com/emacs-org-mode-100-books.html
     - https://orgmode.org/manual/Column-View.html
+*** create ui.el
+    - https://github.com/emacsmirror/diminish
+    - highlights packages
 ** Configs
 *** DONE https://github.com/a13/emacs.d
 *** https://github.com/EricCrosson/emacs.d
 *** https://github.com/purcell/emacs.d
 *** [[https://github.com/howardabrams/dot-files]]
+*** https://github.com/konrad1977/emacs/

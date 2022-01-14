@@ -2,9 +2,28 @@
 ;;; Commentary:
 ;;; Code:
 
+(defvar helm-posframe-buffer nil)
+
+(defun helm-postframe-display (buffer &optional _resume)
+  "Helm display function to show BUFFER."
+  (posframe-show
+   (setq helm-posframe-buffer buffer)
+   :poshandler #'posframe-poshandler-frame-center
+   :left-fringe 10
+   :width 100
+   :height 30
+   :background-color "#263146" ;;"#464f60"
+   :respect-header-line t))
+(defun helm-posframe-cleanup ()
+  "Helm cleanup function."
+  (posframe-hide helm-posframe-buffer))
+
+(add-hook 'helm-cleanup-hook #'helm-posframe-cleanup)
+
 (use-package helm
   :init
-  (setq helm-M-x-fuzzy-match t
+  (setq helm-display-function 'helm-postframe-display
+        helm-M-x-fuzzy-match t
         helm-completion-style :helm-fuzzy
         helm-buffers-fuzzy-matching t
         helm-recentf-fuzzy-match t
@@ -22,8 +41,6 @@
   (helm-mode 1))
 
 (use-package helm-swoop
-  ;; :general
-  ;; (general-nmap "g /" '(helm-swoop :wk "search"))
   :after helm
   :init
   (setq helm-swoop-pre-input-function
@@ -34,6 +51,10 @@
 
 (use-package helm-ag
   :after helm)
+
+(use-package helm-icons
+  :config
+  (helm-icons-enable))
 
 (message "==> INIT: selection-helm.el")
 

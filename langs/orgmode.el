@@ -7,7 +7,7 @@
   `(file concat("templates/" name)))
 
 (use-package org
-  :ensure org-plus-contrib
+  ;; :ensure org-plus-contrib
   :init
   (setq image-file-name-regexps (list (regexp-quote "svg"))
         org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "gray") ("WIP" . "red"))
@@ -53,6 +53,7 @@
         org-journal-time-prefix "  - [ ] "))
 
 (use-package org-tanglesync
+  :diminish org-tanglesync-mode
   :after org
   :hook ((org-mode . org-tanglesync-mode)
          ((prog-mode text-mode) . org-tanglesync-watch-mode))

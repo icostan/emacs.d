@@ -26,6 +26,21 @@
 (use-package help :load-path "init")
 (use-package searching :load-path "init")
 
+(use-package highlight-indent-guides
+  :defer t
+  :hook (prog-mode . highlight-indent-guides-mode)
+  :custom (highlight-indent-guides-method 'bitmap))
+
+(use-package highlight-symbol
+  :hook (prog-mode . highlight-symbol-mode)
+  :custom
+  (highlight-symbol-idle-delay 0.3))
+
+(use-package highlight-numbers
+  :hook (prog-mode . highlight-numbers-mode))
+
+(use-package highlight-escape-sequences
+  :hook (prog-mode . hes-mode))
 
 ;; Hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

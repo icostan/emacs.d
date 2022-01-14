@@ -12,6 +12,12 @@
   :config
   (ivy-mode t))
 
+;; (use-package ivy-postframe
+;;   :config
+;;   (ivy-postframe-mode))
+
+;;; TODO: try https://github.com/asok/all-the-icons-ivy
+
 (message "==> INIT: selection-ivy.el")
 
 (provide 'selection-ivy)

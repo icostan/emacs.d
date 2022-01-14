@@ -11,6 +11,8 @@
   :init
   (company-quickhelp-mode))
 
+;;; TODO: https://github.com/jdtsmith/kind-icon, https://github.com/minad/corfu
+
 (message "==> INIT: completion-company.el")
 
 (provide 'completion-company)

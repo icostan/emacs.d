@@ -16,10 +16,10 @@
   (interactive)
   (setq disaster-cc "clang")
   (disaster))
-(defun vanilla-buffers-dashboard ()
-  "Show dashboard."
-  (interactive)
-  (switch-to-buffer "*dashboard*"))
+;; (defun vanilla-buffers-dashboard ()
+;;   "Show dashboard."
+;;   (interactive)
+;;   (switch-to-buffer "*dashboard*"))
 (defun vanilla-record-video ()
   "Print DEMO START message and start video recording."
   (interactive)

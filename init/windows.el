@@ -5,11 +5,15 @@
 
 (use-package golden-ratio
   :config
-  (golden-ratio-mode 0))
+  (golden-ratio-mode))
 (use-package ace-window)
 
-;; try evil-window: "C-w"
+(use-package winum
+  :init
+  (winum-mode 1))
 
+;; TODO: try evil-window: "C-w"
+;; TODO: try https://github.com/auto-complete/popup-el
 (message "==> INIT: windows.el")
 
 (provide 'windows)

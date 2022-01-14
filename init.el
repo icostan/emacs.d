@@ -10,7 +10,9 @@
 
 ;; SPDX-License-Identifier: MIT
 
-;;; Commentary: Emacs configuration
+;;; Commentary:
+;; Emacs configuration
+
 ;;; Code:
 
 ;; build-in package setup
@@ -64,6 +66,13 @@
   (truncate-lines nil)
   (truncate-partial-width-windows nil)
   (indent-tabs-mode nil)
+  (indicate-empty-lines t)
+  (indicate-unused-lines t)
+  (show-trailing-whitespace t)
+  (hl-line-mode t)
+  (highlight-indent-guides-mode t)
+  (electric-pair-mode t)
+  (semantic-mode t)
   (tab-width 4)
   (inhibit-splash-screen t)
   (inhibit-startup-message t)
@@ -90,9 +99,9 @@
   ;; "Fira Code-7"
   :config
   (global-display-line-numbers-mode t))
-(use-package fira-code-mode
-  :custom (fira-code-mode-disabled-ligatures '("[]" "|>"))
-  :hook prog-mode)
+;; (use-package fira-code-mode
+;;   :custom (fira-code-mode-disabled-ligatures '("[]" "|>"))
+;;   :hook prog-mode)
 (message "==> INIT: emacs")
 
 (use-package themes :load-path "init")
@@ -116,7 +125,7 @@
 (use-package spelling :load-path "init")
 (use-package startup :load-path "init")
 (use-package syntax-checking :load-path "init")
-;; (use-package trees :load-path "init")
+(use-package trees :load-path "init")
 (use-package windows :load-path "init")
 
 (message "==> INIT: DONE, %s." (user-login-name))
