@@ -1,4 +1,4 @@
-;;; ide.el --- Integrated Development Environment
+;;; lsp-lsp.el --- Language server Protocol client
 ;;; Commentary:
 ;;; Code:
 
@@ -53,8 +53,8 @@
 ;;   :hook (prog-mode . highlight-numbers-mode))
 
 
-(message "==> INIT: ide.el")
+(message "==> INIT: lsp-lsp.el")
 
-(provide 'ide)
+(provide 'lsp-lsp)
 
-;;; ide.el ends here
+;;; lsp-lsp.el ends here

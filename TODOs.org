@@ -1,6 +1,7 @@
 * [[elisp:(org-projectile-open-project%20"emacs.d")][emacs.d]] [16/18]
   :PROPERTIES:
   :CATEGORY: emacs.d
+  :ID:       964bb377-beed-43a5-bcd2-b7c23fd08dce
   :END:
 ** Emacs Manual
    - [ ] 7.5 Properties and Columns - Column Ciew
@@ -19,11 +20,16 @@
 *** ECB - Emacs Code Browse
 *** play with "try" package
 ** Tasks
+   :PROPERTIES:
+   :ID:       ae346d06-914e-4a61-988c-1ba97d0a0ae1
+   :END:
 *** TODO Vanilla Emacs: monthly update
-    SCHEDULED: <2022-01-02 Sun +1m>
+    SCHEDULED: <2022-02-02 Wed +1m>
     :PROPERTIES:
-    :LAST_REPEAT: [2021-12-11 Sat 08:41]
+    :LAST_REPEAT: [2022-01-15 Sat 16:38]
+    :ID:       0288ae74-55a5-4f30-af11-90efba8847a8
     :END:
+    - State "DONE"       from "TODO"       [2022-01-15 Sat 16:38]
     - State "DONE"       from "TODO"       [2021-12-11 Sat 08:41]
     - State "DONE"       from "TODO"       [2021-11-19 Fri 10:18]
     - State "DONE"       from "TODO"       [2021-10-06 Wed 09:40]
@@ -122,8 +128,7 @@
 *** context keybindings for major/minor modes
 *** cov and inline coverage
 *** DONE FIX magit SSL commit
-*** TODO lsp-mode [1/1]
-**** DONE c-lang
+*** TODO LSP with lsp-mode [1/1]
     |-----------------------------+------+--------+---+----+------+--------+------------+------+-----|
     | lsp-mode                    | Ruby | Python | C | Go | Bash | Elixir | Javascript | Html | Css |
     |-----------------------------+------+--------+---+----+------+--------+------------+------+-----|
@@ -143,14 +148,40 @@
     | formatting                  | X    |        | X |    |      |        |            |      |     |
     | debugging                   |      |        | X |    |      |        |            |      |     |
     | diagnosis                   |      |        |   |    |      |        |            |      |     |
-    | fixit actions               |      |        |   |    |      |        |            |      |     |
+    | code actions                |      |        |   |    |      |        |            |      |     |
     | signature help              |      |        | X |    |      |        |            |      |     |
     | extract local variable      |      |        |   |    |      |        |            |      |     |
     | extract function/method     |      |        |   |    |      |        |            |      |     |
     |-----------------------------+------+--------+---+----+------+--------+------------+------+-----|
-    References:
-    - https://clang.llvm.org/extra/clangd/Features.html#complete-list-of-features
     - https://github.com/palantir/python-language-server
+**** DONE c-lang
+    - https://clang.llvm.org/extra/clangd/Features.html#complete-list-of-features
+*** LSP with eglot
+    |-----------------------------+--------+------------+------+-----|
+    | lsp-mode                    | Elixir | Javascript | Html | Css |
+    |-----------------------------+--------+------------+------+-----|
+    | completion from lang        | X      |            |      |     |
+    | completion from project     | X      |            |      |     |
+    | completion from libraries   | X      |            |      |     |
+    | hover                       | X      |            |      |     |
+    | jump to declaration         |        |            |      |     |
+    | jump to definition          |        |            |      |     |
+    | jump to implementation      |        |            |      |     |
+    | find references (xref)      | X      |            |      |     |
+    | find references (treemacs)  |        |            |      |     |
+    | find references (peek)      |        |            |      |     |
+    | find/jump to symbols (helm) |        |            |      |     |
+    | find symbols (treemacs)     |        |            |      |     |
+    | find symbols (xref)         |        |            |      |     |
+    | formatting                  | X      |            |      |     |
+    | debugging                   |        |            |      |     |
+    | diagnosis                   |        |            |      |     |
+    | code actions                |        |            |      |     |
+    | signature help              |        |            |      |     |
+    | extract local variable      |        |            |      |     |
+    | extract function/method     |        |            |      |     |
+    |-----------------------------+--------+------------+------+-----|
+**** elixir
 *** DONE dap-mode
 *** DONE treemacs
 *** call-graph

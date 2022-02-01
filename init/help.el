@@ -18,7 +18,7 @@
 		which-key-min-display-lines 30
         which-key-max-description-length 166
         which-key-show-docstrings t)
-  (which-key-mode 1))
+  (which-key-mode))
 (use-package which-key-posframe
   :after which-key
   :custom

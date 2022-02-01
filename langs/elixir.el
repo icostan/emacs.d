@@ -3,7 +3,9 @@
 ;;; Code:
 
 (use-package elixir-mode
+  :ensure-system-package (elixir-ls . elixir-ls)
   :mode "\\.ex\\'")
+
 (use-package alchemist
   :after elixir-mode
   :general

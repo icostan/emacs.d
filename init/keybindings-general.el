@@ -56,7 +56,9 @@
            "ei"  '(indent-pp-sexp :wk "indent sexp")
            "E"   '(nil :wk "editing")
            "Es"  '(sort-lines :wk "sort lines")
-           "El"  '(flycheck-list-errors :wk "list errors")
+           "Ef"   '(nil :wk "fly+")
+           "Efc"  '(flycheck-list-errors :wk "+check errors")
+           "Efm"  '(flymake-show-project-diagnostics :wk "+make errors")
            ;; Files
            "f"   '(nil :wk "files")
            "ff"  '(find-file :wk "find file (default)")

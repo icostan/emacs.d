@@ -5,7 +5,7 @@
 
 (use-package golden-ratio
   :config
-  (golden-ratio-mode))
+  (golden-ratio-mode t))
 (use-package ace-window)
 
 (use-package winum

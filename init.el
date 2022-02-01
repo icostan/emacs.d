@@ -86,9 +86,9 @@
   (async-shell-command-buffer 'new-buffer)
   (initial-frame-alist '((height . 24)
                          (width . 80)))
-  (default-frame-alist '((font . "Fira Code-7:bold")))
+  (default-frame-alist '((font . "Fira Code-6:bold")))
   :custom-face
-  (default ((t (nil :font "Fira Code-7:bold"))))
+  (default ((t (nil :font "Fira Code-6:bold"))))
   ;; "Source Code Pro-7"
   ;; "Monospace-7
   ;; "Monaco-7"
@@ -106,7 +106,8 @@
 
 (use-package themes :load-path "init")
 (use-package vim :load-path "init")
-(use-package completion-company :load-path "init")
+;; (use-package completion-company :load-path "init")
+(use-package completion-corfu :load-path "init")
 (use-package keybindings-general :load-path "init")
 (use-package selection-helm :load-path "init")
 (use-package selection-ivy :load-path "init")
@@ -119,7 +120,8 @@
 (use-package navigation :load-path "init")
 (use-package presentation :load-path "init")
 (use-package personal-finance :load-path "init")
-(use-package ide :load-path "init")
+;; (use-package lsp-lsp :load-path "init")
+(use-package lsp-eglot :load-path "init")
 (use-package searching :load-path "init")
 (use-package snippets :load-path "init")
 (use-package spelling :load-path "init")
