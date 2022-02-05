@@ -9,3 +9,5 @@ files
 *.sqlite
 /transient/
 /.last-package-update-day
+/quelpa/
+/eshell/

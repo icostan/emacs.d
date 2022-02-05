@@ -53,18 +53,17 @@
         org-journal-time-prefix "  - [ ] "))
 
 (use-package org-tanglesync
-  :diminish org-tanglesync-mode
+  :diminish "OTS"
   :after org
-  :hook ((org-mode . org-tanglesync-mode)
-         ((prog-mode text-mode) . org-tanglesync-watch-mode))
-  ;; :custom
-  ;; (org-tanglesync-watch-files '("~/Projects/emacs.d/langs/README.org"))
-  ;; (org-tanglesync-default-diff-action :external)
-  ;; (org-tanglesync-watch-mode 1)
+  :hook
+  ((org-mode . org-tanglesync-mode)
+   (text-mode . org-tanglesync-watch-mode)
+   (prog-mode . org-tanglesync-watch-mode))
+  :custom
+  (org-tanglesync-watch-files '("README.org"))
+  (org-tanglesync-default-diff-action :external)
   :config
-  (setq org-tanglesync-watch-files '("README.org")
-        org-tanglesync-watch-mode 1
-        org-tanglesync-default-diff-action :external))
+  (org-tanglesync-watch-mode 1))
 
 (use-package org-preview-html
   :after org)

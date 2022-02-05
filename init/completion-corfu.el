@@ -4,7 +4,6 @@
 ;;; Code:
 
 (use-package corfu
-  ;; Optional customizations
   :custom
   (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (corfu-auto t)                 ;; Enable auto completion
@@ -21,23 +20,34 @@
   ;;        (shell-mode . corfu-mode)
   ;;        (eshell-mode . corfu-mode))
 
+  ;; Use TAB for cycling, default is `corfu-complete'.
+  ;; :bind
+  ;; (:map corfu-map
+  ;;       ("TAB" . corfu-next)
+  ;;       ([tab] . corfu-next)
+  ;;       ("S-TAB" . corfu-previous)
+  ;;       ([backtab] . corfu-previous))
+
   ;; Recommended: Enable Corfu globally.
   ;; This is recommended since dabbrev can be used globally (M-/).
   :init
   (corfu-global-mode))
 
-;; Optionally use the `orderless' completion style. See `+orderless-dispatch'
-;; in the Consult wiki for an advanced Orderless style dispatcher.
-;; Enable `partial-completion' for files to allow path expansion.
-;; You may prefer to use `initials' instead of `partial-completion'.
-(use-package orderless
+;; extra CAPF backends
+(use-package cape
   :init
-  ;; Configure a custom style dispatcher (see the Consult wiki)
-  ;; (setq orderless-style-dispatchers '(+orderless-dispatch)
-  ;;       orderless-component-separator #'orderless-escapable-split-on-space)
-  (setq completion-styles '(orderless)
-        completion-category-defaults nil
-        completion-category-overrides '((file (styles . (partial-completion))))))
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-sgml)
+  :custom
+  (cape-dict-file "~/words.en.txt")
+  :general
+  (general-nmap
+    ", a a" 'completion-at-point
+    ", a f" 'cape-file
+    ", a g" 'cape-sgml
+    ", a t" 'cape-tex
+    ", a w" 'cape-dict
+    ", a d" 'cape-dabbrev))
 
 (use-package kind-icon
   :ensure t

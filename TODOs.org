@@ -3,32 +3,44 @@
   :CATEGORY: emacs.d
   :ID:       964bb377-beed-43a5-bcd2-b7c23fd08dce
   :END:
-** Emacs Manual
-   - [ ] 7.5 Properties and Columns - Column Ciew
+** Emacs Manual [3/3]
+   - [X] 7.5 Properties and Columns - Column Ciew
+   - [X] 8.4 The Minibuffer - Completion
    - [X] 49.3 Customization - Key bindings
 ** Intro to Emacs Lisp
    - [X] 17. Debugging
 ** Emacs Lisp
-   - [X] 18. Debugging Lisp Programs
+   - [X] 18 Debugging Lisp Programs
+   - [X] 20.6 Minibuffers - Completion
+** Mastering Emacs
+*** Articles
+   - [X] https://www.masteringemacs.org/article/mastering-key-bindings-emacs
+*** Book
 ** Research
 *** emmet.io for web development
 *** lispy edititing
 *** DONE https://github.com/vutran1710/Ayu-Theme-Emacs
-*** play with ivy/swiper
-*** https://github.com/quelpa/quelpa
-*** https://github.com/raxod502/straight.el
+*** OBSOLETE play with ivy/swiper
+*** install from source
+    - it needs to play well with default Emacs' package.el
+    - integrate with use-package
+**** https://github.com/quelpa/quelpa
+**** https://github.com/raxod502/straight.el
 *** ECB - Emacs Code Browse
-*** play with "try" package
+*** try "try"
+*** try embark
+    - https://github.com/oantolin/embark/
 ** Tasks
    :PROPERTIES:
    :ID:       ae346d06-914e-4a61-988c-1ba97d0a0ae1
    :END:
 *** TODO Vanilla Emacs: monthly update
-    SCHEDULED: <2022-02-02 Wed +1m>
+    SCHEDULED: <2022-03-02 Wed +1m>
     :PROPERTIES:
-    :LAST_REPEAT: [2022-01-15 Sat 16:38]
+    :LAST_REPEAT: [2022-02-03 Thu 07:50]
     :ID:       0288ae74-55a5-4f30-af11-90efba8847a8
     :END:
+    - State "DONE"       from "TODO"       [2022-02-03 Thu 07:50]
     - State "DONE"       from "TODO"       [2022-01-15 Sat 16:38]
     - State "DONE"       from "TODO"       [2021-12-11 Sat 08:41]
     - State "DONE"       from "TODO"       [2021-11-19 Fri 10:18]

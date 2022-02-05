@@ -24,7 +24,7 @@
 (setq package-archives '(("gnu"   . "http://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
-(message "==> INIT: packages")
+(message "==> INIT: packages.el")
 
 ;; use-package setup
 (unless (package-installed-p 'use-package)
@@ -46,22 +46,36 @@
   (auto-package-update-hide-results nil))
 (use-package use-package-chords
   :custom (key-chord-mode 1))
+(use-package diminish)
 
 (use-package gnu-elpa-keyring-update)
 (use-package exec-path-from-shell
   :config
   (exec-path-from-shell-initialize))
-(message "==> INIT: use-packages")
+(message "==> INIT: use-package")
+
+;; quelpa setup
+(unless (package-installed-p 'quelpa)
+  (with-temp-buffer
+    (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+    (eval-buffer)
+    (quelpa-self-upgrade)))
+(quelpa
+ '(quelpa-use-package
+   :fetcher git
+   :url "https://github.com/quelpa/quelpa-use-package.git"))
+(require 'quelpa-use-package)
+(message "==> INIT: quelpa")
 
 ;; emacs setup
 (use-package emacs
   :custom
   (user-full-name "Iulian Costan")
   (user-login-name "icostan")
-  (x-alt-keysym 'meta)
-  (line-number-mode t "show line number in mode line")
-  (column-number-mode t "show column number in mode line")
-  (display-line-numbers-type 'relative "relative line number in fringe")
+  (x-alt-keysym 'meta "Use ALT as Meta key, instead of default ESC")
+  (line-number-mode t "Show line number in mode line")
+  (column-number-mode t "Show column number in mode line")
+  (display-line-numbers-type 'relative "Relative line number in fringe")
   (custom-file null-device "Don't store customization")
   (truncate-lines nil)
   (truncate-partial-width-windows nil)
@@ -108,9 +122,11 @@
 (use-package vim :load-path "init")
 ;; (use-package completion-company :load-path "init")
 (use-package completion-corfu :load-path "init")
+(use-package completion-style-orderless :load-path "init")
 (use-package keybindings-general :load-path "init")
-(use-package selection-helm :load-path "init")
-(use-package selection-ivy :load-path "init")
+;; (use-package selection-helm :load-path "init")
+;; (use-package selection-ivy :load-path "init")
+(use-package completion-vertico :load-path "init")
 (use-package project-management :load-path "init")
 (use-package langs :load-path "init")
 (use-package misc :load-path "init")

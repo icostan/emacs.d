@@ -2,10 +2,11 @@
 ;;; Commentary:
 ;;; Code:
 
-
 (use-package golden-ratio
+  :diminish "GR"
   :config
   (golden-ratio-mode t))
+
 (use-package ace-window)
 
 (use-package winum
