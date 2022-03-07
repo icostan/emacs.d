@@ -2,6 +2,14 @@
 ;;; Commentary:
 ;;; Code:
 
+;; dired tree
+(use-package all-the-icons
+  :if (display-graphic-p))
+(use-package all-the-icons-dired
+  :after all-the-icons
+  :custom (all-the-icons-dired-monochrome nil)
+  :hook (dired-mode . all-the-icons-dired-mode))
+
 ;; Tree
 ;; (use-package tree)
 
@@ -9,7 +17,6 @@
 (use-package neotree
   :init
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
-(use-package all-the-icons :ensure t)
 
 ;; Treemacs
 (use-package treemacs

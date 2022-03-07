@@ -2,14 +2,30 @@
 ;;; Commentary:
 ;;; Code:
 
+(use-package vc
+  :general
+  (icostan/leader-keys
+    :states 'normal
+    "v"   '(:ignore t :wk "version-control")
+    "vd"  '(vc-dir :wk "status (dir)")
+    "vl"  '(vc-print-log :wk "log")))
+
 (use-package magit
-  :config
-  (setq magit-display-buffer-function 'magit-display-buffer-traditional))
-(use-package forge
-  :after magit)
-;; (use-package gitattributes-mode)
-;; (use-package gitconfig-mode)
-;; (use-package gitignore-mode)
+  ;; :if (icostan/use-git)
+  :custom
+  (magit-display-buffer-function 'magit-display-buffer-traditional)
+  :general
+  (icostan/leader-keys
+    :states 'normal
+    "v"   '(:ignore t :wk "version-control: git")
+    "vv"  '(magit-status :wk "status")
+    "vf"  '(with-editor-finish :wk "finish")
+    "vc"  '(with-editor-cancel :wk "cancel")))
+
+(use-package forge)
+(use-package gitconfig)
+
+;; TODO move to ui.el
 (use-package posframe)
 
 (message (concat "==> INIT: git.el"))

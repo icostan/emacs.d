@@ -31,16 +31,32 @@
   :hook (prog-mode . highlight-indent-guides-mode)
   :custom (highlight-indent-guides-method 'bitmap))
 
-(use-package highlight-symbol
-  :hook (prog-mode . highlight-symbol-mode)
-  :custom
-  (highlight-symbol-idle-delay 0.3))
-
 (use-package highlight-numbers
   :hook (prog-mode . highlight-numbers-mode))
 
 (use-package highlight-escape-sequences
   :hook (prog-mode . hes-mode))
+
+(use-package rainbow-delimiters
+  :hook
+  (prog-mode . rainbow-delimiters-mode))
+(use-package highlight-parentheses
+  :hook
+  (prog-mode . highlight-parentheses-mode))
+
+;; (use-package highlight-symbol
+;;   :hook (prog-mode . highlight-symbol-mode)
+;;   :custom
+;;   (highlight-symbol-idle-delay 0.3))
+
+(use-package idle-highlight-mode
+  :custom
+  (idle-highlight-idle-time 1)
+  ;; :hook
+  ;; ((prog-mode text-mode) . idle-highlight-mode)
+  :config
+  (global-idle-highlight-mode))
+
 
 ;; Hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

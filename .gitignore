@@ -3,7 +3,6 @@
 /*.el~
 projectile-bookmarks.eld
 auto-save-list
-files
 **/*.elc
 /.cask/
 *.sqlite

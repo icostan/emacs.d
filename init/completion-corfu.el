@@ -35,6 +35,7 @@
 
 ;; extra CAPF backends
 (use-package cape
+  :after corfu
   :init
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-sgml)
@@ -50,7 +51,6 @@
     ", a d" 'cape-dabbrev))
 
 (use-package kind-icon
-  :ensure t
   :after corfu
   :custom
   (kind-icon-default-face 'corfu-default) ; to compute blended backgrounds correctly

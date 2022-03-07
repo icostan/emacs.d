@@ -3,11 +3,28 @@
 ;;; Code:
 
 (use-package golden-ratio
-  :diminish "GR"
-  :config
-  (golden-ratio-mode t))
+  :diminish "GR")
 
-(use-package ace-window)
+(use-package ace-window
+  :general
+  (icostan/leader-keys
+    :states '(normal visual motion)
+    :keymaps 'override
+    "w"   '(:ignore t :wk "windows")
+    "ww"  '(ace-select-window :wk "move to any")
+    "wl"  '(windmove-right :wk "move right")
+    "wh"  '(windmove-left :wk "move left")
+    "wk"  '(windmove-up :wk "move up")
+    "wj"  '(windmove-down :wk "move bottom")
+    "w|"  '(split-window-right :wk "split right")
+    "w-"  '(split-window-below :wk "split bottom")
+    "wd"  '(delete-window :wk "delete any")
+    "wD"  '(ace-delete-window :wk "delete window")
+    "wx"  '(delete-other-windows :wk "delete other window")
+    "wm"  '(minimap-mode :wk "toggle minimap")
+    "wo"  '(scroll-other-window :wk "scroll other")
+    "wg"  '(golden-ratio-toggle-widescreen :wk "golden ratio")
+    "ws"  '(ace-swap-window :wk "swap")))
 
 (use-package winum
   :init

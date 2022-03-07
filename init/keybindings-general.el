@@ -4,45 +4,49 @@
 
 (use-package vanilla :load-path "init")
 (use-package general
-  :init (general-evil-setup)
-  :config (general-define-key
-           :states '(normal visual insert)
-           :prefix "SPC"
-           :non-normal-prefix "M-SPC"
-           :keymaps 'override
-           "/"   '(consult-ripgrep :wk "ripgrep") ; You'll need counsel package for this
-           ;; "/"   '(counsel-rg :wk "ripgrep") ; You'll need counsel package for this
-           "TAB" '(switch-to-prev-buffer :wk "previous buffer")
-           "SPC" '(execute-extended-command :wk "M-x")
-           ;; "SPC" '(helm-M-x :wk "M-x")
+  :init
+  (general-evil-setup)
+  :config
+  (general-create-definer icostan/leader-keys
+	:prefix "SPC"
+	:non-normal-prefix "M-SPC")
 
-           ;; Apps
-           "a"   '(nil :wk "apps")
-           "at"  '(eshell :wk "terminal")
+  (icostan/leader-keys
+    :states '(normal visual motion)
+    :keymaps 'override
+    "/"   '(consult-ripgrep :wk "ripgrep") ; You'll need counsel package for this
+    ;; "/"   '(counsel-rg :wk "ripgrep") ; You'll need counsel package for this
+    "TAB" '(switch-to-prev-buffer :wk "previous buffer")
+    "SPC" '(execute-extended-command :wk "M-x")
+    ;; "SPC" '(helm-M-x :wk "M-x")
 
-           ;; Buffers
-           "b"   '(nil :wk "buffers")
-           "bb"  '(switch-to-buffer :wk "to buffer (default)")
-           ;; "bb"  '(helm-buffers-list :wk "all")
-           "bp"  '(projectile-switch-to-buffer :wk "in project")
-           "bP"  '(projectile-switch-to-buffer-other-window :wk "in project other window")
-           "bd"  '(kill-this-buffer :wk "kill this")
-           "bD"  '(kill-buffer :wk "kill any")
-           "bs"  '(save-buffer :wk "save")
-           "be"  '(eval-buffer :wk "eval")
-           "bf"  '(format-all-buffer :wk "format")
-           "br"  '(revert-buffer :which-key "revert buffer")
-           "bc" '((lambda () (interactive) (switch-to-buffer "*Compile-Log*")) :which-key "compile log-buffer")
-           "bD" '((lambda () (interactive) (switch-to-buffer "*dashboard*")) :which-key "dashboard-buffer")
-           "bm" '((lambda () (interactive) (switch-to-buffer "*Messages*")) :which-key "messages-buffer")
-           "bs" '((lambda () (interactive) (switch-to-buffer "*scratch*")) :which-key "scratch-buffer")
+    ;; Apps
+    "a"   '(nil :wk "apps")
+    "at"  '(eshell :wk "terminal")
 
-           ;; Comments/compile
-           "c"   '(nil :wk "comments/compile")
-           ;; "cc"  '(evilnc-copy-and-comment-lines :wk "copy")
-           ;; "ci"  '(evilnc-comment-or-uncomment-lines :wk "lines")
-           ;; "cp"  '(evilnc-comment-or-uncomment-paragraphs :wk "paragraphs")
-           "cc"  '(compile :wk "compile")
+    ;; Buffers
+    "b"   '(nil :wk "buffers")
+    "bb"  '(switch-to-buffer :wk "to buffer (default)")
+    ;; "bb"  '(helm-buffers-list :wk "all")
+    "bp"  '(projectile-switch-to-buffer :wk "in project")
+    "bP"  '(projectile-switch-to-buffer-other-window :wk "in project other window")
+    "bd"  '(kill-this-buffer :wk "kill this")
+    "bD"  '(kill-buffer :wk "kill any")
+    "bs"  '(save-buffer :wk "save")
+    "be"  '(eval-buffer :wk "eval")
+    "bf"  '(format-all-buffer :wk "format")
+    "br"  '(revert-buffer :which-key "revert buffer")
+    "bc" '((lambda () (interactive) (switch-to-buffer "*Compile-Log*")) :which-key "compile log-buffer")
+    "bD" '((lambda () (interactive) (switch-to-buffer "*dashboard*")) :which-key "dashboard-buffer")
+    "bm" '((lambda () (interactive) (switch-to-buffer "*Messages*")) :which-key "messages-buffer")
+    "bs" '((lambda () (interactive) (switch-to-buffer "*scratch*")) :which-key "scratch-buffer")
+
+    ;; Comments/compile
+    "c"   '(nil :wk "comments/compile")
+    ;; "cc"  '(evilnc-copy-and-comment-lines :wk "copy")
+    ;; "ci"  '(evilnc-comment-or-uncomment-lines :wk "lines")
+    ;; "cp"  '(evilnc-comment-or-uncomment-paragraphs :wk "paragraphs")
+    "cc"  '(compile :wk "compile")
 
            ;; Debug
            "d"   '(nil :wk "debug")
@@ -77,13 +81,6 @@
            "fj"  '(dired-jump :wk "find current directory")
            "fd"  '(helm-projectile-find-dir :wk "find directory in project")
            "fs"  '(save-buffer :wk "save file")
-
-           ;; Git
-           "g"   '(nil :wk "git")
-           "gg"  '(magit-status :wk "default (status)")
-           "gs"  '(magit-status :wk "status")
-           "gf"  '(with-editor-finish :wk "finish")
-           "gc"  '(with-editor-cancel :wk "cancel")
 
            ;; Help
            "h"   '(nil :wk "help")
@@ -151,12 +148,6 @@
            "js"  '(helm-lsp-workspace-symbol :wk "to symbol")
            "jS"  '(helm-lsp-global-workspace-symbol :wk "to all symbols")
 
-           ;; Ledger
-           "l"   '(nil :wk "ledger")
-           "ll"  '(ledger-add-transaction :wk "default (add transaction)")
-           "la"  '(ledger-add-transaction :wk "add transaction")
-           "lf"  '(ledger-mode-clean-buffer :wk "format")
-
            ;; Org
            "o"   '(nil :wk "org")
            "oe"  '(org-babel-execute-src-block :wk "execute block")
@@ -184,18 +175,6 @@
            "od"  '(org-move-subtree-down :wk "move down")
            "ox"  '(org-ctrl-c-ctrl-c :wk "execute")
            "ob"  '(org-dblock-update :wk "block")
-
-           ;; Project
-           "p"   '(nil :wk "projects")
-           "pp"  '(consult-projectile :wk "default (to project/file/buffer)")
-           ;; "pp"  '(projectile-switch-project :wk "switch project")
-           "pf"  '(projectile-find-file :wk "find files")
-           "pF"  '(projectile-find-file-other-window :wk "find files other window")
-           "po"  '(projectile-find-other-file :wk "find extension")
-           "pt"  '(vanilla-projectile-goto-todos :wk "todos")
-           "pb"  '(projectile-switch-to-buffer :wk "switch buffer")
-           "pB"  '(projectile-switch-to-buffer-other-window :wk "switch buffer other window")
-           "pr"  '(project-dired :wk "root")
 
            ;; Replace
            "r"   '(nil :wk "replace")
@@ -248,24 +227,6 @@
            "tr"  '(lsp-treemacs-references :wk "references")
            "ts"  '(lsp-treemacs-symbols :wk "symbols")
            "tt"  '(treemacs :wk "treemacs")
-
-           ;; Windows
-           "w"   '(nil :wk "windows")
-           "wl"  '(windmove-right :wk "move right")
-           "wh"  '(windmove-left :wk "move left")
-           "wk"  '(windmove-up :wk "move up")
-           "wj"  '(windmove-down :wk "move bottom")
-           "ww"  '(ace-select-window :wk "move to any")
-           "w|"  '(split-window-right :wk "split right")
-           "w-"  '(split-window-below :wk "split bottom")
-           "wd"  '(delete-window :wk "delete any")
-           "wD"  '(ace-delete-window :wk "delete window")
-           "wx"  '(delete-other-windows :wk "delete other window")
-           "wm"  '(minimap-mode :wk "toggle minimap")
-           "wo"  '(scroll-other-window :wk "scroll other")
-           ;; "ww"  '(other-window :wk "next window")
-           "wg"  '(golden-ratio-toggle-widescreen :wk "golden ratio")
-           "ws"  '(ace-swap-window :wk "swap")
 
            ;; Quit
            "q"  '(nil :wk "quit")

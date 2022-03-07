@@ -25,7 +25,9 @@
 ;;   :commands company-lsp
 ;;   :config
 ;;   (setq company-lsp-enable-snippet t))
-(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+(use-package helm-lsp
+  :if (vanilla-helm-mode-p)
+  :commands helm-lsp-workspace-symbol)
 
 ;; Debugging
 ;; (use-package dap-mode

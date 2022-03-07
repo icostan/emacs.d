@@ -3,15 +3,25 @@
 ;;; Code:
 
 (use-package ledger-mode
-  :config
-  (setq ledger-post-amount-alignment-column 62)
-  (setq ledger-accounts-file "accounts.ledger"))
+  :custom
+  (ledger-post-amount-alignment-column 62)
+  (ledger-accounts-file "accounts.ledger")
+  :general
+  (icostan/leader-keys
+    :states 'normal
+    "l"   '(:ignore t :wk "ledger")
+    "ll"  '(ledger-add-transaction :wk "add transaction")
+    "lr"  '(ledger-report :wk "report")
+    "lf"  '(ledger-mode-clean-buffer :wk "format")))
+
 (use-package flycheck-ledger
   :after ledger-mode)
+
 (use-package evil-ledger
   :after (evil ledger-mode)
+  :custom
+  (evil-ledger-sort-key "S")
   :config
-  (setq evil-ledger-sort-key "S")
   (add-hook 'ledger-mode-hook #'evil-ledger-mode))
 
 (message "==> INIT: personal-finance.el")

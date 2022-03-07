@@ -13,6 +13,7 @@
   :custom
   (org-babel-default-header-args:sage '((:results . "output"))))
 (use-package helm-sage
+  :if (vanilla-helm-mode-p)
   :after (helm sage-shell-mode)
   :general
   ;; TODO: create a definer

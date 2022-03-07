@@ -9,9 +9,10 @@ While any text editor can save your files, only Emacs can save your soul.
 ** Highlights
 
    - declarative - with [[https://github.com/jwiegley/use-package][use-package]] macro only, no orphan *setq* or *require* sexp
+   - pluggable - use Emacs's default (etc, project, vc), optionally enhance with (projectile, magit, etc)
    - literate - sync between Lisp and Org files with [[https://github.com/mtekman/org-tanglesync][org-tanglesync]]
-   - structured - programming/markup languages go under *langs* dir
-   - keybindings - with general
+   - structured - programming/markup languages go under *langs/* dir, use case initialization files under *init/* dir
+   - keybindings - remap keys under "SPC" but preserve the original purpose (e.g. "C-x p p" is the Emacs key to switch project, "SPC-p p" will do the same)
    - vim vs. emacs - no problem, I use evil
 
 ** Programming/markup/data exchange languages
