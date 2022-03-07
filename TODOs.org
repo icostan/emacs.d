@@ -30,6 +30,8 @@
 *** try "try"
 *** try embark
     - https://github.com/oantolin/embark/
+*** mu4e
+    - https://config.daviwil.com/mail
 ** Tasks
    :PROPERTIES:
    :ID:       ae346d06-914e-4a61-988c-1ba97d0a0ae1
@@ -254,3 +256,7 @@
 *** https://github.com/purcell/emacs.d
 *** [[https://github.com/howardabrams/dot-files]]
 *** https://github.com/konrad1977/emacs/
+*** https://github.com/a-schaefers/spartan-emacs
+*** TODO https://config.daviwil.com/emacs
+** Bugs
+*** fix states/keymaps duplications in icostan/leader-keys

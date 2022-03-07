@@ -48,9 +48,6 @@
   ("C-c s" . consult-ripgrep)
   ("C-c b" . consult-buffer))
 
-(use-package consult-projectile
-  :quelpa (:fetcher gitlab :repo "OlMon/consult-projectile"))
-
 (provide 'completion-vertico)
 
 ;;; completion-vertico.el ends here

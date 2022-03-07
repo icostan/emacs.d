@@ -1,7 +1,26 @@
-;;; project-management.el --- Project management with Projectile
+;;; project-management.el --- Project management with style
 ;;; Commentary:
 ;;; Code:
 
+;; default project.el
+(use-package project
+  :general
+  (icostan/leader-keys
+    :states '(normal visual motion)
+    :keymaps 'override
+    "p"   '(nil :wk "projects")
+    "pr"  '(project-dired :wk "root")))
+
+(use-package consult-project-extra
+  :after (consult)
+  :general
+  (icostan/leader-keys
+    :states '(normal visual motion)
+    :keymaps 'override
+    "pp"  '(consult-project-extra-find :wk "find (default)")
+    "pP"  '(consult-project-extra-find-other-window :wk "find other")))
+
+;; with Projectile extension
 (use-package projectile
   :custom
   (projectile-complection-system 'auto)
@@ -11,25 +30,23 @@
   (icostan/leader-keys
     :states '(normal visual motion)
     :keymaps 'override
-    "p"   '(nil :wk "projects")
-    "pp"  '(consult-projectile :wk "default (to project/file/buffer)")
-    ;; "pp"  '(projectile-switch-project :wk "switch project")
-    "pf"  '(projectile-find-file :wk "find files")
-    "pF"  '(projectile-find-file-other-window :wk "find files other window")
-    "po"  '(projectile-find-other-file :wk "find extension")
+    ;; "pp"  '(consult-projectile :wk "default (to project/file/buffer)")
+    ;; "pf"  '(projectile-find-file :wk "find files")
+    ;; "pF"  '(projectile-find-file-other-window :wk "find files other window")
+    ;; "pb"  '(projectile-switch-to-buffer :wk "switch buffer")
     "pt"  '(vanilla-projectile-goto-todos :wk "todos")
-    "pb"  '(projectile-switch-to-buffer :wk "switch buffer")
-    "pB"  '(projectile-switch-to-buffer-other-window :wk "switch buffer other window")
-    "pr"  '(project-dired :wk "root")))
+    ;; "pB"  '(projectile-switch-to-buffer-other-window :wk "switch buffer other window"))
+    "pe"  '(projectile-find-other-file :wk "find extension")))
+
+(use-package consult-projectile
+  :after (consult projectile)
+  :quelpa (:fetcher gitlab :repo "OlMon/consult-projectile"))
 
 (use-package helm-projectile
   :if (vanilla-helm-mode-p)
+  :after (helm)
   :config
   (helm-projectile-on))
-
-;; (use-package counsel-projectile
-;;   :config
-;;   (counsel-projectile-mode))
 
 (use-package org-projectile
   :custom

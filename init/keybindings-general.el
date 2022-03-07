@@ -9,7 +9,7 @@
   :config
   (general-create-definer icostan/leader-keys
 	:prefix "SPC"
-	:non-normal-prefix "M-SPC")
+	:non-normal-prefix "C-SPC")
 
   (icostan/leader-keys
     :states '(normal visual motion)
@@ -205,21 +205,6 @@
            "sp"  '(helm-projectile-ag :wk "in project")
            "sr"  '(lsp-find-references :wk "references")
            "sR"  '(lsp-ui-peek-find-references :wk "references (peek)")
-
-           ;; Spelling
-           "S"    '(nil :wk "spell")
-           "Sc"   '(flyspell-correct-wrapper :wk "flyspell-correct")
-           "Sw"   '(flyspell-correct-at-point :wk "flyspell-correct word")
-           "Sb"   '(flyspell-buffer :wk "flyspell buffer")
-           "St"   '(flyspell-mode :wk "flyspell toggle")
-           "SB"   '(ispell-buffer :wk "ispell buffer")
-           "Sg"   '(writegood-grade-level :wk "writegood grade")
-           "Se"   '(writegood-reading-ease :wk "writegood ease")
-           "Sr"   '(synosaurus-lookup :wk "synonyms lookup")
-           "Sl"   '(xah-lookup-word-definition :wk "dictionary lookup")
-           ;; "ss"  '(lsp-ui-find-workspace-symbol :wk "symbols")
-           "sS"  '(lsp-ui-peek-find-workspace-symbol :wk "symbols (peek)")
-           "sg"  '(find-grep :wk "with grep")
 
            ;; Treemacs
            "t"   '(:ignore t :wk "treemacs")

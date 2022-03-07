@@ -10,3 +10,8 @@ auto-save-list
 /.last-package-update-day
 /quelpa/
 /eshell/
+/projects
+/tramp
+/bookmarks
+/..cache/
+/.lsp-session-v1

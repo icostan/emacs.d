@@ -25,6 +25,18 @@
 (use-package forge)
 (use-package gitconfig)
 
+(use-package why-this
+  :quelpa (:fetcher git :repo "https://codeberg.org/akib/emacs-why-this")
+  :config (global-why-this-mode)
+  :custom
+  (why-this-annotate-heat-map-cold "#203448")
+  (why-this-annotate-heat-map-warm "#382f27")
+  (why-this-enable-tooltip nil)
+  :general
+  (icostan/leader-keys
+    :states 'normal
+    "vw" '(why-this :wk "why this")))
+
 ;; TODO move to ui.el
 (use-package posframe)
 
