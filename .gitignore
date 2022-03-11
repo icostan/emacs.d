@@ -13,5 +13,7 @@ auto-save-list
 /projects
 /tramp
 /bookmarks
-/..cache/
+**/..cache/
 /.lsp-session-v1
+*/semanticdb/
+/TAGS

@@ -6,16 +6,14 @@
 (use-package project
   :general
   (icostan/leader-keys
-    :states '(normal visual motion)
-    :keymaps 'override
+    :states 'normal
     "p"   '(nil :wk "projects")
     "pr"  '(project-dired :wk "root")))
 
 (use-package consult-project-extra
-  :after (consult)
   :general
   (icostan/leader-keys
-    :states '(normal visual motion)
+    :states '(normal motion)
     :keymaps 'override
     "pp"  '(consult-project-extra-find :wk "find (default)")
     "pP"  '(consult-project-extra-find-other-window :wk "find other")))
@@ -28,8 +26,7 @@
   (projectile-mode 1)
   :general
   (icostan/leader-keys
-    :states '(normal visual motion)
-    :keymaps 'override
+    :states 'normal
     ;; "pp"  '(consult-projectile :wk "default (to project/file/buffer)")
     ;; "pf"  '(projectile-find-file :wk "find files")
     ;; "pF"  '(projectile-find-file-other-window :wk "find files other window")

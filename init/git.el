@@ -37,9 +37,6 @@
     :states 'normal
     "vw" '(why-this :wk "why this")))
 
-;; TODO move to ui.el
-(use-package posframe)
-
 (message (concat "==> INIT: git.el"))
 
 (provide 'git)

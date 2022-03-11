@@ -5,37 +5,37 @@
 
 (use-package corfu
   :custom
-  (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
-  (corfu-auto t)                 ;; Enable auto completion
-  ;; (corfu-commit-predicate nil)   ;; Do not commit selected candidates on next input
-  ;; (corfu-quit-at-boundary t)     ;; Automatically quit at word boundary
-  ;; (corfu-quit-no-match t)        ;; Automatically quit if there is no match
-  ;; (corfu-preview-current nil)    ;; Disable current candidate preview
-  ;; (corfu-preselect-first nil)    ;; Disable candidate preselection
-  ;; (corfu-echo-documentation nil) ;; Disable documentation in the echo area
-  ;; (corfu-scroll-margin 5)        ;; Use scroll margin
-
-  ;; You may want to enable Corfu only for certain modes.
-  ;; :hook ((prog-mode . corfu-mode)
-  ;;        (shell-mode . corfu-mode)
-  ;;        (eshell-mode . corfu-mode))
-
-  ;; Use TAB for cycling, default is `corfu-complete'.
-  ;; :bind
-  ;; (:map corfu-map
-  ;;       ("TAB" . corfu-next)
-  ;;       ([tab] . corfu-next)
-  ;;       ("S-TAB" . corfu-previous)
-  ;;       ([backtab] . corfu-previous))
-
-  ;; Recommended: Enable Corfu globally.
-  ;; This is recommended since dabbrev can be used globally (M-/).
+  (corfu-cycle t)
+  (corfu-auto t)
+  (corfu-echo-documentation nil)
+  (corfu-min-width 80)
+  (corfu-max-width corfu-min-width)
+  ;; (corfu-separator ?\s)
+  ;; (corfu-quit-no-match 'separator)
+  :general
+  (:keymaps 'corfu-map
+            ;; :states 'insert
+            "SPC" #'corfu-insert-separator
+            "C-n" #'corfu-next
+            "C-p" #'corfu-preview)
   :init
   (corfu-global-mode))
 
-;; extra CAPF backends
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-category-defaults nil)
+  (completion-category-overrides nil)
+  ;; (completion-category-overrides
+  ;;  '((file (styles partial-completion))
+  ;;    (symbol (styles orderless-regexp))))
+  (orderless-matching-styles '(orderless-regexp))
+  (completion-styles '(orderless)))
+
+;; (use-package corfu-doc
+;;   :quelpa (:fetcher github :repo "galeo/corfu-doc"))
+
 (use-package cape
-  :after corfu
   :init
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-sgml)
@@ -51,11 +51,15 @@
     ", a d" 'cape-dabbrev))
 
 (use-package kind-icon
-  :after corfu
   :custom
-  (kind-icon-default-face 'corfu-default) ; to compute blended backgrounds correctly
+  (kind-icon-default-face 'corfu-default)
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+
+(use-package emacs
+  :custom
+  (completion-cycle-threshold nil)
+  (tab-always-indent 'complete))
 
 (provide 'completion-corfu)
 

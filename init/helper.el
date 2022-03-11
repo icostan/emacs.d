@@ -1,4 +1,4 @@
-;;; help.el --- A better help
+;;; helper.el --- A better help
 ;;; Commentary:
 ;;; Code:
 
@@ -33,7 +33,6 @@
   (which-key-mode))
 
 (use-package which-key-posframe
-  :after which-key
   :custom
   (which-key-posframe-border-width 2)
   :config
@@ -41,8 +40,8 @@
 
 ;;; TODO: try https://github.com/abo-abo/hydra, https://github.com/wurosh/hercules
 
-(message "==> INIT: help.el")
+(message "==> INIT: helper.el")
 
-(provide 'help)
+(provide 'helper)
 
-;;; help.el ends here
+;;; helper.el ends here

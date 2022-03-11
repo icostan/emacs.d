@@ -1,4 +1,4 @@
-;;; completion-vertico.el --- Completion with Vertico
+;;; selection-vertico.el --- Selection with Vertico
 ;;; Commentary:
 ;;; Code:
 
@@ -14,7 +14,7 @@
   ;; (setq vertico-cycle t)
 
   ;; Show more candidates
-  (vertico-count 20)
+  (vertico-count 25)
   :config
   (vertico-mode))
 
@@ -36,11 +36,10 @@
   (marginalia-mode))
 
 (use-package all-the-icons-completion
-  :after marginalia
   :hook
-  (marginalia-mode . all-the-icons-completion-marginalia-setup))
-  ;; :config
-  ;; (all-the-icons-completion-mode))
+  (marginalia-mode . all-the-icons-completion-marginalia-setup)
+  :config
+  (all-the-icons-completion-mode))
 
 (use-package consult
   :bind
@@ -48,6 +47,6 @@
   ("C-c s" . consult-ripgrep)
   ("C-c b" . consult-buffer))
 
-(provide 'completion-vertico)
+(provide 'selection-vertico)
 
-;;; completion-vertico.el ends here
+;;; selection-vertico.el ends here
