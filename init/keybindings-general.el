@@ -15,10 +15,8 @@
     :states '(normal visual motion)
     :keymaps 'override
     "/"   '(consult-ripgrep :wk "ripgrep") ; You'll need counsel package for this
-    ;; "/"   '(counsel-rg :wk "ripgrep") ; You'll need counsel package for this
     "TAB" '(switch-to-prev-buffer :wk "previous buffer")
     "SPC" '(execute-extended-command :wk "M-x")
-    ;; "SPC" '(helm-M-x :wk "M-x")
 
     ;; Apps
     "a"   '(nil :wk "apps")
@@ -27,7 +25,6 @@
     ;; Buffers
     "b"   '(nil :wk "buffers")
     "bb"  '(switch-to-buffer :wk "to buffer (default)")
-    ;; "bb"  '(helm-buffers-list :wk "all")
     "bp"  '(projectile-switch-to-buffer :wk "in project")
     "bP"  '(projectile-switch-to-buffer-other-window :wk "in project other window")
     "bd"  '(kill-this-buffer :wk "kill this")
@@ -81,48 +78,6 @@
            "fj"  '(dired-jump :wk "find current directory")
            "fd"  '(helm-projectile-find-dir :wk "find directory in project")
            "fs"  '(save-buffer :wk "save file")
-
-           ;; Help
-           "h"   '(nil :wk "help")
-           "hh"  '(helpful-at-point :wk "at point (default)")
-           "hw"  '(nil :wk "which-key")
-           "hwt" '((lambda () (interactive) (progn (which-key-mode)(which-key-posframe-mode))) :which-key "toggle on/off")
-           "hwr"  '(which-key-show-top-level :wk "root")
-           "hwk"  '(which-key-show-keymap :wk "keymap")
-           "hwM"  '(which-key-show-full-major-mode :wk "major mode")
-           ;; "hwM"  '(which-key-show-major-mode :wk "major mode")
-           "hwm"  '(which-key-show-full-minor-mode-keymap :wk "minor mode")
-           ;; "hwm"  '(which-key-show-minor-mode-keymap :wk "minor mode")
-           "hs"  '(use-package-report :wk "use-package report")
-           "ha"  '(nil :wk "apropos")
-           "haa"  '(apropos :wk "apropos (default)")
-           "haw"  '(apropos-all-words :wk "all")
-           "hac"  '(apropos-command :wk "command")
-           "haf"  '(apropos-function :wk "function")
-           "hav"  '(apropos-variable :wk "variable")
-           "hd"  '(nil :wk "describe")
-           "hdd"  '(helpful-at-point :wk "token at point")
-           "hdv"  '(helpful-variable :wk "variable")
-           "hdc"  '(helpful-command :wk "command")
-           "hdf"  '(helpful-callable :wk "function or macro")
-           "hdM"  '(helpful-macro :wk "macro")
-           "hdm"  '(describe-mode :wk "mode")
-           "hdk"  '(helpful-key :wk "key")
-           "hdK"  '(counsel-describe-map :wk "keymap")
-           "hdb"  '(counsel-descbinds :wk "bindings")
-           "hda"  '(describe-face :wk "face")
-           ;; "hda"  '(counsel-describe-face :wk "face")
-           "hdF"  '(describe-font :wk "font")
-           "hds"  '(repeat-complex-command :wk "smart")
-           "hdt"  '(describe-theme :wk "theme")
-           "hdp"  '(describe-package :wk "package")
-           "hdC"  '(describe-char :wk "char")
-           "hdG"  '(general-describe-keybindings :wk "general")
-           "hdP"  '(describe-personal-keybindings :wk "personal")
-           "hi"  '(info :wk "info")
-           "he"  '(view-echo-area-messages :wk "view echo")
-           "ho"  '(nil :wk "online")
-           "hod"  '(devdocs-search :wk "devdocs")
 
            ;; Insert
            "i"   '(nil :wk "insert")

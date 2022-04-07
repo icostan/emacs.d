@@ -4,7 +4,51 @@
 
 (use-package helpful
   :custom
-  (helpful-max-highlight 10000))
+  (helpful-max-highlight 10000)
+  :general
+  (icostan/leader-keys
+    :states 'normal
+    "h"   '(nil :wk "help")
+    "hh"  '(helpful-at-point :wk "at point (default)")
+
+    "hw"  '(nil :wk "which-key")
+    "hwr"  '(which-key-show-top-level :wk "root")
+    "hwk"  '(which-key-show-keymap :wk "keymap")
+    "hwM"  '(which-key-show-full-major-mode :wk "major mode")
+    "hwm"  '(which-key-show-full-minor-mode-keymap :wk "minor mode")
+
+    "ha"  '(nil :wk "apropos")
+    "haa"  '(apropos :wk "apropos (default)")
+    "haw"  '(apropos-all-words :wk "all")
+    "hac"  '(apropos-command :wk "command")
+    "haf"  '(apropos-function :wk "function")
+    "hav"  '(apropos-variable :wk "variable")
+
+    "hd"  '(nil :wk "describe")
+    "hdd"  '(helpful-at-point :wk "token at point")
+    "hdv"  '(helpful-variable :wk "variable")
+    "hdc"  '(helpful-command :wk "command")
+    "hdf"  '(helpful-callable :wk "function or macro")
+    "hdM"  '(helpful-macro :wk "macro")
+    "hdm"  '(describe-mode :wk "mode")
+    "hdk"  '(helpful-key :wk "key")
+    "hdK"  '(describe-keymap :wk "keymap")
+    "hdb"  '(describe-bindings :wk "bindings")
+    "hda"  '(describe-face :wk "face")
+    "hdF"  '(describe-font :wk "font")
+    "hds"  '(repeat-complex-command :wk "smart")
+    "hdt"  '(describe-theme :wk "theme")
+    "hdp"  '(describe-package :wk "package")
+    "hdC"  '(describe-char :wk "char")
+    "hdG"  '(general-describe-keybindings :wk "general")
+    "hdP"  '(describe-personal-keybindings :wk "personal")
+
+    "hi"  '(info :wk "info")
+    "he"  '(view-echo-area-messages :wk "view echo")
+    "hs"  '(use-package-report :wk "use-package report")
+    "hg"  '(shortdoc-display-group :wk "shortdoc group")
+    "ho"  '(nil :wk "online")
+    "hod"  '(devdocs-search :wk "devdocs")))
 
 (use-package info-colors
   :hook

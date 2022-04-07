@@ -8,6 +8,7 @@
   (icostan/leader-keys
     :states 'normal
     "p"   '(nil :wk "projects")
+    "ps"  '(project-eshell :wk "shell")
     "pr"  '(project-dired :wk "root")))
 
 (use-package consult-project-extra

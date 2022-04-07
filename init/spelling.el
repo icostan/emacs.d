@@ -4,7 +4,7 @@
 
 (use-package flyspell
   :config
-  (flyspell-mode)
+  (flyspell-prog-mode)
   :general
   (icostan/leader-keys
     :states 'normal

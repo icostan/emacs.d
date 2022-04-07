@@ -3,7 +3,9 @@
 ;;; Code:
 
 (use-package golden-ratio
-  :diminish "GR")
+  :diminish "GR"
+  :config
+  (golden-ratio-mode))
 
 (use-package ace-window
   :general

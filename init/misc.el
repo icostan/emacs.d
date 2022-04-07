@@ -5,7 +5,7 @@
 
 ;; TODO make it declarative
 ;; y/n instead of yes/no
-(defalias 'yes-or-no-p 'y-or-n-p)
+;; (defalias 'yes-or-no-p 'y-or-n-p) no longer needed in Emacs 28.1
 
 ;; Minimal UI in terminal as well
 ;; (if (fboundp 'scroll-bar-mode)

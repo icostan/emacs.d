@@ -8,16 +8,16 @@
   (sage-shell:use-prompt-toolkit nil)
   :config
   (sage-shell:define-alias))
+
 (use-package ob-sagemath
-  :after sage-shell-mode
   :custom
   (org-babel-default-header-args:sage '((:results . "output"))))
+
 (use-package helm-sage
   :if (vanilla-helm-mode-p)
   :after (helm sage-shell-mode)
   :general
-  ;; TODO: create a definer
-  (general-define-key
+  (icostan/leader-keys
    :states '(normal visual insert emacs)
    :prefix "SPC"
    :non-normal-prefix "M-SPC"

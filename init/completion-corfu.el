@@ -4,6 +4,7 @@
 ;;; Code:
 
 (use-package corfu
+  :after general
   :custom
   (corfu-cycle t)
   (corfu-auto t)
@@ -60,6 +61,8 @@
   :custom
   (completion-cycle-threshold nil)
   (tab-always-indent 'complete))
+
+(message "==> INIT: completion-corfu.el")
 
 (provide 'completion-corfu)
 

@@ -27,19 +27,19 @@
           ("o" "org.d" checkitem (file+datetree "~/Projects/org.d/journal/20200601") (file "templates/org.d-todo.org"))))
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((ditaa . t)
+   '((calc . t)
+     (ditaa . t)
      (emacs-lisp . t)
      (js . t)
      (haskell . t)
-     (ledger . t)
      (latex . t)
+     (ledger . t)
      (python . t)
      (ruby . t)
      (rust . t)
      (sagemath . t)
      (shell . t)
      (sql . nil))))
-(use-package ob-rust)
 
 (use-package org-journal
   :after org
@@ -81,6 +81,8 @@
   :after org
   :config
   (org-evil-mode))
+
+;; TRY: org-ref
 
 (provide 'orgmode)
 

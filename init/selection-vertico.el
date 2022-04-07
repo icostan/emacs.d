@@ -47,6 +47,8 @@
   ("C-c s" . consult-ripgrep)
   ("C-c b" . consult-buffer))
 
+(message "==> INIT: selection-vertico.el")
+
 (provide 'selection-vertico)
 
 ;;; selection-vertico.el ends here

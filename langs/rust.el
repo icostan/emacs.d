@@ -11,6 +11,9 @@
   :custom
   (rustic-format-trigger 'on-save))
 
+(use-package ob-rust
+  :after orgmode)
+
 (provide 'rust)
 
 ;;; rust.el ends here
