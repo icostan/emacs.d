@@ -57,6 +57,7 @@
   :config
   (global-idle-highlight-mode))
 
+(use-package redacted)
 
 ;; Hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

@@ -37,11 +37,13 @@
    :ID:       ae346d06-914e-4a61-988c-1ba97d0a0ae1
    :END:
 *** TODO Vanilla Emacs: monthly update
-    SCHEDULED: <2022-04-02 Sat +1m>
+    SCHEDULED: <2022-06-02 Thu +1m>
     :PROPERTIES:
-    :LAST_REPEAT: [2022-03-08 Tue 08:14]
+    :LAST_REPEAT: [2022-05-06 Fri 10:22]
     :ID:       0288ae74-55a5-4f30-af11-90efba8847a8
     :END:
+    - State "DONE"       from "TODO"       [2022-05-06 Fri 10:22]
+    - State "DONE"       from "TODO"       [2022-04-08 Fri 07:55]
     - State "DONE"       from "TODO"       [2022-03-08 Tue 08:14]
     - State "DONE"       from "TODO"       [2022-02-03 Thu 07:50]
     - State "DONE"       from "TODO"       [2022-01-15 Sat 16:38]

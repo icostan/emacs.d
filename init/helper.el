@@ -82,6 +82,17 @@
   :config
   (which-key-posframe-mode))
 
+(use-package dash-docs)
+(use-package consult-dash
+  :quelpa (consult-dash :fetcher git :url "https://codeberg.org/ravi/consult-dash.git")
+  :bind (("M-s d" . consult-dash))
+  :config
+  ;; Use the symbol at point as initial search term
+  (consult-customize consult-dash :initial (thing-at-point 'symbol))
+  ;; Ensure that niceties are loaded too
+  ;; (require 'embark)
+  (require 'marginalia))
+
 ;;; TODO: try https://github.com/abo-abo/hydra, https://github.com/wurosh/hercules
 
 (message "==> INIT: helper.el")

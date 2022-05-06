@@ -23,7 +23,7 @@
     "wd"  '(delete-window :wk "delete any")
     "wD"  '(ace-delete-window :wk "delete window")
     "wx"  '(delete-other-windows :wk "delete other window")
-    "wm"  '(minimap-mode :wk "toggle minimap")
+    "wm"  '(demap-toggle :wk "demap toggle ")
     "wo"  '(scroll-other-window :wk "scroll other")
     "wg"  '(golden-ratio-toggle-widescreen :wk "golden ratio")
     "ws"  '(ace-swap-window :wk "swap")))
@@ -31,6 +31,13 @@
 (use-package winum
   :init
   (winum-mode 1))
+
+
+(use-package minimap)
+
+(use-package demap
+  :custom
+  (demap-minimap-window-width 32))
 
 ;; TODO: try evil-window: "C-w"
 ;; TODO: try https://github.com/auto-complete/popup-el

@@ -36,6 +36,7 @@
 ;; (use-package corfu-doc
 ;;   :quelpa (:fetcher github :repo "galeo/corfu-doc"))
 
+;; https://kristofferbalintona.me/posts/cape/
 (use-package cape
   :init
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
@@ -44,6 +45,7 @@
   (cape-dict-file "~/words.en.txt")
   :general
   (general-nmap
+    ", a" '(nil :wk "completion")
     ", a a" 'completion-at-point
     ", a f" 'cape-file
     ", a g" 'cape-sgml

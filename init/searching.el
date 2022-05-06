@@ -21,7 +21,6 @@
   (dumb-jump-selector 'completing-read)
   (dumb-jump-prefer-searcher 'ag))
 
-(use-package minimap)
 ;; (use-package counsel
 ;;   :config
 ;;   (setq minimap-width-fraction 0.1))

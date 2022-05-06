@@ -11,6 +11,8 @@
 ;;   :chords (("gc" . ace-jump-char-mode)
 ;;            ("gw" . ace-jump-word-mode)
 ;;            ("gl" . ace-jump-line-mode)))
+
+;; https://karthinks.com/software/avy-can-do-anything/
 ;; (use-package avy
 ;;   :bind (("C-c j l" . avy-goto-line)
 ;;          ("C-c j a" . avy-goto-char-timer))

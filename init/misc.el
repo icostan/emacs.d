@@ -13,6 +13,23 @@
 ;; (if (fboundp 'tool-bar-mode)
 ;;     (tool-bar-mode -1))
 
+(use-package osm
+  :bind (("C-c m h" . osm-home)
+         ("C-c m s" . osm-search)
+         ("C-c m v" . osm-server)
+         ("C-c m t" . osm-goto)
+         ("C-c m x" . osm-gpx-show)
+         ("C-c m j" . osm-bookmark-jump))
+  :custom
+  ;; Take a look at the customization group `osm' for more options.
+  (osm-server 'default) ;; Configure the tile server
+  (osm-copyright t)     ;; Display the copyright information
+  (osm-home '(47.1578 27.5865 16))
+  :init
+  ;; Load Org link support
+  (with-eval-after-load 'org
+    (require 'osm-ol)))
+
 (message "==> INIT: misc.el")
 
 (provide 'misc)

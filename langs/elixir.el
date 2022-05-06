@@ -17,6 +17,8 @@
     ", s" '(alchemist-mix-test-at-point :wk "alchemist test single")
     "g b" '(alchemist-goto-jump-back :wk "alchemist go back")))
 
+;; (use-package flymake-elixir)
+
 (provide 'elixir)
 
 ;;; elixir.el ends here
