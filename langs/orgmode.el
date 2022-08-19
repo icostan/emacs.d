@@ -9,8 +9,7 @@
 (use-package org
   ;; :ensure org-plus-contrib
   :init
-  (setq image-file-name-regexps (list (regexp-quote "svg"))
-        org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "gray") ("WIP" . "red"))
+  (setq org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "gray") ("WIP" . "red"))
         org-confirm-babel-evaluate nil
         org-export-use-babel nil
         org-agenda-files (directory-files-recursively "~/Projects" "TODOs\\.org")
@@ -29,11 +28,13 @@
    'org-babel-load-languages
    '((calc . t)
      (ditaa . t)
+     (dot . t)
      (emacs-lisp . t)
      (js . t)
      (haskell . t)
      (latex . t)
      (ledger . t)
+     (mermaid . t)
      (python . t)
      (ruby . t)
      (rust . t)

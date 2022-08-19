@@ -7,9 +7,17 @@
   (show-paren-delay 0)
   (show-paren-mode 1))
 
-(use-package elec-pair
-  :config
-  (electric-pair-mode))
+;; (use-package elec-pair
+;;   :config
+;;   (electric-pair-mode))
+
+;;; Commenting
+(icostan/leader-keys
+  :states 'normal
+  ";" '(comment-line :wk "comment lines"))
+(icostan/leader-keys
+  :states 'visual
+  ";" '(comment-or-uncomment-region :wk "comment region"))
 
 (use-package lorem-ipsum)
 

@@ -131,6 +131,7 @@
 (use-package misc :load-path "init")
 (use-package git :load-path "init")
 (use-package editing :load-path "init")
+(use-package compiling :load-path "init")
 (use-package navigation :load-path "init")
 (use-package presentation :load-path "init")
 (use-package personal-finance :load-path "init")
@@ -145,6 +146,7 @@
 (use-package windows :load-path "init")
 (use-package helper :load-path "init")
 (use-package langs :load-path "init")
+(use-package diagrams :load-path "init")
 
 (message "==> INIT: DONE, %s." (user-login-name))
 (message "")

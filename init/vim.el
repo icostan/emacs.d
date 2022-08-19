@@ -11,15 +11,19 @@
   (setq evil-buffer-regexps '(("\\*Sage.*\\*" . emacs)))
   :config
   (evil-mode 1))
+
 (use-package evil-escape
   :init
   (setq-default evil-escape-key-sequence "jk")
   :config
   (evil-escape-mode 1))
+
 (use-package evil-unimpaired
   :load-path "lisp"
   :config
   (evil-unimpaired-mode))
+
+;;; commenting
 (use-package evil-nerd-commenter
   ;; :general
   ;; (general-nmap ", l" '(nil :wk "unused comments"))
@@ -28,6 +32,8 @@
 ;; (use-package evil-commentary
 ;;   :config
 ;;   (evil-commentary-mode))
+;; Key binding in normal, or insert mode
+
 (use-package evil-surround
   :config
   (global-evil-surround-mode 1))
@@ -35,8 +41,10 @@
 ;; (use-package evil-lion
 ;;   :config
 ;;   (evil-lion-mode))
+
 (use-package evil-matchit
   :config (global-evil-matchit-mode 1))
+
 (use-package evil-collection
   :config
   (evil-collection-init))

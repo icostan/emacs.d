@@ -1,0 +1,34 @@
+*** sage
+<s
+#+begin_src sage :session hello
+  ma = random_matrix(ZZ,3)
+  ma
+#+end_src
+
+#+RESULTS:
+: [ 0 -2  1]
+: [-3 -1  1]
+: [ 0  2  1]
+
+This is the matrix src_sage(ma)
+
+*** diagrams.el
+**** hello
+#+begin_src mermaid :file test.png
+  sequenceDiagram
+   A-->B: Works!
+#+end_src
+
+#+RESULTS:
+[[file:test.png]]
+
+**** gantt
+#+begin_src mermaid :file gantt.png
+  gantt
+      apple :a, 2017-07-20, 1w
+      banana :crit, b, 2017-07-23, 1d
+      cherry :active, c, after b a, 1d
+#+end_src
+
+#+RESULTS:
+[[file:gantt.png]]

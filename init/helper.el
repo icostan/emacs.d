@@ -8,6 +8,7 @@
   :general
   (icostan/leader-keys
     :states 'normal
+    :keymaps 'override
     "h"   '(nil :wk "help")
     "hh"  '(helpful-at-point :wk "at point (default)")
 

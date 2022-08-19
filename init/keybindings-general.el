@@ -39,10 +39,7 @@
     "bs" '((lambda () (interactive) (switch-to-buffer "*scratch*")) :which-key "scratch-buffer")
 
     ;; Comments/compile
-    "c"   '(nil :wk "comments/compile")
-    ;; "cc"  '(evilnc-copy-and-comment-lines :wk "copy")
-    ;; "ci"  '(evilnc-comment-or-uncomment-lines :wk "lines")
-    ;; "cp"  '(evilnc-comment-or-uncomment-paragraphs :wk "paragraphs")
+    "c"   '(nil :wk "compile")
     "cc"  '(compile :wk "compile")
 
            ;; Debug
@@ -122,6 +119,7 @@
            "oa"  '(org-agenda-list :wk "agenda")
            "og"  '(org-set-tags-command :wk "tag")
            "op"  '(org-priority :wk "priority")
+           "oP"  '(org-toggle-pretty-entities :wk "toggle pretty")
            "o>"  '(org-demote-subtree :wk "demote")
            "o<"  '(org-promote-subtree :wk "promote")
            "os"  '(org-schedule :wk "schedule")
@@ -133,7 +131,7 @@
            "oh"  '(org-preview-html-mode :wk "html preview")
            "ou"  '(org-move-subtree-up :wk "move up")
            "od"  '(org-move-subtree-down :wk "move down")
-           "ox"  '(org-ctrl-c-ctrl-c :wk "execute")
+           "ox"  '(org-ctrl-c-ctrl-c :wk "execute C-c C-c")
            "ob"  '(org-dblock-update :wk "block")
 
            ;; Replace

@@ -2,8 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package cc-mode
-  :ensure-system-package (cmake-language-server . cmake-language-server))
+(use-package cc-mode)
 
 (provide 'c)
 

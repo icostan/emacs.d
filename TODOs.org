@@ -37,11 +37,14 @@
    :ID:       ae346d06-914e-4a61-988c-1ba97d0a0ae1
    :END:
 *** TODO Vanilla Emacs: monthly update
-    SCHEDULED: <2022-06-02 Thu +1m>
+    SCHEDULED: <2022-09-02 Fri +1m>
     :PROPERTIES:
-    :LAST_REPEAT: [2022-05-06 Fri 10:22]
+    :LAST_REPEAT: [2022-08-19 Fri 08:55]
     :ID:       0288ae74-55a5-4f30-af11-90efba8847a8
     :END:
+    - State "DONE"       from "TODO"       [2022-08-19 Fri 08:55]
+    - State "DONE"       from "TODO"       [2022-07-03 Sun 10:35]
+    - State "DONE"       from "TODO"       [2022-06-12 Sun 11:22]
     - State "DONE"       from "TODO"       [2022-05-06 Fri 10:22]
     - State "DONE"       from "TODO"       [2022-04-08 Fri 07:55]
     - State "DONE"       from "TODO"       [2022-03-08 Tue 08:14]
@@ -263,3 +266,9 @@
 *** TODO https://config.daviwil.com/emacs
 ** Bugs
 *** fix states/keymaps duplications in icostan/leader-keys
+** Packages
+  - https://github.com/kisaragi-hiu/send-notification
+  - https://github.com/joddie/pcre2el - transform regexp
+  - diagrams:
+    - https://github.com/arnm/ob-mermaid
+    - https://github.com/abrochard/mermaid-mode
