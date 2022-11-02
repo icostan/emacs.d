@@ -3,8 +3,6 @@
 ;;; Code:
 
 ;; dired tree
-(use-package all-the-icons
-  :if (display-graphic-p))
 (use-package all-the-icons-dired
   :after all-the-icons
   :custom (all-the-icons-dired-monochrome nil)

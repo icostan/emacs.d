@@ -15,8 +15,8 @@
     "hw"  '(nil :wk "which-key")
     "hwr"  '(which-key-show-top-level :wk "root")
     "hwk"  '(which-key-show-keymap :wk "keymap")
-    "hwM"  '(which-key-show-full-major-mode :wk "major mode")
-    "hwm"  '(which-key-show-full-minor-mode-keymap :wk "minor mode")
+    "hwM"  '(which-key-show-major-mode :wk "major mode")
+    "hwm"  '(which-key-show-minor-mode-keymap :wk "minor mode")
 
     "ha"  '(nil :wk "apropos")
     "haa"  '(apropos :wk "apropos (default)")
@@ -60,6 +60,9 @@
 ;; g C-h - help keybinding prefix
 
 (use-package which-key
+  :bind
+  ("C-c m" . which-key-show-minor-mode-keymap)
+  ("C-c M" . which-key-show-major-mode)
   :diminish which-key-mode
   :custom
   (which-key-sort-order 'which-key-key-order-alpha)

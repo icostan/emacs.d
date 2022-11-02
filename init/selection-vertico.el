@@ -36,9 +36,11 @@
   (marginalia-mode))
 
 (use-package all-the-icons-completion
-  :hook
-  (marginalia-mode . all-the-icons-completion-marginalia-setup)
+  :quelpa (:fetcher github :repo "MintSoup/all-the-icons-completion")
+  :after all-the-icons
+  ;; :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
   :config
+  (add-hook 'marginalia-mode-hook #'all-the-icons-completion-marginalia-setup)
   (all-the-icons-completion-mode))
 
 (use-package consult

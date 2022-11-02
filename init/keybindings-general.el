@@ -12,7 +12,7 @@
 	:non-normal-prefix "C-SPC")
 
   (icostan/leader-keys
-    :states '(normal visual motion)
+    :states '(normal visual motion emacs)
     :keymaps 'override
     "/"   '(consult-ripgrep :wk "ripgrep") ; You'll need counsel package for this
     "TAB" '(switch-to-prev-buffer :wk "previous buffer")
@@ -60,6 +60,7 @@
            "ed"  '(eval-defun :wk "eval defun")
            "eb"  '(backward-up-list :wk "backward up")
            "ei"  '(indent-pp-sexp :wk "indent sexp")
+           "ev"  '(exec-path-from-shell-copy-env :wk "copy env")
            "E"   '(nil :wk "editing")
            "Es"  '(sort-lines :wk "sort lines")
            "Ef"   '(nil :wk "fly+")

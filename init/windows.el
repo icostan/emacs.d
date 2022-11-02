@@ -10,7 +10,7 @@
 (use-package ace-window
   :general
   (icostan/leader-keys
-    :states '(normal visual motion)
+    :states '(normal visual motion emacs)
     :keymaps 'override
     "w"   '(:ignore t :wk "windows")
     "ww"  '(ace-select-window :wk "move to any")

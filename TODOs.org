@@ -15,12 +15,15 @@
 ** Mastering Emacs
 *** Articles
    - [X] https://www.masteringemacs.org/article/mastering-key-bindings-emacs
+   - [X] https://www.masteringemacs.org/article/why-emacs-has-buffers
+   - [ ] https://www.masteringemacs.org/article/understanding-minibuffer-completion
+   - [ ] https://www.masteringemacs.org/article/complete-guide-mastering-eshell
 *** Book
 ** Research
 *** emmet.io for web development
 *** lispy edititing
-*** DONE https://github.com/vutran1710/Ayu-Theme-Emacs
-*** OBSOLETE play with ivy/swiper
+*** DONE ayu-theme
+  - https://github.com/vutran1710/Ayu-Theme-Emacs
 *** install from source
     - it needs to play well with default Emacs' package.el
     - integrate with use-package
@@ -30,18 +33,25 @@
 *** try "try"
 *** try embark
     - https://github.com/oantolin/embark/
-*** mu4e
+*** email in emacs
     - https://config.daviwil.com/mail
+    - https://www.reddit.com/r/emacs/comments/wvcuzw/what_is_your_favorite_email_client/
+    - mu4e, notmuch, gnus
+    - https://isync.sourceforge.io/mbsync.html
+*** evil text object
+    - http://blog.binchen.org/posts/code-faster-by-extending-emacs-evil-text-object/
 ** Tasks
    :PROPERTIES:
    :ID:       ae346d06-914e-4a61-988c-1ba97d0a0ae1
    :END:
-*** TODO Vanilla Emacs: monthly update
-    SCHEDULED: <2022-09-02 Fri +1m>
+*** TODO Vanilla Emacs: monthly update, bookmarks, packages
+    SCHEDULED: <2022-11-02 Wed +1m>
     :PROPERTIES:
-    :LAST_REPEAT: [2022-08-19 Fri 08:55]
+    :LAST_REPEAT: [2022-10-04 Tue 08:05]
     :ID:       0288ae74-55a5-4f30-af11-90efba8847a8
     :END:
+    - State "DONE"       from "TODO"       [2022-10-04 Tue 08:05]
+    - State "DONE"       from "TODO"       [2022-09-12 Mon 09:28]
     - State "DONE"       from "TODO"       [2022-08-19 Fri 08:55]
     - State "DONE"       from "TODO"       [2022-07-03 Sun 10:35]
     - State "DONE"       from "TODO"       [2022-06-12 Sun 11:22]
@@ -148,7 +158,7 @@
 *** context keybindings for major/minor modes
 *** cov and inline coverage
 *** DONE FIX magit SSL commit
-*** TODO LSP with lsp-mode [1/1]
+*** LSP with lsp-mode [1/1]
     |-----------------------------+------+--------+---+----+------+--------+------------+------+-----|
     | lsp-mode                    | Ruby | Python | C | Go | Bash | Elixir | Javascript | Html | Css |
     |-----------------------------+------+--------+---+----+------+--------+------------+------+-----|
@@ -176,7 +186,7 @@
     - https://github.com/palantir/python-language-server
 **** DONE c-lang
     - https://clang.llvm.org/extra/clangd/Features.html#complete-list-of-features
-*** LSP with eglot
+*** TODO LSP with eglot
     |-----------------------------+--------+------------+------+-----|
     | lsp-mode                    | Elixir | Javascript | Html | Css |
     |-----------------------------+--------+------------+------+-----|
@@ -267,8 +277,6 @@
 ** Bugs
 *** fix states/keymaps duplications in icostan/leader-keys
 ** Packages
-  - https://github.com/kisaragi-hiu/send-notification
+  - https://github.com/kisaragi-hiu/send-notification - desktop notifier
   - https://github.com/joddie/pcre2el - transform regexp
-  - diagrams:
-    - https://github.com/arnm/ob-mermaid
-    - https://github.com/abrochard/mermaid-mode
+  - https://github.com/SqrtMinusOne/reverso.el - translation
