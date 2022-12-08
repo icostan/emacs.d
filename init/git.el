@@ -5,7 +5,6 @@
 (use-package vc
   :general
   (icostan/leader-keys
-    :states 'normal
     "v"   '(:ignore t :wk "version-control")
     "vd"  '(vc-dir :wk "status (dir)")
     "vl"  '(vc-print-log :wk "log")))
@@ -16,9 +15,9 @@
   (magit-display-buffer-function 'magit-display-buffer-traditional)
   :general
   (icostan/leader-keys
-    :states 'normal
-    "v"   '(:ignore t :wk "version-control: git")
+    "v"   '(:ignore t :wk "version-control")
     "vv"  '(magit-status :wk "status")
+    "vl"  '(consult-git-log-grep :wk "consult log")
     "vf"  '(with-editor-finish :wk "finish")
     "vc"  '(with-editor-cancel :wk "cancel")))
 
@@ -34,8 +33,12 @@
   (why-this-enable-tooltip nil)
   :general
   (icostan/leader-keys
-    :states 'normal
+    "v"  '(:ignore t :wk "version-control")
     "vw" '(why-this :wk "why this")))
+
+(use-package consult-git-log-grep
+  :custom
+  (consult-git-log-grep-open-function #'magit-show-commit))
 
 (message (concat "==> INIT: git.el"))
 

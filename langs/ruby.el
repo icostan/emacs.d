@@ -9,10 +9,10 @@
    (pry         . "ruby-pry"))
   :general
   (general-nmap
-    ;; :predicate '(eq major-mode 'ruby-mode)
+    :keymaps 'ruby-mode-map
     :major-modes t
-    ", s" '(minitest-verify-single :wk "test Ruby single")
-    ", t" '(minitest-verify-all :wk "test Ruby all"))
+    ", s" '(minitest-verify-single :wk "single Ruby")
+    ", t" '(minitest-verify-all :wk "test Ruby"))
   :mode "\\.rb\\'"
   :mode "Rakefile\\'"
   :mode "Gemfile\\'"

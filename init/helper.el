@@ -7,16 +7,13 @@
   (helpful-max-highlight 10000)
   :general
   (icostan/leader-keys
-    :states 'normal
-    :keymaps 'override
     "h"   '(nil :wk "help")
     "hh"  '(helpful-at-point :wk "at point (default)")
 
-    "hw"  '(nil :wk "which-key")
-    "hwr"  '(which-key-show-top-level :wk "root")
-    "hwk"  '(which-key-show-keymap :wk "keymap")
-    "hwM"  '(which-key-show-major-mode :wk "major mode")
-    "hwm"  '(which-key-show-minor-mode-keymap :wk "minor mode")
+    "ht"  '(which-key-show-top-level :wk "root")
+    "hk"  '(which-key-show-keymap :wk "keymap")
+    "hM"  '(which-key-show-major-mode :wk "major mode")
+    "hm"  '(which-key-show-minor-mode-keymap :wk "minor mode")
 
     "ha"  '(nil :wk "apropos")
     "haa"  '(apropos :wk "apropos (default)")
@@ -63,6 +60,7 @@
   :bind
   ("C-c m" . which-key-show-minor-mode-keymap)
   ("C-c M" . which-key-show-major-mode)
+  ("C-c t" . which-key-show-top-level)
   :diminish which-key-mode
   :custom
   (which-key-sort-order 'which-key-key-order-alpha)

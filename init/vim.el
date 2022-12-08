@@ -8,13 +8,15 @@
   (setq evil-want-keybinding nil)
   (setq evil-want-C-i-jump nil)
   (setq evil-want-C-w-in-emacs-state t)
-  (setq evil-buffer-regexps '(("\\*Sage.*\\*" . emacs)))
+  ;; (setq evil-default-state 'emacs)
+  (setq evil-buffer-regexps '(("\\*.*\\*" . nil)))
   :config
   (evil-mode 1))
 
 (use-package evil-escape
   :init
   (setq-default evil-escape-key-sequence "jk")
+  (setq evil-escape-enable-only-for-major-modes '(prog-mode emacs-lisp-mode org-journal-mode org-mode elixir-mode))
   :config
   (evil-escape-mode 1))
 
@@ -46,6 +48,7 @@
   :config (global-evil-matchit-mode 1))
 
 (use-package evil-collection
+  :after evil
   :config
   (evil-collection-init))
 

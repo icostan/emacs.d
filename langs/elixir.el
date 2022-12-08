@@ -9,12 +9,12 @@
   :after elixir-mode
   :general
   (general-nmap
-    ;; :predicate '(eq major-mode 'elixir-mode)
+    :keymaps 'elixir-mode-map
     :major-modes t
-    "z f" '(elixir-format :wk "format Elixir buffer")
-    ", t" '(alchemist-mix-test-this-buffer :wk "alchemist test buffer")
-    ", s" '(alchemist-mix-test-at-point :wk "alchemist test single")
-    "g b" '(alchemist-goto-jump-back :wk "alchemist go back")))
+    "z f" '(elixir-format :wk "format Elixir")
+    ", t" '(alchemist-mix-test-this-buffer :wk "test Elixir")
+    ", s" '(alchemist-mix-test-at-point :wk "single Elixir")
+    "g b" '(alchemist-goto-jump-back :wk "go back Elixir")))
 
 ;; (use-package flymake-elixir)
 

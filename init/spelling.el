@@ -7,7 +7,6 @@
   (flyspell-prog-mode)
   :general
   (icostan/leader-keys
-    :states 'normal
     "S"    '(nil :wk "spelling")
     "Sb"   '(flyspell-buffer :wk "flyspell buffer")
     "St"   '(flyspell-mode :wk "flyspell toggle")))
@@ -15,7 +14,6 @@
 (use-package flyspell-correct
   :general
   (icostan/leader-keys
-    :states 'normal
     "Sc"   '(flyspell-correct-wrapper :wk "flyspell-correct")
     "Sw"   '(flyspell-correct-at-point :wk "flyspell-correct word")))
 
@@ -27,7 +25,6 @@
 (use-package writegood-mode
   :general
   (icostan/leader-keys
-    :states 'normal
     "Sg"   '(writegood-grade-level :wk "writegood grade")
     "Se"   '(writegood-reading-ease :wk "writegood ease")))
 
@@ -39,7 +36,6 @@
   (synosaurus-mode)
   :general
   (icostan/leader-keys
-    :states 'normal
     "Sr"   '(synosaurus-lookup :wk "synonyms lookup")))
 
 ;; (use-package xah-lookup
@@ -54,7 +50,6 @@
    consult-flyspell-always-check-buffer t)
   :general
   (icostan/leader-keys
-    :states 'normal
     "SS" '(consult-flyspell :wk "consult-correct")))
 
 (message "==> INIT: spelling.el")

@@ -8,12 +8,12 @@
   (general-evil-setup)
   :config
   (general-create-definer icostan/leader-keys
+    :states '(normal visual motion emacs)
+    :keymaps 'override
 	:prefix "SPC"
 	:non-normal-prefix "C-SPC")
 
   (icostan/leader-keys
-    :states '(normal visual motion emacs)
-    :keymaps 'override
     "/"   '(consult-ripgrep :wk "ripgrep") ; You'll need counsel package for this
     "TAB" '(switch-to-prev-buffer :wk "previous buffer")
     "SPC" '(execute-extended-command :wk "M-x")

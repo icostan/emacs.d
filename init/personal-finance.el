@@ -8,7 +8,6 @@
   (ledger-accounts-file "accounts.ledger")
   :general
   (icostan/leader-keys
-    :states 'normal
     "l"   '(:ignore t :wk "ledger")
     "ll"  '(ledger-add-transaction :wk "add transaction")
     "lr"  '(ledger-report :wk "report")

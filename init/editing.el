@@ -13,10 +13,8 @@
 
 ;;; Commenting
 (icostan/leader-keys
-  :states 'normal
   ";" '(comment-line :wk "comment lines"))
 (icostan/leader-keys
-  :states 'visual
   ";" '(comment-or-uncomment-region :wk "comment region"))
 
 (use-package lorem-ipsum)

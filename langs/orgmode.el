@@ -8,6 +8,10 @@
 
 (use-package org
   ;; :ensure org-plus-contrib
+  :general
+  (icostan/leader-keys
+    :keymaps 'org-mode-map
+    "j h" '(consult-org-heading :wk "to heading"))
   :init
   (setq org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "gray") ("WIP" . "red"))
         org-confirm-babel-evaluate nil

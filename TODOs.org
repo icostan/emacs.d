@@ -38,18 +38,22 @@
     - https://www.reddit.com/r/emacs/comments/wvcuzw/what_is_your_favorite_email_client/
     - mu4e, notmuch, gnus
     - https://isync.sourceforge.io/mbsync.html
+    - https://gitlab.com/tvaughan/dotfiles/-/blob/trunk/tvaughan/.emacs.d/lisp/setup-10mu4e.el
+    -
 *** evil text object
     - http://blog.binchen.org/posts/code-faster-by-extending-emacs-evil-text-object/
 ** Tasks
    :PROPERTIES:
    :ID:       ae346d06-914e-4a61-988c-1ba97d0a0ae1
    :END:
-*** TODO Vanilla Emacs: monthly update, bookmarks, packages
-    SCHEDULED: <2022-11-02 Wed +1m>
+*** TODO Emacs: monthly debrief - update,bookmarks,videos
+    SCHEDULED: <2023-01-07 Sat +1m>
     :PROPERTIES:
-    :LAST_REPEAT: [2022-10-04 Tue 08:05]
+    :LAST_REPEAT: [2022-12-08 Thu 11:52]
     :ID:       0288ae74-55a5-4f30-af11-90efba8847a8
     :END:
+    - State "DONE"       from "TODO"       [2022-12-08 Thu 11:52]
+    - State "DONE"       from "TODO"       [2022-11-03 Thu 08:07]
     - State "DONE"       from "TODO"       [2022-10-04 Tue 08:05]
     - State "DONE"       from "TODO"       [2022-09-12 Mon 09:28]
     - State "DONE"       from "TODO"       [2022-08-19 Fri 08:55]
