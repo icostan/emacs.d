@@ -147,6 +147,7 @@
 (use-package helper :load-path "init")
 (use-package langs :load-path "init")
 (use-package diagrams :load-path "init")
+(use-package files-essentials :load-path "init")
 
 (message "==> INIT: DONE, %s." (user-login-name))
 (message "")

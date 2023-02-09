@@ -50,25 +50,27 @@
   :after org
   :init
   (setq org-journal-dir "~/Projects/org.d/journal"
-        org-journal-file-type 'monthly
+        org-journal-file-type 'yearly
+        org-journal-file-format "%Y"
         org-read-date-popup-calendar nil)
   :config
   (setq org-journal-date-format "%A, %x"
+        org-journal-date-prefix "* "
         org-journal-time-format ""
-        org-journal-time-prefix "  - [ ] "))
+        org-journal-time-prefix "- [ ] "))
 
-(use-package org-tanglesync
-  :diminish "OTS"
-  :after org
-  :hook
-  ((org-mode . org-tanglesync-mode)
-   (text-mode . org-tanglesync-watch-mode)
-   (prog-mode . org-tanglesync-watch-mode))
-  :custom
-  (org-tanglesync-watch-files '("README.org"))
-  (org-tanglesync-default-diff-action :external)
-  :config
-  (org-tanglesync-watch-mode 1))
+;; (use-package org-tanglesync
+;;   :diminish "OTS"
+;;   :after org
+;;   :hook
+;;   ((org-mode . org-tanglesync-mode)
+;;    (text-mode . org-tanglesync-watch-mode)
+;;    (prog-mode . org-tanglesync-watch-mode))
+;;   :custom
+;;   (org-tanglesync-watch-files '("README.org"))
+;;   (org-tanglesync-default-diff-action :external)
+;;   :config
+;;   (org-tanglesync-watch-mode 1))
 
 (use-package org-preview-html
   :after org)
@@ -86,6 +88,10 @@
   :after org
   :config
   (org-evil-mode))
+
+(use-package calendar
+  :config
+  (setq calendar-week-start-day 1))
 
 ;; TRY: org-ref
 

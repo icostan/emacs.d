@@ -52,6 +52,10 @@
   (icostan/leader-keys
     "SS" '(consult-flyspell :wk "consult-correct")))
 
+(use-package flymake-cspell
+  :ensure-system-package (cspell . "npm i -g cspell")
+  :hook (elixir-mode . flymake-cspell-setup))
+
 (message "==> INIT: spelling.el")
 
 (provide 'spelling)

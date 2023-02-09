@@ -95,7 +95,8 @@
   ;; (require 'embark)
   (require 'marginalia))
 
-;;; TODO: try https://github.com/abo-abo/hydra, https://github.com/wurosh/hercules
+;;; TODO: try https://github.com/wurosh/hercules
+(use-package hydra)
 
 (message "==> INIT: helper.el")
 

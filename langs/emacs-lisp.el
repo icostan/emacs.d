@@ -31,6 +31,20 @@
     ", p" 'sp-backward-sexp
     ", s" 'sp-cheat-sheet))
 
+(use-package elisp-autofmt
+  :commands (elisp-autofmt-mode elisp-autofmt-buffer)
+  :hook (emacs-lisp-mode . elisp-autofmt-mode)
+  :config
+  (setq elisp-autofmt-style 'fixed)
+  (setq elisp-autofmt-format-quoted nil)
+  (setq-local indent-tabs-mode nil)
+  (setq-local lisp-indent-function nil)
+  (setq-local lisp-indent-offset 2)
+  :general
+  (general-nmap
+    :major-modes t
+    "z f" '(elisp-autofmt-buffer :wk "format Emacs-Lisp")))
+
 (provide 'emacs-lisp)
 
 ;;; emacs-lisp.el ends here

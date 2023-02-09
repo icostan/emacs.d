@@ -6,10 +6,8 @@
   :mode "\\.json\\'"
   :general
   (general-nmap
-    ;; :predicate '(eq major-mode 'json-mode)
     :major-modes t
     "z f" '(json-pretty-print-buffer :wk "format JSON")))
-
 
 (provide 'json)
 

@@ -7,6 +7,10 @@
   (ledger-post-amount-alignment-column 62)
   (ledger-accounts-file "accounts.ledger")
   :general
+  (general-nmap
+    :keymaps 'ledger-mode-map
+    :major-modes t
+    "z f" '(ledger-mode-clean-buffer :wk "format Ledger"))
   (icostan/leader-keys
     "l"   '(:ignore t :wk "ledger")
     "ll"  '(ledger-add-transaction :wk "add transaction")

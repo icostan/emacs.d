@@ -9,14 +9,15 @@
   (setq evil-want-C-i-jump nil)
   (setq evil-want-C-w-in-emacs-state t)
   ;; (setq evil-default-state 'emacs)
-  (setq evil-buffer-regexps '(("\\*.*\\*" . nil)))
+  (setq evil-buffer-regexps '(("Calculator" . nil)))
   :config
   (evil-mode 1))
 
 (use-package evil-escape
   :init
   (setq-default evil-escape-key-sequence "jk")
-  (setq evil-escape-enable-only-for-major-modes '(prog-mode emacs-lisp-mode org-journal-mode org-mode elixir-mode))
+  (setq evil-escape-enable-only-for-major-modes nil)
+  ;; (setq evil-escape-enable-only-for-major-modes '(prog-mode emacs-lisp-mode org-journal-mode org-mode ledger-mode))
   :config
   (evil-escape-mode 1))
 

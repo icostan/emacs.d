@@ -42,6 +42,12 @@
   "Check if helm-mode is available."
   (not (eq helm-mode nil)))
 
+(defun icostan/kill-other-buffer ()
+  "Kill buffer in other window"
+  (interactive)
+  (ace-select-window)
+  (kill-this-buffer)
+  (ace-select-window))
 
 (message "==> INIT: vanilla.el")
 

@@ -40,6 +40,20 @@
   :custom
   (consult-git-log-grep-open-function #'magit-show-commit))
 
+(use-package lab
+  :ensure t
+  :quelpa (lab :fetcher github :repo "isamert/lab.el")
+  :init
+  (setq lab-host "https://gitlab.com")
+  (setq lab-token (getenv "EMACS_LAB_TOKEN"))
+  :general
+  (icostan/leader-keys
+    "v"  '(:ignore t :wk "version-control")
+    "vg" '(lab-list-all-owned-projects :wk "gitlab"))
+  :config
+  (define-advice magit-push-current-to-pushremote (:after (&rest _) start-watching-pipeline)
+    (lab-watch-pipeline-for-last-commit)))
+
 (message (concat "==> INIT: git.el"))
 
 (provide 'git)

@@ -7,6 +7,7 @@
   :general
   (general-nmap
     :major-modes t
+    :keymaps 'mhtml-mode-map
     "z f" '(sgml-pretty-print :wk "format HTML")))
 
 (use-package html-check-frag

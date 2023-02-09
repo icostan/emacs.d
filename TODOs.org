@@ -47,11 +47,13 @@
    :ID:       ae346d06-914e-4a61-988c-1ba97d0a0ae1
    :END:
 *** TODO Emacs: monthly debrief - update,bookmarks,videos
-    SCHEDULED: <2023-01-07 Sat +1m>
+    SCHEDULED: <2023-03-07 Tue +1m>
     :PROPERTIES:
-    :LAST_REPEAT: [2022-12-08 Thu 11:52]
+    :LAST_REPEAT: [2023-02-09 Thu 11:27]
     :ID:       0288ae74-55a5-4f30-af11-90efba8847a8
     :END:
+    - State "DONE"       from "TODO"       [2023-02-09 Thu 11:27]
+    - State "DONE"       from "TODO"       [2023-01-23 Mon 12:24]
     - State "DONE"       from "TODO"       [2022-12-08 Thu 11:52]
     - State "DONE"       from "TODO"       [2022-11-03 Thu 08:07]
     - State "DONE"       from "TODO"       [2022-10-04 Tue 08:05]
