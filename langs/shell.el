@@ -3,7 +3,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package shell-script
+(use-package sh-script
   :mode "\\.exports\\'")
 
 (provide 'shell)

@@ -9,7 +9,8 @@
   (setq evil-want-C-i-jump nil)
   (setq evil-want-C-w-in-emacs-state t)
   ;; (setq evil-default-state 'emacs)
-  (setq evil-buffer-regexps '(("Calculator" . nil)))
+  (setq evil-buffer-regexps '(("Calculator" . nil)
+                              ("info" . nil)))
   :config
   (evil-mode 1))
 

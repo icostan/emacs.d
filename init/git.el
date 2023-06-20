@@ -21,7 +21,7 @@
     "vf"  '(with-editor-finish :wk "finish")
     "vc"  '(with-editor-cancel :wk "cancel")))
 
-(use-package forge)
+;; (use-package forge)
 (use-package gitconfig)
 
 (use-package why-this

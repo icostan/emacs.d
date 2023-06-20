@@ -13,19 +13,39 @@
   ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
   ;; (setq vertico-cycle t)
 
-  ;; Show more candidates
   (vertico-count 25)
   :config
   (vertico-mode))
 
+(use-package vertico-multiform
+  :after vertico
+  :ensure nil
+  :custom
+  (vertico-multiform-commands
+   '(("flyspell-correct-*" grid reverse)
+     (org-refile grid reverse indexed)
+     (consult-yank-pop indexed)
+     (consult-line
+        posframe
+        (vertico-posframe-poshandler . posframe-poshandler-frame-top-center)
+        (vertico-posframe-border-width . 1)
+        (vertico-posframe-fallback-mode . vertico-buffer-mode))
+     (consult-flymake)
+     (consult-lsp-diagnostics)
+     (t posframe)))
+  (vertico-multiform-categories
+      '((file reverse)
+        (consult-grep buffer)))
+  :config
+  (vertico-multiform-mode))
+
 (use-package vertico-posframe
+  :after vertico
   :quelpa (:fetcher github :repo "tumashu/vertico-posframe")
   :custom
   (vertico-posframe-parameters '((left-fringe . 8)
                                  (right-fringe . 8)
-                                 (weight . 50)))
-  :config
-  (vertico-posframe-mode))
+                                 (weight . 50))))
 
 (use-package marginalia
   :bind

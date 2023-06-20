@@ -33,6 +33,7 @@
    '((calc . t)
      (ditaa . t)
      (dot . t)
+     (elixir . t)
      (emacs-lisp . t)
      (js . t)
      (haskell . t)

@@ -15,7 +15,8 @@
             ;; :states 'insert
             "SPC" #'corfu-insert-separator)
   :init
-  (global-corfu-mode))
+  (global-corfu-mode)
+  (corfu-popupinfo-mode))
 
 (use-package orderless
   :custom
@@ -27,18 +28,18 @@
   (orderless-matching-styles '(orderless-regexp))
   (completion-styles '(orderless)))
 
-(use-package corfu-doc
-  :after corfu
-  :custom
-  (corfu-doc-max-height 30)
-  :general
-  (:keymaps 'corfu-map
-            :states 'insert
-            "C-d" #'corfu-doc-toggle
-            "C-n" #'corfu-doc-scroll-up
-            "C-p" #'corfu-doc-scroll-down)
-  :config
-  (corfu-doc-mode))
+;; (use-package corfu-doc
+;;   :after corfu
+;;   :custom
+;;   (corfu-doc-max-height 30)
+;;   :general
+;;   (:keymaps 'corfu-map
+;;             :states 'insert
+;;             "C-d" #'corfu-doc-toggle
+;;             "C-n" #'corfu-doc-scroll-up
+;;             "C-p" #'corfu-doc-scroll-down)
+;;   :config
+;;   (corfu-doc-mode))
 
 ;; https://kristofferbalintona.me/posts/cape/
 (use-package cape

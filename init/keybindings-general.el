@@ -37,6 +37,7 @@
     ;; "bD" '((lambda () (interactive) (switch-to-buffer "*dashboard*")) :which-key "dashboard-buffer")
     "bm" '((lambda () (interactive) (switch-to-buffer "*Messages*")) :which-key "messages-buffer")
     "bs" '((lambda () (interactive) (switch-to-buffer "*scratch*")) :which-key "scratch-buffer")
+    "bw" '((lambda () (interactive) (switch-to-buffer "*Warnings*")) :which-key "warnings-buffer")
 
     ;; Comments/compile
     "c"   '(nil :wk "compile")
@@ -130,7 +131,7 @@
            "r"   '(nil :wk "replace")
            "rr"  '(query-replace :wk "default (in file)")
            "rf"  '(query-replace :wk "in file")
-           "rp"  '(helm-projectile-ag :wk "in project")
+           "rp"  '(projectile-ripgrep :wk "in project")
 
            ;; Recording
            "R"   '(nil :wk "record")
