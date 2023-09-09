@@ -16,6 +16,7 @@
 (use-package yaml :load-path "langs")
 (use-package html :load-path "langs")
 (use-package sage :load-path "langs")
+(use-package shell :load-path "langs")
 (use-package json :load-path "langs")
 (use-package solidity :load-path "langs")
 (use-package vyper :load-path "langs")

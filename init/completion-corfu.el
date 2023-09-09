@@ -45,7 +45,7 @@
 (use-package cape
   :init
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-sgml)
+  ;; (add-to-list 'completion-at-point-functions #'cape-sgml)
   :custom
   (cape-dict-file "~/words.en.txt")
   :general
@@ -57,6 +57,13 @@
     ", a t" 'cape-tex
     ", a w" 'cape-dict
     ", a d" 'cape-dabbrev))
+
+(use-package yasnippet-capf
+  :after cape
+  ;; :custom
+  ;; (yasnippet-capf-lookup-by 'name)
+  :config
+  (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
 (use-package kind-icon
   :after corfu

@@ -94,6 +94,9 @@
   :config
   (setq calendar-week-start-day 1))
 
+(use-package literate-calc-mode
+  :ensure t)
+
 ;; TRY: org-ref
 
 (provide 'orgmode)

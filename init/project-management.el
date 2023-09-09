@@ -13,8 +13,10 @@
 (use-package consult-project-extra
   :general
   (icostan/leader-keys
-    "pp"  '(consult-project-extra-find :wk "find (default)")
-    "pP"  '(consult-project-extra-find-other-window :wk "find other")))
+    "pp"   '(consult-project-buffer :wk "default (buffers)")
+    "pb"   '(consult-project-buffer :wk "buffers")
+    "pa"  '(consult-project-extra-find :wk "find all")
+    "pA"  '(consult-project-extra-find-other-window :wk "find all (other)")))
 
 ;; with Projectile extension
 (use-package projectile
@@ -24,17 +26,21 @@
   (projectile-mode 1)
   :general
   (icostan/leader-keys
-    ;; "pp"  '(consult-projectile :wk "default (to project/file/buffer)")
     ;; "pf"  '(projectile-find-file :wk "find files")
     ;; "pF"  '(projectile-find-file-other-window :wk "find files other window")
     ;; "pb"  '(projectile-switch-to-buffer :wk "switch buffer")
-    "pt"  '(vanilla-projectile-goto-todos :wk "todos")
+    "pt" '(vanilla-projectile-goto-todos :wk "todos")
+    "pP" '(projectile-switch-project :wk "projects")
     ;; "pB"  '(projectile-switch-to-buffer-other-window :wk "switch buffer other window"))
-    "pe"  '(projectile-find-other-file :wk "find extension")))
+    "pe" '(projectile-find-other-file :wk "find extension")))
 
 (use-package consult-projectile
+  :quelpa (:fetcher gitlab :repo "OlMon/consult-projectile")
   :after (consult projectile)
-  :quelpa (:fetcher gitlab :repo "OlMon/consult-projectile"))
+  :general
+  (icostan/leader-keys
+    ;; "pp" '(consult-projectile :wk "default (to project/file/buffer)")
+    "pf" '(consult-projectile-find-file :wk "file")))
 
 (use-package helm-projectile
   :if (vanilla-helm-mode-p)
