@@ -6,7 +6,7 @@
 ;; Keywords: lisp dotemacs init
 ;; URL: https://github.com/icostan/emacs.d
 ;; Package-Version: 1.0
-;; Package-Requires: ((emacs "26.1"))
+;; Package-Requires: ((emacs "29.1"))
 
 ;; SPDX-License-Identifier: MIT
 
@@ -21,8 +21,10 @@
 
 (require 'package)
 (setq package-enable-at-startup nil)
-(setq package-archives '(("gnu"   . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")))
+(setq package-archives
+  '
+  (("gnu" . "http://elpa.gnu.org/packages/")
+    ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 (message "==> INIT: packages.el")
 
@@ -39,43 +41,46 @@
   (setq use-package-compute-statistics t))
 
 (use-package use-package-ensure-system-package)
-(use-package auto-package-update
+(use-package
+  auto-package-update
   :custom
   (auto-package-update-delete-old-versions t)
   (auto-package-update-interval 30)
   (auto-package-update-hide-results nil))
-(use-package use-package-chords
-  :custom (key-chord-mode 1))
+(use-package use-package-chords :custom (key-chord-mode 1))
 (use-package diminish)
 
 (use-package gnu-elpa-keyring-update)
-(use-package exec-path-from-shell
-  :config
-  (exec-path-from-shell-initialize))
+(use-package
+  exec-path-from-shell
+  :config (exec-path-from-shell-initialize))
 (message "==> INIT: use-package")
 
-;; quelpa setup
-(unless (package-installed-p 'quelpa)
-  (with-temp-buffer
-    (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
-    (eval-buffer)
-    (quelpa-self-upgrade)))
-(quelpa
- '(quelpa-use-package
-   :fetcher git
-   :url "https://github.com/quelpa/quelpa-use-package.git"))
-(require 'quelpa-use-package)
-(message "==> INIT: quelpa")
+;; quelpa setup - replaced by package-vc-install
+;; (unless (package-installed-p 'quelpa)
+;;   (with-temp-buffer
+;;     (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+;;     (eval-buffer)
+;;     (quelpa-self-upgrade)))
+;; (quelpa
+;;  '(quelpa-use-package
+;;    :fetcher git
+;;    :url "https://github.com/quelpa/quelpa-use-package.git"))
+;; (require 'quelpa-use-package)
+;; (message "==> INIT: quelpa")
 
 ;; emacs setup
-(use-package emacs
+(use-package
+  emacs
   :custom
   (user-full-name "Iulian Costan")
   (user-login-name "icostan")
   (x-alt-keysym 'meta "Use ALT as Meta key, instead of default ESC")
   (line-number-mode t "Show line number in mode line")
   (column-number-mode t "Show column number in mode line")
-  (display-line-numbers-type 'relative "Relative line number in fringe")
+  (display-line-numbers-type
+    'relative
+    "Relative line number in fringe")
   (custom-file null-device "Don't store customization")
   (truncate-lines nil)
   (truncate-partial-width-windows nil)
@@ -98,11 +103,12 @@
   (make-backup-files nil)
   (auto-save-default nil)
   (async-shell-command-buffer 'new-buffer)
-  (initial-frame-alist '((height . 24)
-                         (width . 80)))
+  (initial-frame-alist
+    '
+    ((height . 24)
+      (width . 80)))
   (default-frame-alist '((font . "Fira Code-6:bold")))
-  :custom-face
-  (default ((t (nil :font "Fira Code-6:bold"))))
+  :custom-face (default ((t (nil :font "Fira Code-6:bold"))))
   ;; "Source Code Pro-7"
   ;; "Monospace-7
   ;; "Monaco-7"
@@ -111,8 +117,7 @@
   ;; "Anonymous Pro-8"
   ;; "DejaVu Sans Mono-7"
   ;; "Fira Code-7"
-  :config
-  (global-display-line-numbers-mode t))
+  :config (global-display-line-numbers-mode t))
 ;; (use-package fira-code-mode
 ;;   :custom (fira-code-mode-disabled-ligatures '("[]" "|>"))
 ;;   :hook prog-mode)

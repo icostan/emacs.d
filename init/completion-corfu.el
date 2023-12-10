@@ -72,6 +72,9 @@
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
+;; (use-package nerd-icons-corfu
+;;   :after corfu nerd-icons)
+
 (use-package emacs
   :custom
   (completion-cycle-threshold nil)

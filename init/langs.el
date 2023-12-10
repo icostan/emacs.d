@@ -5,6 +5,7 @@
 (use-package all :load-path "langs")
 (use-package asm :load-path "langs")
 (use-package c :load-path "langs")
+(use-package css :load-path "langs")
 (use-package emacs-lisp :load-path "langs")
 (use-package elixir :load-path "langs")
 (use-package orgmode :load-path "langs")

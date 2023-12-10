@@ -10,7 +10,7 @@
     "h"   '(nil :wk "help")
     "hh"  '(helpful-at-point :wk "at point (default)")
 
-    "ht"  '(which-key-show-top-level :wk "root")
+    "hr"  '(which-key-show-top-level :wk "root keys")
     "hk"  '(which-key-show-keymap :wk "keymap")
     "hM"  '(which-key-show-major-mode :wk "major mode")
     "hm"  '(which-key-show-minor-mode-keymap :wk "minor mode")
@@ -86,7 +86,6 @@
 
 (use-package dash-docs)
 (use-package consult-dash
-  :quelpa (consult-dash :fetcher git :url "https://codeberg.org/ravi/consult-dash.git")
   :bind (("M-s d" . consult-dash))
   :config
   ;; Use the symbol at point as initial search term
@@ -97,6 +96,9 @@
 
 ;;; TODO: try https://github.com/wurosh/hercules
 (use-package hydra)
+
+;; https://github.com/jdtsmith/mode-minder
+;; (use-package mode-minter)
 
 (message "==> INIT: helper.el")
 

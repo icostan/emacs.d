@@ -43,7 +43,6 @@
 ;;   (setq xah-lookup-browser-function 'eww))
 
 (use-package consult-flyspell
-  :quelpa (:fetcher github :repo "OlMon/consult-flyspell")
   :custom
   (consult-flyspell-select-function 'flyspell-correct-at-point
    consult-flyspell-set-point-after-word t

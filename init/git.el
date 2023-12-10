@@ -25,7 +25,6 @@
 (use-package gitconfig)
 
 (use-package why-this
-  :quelpa (:fetcher git :repo "https://codeberg.org/akib/emacs-why-this")
   :config (global-why-this-mode)
   :custom
   (why-this-annotate-heat-map-cold "#203448")
@@ -42,7 +41,7 @@
 
 (use-package lab
   :ensure t
-  :quelpa (lab :fetcher github :repo "isamert/lab.el")
+  :init (icostan/vc-install :repo "isamert/lab.el")
   :init
   (setq lab-host "https://gitlab.com")
   (setq lab-token (getenv "EMACS_LAB_TOKEN"))

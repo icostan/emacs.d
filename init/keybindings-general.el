@@ -4,11 +4,12 @@
 
 (use-package vanilla :load-path "init")
 (use-package general
+  :after evil
   :init
   (general-evil-setup)
   :config
   (general-create-definer icostan/leader-keys
-    :states '(normal visual motion emacs)
+    :states '(normal insert visual motion emacs)
     :keymaps 'override
 	:prefix "SPC"
 	:non-normal-prefix "C-SPC")
@@ -167,7 +168,7 @@
            ;; Quit
            "q"  '(nil :wk "quit")
            "qr" '(restart-emacs :wk "restart emacs")
-           "qq" '(kill-emacs :wk "quit emacs")
+           "qQ" '(kill-emacs :wk "quit emacs")
            "qm" '(make-frame :wk "make frame")
            "qd" '(delete-frame :wk "delete frame")
            "qf" '(toggle-frame-fullscreen :wk "fullscreen")))

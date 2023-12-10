@@ -8,7 +8,7 @@ While any text editor can save your files, only Emacs can save your soul.
 
 ** Highlights
 
-   - declarative - with use-package and quelpa macros, no orphan *setq* or *require* sexp
+   - declarative - with use-package and its macros, no orphan *setq* or *require* sexp
    - pluggable - use Emacs's defaults (project, vcs, etc), optionally enhance with extra packages (projectile, magit, etc)
    - literate - sync between Lisp and Org files
    - structured - programming/markup languages go under *langs/* dir, use case initialization files under *init/* dir

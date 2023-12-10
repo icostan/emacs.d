@@ -27,7 +27,6 @@
 *** install from source
     - it needs to play well with default Emacs' package.el
     - integrate with use-package
-**** https://github.com/quelpa/quelpa
 **** https://github.com/raxod502/straight.el
 *** ECB - Emacs Code Browse
 *** try "try"
@@ -68,7 +67,7 @@
     - [ ] FIX new item formatting
     - [X] capture and templates
     - [X] babel
-    - [X] FIX goto TODOs, project/category properties
+    - [X] FIX goto project/category properties
     - [ ] task management from within agenda view
     - [ ] schedule on weekdays only
     - [ ] fix keywords completions

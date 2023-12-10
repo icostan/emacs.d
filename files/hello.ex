@@ -1,6 +1,7 @@
 IO.print("Hello World!")
 "aa#{1}abbb" |> IO.inspect()
 Kernel.abs()
+a = 1
 
 # test
 defmodule Hello do
@@ -8,7 +9,7 @@ defmodule Hello do
     test()
   end
 
-  defp test() do
+  defp test(p) do
   end
 end
 Hello.test()

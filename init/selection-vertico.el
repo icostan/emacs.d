@@ -40,8 +40,8 @@
   (vertico-multiform-mode))
 
 (use-package vertico-posframe
+  :init (icostan/vc-install :repo "tumashu/vertico-posframe")
   :after vertico
-  :quelpa (:fetcher github :repo "tumashu/vertico-posframe")
   :custom
   (vertico-posframe-parameters '((left-fringe . 8)
                                  (right-fringe . 8)
@@ -56,7 +56,7 @@
   (marginalia-mode))
 
 (use-package all-the-icons-completion
-  :quelpa (:fetcher github :repo "MintSoup/all-the-icons-completion")
+  ;; :quelpa (:fetcher github :repo "MintSoup/all-the-icons-completion")
   :after all-the-icons
   ;; :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
   :config
@@ -68,6 +68,17 @@
   ("C-c l" . consult-line)
   ("C-c s" . consult-ripgrep)
   ("C-c b" . consult-buffer))
+
+(use-package hl-todo
+  :config
+  (setq hl-todo-keyword-faces
+      '(("TODO"   . "#FF0000")
+        ("FIXME"  . "#FF0000")
+        ("DEBUG"  . "#A020F0")
+        ("SMELL"  . "#FF4500")
+        ("STUB"   . "#1E90FF"))))
+(use-package consult-todo
+  :after consult hl-todo)
 
 (use-package embark
   :ensure t

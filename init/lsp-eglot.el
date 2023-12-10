@@ -7,6 +7,7 @@
   ((ccls . ccls)
    (clangd . clang)
    (cmake-language-server . cmake-language-server)
+   (tailwindcss-language-server . tailwindcss-language-server)
    (elixir-ls . elixir-ls)
    (solargraph  . ruby-solargraph))
   :hook
