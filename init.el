@@ -129,7 +129,6 @@
 (use-package keybindings-general :load-path "init")
 ;; (use-package completion-company :load-path "init")
 (use-package completion-corfu :load-path "init")
-;; (use-package selection-helm :load-path "init")
 ;; (use-package selection-ivy :load-path "init")
 (use-package selection-vertico :load-path "init")
 (use-package project-management :load-path "init")

@@ -39,10 +39,6 @@
     (newline))
   (yas-expand-snippet (yas-lookup-snippet "task")))
 
-(defun vanilla-helm-mode-p ()
-  "Check if helm-mode is available."
-  (not (eq helm-mode nil)))
-
 (defun icostan/kill-other-buffer ()
   "Kill buffer in other window"
   (interactive)
