@@ -10,7 +10,6 @@
     "vl"  '(vc-print-log :wk "log")))
 
 (use-package magit
-  ;; :if (icostan/use-git)
   :custom
   (magit-display-buffer-function 'magit-display-buffer-traditional)
   :general
@@ -20,6 +19,16 @@
     "vl"  '(consult-git-log-grep :wk "consult log")
     "vf"  '(with-editor-finish :wk "finish")
     "vc"  '(with-editor-cancel :wk "cancel")))
+
+(use-package magit-file-icons
+  :ensure t
+  :after (magit nerd-icons el-patch)
+  :init
+  (magit-file-icons-mode 1)
+  :custom
+  (magit-file-icons-enable-diff-file-section-icons t)
+  (magit-file-icons-enable-untracked-icons t)
+  (magit-file-icons-enable-diffstat-icons t))
 
 ;; (use-package forge)
 (use-package gitconfig)

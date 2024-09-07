@@ -20,3 +20,4 @@ auto-save-list
 /TAGS
 /**/elisp-autofmt-cache/
 /url/
+/flycheck_init.el

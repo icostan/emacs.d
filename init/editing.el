@@ -69,19 +69,20 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;; (add-hook 'after-init-hook 'org-agenda-list)
 
-(use-package sideline-flymake)
-(use-package sideline-flycheck
-  :hook (flycheck-mode . sideline-flycheck-setup))
-
 (use-package sideline
   :custom
-  sideline-backends-left '(sideline-flycheck)
-  sideline-backends-right '(sideline-flymake)
+  ;; sideline-backends-left '(sideline-flymake)
+  sideline-backends-right '((sideline-flycheck . down)
+                            (sideline-flymake . up))
+  sideline-display-backend-name t
   :hook
   (flycheck-mode . sideline-mode)
   (flymake-mode  . sideline-mode))
 
+
 (use-package xref-union)
+
+(use-package multiple-cursors)
 
 (provide 'editing)
 

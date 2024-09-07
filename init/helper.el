@@ -52,6 +52,10 @@
   :hook
   (Info-selection #'info-colors-fontify-node))
 
+(use-package casual-info
+  :ensure t
+  :bind (:map Info-mode-map ("C-o" . 'casual-info-tmenu)))
+
 (use-package devdocs)
 
 ;; g C-h - help keybinding prefix

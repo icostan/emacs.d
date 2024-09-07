@@ -45,12 +45,16 @@
    :PROPERTIES:
    :ID:       ae346d06-914e-4a61-988c-1ba97d0a0ae1
    :END:
-*** TODO Emacs: monthly debrief - update,bookmarks,videos
-    SCHEDULED: <2023-12-07 Thu +3m>
+*** TODO Emacs: quarterly debrief - update,bookmarks,videos
+    SCHEDULED: <2024-12-07 Sat +3m>
     :PROPERTIES:
-    :LAST_REPEAT: [2023-09-09 Sat 17:01]
+    :LAST_REPEAT: [2024-09-07 Sat 20:08]
     :ID:       0288ae74-55a5-4f30-af11-90efba8847a8
     :END:
+    - State "DONE"       from "TODO"       [2024-09-07 Sat 20:08]
+    - State "DONE"       from "TODO"       [2024-06-08 Sat 08:37]
+    - State "DONE"       from "TODO"       [2024-03-11 Mon 09:48]
+    - State "DONE"       from "TODO"       [2023-12-10 Sun 20:51]
     - State "DONE"       from "TODO"       [2023-09-09 Sat 17:01]
     - State "DONE"       from "TODO"       [2023-06-23 Fri 11:54]
     - State "DONE"       from "TODO"       [2023-04-07 Fri 08:46]
@@ -113,7 +117,6 @@
     | find references (xref)      |      |        | X |    |      |        |            |      |     |
     | find references (treemacs)  |      |        | X |    |      |        |            |      |     |
     | find references (peek)      |      |        | X |    |      |        |            |      |     |
-    | find/jump to symbols (helm) |      |        | X |    |      |        |            |      |     |
     | find symbols (treemacs)     |      |        | X |    |      |        |            |      |     |
     | find symbols (xref)         |      |        | X |    |      |        |            |      |     |
     | formatting                  | X    |        | X |    |      |        |            |      |     |
@@ -141,7 +144,6 @@
     | find references (xref)      | X      |            |      |     |
     | find references (treemacs)  |        |            |      |     |
     | find references (peek)      |        |            |      |     |
-    | find/jump to symbols (helm) |        |            |      |     |
     | find symbols (treemacs)     |        |            |      |     |
     | find symbols (xref)         |        |            |      |     |
     | formatting                  | X      |            |      |     |

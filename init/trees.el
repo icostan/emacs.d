@@ -87,6 +87,11 @@
   :config
   (project-treemacs-mode))
 
+;; (use-package projtree
+;;  :ensure t
+;;  :commands (projtree-mode))
+(package-vc-install '(projtree :url "https://github.com/petergardfjall/emacs-projtree.git"))
+
 (message "==> INIT: trees.el")
 
 (provide 'trees)
