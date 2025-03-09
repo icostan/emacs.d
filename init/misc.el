@@ -22,9 +22,11 @@
   ;;        ("C-c m j" . osm-bookmark-jump))
   :custom
   ;; Take a look at the customization group `osm' for more options.
-  (osm-server 'default) ;; Configure the tile server
+  (osm-server 'opentopomap) ;; Configure the tile server
   (osm-copyright t)     ;; Display the copyright information
-  (osm-home '(47.1578 27.5865 16)))
+  ;; (osm-pin-colors '((osm-track . "#00a")))
+  ;; (osm-home '(47.1578 27.5865 16))
+  (osm-track-style "stroke:#00a;stroke-width:5;stroke-linejoin:round;stroke-linecap:round;opacity:0.9;"))
   ;; :init
   ;; ;; Load Org link support
   ;; (with-eval-after-load 'org

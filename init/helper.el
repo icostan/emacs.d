@@ -52,9 +52,9 @@
   :hook
   (Info-selection #'info-colors-fontify-node))
 
-(use-package casual-info
-  :ensure t
-  :bind (:map Info-mode-map ("C-o" . 'casual-info-tmenu)))
+;; (use-package casual-info
+;;   :ensure t
+;;   :bind (:map Info-mode-map ("C-o" . 'casual-info-tmenu)))
 
 (use-package devdocs)
 
@@ -103,6 +103,11 @@
 
 ;; https://github.com/jdtsmith/mode-minder
 ;; (use-package mode-minter)
+
+(use-package casual
+  :bind (:map
+         Info-mode-map
+         ("C-o" . casual-info-tmenu)))
 
 (message "==> INIT: helper.el")
 

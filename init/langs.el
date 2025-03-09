@@ -7,6 +7,7 @@
 (use-package c :load-path "langs")
 (use-package css :load-path "langs")
 (use-package emacs-lisp :load-path "langs")
+(use-package erlang :load-path "langs")
 (use-package elixir :load-path "langs")
 (use-package orgmode :load-path "langs")
 (use-package go :load-path "langs")

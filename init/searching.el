@@ -12,14 +12,23 @@
   (ag-highlight-search t "Highlight the current search term."))
 
 (use-package dumb-jump
-  :general
-  (general-nmap
-    "g D" '(dumb-jump-go :wk "dumb-goto-definition")
-    "g B" '(xref-pop-marker-stack :wk "go back"))
+  ;; :general
+  ;; (general-nmap
+  ;;   "g D" '(dumb-jump-go :wk "dumb jump")
+  ;;   "g B" '(xref-pop-marker-stack :wk "xref go back"))
   :defer t
+  :init
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
   :custom
   (dumb-jump-selector 'completing-read)
   (dumb-jump-prefer-searcher 'ag))
+
+(use-package dumber-jump
+  ;; :general
+  ;; (general-nmap
+  ;;   "g R" '(dumber-jump :wk "dumber jump"))
+  :config
+  (add-hook 'xref-backend-functions #'dumber-jump-xref-activate))
 
 ;; (use-package counsel
 ;;   :config

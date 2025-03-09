@@ -21,3 +21,4 @@ auto-save-list
 /**/elisp-autofmt-cache/
 /url/
 /flycheck_init.el
+/**/transient/

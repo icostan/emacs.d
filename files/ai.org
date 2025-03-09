@@ -1,0 +1,54 @@
+:PROPERTIES:
+:GPTEL_MODEL: default
+:GPTEL_BACKEND: llava
+:GPTEL_SYSTEM: You are a large language model and a careful programmer. Provide code and only code as output without any additional text, prompt or note.
+:GPTEL_BOUNDS: ((325 . 361) (404 . 745) (809 . 977) (1086 . 1248) (1360 . 1425) (1455 . 1572))
+:END:
+
+*** hello
+
+Hello! How can I help you today?</s>
+
+*** write an hello world in elixir lang
+
+Sure! Here's an example of how you might write "Hello, world" in Elixir:
+#+begin_src
+IO.write("Hello, world")
+#+end_src
+You can also use the =IO.puts/1= function, which is similar to =IO.write/1=, but adds a newline at the end:
+#+begin_src
+IO.puts("Hello, world")
+#+end_src
+I hope that helps! Let me know if you have any other questions.</s>
+
+*** write a valid org-babel block with hello world in elixir
+
+Certainly! Here's an example of a valid Org-Babel block that includes the code to print "Hello, world" in Elixir:
+#+BEGIN_SRC elixir
+IO.write("Hello, world")
+#+END_SRC
+
+#+RESULTS:
+: [A[Jiex(5)> import_file("/tmp/babel-XklLCS/elixir-JlmYDY")
+: Hello, world:ok
+: [A[Jiex(6)>
+
+You can also use the =IO.puts/1= function, which is similar to =IO.write/1=, but adds a newline at the end:
+#+BEGIN_SRC elixir
+IO.puts("Hello, world")
+#+END_SRC
+
+#+RESULTS:
+: [A[Jiex(7)> import_file("/tmp/babel-XklLCS/elixir-BOta8w")
+: Hello, world
+: :ok
+: [A[Jiex(8)>
+
+I hope that helps! Let me know if you have any other questions.
+
+
+*** lets do a basic layout
+
+Certainly! What would you like to do with the layout? Do you have any specific questions or requirements in mind?</s>
+
+*** generate basic html layout using tailwindcss

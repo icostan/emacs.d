@@ -4,8 +4,7 @@
 
 (use-package ruby-mode
   :ensure-system-package
-  ((rubocop     . "ruby-rubocop")
-   (ruby-lint   . "ruby-lint")
+  ((rubocop     . "rubocop")
    (pry         . "ruby-pry"))
   :general
   (general-nmap

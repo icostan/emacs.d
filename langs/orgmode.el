@@ -92,7 +92,12 @@
 
 (use-package calendar
   :config
-  (setq calendar-week-start-day 1))
+  (setq calendar-week-start-day 1)
+  :general
+  (general-nmap
+    :keymaps 'calendar-mode-map
+    :major-modes t
+    "C-o" '(casual-calendar :wk "casual calendar")))
 
 (use-package literate-calc-mode
   :ensure t)

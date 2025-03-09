@@ -17,6 +17,10 @@
   ;; but you can use any other Nerd Font if you want
   (nerd-icons-font-family "Symbols Nerd Font Mono"))
 
+(use-package tab-line-nerd-icons
+  :init
+  (tab-line-nerd-icons-global-mode))
+
 (message "==> INIT: ui.el")
 
 (provide 'ui)

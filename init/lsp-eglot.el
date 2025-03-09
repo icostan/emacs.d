@@ -2,6 +2,12 @@
 ;;; Commentary:
 ;;; Code:
 
+(use-package sideline-eglot
+  :init
+  (setq sideline-backends-right '(sideline-eglot))
+  :custom
+  (sideline-eglot-code-actions-prefix "[eglot]"))
+
 (use-package eglot
   :general
   (general-nmap
@@ -22,6 +28,7 @@
   (cc-mode . eglot-ensure)
   (css-mode . eglot-ensure)
   (html-mode . eglot-ensure)
+  (eglot-mode . sideline-mode)
   :config
   (add-to-list 'eglot-server-programs '(elixir-mode "elixir-ls")))
 

@@ -12,10 +12,10 @@
 ;;   (electric-pair-mode))
 
 ;;; Commenting
-(icostan/leader-keys
-  ";" '(comment-line :wk "comment lines"))
-(icostan/leader-keys
-  ";" '(comment-or-uncomment-region :wk "comment region"))
+;; (icostan/leader-keys
+;;   ";" '(comment-line :wk "comment lines"))
+;; (icostan/leader-keys
+;;   ";" '(comment-or-uncomment-region :wk "comment region"))
 
 (use-package lorem-ipsum)
 
@@ -79,10 +79,16 @@
   (flycheck-mode . sideline-mode)
   (flymake-mode  . sideline-mode))
 
+(use-package xref
+  :config
+  (setq xref-show-definitions-function #'xref-show-definitions-completing-read))
 
 (use-package xref-union)
 
 (use-package multiple-cursors)
+
+(use-package expand-region
+  :bind ("C-=" . er/expand-region))
 
 (provide 'editing)
 

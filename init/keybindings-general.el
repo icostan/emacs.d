@@ -21,6 +21,7 @@
 
     ;; Apps
     "a"   '(nil :wk "apps")
+    "aa"  '(ollama-buddy-menu :wk "ollama-buddy")
     "at"  '(eshell :wk "terminal")
 
     ;; Buffers
@@ -52,6 +53,7 @@
            "ddg"  '(vanilla-disaster-with-gcc :wk "with gcc")
            "ddc"  '(vanilla-disaster-with-clang :wk "with clang")
            "dh"  '(hexl-find-file :wk "file in HEX")
+           "dt"  '(hexl-find-file :wk "file in HEX")
 
            ;; Emacs
            "E"   '(nil :wk "emacs")
@@ -63,6 +65,7 @@
            "Eu"  '(auto-package-update-now :wk "update now")
            "Ed"  '(eval-defun :wk "eval defun")
            "Eb"  '(backward-up-list :wk "backward up")
+           "Et"  '(toggle-debug-on-error :wk "toggle debug on error")
            "Ei"  '(indent-pp-sexp :wk "indent sexp")
            "Ev"  '(exec-path-from-shell-copy-env :wk "copy env")
 
@@ -128,7 +131,6 @@
 
            ;; Replace
            "r"   '(nil :wk "replace")
-           "rr"  '(query-replace :wk "default (in file)")
            "rf"  '(query-replace :wk "in file")
            "rp"  '(projectile-ripgrep :wk "in project")
 

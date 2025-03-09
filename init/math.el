@@ -6,18 +6,10 @@
 ;;; Code:
 
 (use-package calc
-  :defer t)
-
-(use-package casual-calc
-  ;; :ensure nil
+  :defer t
   :bind (:map
          calc-mode-map
-         ("C-o" . casual-calc-tmenu)
-         ;; :map
-         ;; calc-alg-map
-         ;; ("C-o" . casual-calc-tmenu)
-         )
-  :after (calc))
+         ("C-o" . casual-calc-tmenu)))
 
 (message "==> INIT: math.el")
 

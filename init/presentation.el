@@ -7,7 +7,7 @@
   (use-package org-tree-slide))
 
 ;; Screen casting
-;; https://gitlab.com/marcowahl/emacsshot
+(use-package emacsshot)
 ;; (use-package camcorder)
 (use-package gif-screencast)
 

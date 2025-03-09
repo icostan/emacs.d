@@ -40,7 +40,7 @@
   (setq use-package-expand-minimally nil)
   (setq use-package-compute-statistics t))
 
-(use-package use-package-ensure-system-package)
+;; (use-package use-package-ensure-system-package)
 (use-package
   auto-package-update
   :custom
@@ -145,6 +145,7 @@
 ;; (use-package lsp-lsp :load-path "init")
 (use-package lsp-eglot :load-path "init")
 (use-package searching :load-path "init")
+(use-package replacing :load-path "init")
 (use-package snippets :load-path "init")
 (use-package spelling :load-path "init")
 (use-package startup :load-path "init")
@@ -154,6 +155,7 @@
 (use-package langs :load-path "init")
 (use-package diagrams :load-path "init")
 (use-package files-essentials :load-path "init")
+(use-package ai :load-path "init")
 
 (message "==> INIT: DONE, %s." (user-login-name))
 (message "")
