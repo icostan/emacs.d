@@ -31,6 +31,8 @@
   (eglot-mode . sideline-mode)
   :config
   (add-to-list 'eglot-server-programs '(elixir-mode "elixir-ls")))
+  ;; (add-to-list 'eglot-server-programs
+  ;;              '((elixir-mode elixir-ts-mode) . ("language_server.sh"))))
 
 (use-package consult-eglot)
 (use-package consult-eglot-embark)

@@ -5,6 +5,14 @@
 (use-package rg
   :defer t
   :ensure-system-package (rg . ripgrep))
+(use-package nerd-icons-grep
+  :init
+  (nerd-icons-grep-mode)
+  :custom
+  ;; This setting is a pre-requirement, so an icon can be displayed near each
+  ;; heading
+  (grep-use-headings t))
+
 (use-package ag
   :defer t
   :ensure-system-package (ag . the_silver_searcher)

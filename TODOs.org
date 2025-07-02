@@ -45,12 +45,13 @@
    :PROPERTIES:
    :ID:       ae346d06-914e-4a61-988c-1ba97d0a0ae1
    :END:
-*** TODO Emacs: quarterly debrief - update,bookmarks,videos
-    SCHEDULED: <2025-06-07 Sat +3m>
+*** TODO Emacs: quarterly update - bookmarks,videos
+    SCHEDULED: <2025-09-25 Thu +3m>
     :PROPERTIES:
-    :LAST_REPEAT: [2025-03-09 Sun 19:27]
+    :LAST_REPEAT: [2025-07-02 Wed 14:08]
     :ID:       0288ae74-55a5-4f30-af11-90efba8847a8
     :END:
+    - State "DONE"       from "TODO"       [2025-07-02 Wed 14:08]
     - State "DONE"       from "TODO"       [2025-03-09 Sun 19:27]
     - State "DONE"       from "TODO"       [2024-12-30 Mon 14:47]
     - State "DONE"       from "TODO"       [2024-09-07 Sat 20:08]

@@ -85,6 +85,10 @@
 
 (use-package xref-union)
 
+(use-package nerd-icons-xref
+  :init
+  (nerd-icons-xref-mode))
+
 (use-package multiple-cursors)
 
 (use-package expand-region

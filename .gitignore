@@ -22,3 +22,5 @@ auto-save-list
 /url/
 /flycheck_init.el
 /**/transient/
+/**/straight/
+/**/tree-sitter/
