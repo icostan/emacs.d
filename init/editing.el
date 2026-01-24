@@ -34,7 +34,7 @@
 
 (use-package highlight-indent-guides
   :defer t
-  :hook (prog-mode . highlight-indent-guides-mode)
+  :hook (prog-mode . (lambda () (unless noninteractive (highlight-indent-guides-mode 1))))
   :custom (highlight-indent-guides-method 'bitmap))
 
 (use-package highlight-numbers

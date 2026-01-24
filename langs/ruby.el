@@ -26,8 +26,8 @@
   :config (minitest-install-snippets))
 (use-package ruby-test-mode
   :after ruby-mode)
-(use-package bundler
-  :after ruby-mode)
+;; (use-package bundler
+;;   :after ruby-mode)
 (use-package rbenv
   :after ruby-mode
   :config (global-rbenv-mode))

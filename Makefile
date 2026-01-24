@@ -27,6 +27,28 @@ checkdoc:
 version:
 	$(EMACS) $(EMACSFLAGS) ${BATCH} --eval=${SEXP}
 
+test:
+	@echo "Testing Emacs configuration..."
+	@$(EMACS) $(EMACSFLAGS) ${BATCH} --eval="(message \"==> TEST: Configuration loaded successfully!\")" 2>&1 | tee /tmp/emacs-test.log; \
+	EXIT_CODE=$${PIPESTATUS[0]}; \
+	echo ""; \
+	echo "==> Test Results:"; \
+	echo ""; \
+	if [ $$EXIT_CODE -ne 0 ]; then \
+		echo "FAIL: Emacs failed to start (exit code: $$EXIT_CODE)"; \
+		exit 1; \
+	fi; \
+	ERRORS=$$(grep -E "^Error \(|^.*: Error:|failed" /tmp/emacs-test.log || true); \
+	if [ -n "$$ERRORS" ]; then \
+		echo "FAIL: Configuration loaded but errors were reported:"; \
+		echo "$$ERRORS"; \
+		echo ""; \
+		exit 1; \
+	else \
+		echo "PASS: Emacs configuration loaded successfully without errors"; \
+	fi; \
+	rm -f /tmp/emacs-test.log
+
 run:
 	$(EMACS) ${EMACSFLAGS} --eval=${SEXP}
 

@@ -16,10 +16,13 @@
   (setq org-todo-keyword-faces '(("N/A" . "gray") ("CANCELED" . "gray") ("DONE" . "green") ("FAIL" . "gray") ("WIP" . "red"))
         org-confirm-babel-evaluate nil
         org-export-use-babel nil
-        org-agenda-files (directory-files-recursively "~/Projects" "TODOs\\.org")
-        ;; org-agenda-files ()
         org-agenda-window-setup 'other-window
         org-agenda-restore-windows-after-quit t)
+  ;; Only set org-agenda-files in interactive mode to avoid batch mode issues
+  (unless noninteractive
+    (setq org-agenda-files (directory-files-recursively "~/Projects" "TODOs\\.org" nil t
+                                                        (lambda (dir)
+                                                          (not (string= ".local" (file-name-nondirectory dir)))))))
   :custom
         org-ditaa-jar-path "/usr/share/java/ditaa/ditaa-0.11.jar"
   :config
@@ -87,8 +90,7 @@
 ;;   (evil-org-agenda-set-keys))
 (use-package org-evil
   :after org
-  :config
-  (org-evil-mode))
+  :hook (org-mode . org-evil-mode))
 
 (use-package calendar
   :config

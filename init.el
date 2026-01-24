@@ -107,7 +107,6 @@
   (indicate-unused-lines t)
   (show-trailing-whitespace t)
   (hl-line-mode t)
-  (highlight-indent-guides-mode t)
   (electric-pair-mode t)
   (semantic-mode t)
   (tab-width 4)
