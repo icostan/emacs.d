@@ -4,7 +4,8 @@ DOC  = README.org
 FILE = init.el
 EMACSD = local.el
 
-EMACSFLAGS = --quick --load=${EMACSD} --load=init.el --directory=langs --directory=init --file=${FILE} --debug-init
+DEBUG_FLAGS = --quick --load=${EMACSD} --load=init.el --directory=langs --directory=init --file=${FILE} --debug-init
+RUN_FLAGS = --load=${EMACSD}
 BATCH = --batch
 
 EL   =  langs/elixir.el langs/solidity.el langs/json.el langs/html.el langs/pine.el langs/go.el langs/asm.el \
@@ -19,17 +20,17 @@ all: run
 compile: $(EL:.el=.elc)
 
 lint:
-	$(EMACS) $(EMACSFLAGS) ${BATCH} --eval="(elint-directory \".\")"
+	$(EMACS) $(DEBUG_FLAGS) ${BATCH} --eval="(elint-directory \".\")"
 
 checkdoc:
-	$(EMACS) $(EMACSFLAGS) ${BATCH} --eval="(checkdoc)"
+	$(EMACS) $(DEBUG_FLAGS) ${BATCH} --eval="(checkdoc)"
 
 version:
-	$(EMACS) $(EMACSFLAGS) ${BATCH} --eval=${SEXP}
+	$(EMACS) $(DEBUG_FLAGS) ${BATCH} --eval=${SEXP}
 
 test:
 	@echo "Testing Emacs configuration..."
-	@$(EMACS) $(EMACSFLAGS) ${BATCH} --eval="(message \"==> TEST: Configuration loaded successfully!\")" 2>&1 | tee /tmp/emacs-test.log; \
+	@$(EMACS) $(DEBUG_FLAGS) ${BATCH} --eval="(message \"==> TEST: Configuration loaded successfully!\")" 2>&1 | tee /tmp/emacs-test.log; \
 	EXIT_CODE=$${PIPESTATUS[0]}; \
 	echo ""; \
 	echo "==> Test Results:"; \
@@ -49,8 +50,11 @@ test:
 	fi; \
 	rm -f /tmp/emacs-test.log
 
+debug:
+	$(EMACS) ${DEBUG_FLAGS} --eval=${SEXP}
+
 run:
-	$(EMACS) ${EMACSFLAGS} --eval=${SEXP}
+	$(EMACS) ${RUN_FLAGS} --eval=${SEXP}
 
 clean:
 	rm -f *.elc init/*.elc langs/*.elc lisp/*.elc
@@ -60,4 +64,4 @@ purge:
 
 .SUFFIXES: .el .elc
 .el.elc:
-	$(EMACS) $(EMACSFLAGS) --funcall=batch-byte-compile $<
+	$(EMACS) $(DEBUG_FLAGS) --funcall=batch-byte-compile $<

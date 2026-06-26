@@ -46,11 +46,12 @@
    :ID:       ae346d06-914e-4a61-988c-1ba97d0a0ae1
    :END:
 *** TODO Emacs: quarterly update - bookmarks,videos
-    SCHEDULED: <2025-12-25 Thu +3m>
+    SCHEDULED: <2026-03-25 Wed +3m>
     :PROPERTIES:
-    :LAST_REPEAT: [2025-09-29 Mon 10:22]
+    :LAST_REPEAT: [2026-03-20 Fri 09:38]
     :ID:       0288ae74-55a5-4f30-af11-90efba8847a8
     :END:
+    - State "DONE"       from "TODO"       [2026-03-20 Fri 09:38]
     - State "DONE"       from "TODO"       [2025-09-29 Mon 10:22]
     - State "DONE"       from "TODO"       [2025-07-02 Wed 14:08]
     - State "DONE"       from "TODO"       [2025-03-09 Sun 19:27]

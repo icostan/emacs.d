@@ -32,15 +32,10 @@
   :bind ("C-c o" . ollama-buddy-menu))
 
 (use-package claude-code-ide
-  ;; Using package-vc (Emacs 29+) with ELPA-style syntax:
   :vc (claude-code-ide :url "https://github.com/manzaltu/claude-code-ide.el")
-  ;; Alternative using straight.el:
-  ;; :straight (:type git :host github :repo "manzaltu/claude-code-ide.el")
-  ;; Alternative using MELPA-style syntax:
-  ;; :vc (:fetcher github :repo "manzaltu/claude-code-ide.el")
   :general
   (icostan/leader-keys
-    "ac" '(claude-code-ide :wk "claude-code-ide")))
+    "ac" '(claude-code-ide-menu :wk "claude-code-ide-menu")))
 
 ;; (use-package greger
 ;;   :ensure t

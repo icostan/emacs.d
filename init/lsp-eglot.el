@@ -9,6 +9,7 @@
   (sideline-eglot-code-actions-prefix "[eglot]"))
 
 (use-package eglot
+  :ensure nil
   :general
   (general-nmap
     :keymaps 'elixir-mode-map
