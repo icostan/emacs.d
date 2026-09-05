@@ -5,6 +5,7 @@
 (use-package vanilla :load-path "init")
 (use-package general
   :after evil
+  :demand t
   :init
   (general-evil-setup)
   :config

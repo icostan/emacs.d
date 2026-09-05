@@ -40,7 +40,9 @@
   (setq use-package-expand-minimally nil)
   (setq use-package-compute-statistics t))
 
-;; (use-package use-package-ensure-system-package)
+(use-package system-packages)
+(use-package use-package-ensure-system-package
+  :ensure nil)
 (use-package
   auto-package-update
   :custom
@@ -139,6 +141,9 @@
 ;;   :custom (fira-code-mode-disabled-ligatures '("[]" "|>"))
 ;;   :hook prog-mode)
 (message "==> INIT: emacs")
+
+(dolist (directory '("init" "langs" "lisp"))
+  (add-to-list 'load-path (expand-file-name directory user-emacs-directory)))
 
 (use-package themes :load-path "init")
 (use-package ui :load-path "init")

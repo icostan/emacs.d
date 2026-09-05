@@ -3,6 +3,7 @@
 ;;; Code:
 
 (use-package evil
+  :demand t
   :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
@@ -24,6 +25,7 @@
 
 (use-package evil-unimpaired
   :load-path "lisp"
+  :after evil
   :config
   (evil-unimpaired-mode))
 

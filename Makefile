@@ -4,23 +4,35 @@ DOC  = README.org
 FILE = init.el
 EMACSD = local.el
 
-DEBUG_FLAGS = --quick --load=${EMACSD} --load=init.el --directory=langs --directory=init --file=${FILE} --debug-init
+DEBUG_FLAGS = --quick --load=${EMACSD} --load=init.el --directory=langs --directory=init --debug-init
 RUN_FLAGS = --load=${EMACSD}
 BATCH = --batch
 
-EL   =  langs/elixir.el langs/solidity.el langs/json.el langs/html.el langs/pine.el langs/go.el langs/asm.el \
-		langs/all.el langs/emacs-lisp.el langs/ruby.el langs/yaml.el langs/python-lang.el langs/shell.el \
-		langs/rust.el langs/configs.el langs/orgmode.el langs/vyper.el langs/sage.el lisp/evil-unimpaired.el \
-		init.el git.el blank.el trees.el init/langs.el init/vanilla.el
+EL = blank.el home.el init.el local.el files/hello.el \
+	init/ai.el init/compiling.el init/completion-company.el init/completion-corfu.el \
+	init/diagrams.el init/editing.el init/files-essentials.el init/git.el init/helper.el \
+	init/keybindings-general.el init/langs.el init/lsp-eglot.el init/lsp-lsp.el init/math.el \
+	init/misc.el init/navigation.el init/personal-finance.el init/presentation.el \
+	init/project-management.el init/replacing.el init/searching.el init/selection-ivy.el \
+	init/selection-vertico.el init/snippets.el init/spelling.el init/startup.el \
+	init/syntax-flycheck.el init/syntax-flymake.el init/themes.el init/trees.el init/ui.el \
+	init/vanilla.el init/vim.el init/windows.el \
+	langs/all.el langs/asm.el langs/c.el langs/configs.el langs/css.el langs/dart.el \
+	langs/elixir.el langs/emacs-lisp.el langs/erlang.el langs/go.el langs/html.el \
+	langs/javascript.el langs/json.el langs/orgmode.el langs/pine.el langs/python-lang.el \
+	langs/ruby.el langs/rust.el langs/sage.el langs/shell.el langs/solidity.el \
+	langs/terraform.el langs/vyper.el langs/yaml.el \
+	lisp/evil-unimpaired.el lisp/gptel-proof.el lisp/ob-ledger.el
 
 SEXP = "(message (emacs-version))"
 
 all: run
 
-compile: $(EL:.el=.elc)
+compile:
+	$(EMACS) $(DEBUG_FLAGS) ${BATCH} --funcall=batch-byte-compile $(EL)
 
 lint:
-	$(EMACS) $(DEBUG_FLAGS) ${BATCH} --eval="(elint-directory \".\")"
+	$(EMACS) $(DEBUG_FLAGS) ${BATCH} --eval="(require 'elint)" --eval="(elint-directory \".\")"
 
 checkdoc:
 	$(EMACS) $(DEBUG_FLAGS) ${BATCH} --eval="(checkdoc)"
@@ -57,11 +69,9 @@ run:
 	$(EMACS) ${RUN_FLAGS} --eval=${SEXP}
 
 clean:
-	rm -f *.elc init/*.elc langs/*.elc lisp/*.elc
+	rm -f *.elc init/*.elc langs/*.elc lisp/*.elc files/*.elc
 
 purge:
 	rm -rf elpa/*
 
-.SUFFIXES: .el .elc
-.el.elc:
-	$(EMACS) $(DEBUG_FLAGS) --funcall=batch-byte-compile $<
+.SUFFIXES:

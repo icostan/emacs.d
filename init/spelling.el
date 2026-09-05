@@ -29,7 +29,7 @@
     "Se"   '(writegood-reading-ease :wk "writegood ease")))
 
 (use-package synosaurus
-  :ensure-system-package (wn . wordnet-cli)
+  ;; :ensure-system-package (wn . wordnet-cli)
   ;; :custom
   ;; (synosaurus-choose-method 'default)
   :config
