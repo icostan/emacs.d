@@ -31,11 +31,11 @@
   ;; (ollama-buddy-port 11434)
   :bind ("C-c o" . ollama-buddy-menu))
 
-(use-package claude-code-ide
-  :vc (claude-code-ide :url "https://github.com/manzaltu/claude-code-ide.el")
-  :general
-  (icostan/leader-keys
-    "ac" '(claude-code-ide-menu :wk "claude-code-ide-menu")))
+;; (use-package claude-code-ide
+;;   :vc (claude-code-ide :url "https://github.com/manzaltu/claude-code-ide.el")
+;;   :general
+;;   (icostan/leader-keys
+;;     "ac" '(claude-code-ide-menu :wk "claude-code-ide-menu")))
 
 ;; (use-package greger
 ;;   :ensure t

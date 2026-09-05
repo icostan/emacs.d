@@ -35,17 +35,18 @@
      (t posframe)))
   (vertico-multiform-categories
       '((file reverse)
-        (consult-grep buffer)))
-  :config
-  (vertico-multiform-mode))
+        (consult-grep buffer))))
 
 (use-package vertico-posframe
   :init (icostan/vc-install :repo "tumashu/vertico-posframe")
-  :after vertico
+  :after (vertico vertico-multiform)
+  :demand t
   :custom
   (vertico-posframe-parameters '((left-fringe . 8)
                                  (right-fringe . 8)
-                                 (weight . 50))))
+                                 (weight . 50)))
+  :config
+  (vertico-multiform-mode))
 
 (use-package marginalia
   :bind
