@@ -2,6 +2,7 @@
 /.vanilla.d/
 /*.el~
 projectile-bookmarks.eld
+projectile-frecency.eld
 auto-save-list
 **/*.elc
 /.cask/
