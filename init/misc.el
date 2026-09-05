@@ -1,4 +1,4 @@
-;;; misc.el --- Misc packages
+;;; misc.el --- Misc packages -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

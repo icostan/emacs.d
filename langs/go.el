@@ -1,4 +1,4 @@
-;;; go.el --- Go
+;;; go.el --- Go -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

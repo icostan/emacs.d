@@ -1,4 +1,4 @@
-;;; ai.el --- AI
+;;; ai.el --- AI -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

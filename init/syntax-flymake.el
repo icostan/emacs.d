@@ -1,4 +1,4 @@
-;;; syntax-flymake.el --- flymake
+;;; syntax-flymake.el --- flymake -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;;

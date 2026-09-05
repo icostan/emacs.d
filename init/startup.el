@@ -1,4 +1,4 @@
-;;; startup.el --- Startup screen
+;;; startup.el --- Startup screen -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

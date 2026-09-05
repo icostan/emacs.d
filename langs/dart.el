@@ -1,4 +1,4 @@
-;;; dart.el --- Dart
+;;; dart.el --- Dart -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; selection-vertico.el --- Selection with Vertico
+;;; selection-vertico.el --- Selection with Vertico -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

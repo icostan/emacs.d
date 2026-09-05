@@ -1,4 +1,4 @@
-;;; local.el --- Change user emacs directory
+;;; local.el --- Change user emacs directory -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

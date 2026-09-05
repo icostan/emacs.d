@@ -1,4 +1,4 @@
-;;; orgmode.el --- Org Mode
+;;; orgmode.el --- Org Mode -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

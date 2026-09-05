@@ -1,4 +1,4 @@
-;;; emacs-lisp.el --- Emacs Lisp
+;;; emacs-lisp.el --- Emacs Lisp -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

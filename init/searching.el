@@ -1,4 +1,4 @@
-;;; searching.el --- Searching essentials
+;;; searching.el --- Searching essentials -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

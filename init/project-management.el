@@ -1,4 +1,4 @@
-;;; project-management.el --- Project management with style
+;;; project-management.el --- Project management with style -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

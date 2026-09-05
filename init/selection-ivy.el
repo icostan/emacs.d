@@ -1,4 +1,4 @@
-;;; selection-ivy.el --- Selection and narrowing with Ivy
+;;; selection-ivy.el --- Selection and narrowing with Ivy -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; syntax-flycheck.el --- Syntax checking with Flycheck
+;;; syntax-flycheck.el --- Syntax checking with Flycheck -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

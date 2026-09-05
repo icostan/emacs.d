@@ -1,4 +1,4 @@
-;;; css.el --- CSS
+;;; css.el --- CSS -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;;

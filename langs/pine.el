@@ -1,4 +1,4 @@
-;;; pine.el --- Pine
+;;; pine.el --- Pine -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; python-lang.el --- Python-Lang
+;;; python-lang.el --- Python-Lang -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; sage.el --- Sage
+;;; sage.el --- Sage -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

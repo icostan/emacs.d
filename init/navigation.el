@@ -1,4 +1,4 @@
-;;; navigation.el --- Buffer navigation
+;;; navigation.el --- Buffer navigation -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

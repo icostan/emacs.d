@@ -1,4 +1,4 @@
-;;; elixir.el --- Elixir
+;;; elixir.el --- Elixir -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

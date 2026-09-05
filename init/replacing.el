@@ -1,4 +1,4 @@
-;;; replacing.el --- Replacing
+;;; replacing.el --- Replacing -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;;

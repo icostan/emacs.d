@@ -1,4 +1,4 @@
-;;; math.el --- math
+;;; math.el --- math -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;;

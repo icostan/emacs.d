@@ -1,4 +1,4 @@
-;;; shell.el --- Shell
+;;; shell.el --- Shell -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

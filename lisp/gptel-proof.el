@@ -1,4 +1,4 @@
-;;; gptel-proof.el --- gptel-proof
+;;; gptel-proof.el --- gptel-proof -*- lexical-binding: t; -*-
 ;;
 ;; A module to help with proofreading thanks to gptel
 ;;

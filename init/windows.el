@@ -1,4 +1,4 @@
-;;; windows.el --- Windows essentials
+;;; windows.el --- Windows essentials -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

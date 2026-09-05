@@ -1,4 +1,4 @@
-;;; ui.el --- Look and feel, UI things
+;;; ui.el --- Look and feel, UI things -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

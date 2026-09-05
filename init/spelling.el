@@ -1,4 +1,4 @@
-;;; spelling.el --- Spelling and checking
+;;; spelling.el --- Spelling and checking -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; files-essentials.el --- Files essentials
+;;; files-essentials.el --- Files essentials -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; lsp-eglot.ex --- Language Server Protocol client
+;;; lsp-eglot.ex --- Language Server Protocol client -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

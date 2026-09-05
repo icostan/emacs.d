@@ -1,4 +1,4 @@
-;;; compiling.el compiling.el ---
+;;; compiling.el --- Compilation UI -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

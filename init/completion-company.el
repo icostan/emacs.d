@@ -1,4 +1,4 @@
-;;; completion-company.el --- Completion with company
+;;; completion-company.el --- Completion with company -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; html.el --- Html
+;;; html.el --- Html -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

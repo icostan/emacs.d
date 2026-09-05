@@ -1,4 +1,4 @@
-;;; json.el --- JSON
+;;; json.el --- JSON -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

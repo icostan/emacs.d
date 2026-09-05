@@ -1,4 +1,4 @@
-;;; javascript.el --- JAVASCRIPT
+;;; javascript.el --- JAVASCRIPT -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

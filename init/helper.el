@@ -1,4 +1,4 @@
-;;; helper.el --- A better help
+;;; helper.el --- A better help -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

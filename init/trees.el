@@ -1,4 +1,4 @@
-;;; trees.el --- Init trees
+;;; trees.el --- Init trees -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; ruby.el --- Ruby
+;;; ruby.el --- Ruby -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

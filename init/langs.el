@@ -1,4 +1,4 @@
-;;; langs.el --- Programing languages
+;;; langs.el --- Programing languages -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; rust.el --- Rust
+;;; rust.el --- Rust -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

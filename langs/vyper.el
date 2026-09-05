@@ -1,4 +1,4 @@
-;;; vyper.el --- Vyper
+;;; vyper.el --- Vyper -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

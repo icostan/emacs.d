@@ -1,4 +1,4 @@
-;;; vanilla.el --- Vanilla
+;;; vanilla.el --- Vanilla -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

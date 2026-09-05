@@ -1,4 +1,4 @@
-;;; vim.el --- Vim emulation with evil mode
+;;; vim.el --- Vim emulation with evil mode -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

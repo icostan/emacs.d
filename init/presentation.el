@@ -1,4 +1,4 @@
-;;; presentation.el --- Presentation essentials
+;;; presentation.el --- Presentation essentials -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; home.el --- Change home emacs directory
+;;; home.el --- Change home emacs directory -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

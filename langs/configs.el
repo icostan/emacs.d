@@ -1,4 +1,4 @@
-;;; configs.el --- CONFIGS
+;;; configs.el --- CONFIGS -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

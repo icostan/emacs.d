@@ -1,4 +1,4 @@
-;;; solidity.el --- Solidity
+;;; solidity.el --- Solidity -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

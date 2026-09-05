@@ -1,4 +1,4 @@
-;;; editing.el --- Editing essentials
+;;; editing.el --- Editing essentials -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

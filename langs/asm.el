@@ -1,4 +1,4 @@
-;;; asm.el --- Asm
+;;; asm.el --- Asm -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

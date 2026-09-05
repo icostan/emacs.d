@@ -1,4 +1,4 @@
-;;; lsp-lsp.el --- Language server Protocol client
+;;; lsp-lsp.el --- Language server Protocol client -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

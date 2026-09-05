@@ -1,4 +1,4 @@
-;;; c.el --- C
+;;; c.el --- C -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

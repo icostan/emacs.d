@@ -1,4 +1,4 @@
-;;; hello.el --- Hello
+;;; hello.el --- Hello -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

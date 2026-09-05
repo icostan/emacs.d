@@ -1,4 +1,4 @@
-;;; personal-finance.el --- Personal finance with Ledger
+;;; personal-finance.el --- Personal finance with Ledger -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

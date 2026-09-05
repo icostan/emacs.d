@@ -1,4 +1,4 @@
-;;; evil-unimpaired.el --- Pairs of handy bracket mappings.
+;;; evil-unimpaired.el --- Pairs of handy bracket mappings. -*- lexical-binding: t; -*-
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by

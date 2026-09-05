@@ -1,4 +1,4 @@
-;;; git.el --- Git
+;;; git.el --- Git -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; completion-corfu.el --- Completion with Corfu
+;;; completion-corfu.el --- Completion with Corfu -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;
 ;;; Code:

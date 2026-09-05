@@ -1,3 +1,7 @@
+;;; blank.el --- Minimal package setup -*- lexical-binding: t; -*-
+;;; Commentary:
+;;; Code:
+
 ;; package setup
 (require 'package)
 (setq package-enable-at-startup nil)

@@ -1,4 +1,4 @@
-;;; all.el --- All langs
+;;; all.el --- All langs -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; diagrams.el --- Diagrams charts
+;;; diagrams.el --- Diagrams charts -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;
 
