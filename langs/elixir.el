@@ -3,7 +3,14 @@
 ;;; Code:
 
 (use-package elixir-mode
-  :mode "\\.ex\\'")
+  :mode "\\.ex\\'"
+  :hook
+  ;; Disable SMIE sexp navigation. Upstream elixir-mode's SMIE tokenizer has a bug where
+  ;; '#' inside strings/heredocs causes forward-comment to not advance, emitting ";"
+  ;; at the same position in an infinite 100% CPU loop during eldoc/eglot/motion checks.
+  ;; Setting forward-sexp-function to nil restores Emacs's fast C sexp parser while
+  ;; leaving indentation intact.
+  (elixir-mode . (lambda () (setq-local forward-sexp-function nil))))
 
 (use-package alchemist
   :after elixir-mode
