@@ -31,7 +31,9 @@
   (html-mode . eglot-ensure)
   (eglot-mode . sideline-mode)
   :config
-  (add-to-list 'eglot-server-programs '(elixir-mode "elixir-ls")))
+  (add-to-list 'eglot-server-programs '(elixir-mode "elixir-ls"))
+  (setq-default eglot-workspace-configuration
+                '(:elixirLS (:dialyzerEnabled :json-false))))
   ;; (add-to-list 'eglot-server-programs
   ;;              '((elixir-mode elixir-ts-mode) . ("language_server.sh"))))
 
